@@ -5,15 +5,15 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm", "WinForm\WinForm.csproj", "{088E4362-54D1-4F2B-806F-695FB4039CF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers", "Controllers\Controllers.csproj", "{E13F3E26-8B2E-4E29-B8CE-0B5F488FED89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers", "Bll\Controllers.csproj", "{E13F3E26-8B2E-4E29-B8CE-0B5F488FED89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{5CD744CE-3837-4DFD-94B2-BBC0BE2ECED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{CED4A042-434D-49B8-9B0B-6036FD61D8AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Entity\Models.csproj", "{CED4A042-434D-49B8-9B0B-6036FD61D8AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{7671E299-39F0-4BEA-BC1B-7EE0C4548034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{6F0145F2-8A11-428A-A782-17F81D30FACA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Util\Utils.csproj", "{6F0145F2-8A11-428A-A782-17F81D30FACA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErpInterface", "ErpInterface\ErpInterface.csproj", "{CCF5F833-B6F1-4999-8C1E-D21DF5394B8D}"
 EndProject

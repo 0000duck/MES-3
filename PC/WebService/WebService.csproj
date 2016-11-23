@@ -87,15 +87,15 @@
     <Folder Include="PdaUpdate\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bll\Controllers.csproj">
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
       <Project>{e13f3e26-8b2e-4e29-b8ce-0b5f488fed89}</Project>
       <Name>Controllers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entity\Models.csproj">
+    <ProjectReference Include="..\Models\Models.csproj">
       <Project>{ced4a042-434d-49b8-9b0b-6036fd61d8ac}</Project>
       <Name>Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Util\Utils.csproj">
+    <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{6F0145F2-8A11-428A-A782-17F81D30FACA}</Project>
       <Name>Utils</Name>
     </ProjectReference>

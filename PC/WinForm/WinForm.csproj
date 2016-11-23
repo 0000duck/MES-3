@@ -617,7 +617,7 @@
       <Project>{B2A5892E-A99E-4E26-B298-CE36488213CC}</Project>
       <Name>AutoUpdate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bll\Controllers.csproj">
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
       <Project>{e13f3e26-8b2e-4e29-b8ce-0b5f488fed89}</Project>
       <Name>Controllers</Name>
     </ProjectReference>
@@ -625,11 +625,11 @@
       <Project>{5cd744ce-3837-4dfd-94b2-bbc0be2eced6}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entity\Models.csproj">
+    <ProjectReference Include="..\Models\Models.csproj">
       <Project>{ced4a042-434d-49b8-9b0b-6036fd61d8ac}</Project>
       <Name>Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Util\Utils.csproj">
+    <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{6f0145f2-8a11-428a-a782-17f81d30faca}</Project>
       <Name>Utils</Name>
     </ProjectReference>
