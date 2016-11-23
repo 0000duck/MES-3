@@ -478,8 +478,9 @@
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="ProduceDate" Type="datetime" Nullable="false" />
           <Property Name="OverdueDate" Type="datetime" Nullable="false" />
-          <Property Name="ReceiveDate" Type="datetime" />
-          <Property Name="MoveDate" Type="datetime" />
+          <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateQty" Type="money" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TT_EQPT_TYPE">
           <Key>
@@ -1157,24 +1158,6 @@
           <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TS_STOCK_DETAIL">
-          <Key>
-            <PropertyRef Name="LocCode" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Batch" />
-          </Key>
-          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OverdueDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-          <Property Name="MoveDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="TT_EQPT_TYPE">
           <Key>
             <PropertyRef Name="EqptType" />
@@ -1337,7 +1320,6 @@
           <EntitySet Name="TL_NOTIFY" EntityType="Self.TL_NOTIFY" />
           <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" />
           <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" />
-          <EntitySet Name="TS_STOCK_DETAIL" EntityType="Self.TS_STOCK_DETAIL" />
           <EntitySet Name="TT_EQPT_TYPE" EntityType="Self.TT_EQPT_TYPE" />
           <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" />
           <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" />
@@ -1347,7 +1329,27 @@
           <EntitySet Name="VS_OVERDUE_STOCK" EntityType="Self.VS_OVERDUE_STOCK" />
           <EntitySet Name="VS_STOCK" EntityType="Self.VS_STOCK" />
           <EntitySet Name="VS_STOCK_AGE" EntityType="Self.VS_STOCK_AGE" />
+          <EntitySet Name="TS_STOCK_DETAIL" EntityType="SpareModel.TS_STOCK_DETAIL" />
         </EntityContainer>
+        <EntityType Name="TS_STOCK_DETAIL">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="PartCode" />
+            <PropertyRef Name="Batch" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OverdueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1819,23 +1821,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TS_STOCK_DETAIL">
-            <EntityTypeMapping TypeName="SpareModel.TS_STOCK_DETAIL">
-              <MappingFragment StoreEntitySet="TS_STOCK_DETAIL">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-                <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="MoveDate" ColumnName="MoveDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TT_EQPT_TYPE">
             <EntityTypeMapping TypeName="SpareModel.TT_EQPT_TYPE">
               <MappingFragment StoreEntitySet="TT_EQPT_TYPE">
@@ -1955,6 +1940,24 @@
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="BM" ColumnName="BM" />
                 <ScalarProperty Name="PartType" ColumnName="PartType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TS_STOCK_DETAIL">
+            <EntityTypeMapping TypeName="SpareModel.TS_STOCK_DETAIL">
+              <MappingFragment StoreEntitySet="TS_STOCK_DETAIL">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

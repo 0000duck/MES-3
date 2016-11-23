@@ -16,9 +16,9 @@ namespace ChangKeTec.Wms.Controllers.Bill
             return db.TB_STOCK_MOVE.Where(p => p.BillNum == billNum);
         }
 
-        public static TB_STOCK_MOVE Get(SpareEntities db, string billNum, string barcode, string toLocCode)
+        public static TB_STOCK_MOVE Get(SpareEntities db, string billNum, string barcode,string batch, string toLocCode)
         {
-            return db.TB_STOCK_MOVE.SingleOrDefault(p => p.BillNum == billNum&&p.BarCode==barcode&&p.ToLocCode==toLocCode);
+            return db.TB_STOCK_MOVE.SingleOrDefault(p => p.BillNum == billNum&&p.PartCode==barcode&&p.Batch==batch&&p.ToLocCode==toLocCode);
         }
     }
 }

@@ -19,28 +19,21 @@ namespace ChangKeTec.Wms.Controllers.Bill
 
             if (detailIn.UpdateQty <= 0)
             {
-                throw new WmsException(ResultCode.StockNotEnough,detailIn.BarCode + "." + detailIn.LocCode, "入库数量错误");
+                throw new WmsException(ResultCode.StockNotEnough,GetDetailInfo(detailIn), "入库数量错误");
             }
-            var stockDetail = Get(db, detailIn.BarCode, detailIn.LocCode) ?? detailIn.Clone();
+            var stockDetail = Get(db, detailIn.PartCode,detailIn.Batch, detailIn.LocCode) ?? detailIn.Clone();
             stockDetail.Qty += detailIn.UpdateQty;
             stockDetail.UpdateQty = detailIn.UpdateQty;
             stockDetail.UpdateTime = DateTime.Now;
-            var part = GlobalBuffer.PartList.Single(p => p.PartCode == stockDetail.PartCode);
-            switch (part.InspectType)
-            {
-                case 0:
-                    stockDetail.State = (int) StockDetailState.Inspect;
-                    break;
-                case 1:
-                    stockDetail.State = (int) StockDetailState.Valid;
-                    break;
-
-            }
-            db.TS_STOCK_DETAIL.AddOrUpdate(p => new {p.BarCode, p.LocCode}, stockDetail);
+            db.TS_STOCK_DETAIL.AddOrUpdate(p => new {p.PartCode,p.Batch, p.LocCode}, stockDetail);
             SetProduceDate(db, stockDetail);
-            StockController.In(db, detailIn); //更新【库存主表】入库
 
             TransactionLogController.Add(db, bill, detailIn); //添加库存事务日志
+        }
+
+        private static string GetDetailInfo(TS_STOCK_DETAIL detailIn)
+        {
+            return detailIn.PartCode+"."+detailIn.Batch + "@" + detailIn.LocCode;
         }
 
 
@@ -52,19 +45,19 @@ namespace ChangKeTec.Wms.Controllers.Bill
             if (detailOut.UpdateQty >= 0)
             {
                 throw new WmsException(ResultCode.StockNotEnough,
-                    detailOut.BarCode + "." + detailOut.LocCode, "出库数量错误，无法移出");
+                   GetDetailInfo(detailOut), "出库数量错误，无法移出");
             }
-            if (!loc.IsEnableNegativeStock && detailOut.Qty + detailOut.UpdateQty < 0)
+            if (detailOut.Qty + detailOut.UpdateQty < 0)
             {
                 throw new WmsException(ResultCode.StockNotEnough,
-                    detailOut.BarCode + "." + detailOut.LocCode, "出库库存明细不足，无法移出");
+                     GetDetailInfo(detailOut), "出库库存明细不足，无法移出");
 
             }
-            var stockDetail = Get(db, detailOut.BarCode, detailOut.LocCode);
+            var stockDetail = Get(db, detailOut.PartCode,detailOut.Batch, detailOut.LocCode);
             if (stockDetail == null) //库存明细不存在，报错
             {
                 throw new WmsException(ResultCode.DataNotFound,
-                    detailOut.BarCode + "." + detailOut.LocCode, "出库库存明细不存在");
+                    GetDetailInfo(detailOut), "出库库存明细不存在");
 
             }
             else //库存明细存在，更新数量(出库时更新数量为负值)
@@ -73,9 +66,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 stockDetail.UpdateQty = detailOut.UpdateQty;
                 stockDetail.UpdateTime = DateTime.Now;
             }
-            if (loc.AutoRemoveZeroStockDetail && stockDetail.Qty == 0) //是否自动清理零库存明细
-                db.TS_STOCK_DETAIL.Remove(stockDetail);
-            StockController.Out(db, detailOut); //更新【库存主表】出库
+         
 
             TransactionLogController.Add(db, bill, detailOut); //添加库存事务日志
         }
@@ -119,113 +110,35 @@ namespace ChangKeTec.Wms.Controllers.Bill
 //                ErpInterfaceController.CreateTR(db, detail.PartCode, detail.Qty, detail.FromLocCode, detail.ToLocCode,detail.Batch,detail.Batch, bill.BillNum, (BillType)(bill.BillType), bill.BillTime);
             }
         }
-
-        public static void ListMove(SpareEntities db, TB_BILL bill, List<TB_PACK_UNPACK> details)
-        {
-            foreach (var detail in details)
-            {
-                var detailOut = detail.ToStockDetailOut();
-                Out(db, bill, detailOut);
-                
-
-                var detailIn = detail.ToStockDetailIn(db);
-                In(db, bill, detailIn);
-                
-            }
-        }
-
-
-        public static void ListSell(SpareEntities db, string soNum, string sellDate,TB_BILL bill, List<TS_STOCK_DETAIL> stockDetailList,  string operName)
-        {
-            var loc = StoreLocationController.Get(db, SysConfig.LocCodeVinSale);
-            var fromLocCode = loc == null ? String.Empty : loc.LocCode;
-            foreach (var stockDetail in stockDetailList)
-            {
-                if (stockDetail.ProjectId == GlobalBuffer.GetProjectId(stockDetail.PartCode))
-                {
-                    var vinPartList = VinPartController.GetList(db, stockDetail.Batch, stockDetail.ProjectId);
-                    ErpInterfaceController.CreateByVinPartList(db,  vinPartList, soNum, BillType.VinSell, fromLocCode,"");
-                }
-                else
-                {
-                    ErpInterfaceController.CreateSH(db, stockDetail.PartCode, stockDetail.Qty, soNum, fromLocCode, "", BillType.VinSell, DateTime.Now);
-
-                }
-                var detailout = stockDetail.Clone();
-                detailout.UpdateQty = -stockDetail.Qty;
-                detailout.UpdateTime = DateTime.Now;
-                StockDetailController.Out(db, bill, detailout);
-                //StockDetailController.Out(db, bill, stockDetail); TODO 成品销售应该走标准出库
-                //                var tDetail = db.TS_STOCK_DETAIL.Single(p => p.UID == stockDetail.UID);
-                //                tDetail.Qty = 0;
-                //                tDetail.State = (int)VinState.Sold;
-            }
-            //TODO 记录日志
-
-        }
-
-        public static List<VS_STOCK_DETAIL> GetVList(SpareEntities db, DateTime beginTime, DateTime endTime, int beginHour,int endHour, BillType billType)
-        {
-            string locCode = string.Empty;
-            switch (billType)
-            {
-                case BillType.VinReceive:
-                    locCode = SysConfig.LocCodeVinFg;
-                    break;
-                case BillType.VinDeliver:
-                    locCode = SysConfig.LocCodeVinSale;
-                    break;
-            }
-            var billList = db.VS_STOCK_DETAIL.Where(p =>
-                p.UpdateTime >= beginTime
-                && p.UpdateTime <= endTime
-                && p.UpdateTime.Hour >= beginHour
-                && p.UpdateTime.Hour < endHour
-                && p.LocCode ==locCode
-                ).OrderByDescending(p => p.UpdateTime).ToList();
-            return billList;
-        }
-
-        public static List<VS_STOCK_DETAIL> GetVList(SpareEntities db, string areaCode = null)
-        {
-            var list = areaCode == null
-                ? db.VS_STOCK_DETAIL.ToList()
-                : db.VS_STOCK_DETAIL.Where(p => p.AreaCode == areaCode).ToList();
-            return list;
-        }
+        
 
         public static List<TS_STOCK_DETAIL> GetTListByLocCode(SpareEntities db, string locCode)
         {
             return db.TS_STOCK_DETAIL.Where(p => p.LocCode == locCode).ToList();
         }
 
-        public static TS_STOCK_DETAIL Get(SpareEntities db, string barCode, string locCode)
+        public static TS_STOCK_DETAIL Get(SpareEntities db, string partCode,string batch, string locCode)
         {
-            return db.TS_STOCK_DETAIL.Find(barCode, locCode);
-//            return db.TS_STOCK_DETAIL.SingleOrDefault(p => p.BarCode == barCode && p.LocCode == locCode);
+            return db.TS_STOCK_DETAIL.Find(partCode,batch, locCode);
+//            return db.TS_STOCK_DETAIL.SingleOrDefault(p => p.BarCode == partCode && p.LocCode == locCode);
         }
 
         public static TS_STOCK_DETAIL Get(SpareEntities db, int uid)
         {
             return db.TS_STOCK_DETAIL.SingleOrDefault(p=>p.UID==uid);
-            //            return db.TS_STOCK_DETAIL.SingleOrDefault(p => p.BarCode == barCode && p.LocCode == locCode);
+            //            return db.TS_STOCK_DETAIL.SingleOrDefault(p => p.BarCode == partCode && p.LocCode == locCode);
         }
+        
 
-
-        public static TS_STOCK_DETAIL GetFirst(SpareEntities db, string vinCode, string projetId)
+        public static List<TS_STOCK_DETAIL> GetTListByBarCode(SpareEntities db, string partCode)
         {
-            return db.TS_STOCK_DETAIL.FirstOrDefault(p => p.BarCode.Contains(vinCode) && p.ProjectId == projetId);
-        }
-
-        public static List<TS_STOCK_DETAIL> GetTListByBarCode(SpareEntities db, string barCode)
-        {
-            return db.TS_STOCK_DETAIL.Where(p => p.BarCode == barCode).ToList();
+            return db.TS_STOCK_DETAIL.Where(p => p.PartCode == partCode).ToList();
 
         }
 
-        public static TS_STOCK_DETAIL GetFirst(SpareEntities db, string barCode)
+        public static TS_STOCK_DETAIL GetFirst(SpareEntities db, string partCode)
         {
-            return db.TS_STOCK_DETAIL.FirstOrDefault(p => p.BarCode == barCode);
+            return db.TS_STOCK_DETAIL.FirstOrDefault(p => p.PartCode == partCode);
         }
 
         private static void CheckStockDetailLoc(SpareEntities db, string locCode)
@@ -261,29 +174,11 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 detail.ProduceDate = pDate;
                 return;
             }
-            switch (part.ManageType)
-            {
-                case (int) ManageType.Batch:
-                    detail.ProduceDate = pDate;
-                    break;
-                case (int) ManageType.SinglePack:
-                    detail.ProduceDate = detail.ProduceDate;
-                    break;
-            }
+            detail.ProduceDate = pDate;
             if (detail.ProduceDate != null)
                 detail.OverdueDate = detail.ProduceDate.AddDays(part.ValidityDays);
         }
 
-        public static List<TS_STOCK_DETAIL> GetTListByEqptCode(SpareEntities db, string eqptCode)
-        {
-            return db.TS_STOCK_DETAIL.Where(p => p.EqptCode == eqptCode).ToList();
-
-        }
-
-        public static List<TS_STOCK_DETAIL> GetTListByPartCode(SpareEntities db, string partCode)
-        {
-            return db.TS_STOCK_DETAIL.Where(p => p.PartCode == partCode).ToList();
-        }
 
         public static decimal GetValidStockQty(SpareEntities db, string partCode, string batch, string locCode)
         {
@@ -292,9 +187,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                                               && p.Batch == batch
                                               && p.LocCode == locCode
                                               && p.State == (int)StockDetailState.Valid).Sum(s => s.Qty);
-            var freezeQty = db.TS_STOCK_FREEZE.Where(p => p.PartCode == partCode
-                                                          && p.Batch == batch).Sum(s => s.Qty);
-            return allStockQty - freezeQty;
+            return allStockQty;
         }
 
         public static List<TS_STOCK_DETAIL> GetListByPartCode(SpareEntities db, string partCode)
@@ -302,7 +195,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
             return db.TS_STOCK_DETAIL.Where(p => p.PartCode == partCode).ToList();
         }
 
-        public static List<TS_STOCK_DETAIL> GetList(SpareEntities db, string locCode)
+        public static List<TS_STOCK_DETAIL> GetListByLocCode(SpareEntities db, string locCode)
         {
             return db.TS_STOCK_DETAIL.Where(p => p.LocCode == locCode).ToList();
         }

@@ -65,7 +65,7 @@ namespace ChangKeTec.Wms.Controllers
                     case SubBillType.ScrapDestroy: //报废销毁
                         var detailsOut = details.Select(detail => detail.ToStockDetailOut(bill)).ToList();
                          StockDetailController.ListOut(db, bill, detailsOut); //更新【库存主表】【库存明细】出库
-                        //TODO 创建ERP接口
+                       
                         break;
                     //入库
                     case SubBillType.OtherIn: //其它入库
@@ -73,12 +73,7 @@ namespace ChangKeTec.Wms.Controllers
                     case SubBillType.InventoryProfit: //盘盈
                         var detailsIn = details.Select(detail => detail.ToStockDetailIn(bill)).ToList();
                          StockDetailController.ListIn(db, bill, detailsIn); //更新【库存主表】【库存明细】入库
-                        //TODO 创建ERP接口
-                        foreach (var detail in details)
-                        {
-                            ErpInterfaceController.CreateRCT(db, detail.PartCode, detail.Qty, string.Empty,
-                                detail.ToLocCode, bill.BillNum, (BillType) (bill.BillType), bill.BillTime);
-                        }
+                       
                         break;
                     //移库
 //                    case SubBillType.ProductRepair: //成品返修
@@ -87,13 +82,7 @@ namespace ChangKeTec.Wms.Controllers
                     case SubBillType.ProductScrap: //报废
                         var detailsMove = details.Select(p => p.ToStockMove()).ToList();
                          StockDetailController.ListMove(db, bill, detailsMove); //更新【库存主表】【库存明细】
-                        //TODO 创建ERP接口
-                        foreach (var detail in details)
-                        {
-                            ErpInterfaceController.CreateTR(db, detail.PartCode, detail.Qty, detail.FromLocCode,
-                                detail.ToLocCode, detail.Batch, detail.Batch, bill.BillNum, (BillType) (bill.BillType),
-                                bill.BillTime);
-                        }
+                     
                         break;
                     default:
                         throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
@@ -112,8 +101,7 @@ namespace ChangKeTec.Wms.Controllers
 
 
             BillController.AddOrUpdate(db, bill); //添加单据
-            ProductReturnController.AddList(db, details); //添加明细
-
+            
             var detailsIn = details.Select(detail => detail.ToStockDetailIn(bill)).ToList();
              StockDetailController.ListIn(db, bill, detailsIn); //更新【库存主表】【库存明细】入库
             //TODO 创建ERP接口
@@ -149,7 +137,7 @@ namespace ChangKeTec.Wms.Controllers
         /// <param name="billList">原料收货单列表</param>
         /// <param name="detailList">原料收货明细列表</param>
         /// <returns></returns>
-        public static void AddMaterialReceive(SpareEntities db, List<TB_BILL> billList,
+        public static void AddSpareIn(SpareEntities db, List<TB_BILL> billList,
             List<TB_IN> detailList)
         {
 
@@ -300,15 +288,7 @@ namespace ChangKeTec.Wms.Controllers
             };
             AddStockMove(db, billMove, stockMoveList);
 
-
-            //TODO 创建ERP接口
-            foreach (var detail in details)
-            {
-                ErpInterfaceController.CreateTR(db, detail.PartCode, detail.Qty, detail.FromLocCode, detail.ToLocCode,
-                    detail.Batch, detail.Batch, bill.BillNum, (BillType) (bill.BillType), bill.BillTime);
-            }
-
-
+            
             StockController.ListThaw(db, bill.SourceBillNum); //解冻【库存冻结表】
             BillController.UpdateState(db, bill, BillState.Finished); //更新【拣料单】状态为：完成
 
@@ -396,18 +376,15 @@ namespace ChangKeTec.Wms.Controllers
                 {
                     BillNum = "",
                     SourceBillNum = billAsk.BillNum,
-                    SourceBillNum2 = "",
                     BillType = (int) BillType.PickPlan,
                     SubBillType = (int) SubBillType.PartPickFact,
                     BillTime = DateTime.Now,
                     OperName = billAsk.OperName,
                     SplyId = billAsk.SplyId,
-                    CustId = billAsk.SplyId,
                     State = (int) BillState.New,
                     Remark = "",
                 };
 
-                AddPickPlan(db, billPick, partPickList); //添加备货明细
                 BillController.UpdateState(db, billAsk, BillState.Handling); //更新【叫料单】状态为：执行中
             }
             catch (Exception ex)

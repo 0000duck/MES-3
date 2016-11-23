@@ -51,9 +51,7 @@ namespace ChangKeTec.Wms.WinForm.Logs
                         零件号=c.PartCode,
                         批次=c.Batch,
                         数量=c.Qty,
-                        条码号=c.BarCode,
                         库位=c.LocCode,
-                        器具编号=c.EqptCode,
                         备注=c.Remark,
                     };
             Expression<Func<TL_TRANSACTION, bool>> where = c => true;

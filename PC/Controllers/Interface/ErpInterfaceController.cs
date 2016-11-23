@@ -33,50 +33,6 @@ namespace ChangKeTec.Wms.Controllers.Interface
             return list;
         }
 
-        public static void CreateByVinPart(SpareEntities db, TS_VIN_PART tsVinPart, List<string> partCodeList,string billNum, BillType billType,string fromLocCode, string toLocCode)
-        {
-            var r = CustPartController.GetPartByCustPartCode(db, tsVinPart.CustPartCode, partCodeList);
-            var stringBm = r.Item1;
-            var erpPartCode = r.Item2;
-            if (string.IsNullOrEmpty(stringBm))
-            {
-                Console.WriteLine(@"接口无法找到零件号："+ tsVinPart.CustPartCode);
-                return;
-            }
-            var qty = tsVinPart.Qty;
-            switch (billType)
-            {
-                case BillType.VinReceive:
-                    billNum = tsVinPart.ReceiveTime.ToString("yyMMdd");
-                    if (stringBm == PartBuyOrMake.B.ToString())
-                    {
-                        CreateTR(db, erpPartCode,qty, fromLocCode, toLocCode, "", "", billNum, billType,tsVinPart.ReceiveTime);
-                    }
-                    else if (stringBm == PartBuyOrMake.M.ToString())
-                    {
-                        CreateBK(db, erpPartCode,qty, fromLocCode, toLocCode, billNum, billType,tsVinPart.ReceiveTime);
-                    }
-                    break;
-                case BillType.VinDeliver:
-                    billNum = tsVinPart.ReceiveTime.ToString("yyMMdd");
-                    CreateTR(db, erpPartCode,qty, fromLocCode, toLocCode,"","", billNum, billType,tsVinPart.DeliverTime);
-                    break;
-                case BillType.VinSell:
-                    CreateSH(db, erpPartCode,qty, fromLocCode, "", billNum, billType, tsVinPart.BalanceTime);
-                    break;
-
-            }
-        }
-
-        public static void CreateByVinPartList(SpareEntities db, List<TS_VIN_PART> tsVinPartList,string billNum, BillType billType,string fromLocCode,string toLocCode)
-        {
-            foreach (TS_VIN_PART tsVinPart in tsVinPartList)
-            {
-                if(SysConfig.IgnoreErpPartCodeList.Contains(tsVinPart.ErpPartCode))continue;
-                List<string> partCodeList = tsVinPartList.Select(p => p.CustPartCode).ToList();
-                CreateByVinPart(db, tsVinPart, partCodeList, billNum, billType, fromLocCode, toLocCode);
-            }
-        }
 
         /// <summary>
         /// 收货接口

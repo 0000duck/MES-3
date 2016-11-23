@@ -218,12 +218,6 @@
     <Compile Include="Report\FormRptInOutSummaryByArea.Designer.cs">
       <DependentUpon>FormRptInOutSummaryByArea.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\FormRptVin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptVin.Designer.cs">
-      <DependentUpon>FormRptVin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\FormRptStockDays.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,10 +284,10 @@
     <Compile Include="FormSetting.Designer.cs">
       <DependentUpon>FormSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormPo.cs">
+    <Compile Include="Bills\FormPo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormPo.designer.cs">
+    <Compile Include="Bills\FormPo.designer.cs">
       <DependentUpon>FormPo.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVar.cs" />
@@ -438,9 +432,6 @@
     <EmbeddedResource Include="Report\FormRptInOutSummaryByArea.resx">
       <DependentUpon>FormRptInOutSummaryByArea.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptVin.resx">
-      <DependentUpon>FormRptVin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\FormRptStockDays.resx">
       <DependentUpon>FormRptStockDays.cs</DependentUpon>
     </EmbeddedResource>
@@ -474,7 +465,7 @@
     <EmbeddedResource Include="FormSetting.resx">
       <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormPo.resx">
+    <EmbeddedResource Include="Bills\FormPo.resx">
       <DependentUpon>FormPo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logs\FormBillLog.resx">
@@ -689,7 +680,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\" />
+  </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>

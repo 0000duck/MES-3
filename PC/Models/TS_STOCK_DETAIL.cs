@@ -23,7 +23,8 @@ namespace ChangKeTec.Wms.Models
         public decimal UnitPrice { get; set; }
         public System.DateTime ProduceDate { get; set; }
         public System.DateTime OverdueDate { get; set; }
-        public Nullable<System.DateTime> ReceiveDate { get; set; }
-        public Nullable<System.DateTime> MoveDate { get; set; }
+        public System.DateTime ReceiveDate { get; set; }
+        public decimal UpdateQty { get; set; }
+        public System.DateTime UpdateTime { get; set; }
     }
 }

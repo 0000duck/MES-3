@@ -14,7 +14,7 @@ using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.SuperGrid;
 using gregn6Lib;
 
-namespace ChangKeTec.Wms.WinForm.Forms
+namespace ChangKeTec.Wms.WinForm.Bills
 {
     public partial class FormPo: Office2007Form
     {
@@ -22,7 +22,7 @@ namespace ChangKeTec.Wms.WinForm.Forms
         private readonly GridppReport _report;
         private readonly TA_BILLTYPE _taBilltype;
 
-        private TB_PO _bill = null;
+        private TB_BILL _bill = null;
         private readonly string DetailTableName = "TB_PO";
         private readonly string IndexColumnName = "BillNum";
         private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
@@ -54,9 +54,9 @@ namespace ChangKeTec.Wms.WinForm.Forms
 
         private void SetMasterDataSource(int pageSize)
         {
-            Expression<Func<VIEW_PO, dynamic>> select =c => c;
-            Expression<Func<VIEW_PO, bool>> where = c => true;
-            Expression<Func<VIEW_PO, long>> order = c => c.UID;
+            Expression<Func<TB_BILL, dynamic>> select =c => c;
+            Expression<Func<TB_BILL, bool>> where = c => true;
+            Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;
             grid.MasterDataSource =EniitiesHelper.GetPagedDataDesc(_db,
@@ -75,9 +75,9 @@ namespace ChangKeTec.Wms.WinForm.Forms
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<VIEW_PO_DETAIL, dynamic>> select = c => c;
-            Expression<Func<VIEW_PO_DETAIL, bool>> where = c => c.单据号 == billNum;
-            Expression<Func<VIEW_PO_DETAIL, long>> order = c => c.UID;
+            Expression<Func<VIEW_PO, dynamic>> select = c => c;
+            Expression<Func<VIEW_PO, bool>> where = c => c.单据号 == billNum;
+            Expression<Func<VIEW_PO, long>> order = c => c.UID;
 
             grid.Detail1DataSource = EniitiesHelper.GetData(_db,
                 select,
@@ -98,7 +98,7 @@ namespace ChangKeTec.Wms.WinForm.Forms
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
             SpareEntities db = EntitiesFactory.CreateWmsInstance();
-            _bill = db.TB_PO.SingleOrDefault(p => p.UID == grid.MasterUid);
+            _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
             var billNum = _bill.BillNum;
             var count = SetDetailDataSource(billNum);
@@ -161,7 +161,7 @@ namespace ChangKeTec.Wms.WinForm.Forms
 
         private void GetDataList(DataTable dt)
         {
-            var billList = new List<TB_PO>();
+            var billList = new List<TB_BILL>();
             var detailList = new List<TB_PO>();
             foreach (DataRow dr in dt.Rows)
 
@@ -169,16 +169,13 @@ namespace ChangKeTec.Wms.WinForm.Forms
                 string billNum = dr[0].ToString();
                 if (billList.All(p => p.BillNum != billNum))
                 {
-                    billList.Add(new TB_PO
+                    billList.Add(new TB_BILL
                     {
                         BillNum = billNum,
-                        ErpBillNum = billNum,
                         BillType = (int) _billType,
                         SplyId = dr[6].ToString(),
                         BillTime = Convert.ToDateTime(dr[7]),
                         OperName = GlobalVar.Oper.OperName,
-                        BeginDate = Convert.ToDateTime(dr[8]),
-                        EndDate = Convert.ToDateTime(dr[9]),
                         State = (int) BillState.New,
                     });
                 }

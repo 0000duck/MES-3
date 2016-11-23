@@ -568,7 +568,7 @@ namespace ChangKeTec.Wms.ErpInterface
         {
             Console.WriteLine(@"接收库存数据开始");
             var curStockList = StockController.GetList(db);
-            var newStockList = new List<TS_STOCK>();
+            var newStockList = new List<VS_STOCK>();
             for (int i = 0; i < dataList.Count; i++)
             {
                 string strErr = "库存文件 " + filename + " 第 " + i + " 行 \t";
@@ -596,7 +596,7 @@ namespace ChangKeTec.Wms.ErpInterface
 //                    //                    Console.WriteLine(strErr + " barCode重复" + Environment.NewLine + "\t\t\t\t" + data);
 //                    continue;
 //                }
-                var stock = new TS_STOCK
+                var stock = new VS_STOCK
                 {
 //                    VinCode = barCode,
                     LocCode = locCode,

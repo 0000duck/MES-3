@@ -63,7 +63,7 @@ namespace ChangKeTec.Wms.WinForm.Report
         {
             using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
             {
-//                var billList = BillController.GetList(db, _beginTime, _endTime,_beginHour,_endHour, _billType);
+//                var billList = BillController.GetListByLocCode(db, _beginTime, _endTime,_beginHour,_endHour, _billType);
 //                billList = billList.Where(p => p.State == BillState.Finish.ToString()).ToList();
              
                 var stockList = StockDetailController.GetVList(db,_beginTime, _endTime, _beginHour, _endHour, _billType);

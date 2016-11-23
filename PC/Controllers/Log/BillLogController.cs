@@ -45,19 +45,6 @@ namespace ChangKeTec.Wms.Controllers.Log
             db.TL_BILL.Add(log);
         }
         
-        internal static void Add(SpareEntities db, TB_PO bill, string operName, OperateType operType)
-        {
-            var log = new TL_BILL()
-            {
-                OperName = operName,
-                LogTime = DateTime.Now,
-                BillNum = bill.BillNum,
-                BillType = bill.BillType,
-                LogType = operType.ToString(),
-
-            };
-            db.TL_BILL.Add(log);
-        }
     }
 
     

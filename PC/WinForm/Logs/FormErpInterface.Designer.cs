@@ -32,22 +32,18 @@
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.gridInterfaceHis = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
+            this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.gridInterface = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             this.bnMaster = new System.Windows.Forms.BindingNavigator(this.components);
-            this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelEx2.SuspendLayout();
-            this.gridInterface.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bnMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
-            this.superTabControlPanel2.SuspendLayout();
+            this.gridInterface.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bnMaster)).BeginInit();
             this.SuspendLayout();
             // 
             // bar1
@@ -98,26 +94,46 @@
             this.panelEx2.TabIndex = 5;
             this.panelEx2.Text = "panelEx2";
             // 
-            // gridInterfaceHis
+            // superTabControl1
             // 
-            this.gridInterfaceHis.Detail1DataSource = null;
-            this.gridInterfaceHis.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.gridInterfaceHis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridInterfaceHis.IsNavigatorVisible = false;
-            this.gridInterfaceHis.IsPropertyExpand = false;
-            this.gridInterfaceHis.IsPropertyVisible = false;
-            this.gridInterfaceHis.Location = new System.Drawing.Point(0, 0);
-            this.gridInterfaceHis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridInterfaceHis.MasterDataSource = null;
-            this.gridInterfaceHis.Name = "gridInterfaceHis";
-            this.gridInterfaceHis.PageIndex = 1;
-            this.gridInterfaceHis.PageSize = 100;
-            this.gridInterfaceHis.PropertyPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.gridInterfaceHis.Size = new System.Drawing.Size(1189, 640);
-            this.gridInterfaceHis.TabIndex = 1;
-            this.gridInterfaceHis.Total = 0;
-            this.gridInterfaceHis.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.gridInterfaceHis_PageSelectedIndexChanged);
-            this.gridInterfaceHis.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.gridInterfaceHis_DataRefreshed);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.CloseBox.Name = "";
+            // 
+            // 
+            // 
+            this.superTabControl1.ControlBox.MenuBox.Name = "";
+            this.superTabControl1.ControlBox.Name = "";
+            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabControl1.ControlBox.MenuBox,
+            this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.superTabControl1.Name = "superTabControl1";
+            this.superTabControl1.ReorderTabsEnabled = true;
+            this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.superTabControl1.SelectedTabIndex = 0;
+            this.superTabControl1.Size = new System.Drawing.Size(1189, 671);
+            this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.superTabControl1.TabIndex = 5;
+            this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.superTabItem1});
+            this.superTabControl1.Text = "superTabControl1";
+            // 
+            // superTabControlPanel1
+            // 
+            this.superTabControlPanel1.Controls.Add(this.gridInterface);
+            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 31);
+            this.superTabControlPanel1.Name = "superTabControlPanel1";
+            this.superTabControlPanel1.Size = new System.Drawing.Size(1189, 640);
+            this.superTabControlPanel1.TabIndex = 1;
+            this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
             // gridInterface
             // 
@@ -158,72 +174,12 @@
             this.bnMaster.Text = "bindingNavigator1";
             this.bnMaster.Visible = false;
             // 
-            // superTabControl1
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.superTabControl1.Name = "superTabControl1";
-            this.superTabControl1.ReorderTabsEnabled = true;
-            this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.superTabControl1.SelectedTabIndex = 0;
-            this.superTabControl1.Size = new System.Drawing.Size(1189, 671);
-            this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.superTabControl1.TabIndex = 5;
-            this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabItem1,
-            this.superTabItem2});
-            this.superTabControl1.Text = "superTabControl1";
-            // 
             // superTabItem1
             // 
             this.superTabItem1.AttachedControl = this.superTabControlPanel1;
             this.superTabItem1.GlobalItem = false;
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "待生成接口数据";
-            // 
-            // superTabControlPanel1
-            // 
-            this.superTabControlPanel1.Controls.Add(this.gridInterface);
-            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 31);
-            this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(1189, 640);
-            this.superTabControlPanel1.TabIndex = 1;
-            this.superTabControlPanel1.TabItem = this.superTabItem1;
-            // 
-            // superTabItem2
-            // 
-            this.superTabItem2.AttachedControl = this.superTabControlPanel2;
-            this.superTabItem2.GlobalItem = false;
-            this.superTabItem2.Name = "superTabItem2";
-            this.superTabItem2.Text = "历史接口数据";
-            // 
-            // superTabControlPanel2
-            // 
-            this.superTabControlPanel2.Controls.Add(this.gridInterfaceHis);
-            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 31);
-            this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(1189, 640);
-            this.superTabControlPanel2.TabIndex = 0;
-            this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
             // FormErpInterface
             // 
@@ -240,13 +196,12 @@
             this.Load += new System.EventHandler(this.FormLog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.panelEx2.ResumeLayout(false);
-            this.gridInterface.ResumeLayout(false);
-            this.gridInterface.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bnMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
             this.superTabControlPanel1.ResumeLayout(false);
-            this.superTabControlPanel2.ResumeLayout(false);
+            this.gridInterface.ResumeLayout(false);
+            this.gridInterface.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bnMaster)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,13 +211,10 @@
         private DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.ButtonItem ItemBtnExport;
-        private Common.UC.CktMasterDetailGrid gridInterfaceHis;
         private Common.UC.CktMasterDetailGrid gridInterface;
         private System.Windows.Forms.BindingNavigator bnMaster;
         private DevComponents.DotNetBar.SuperTabControl superTabControl1;
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel1;
         private DevComponents.DotNetBar.SuperTabItem superTabItem1;
-        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel2;
-        private DevComponents.DotNetBar.SuperTabItem superTabItem2;
     }
 }

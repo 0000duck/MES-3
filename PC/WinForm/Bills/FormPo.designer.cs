@@ -1,4 +1,4 @@
-﻿namespace ChangKeTec.Wms.WinForm.Forms
+﻿namespace ChangKeTec.Wms.WinForm.Bills
 {
     partial class FormPo
     {
