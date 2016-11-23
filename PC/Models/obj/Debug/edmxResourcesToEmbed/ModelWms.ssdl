@@ -1,0 +1,3499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TA_BILLTYPE">
+    <Key>
+      <PropertyRef Name="BillType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Prefix" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillNumRule" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LastNumber" Type="int" Nullable="false" />
+    <Property Name="LastBillNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastBillTime" Type="datetime" Nullable="false" />
+    <Property Name="PrintTemplateFileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImportTemplateFileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsCalc" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TA_BOM">
+    <Key>
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="SubPartCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubErpPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="BeginDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="IsKeyPart" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_CONFIG">
+    <Key>
+      <PropertyRef Name="ParamName" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParamValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_CUST_BOM">
+    <Key>
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="SubPartCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubErpPartCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="BeginDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="IsKeyPart" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_CUST_PART">
+    <Key>
+      <PropertyRef Name="CustPartCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SalePrice" Type="money" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="BeginDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_CUSTOMER">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contacter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_OUTSOURCER">
+    <Key>
+      <PropertyRef Name="OtscId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OtscId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OtscName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="120" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contacter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="InLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="OutLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_PART">
+    <Key>
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CarMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartKind" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ManageType" Type="int" Nullable="false" />
+    <Property Name="InspectType" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="MaxQty" Type="money" Nullable="false" />
+    <Property Name="MinQty" Type="money" Nullable="false" />
+    <Property Name="SafeQty" Type="money" Nullable="false" />
+    <Property Name="ContainerQty" Type="money" Nullable="false" />
+    <Property Name="SplyPackQty" Type="money" Nullable="false" />
+    <Property Name="LinesidePackQty" Type="money" Nullable="false" />
+    <Property Name="CustPackQty" Type="money" Nullable="false" />
+    <Property Name="ValidityDays" Type="int" Nullable="false" />
+    <Property Name="PartType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceivePort" Type="nvarchar" MaxLength="50" />
+    <Property Name="DefaultReceiveLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_PAYMENT_DAY">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillYear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillMonth" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillDay" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillHour" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BeginTime" Type="date" Nullable="false" />
+    <Property Name="EndTime" Type="date" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_SHIFT">
+    <Key>
+      <PropertyRef Name="ShiftId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ShiftName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TA_STORE_AREA">
+    <Key>
+      <PropertyRef Name="AreaCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AreaName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TA_STORE_GROUP">
+    <Key>
+      <PropertyRef Name="GroupCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_STORE_LOCATION">
+    <Key>
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpSiteCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxBoxQty" Type="int" Nullable="false" />
+    <Property Name="StoredPercent" Type="money" Nullable="false" />
+    <Property Name="DefaultPartCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocType" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsFunctional" Type="bit" Nullable="false" />
+    <Property Name="IsQualifiedProductLoc" Type="bit" Nullable="false" />
+    <Property Name="IsEnableNegativeStock" Type="bit" Nullable="false" />
+    <Property Name="AutoRemoveZeroStock" Type="bit" Nullable="false" />
+    <Property Name="AutoRemoveZeroStockDetail" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TA_STORE_WHSE">
+    <Key>
+      <PropertyRef Name="WhseCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="WhseType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_SUB_BILLTYPE">
+    <Key>
+      <PropertyRef Name="SubBillType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubBillType" Type="int" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="PrintTemplateFileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImportTemplateFileName" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_SUPERLIER">
+    <Key>
+      <PropertyRef Name="SplyId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SplyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SplyAbbCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="ErpCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="120" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contacter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_TEAM">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TA_UNIT">
+    <Key>
+      <PropertyRef Name="Unit" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remak" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TA_WORKLINE">
+    <Key>
+      <PropertyRef Name="LineId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LineId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LineType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="InLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OutLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PrepareMins" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_BILL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SourceBillNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="SourceBillNum2" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="SubBillType" Type="int" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="FinishTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OtscId" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TB_DELIVER_PLAN">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="ToLocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.TB_EQPT_LOAD”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="TB_EQPT_LOAD">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="EqptCode" />
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="State" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_INSPECT">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="InspQty" Type="money" Nullable="false" />
+    <Property Name="PassQty" Type="money" Nullable="false" />
+    <Property Name="FailQty" Type="money" Nullable="false" />
+    <Property Name="CrackQty" Type="money" Nullable="false" />
+    <Property Name="IsPassed" Type="int" Nullable="false" />
+    <Property Name="InspFIleNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="InspResult" Type="nvarchar(max)" />
+    <Property Name="InspTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="InspName" Type="nvarchar" MaxLength="50" />
+    <Property Name="InspLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="OverdueDate" Type="datetime" Nullable="false" />
+    <Property Name="SplyBatch" Type="nvarchar" MaxLength="200" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_INSPECT_FAIL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="FailType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FailType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FailQty" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BookLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CheckLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BookQty" Type="money" Nullable="false" />
+    <Property Name="CheckQty" Type="money" Nullable="false" />
+    <Property Name="ReCheckQty" Type="money" Nullable="false" />
+    <Property Name="InQty" Type="money" Nullable="false" />
+    <Property Name="OutQty" Type="money" Nullable="false" />
+    <Property Name="DiffQty" Type="money" Nullable="false" />
+    <Property Name="CheckTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_LOC">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="CheckBeginTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="CheckEndTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReCheckBeginTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReCheckEndTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_MATERIAL_ASK">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="ToLocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_MATERIAL_BACK">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_MATERIAL_RECEIVE">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoBillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_MATERIAL_RETURN">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.TB_OM_PLAN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="TB_OM_PLAN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="OtscId" />
+      <PropertyRef Name="PlanQty" />
+      <PropertyRef Name="OpenQty" />
+      <PropertyRef Name="ClosedQty" />
+      <PropertyRef Name="State" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OtscId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlanQty" Type="money" Nullable="false" />
+    <Property Name="OpenQty" Type="money" Nullable="false" />
+    <Property Name="ClosedQty" Type="money" Nullable="false" />
+    <Property Name="BeginTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="EndTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TB_OTHER_INOUT">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_PACK_UNPACK">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="FromBarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToBarCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="FromEqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToEqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_PICK_FACT">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="ToLocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PickTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_PICK_PLAN">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="ToLocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="FromLocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_PRODUCE_PLAN">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="LineId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LineId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlanQty" Type="money" Nullable="false" />
+    <Property Name="OpenQty" Type="money" Nullable="false" />
+    <Property Name="ClosedQty" Type="money" Nullable="false" />
+    <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShiftName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BeginTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="EndTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TB_PRODUCT_RECEIVE">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PpBillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="LineId" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShiftName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TeamName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TB_PRODUCT_REPAIR">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_PRODUCT_RETURN">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_PRODUCT_SELL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SoBillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_STOCK_MOVE">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="ToLocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="ProduceDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TF_ASN">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="PoBillNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="ErpAsnNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="ErpPoNum" Type="nvarchar" MaxLength="30" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ShipTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TF_ASN_DETAIL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TF_OM">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpBillNum" Type="nvarchar" MaxLength="30" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="OtscId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="BeginDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TF_OM_DETAIL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlanQty" Type="money" Nullable="false" />
+    <Property Name="OpenQty" Type="money" Nullable="false" />
+    <Property Name="ClosedQty" Type="money" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TF_PO">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpBillNum" Type="nvarchar" MaxLength="30" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="BeginDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TF_PO_DETAIL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillQty" Type="money" Nullable="false" />
+    <Property Name="OpenQty" Type="money" Nullable="false" />
+    <Property Name="ClosedQty" Type="money" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsExemption" Type="bit" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TF_SO">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="ErpBillNum" Type="nvarchar" MaxLength="30" />
+    <Property Name="CustId" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="BeginDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TF_SO_DETAIL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillQty" Type="money" Nullable="false" />
+    <Property Name="OpenQty" Type="money" Nullable="false" />
+    <Property Name="ClosedQty" Type="money" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TL_BASEDATA">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DataType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OldValue" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="NewValue" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TL_BILL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TL_OPER">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperCode" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LogSite" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TL_TRANSACTION">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TR_BALANCE_COMPARE">
+    <Key>
+      <PropertyRef Name="ReportId" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CompFileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TR_BALANCE_COMPARE_PART">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="SendQty" Type="money" Nullable="false" />
+    <Property Name="BalanceQty" Type="money" Nullable="false" />
+    <Property Name="DiffQty" Type="money" Nullable="false" />
+    <Property Name="SendAmount" Type="money" Nullable="false" />
+    <Property Name="BalanceAmount" Type="money" Nullable="false" />
+    <Property Name="DiffAmount" Type="money" Nullable="false" />
+    <Property Name="SendDate" Type="date" />
+    <Property Name="BalanceDate" Type="date" />
+  </EntityType>
+  <EntityType Name="TR_BALANCE_COMPARE_VIN">
+    <Key>
+      <PropertyRef Name="ReportId" />
+      <PropertyRef Name="VinCode" />
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SendDate" Type="date" />
+    <Property Name="BalanceDate" Type="date" />
+    <Property Name="SendQty" Type="money" Nullable="false" />
+    <Property Name="BalanceQty" Type="money" Nullable="false" />
+    <Property Name="DiffQty" Type="money" Nullable="false" />
+    <Property Name="VinState" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TR_SCM">
+    <Key>
+      <PropertyRef Name="SplyId" />
+      <PropertyRef Name="Month" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Month" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ppm" Type="int" Nullable="false" />
+    <Property Name="Prr" Type="int" Nullable="false" />
+    <Property Name="Skfy" Type="int" Nullable="false" />
+    <Property Name="Zlyc" Type="int" Nullable="false" />
+    <Property Name="Shth" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TS_BARCODE">
+    <Key>
+      <PropertyRef Name="FullBarCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" Nullable="false" />
+    <Property Name="FullBarCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ManageType" Type="int" Nullable="false" />
+    <Property Name="SerialNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="FullString" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="BarCodeType" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartKind" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOper" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateQty" Type="money" Nullable="false" />
+    <Property Name="PrintCount" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="SourceBillNum" Type="varchar" MaxLength="50" />
+    <Property Name="SplyId" Type="varchar" MaxLength="50" />
+    <Property Name="EqptCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_BARCODE_RULE">
+    <Key>
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCodeRule" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastNumber" Type="int" Nullable="false" />
+    <Property Name="LastBarCode" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LastTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_CONTAINER">
+    <Key>
+      <PropertyRef Name="SplyId" />
+      <PropertyRef Name="CantainerType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CantainerType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="UpdateQty" Type="int" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TS_EQUIPMENT">
+    <Key>
+      <PropertyRef Name="EqptCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EqptCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UsedQty" Type="int" Nullable="false" />
+    <Property Name="MaintainQty" Type="int" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="NeedMaintain" Type="bit" Nullable="false" />
+    <Property Name="MaintainDuration" Type="int" Nullable="false" />
+    <Property Name="BeginTime" Type="datetime" Nullable="false" />
+    <Property Name="MaintainTIme" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_INTERFACE">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InterfaceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InterfaceString" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ProcessTime" Type="datetime" Nullable="false" />
+    <Property Name="BillNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="pQty" Type="int" />
+    <Property Name="p01" Type="varchar" MaxLength="50" />
+    <Property Name="p02" Type="varchar" MaxLength="50" />
+    <Property Name="p03" Type="varchar" MaxLength="50" />
+    <Property Name="p04" Type="varchar" MaxLength="50" />
+    <Property Name="p05" Type="varchar" MaxLength="50" />
+    <Property Name="p06" Type="varchar" MaxLength="50" />
+    <Property Name="p07" Type="varchar" MaxLength="50" />
+    <Property Name="p08" Type="varchar" MaxLength="50" />
+    <Property Name="p09" Type="varchar" MaxLength="50" />
+    <Property Name="p10" Type="varchar" MaxLength="50" />
+    <Property Name="p11" Type="varchar" MaxLength="50" />
+    <Property Name="p12" Type="varchar" MaxLength="50" />
+    <Property Name="p13" Type="varchar" MaxLength="50" />
+    <Property Name="p14" Type="varchar" MaxLength="50" />
+    <Property Name="p15" Type="varchar" MaxLength="50" />
+    <Property Name="p16" Type="varchar" MaxLength="50" />
+    <Property Name="p17" Type="varchar" MaxLength="50" />
+    <Property Name="p18" Type="varchar" MaxLength="50" />
+    <Property Name="p19" Type="varchar" MaxLength="50" />
+    <Property Name="p20" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_INTERFACE_HIS">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InterfaceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InterfaceString" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ProcessTime" Type="datetime" Nullable="false" />
+    <Property Name="BillNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="pQty" Type="int" />
+    <Property Name="p01" Type="varchar" MaxLength="50" />
+    <Property Name="p02" Type="varchar" MaxLength="50" />
+    <Property Name="p03" Type="varchar" MaxLength="50" />
+    <Property Name="p04" Type="varchar" MaxLength="50" />
+    <Property Name="p05" Type="varchar" MaxLength="50" />
+    <Property Name="p06" Type="varchar" MaxLength="50" />
+    <Property Name="p07" Type="varchar" MaxLength="50" />
+    <Property Name="p08" Type="varchar" MaxLength="50" />
+    <Property Name="p09" Type="varchar" MaxLength="50" />
+    <Property Name="p10" Type="varchar" MaxLength="50" />
+    <Property Name="p11" Type="varchar" MaxLength="50" />
+    <Property Name="p12" Type="varchar" MaxLength="50" />
+    <Property Name="p13" Type="varchar" MaxLength="50" />
+    <Property Name="p14" Type="varchar" MaxLength="50" />
+    <Property Name="p15" Type="varchar" MaxLength="50" />
+    <Property Name="p16" Type="varchar" MaxLength="50" />
+    <Property Name="p17" Type="varchar" MaxLength="50" />
+    <Property Name="p18" Type="varchar" MaxLength="50" />
+    <Property Name="p19" Type="varchar" MaxLength="50" />
+    <Property Name="p20" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_NOTIFY">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NotifyType" Type="int" Nullable="false" />
+    <Property Name="NotifyString" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateOperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CloseOperName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CloseTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_SORT_BILL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateOper" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ProcessOper" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProcessTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TS_SORT_DETAIL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="VinCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SeqNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_STOCK">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UpdateQty" Type="money" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PlanOrderId" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="OverdueDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateQty" Type="money" Nullable="false" />
+    <Property Name="TracebackCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="VinState" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_STOCK_FREEZE">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_TRACEBACK">
+    <Key>
+      <PropertyRef Name="BarCode" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="TracebackCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="TracebackData" Type="xml" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TS_TRACEBACK_MATERIAL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="SubBarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubBatch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubQty" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_UNKNOW_CUSTPART">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FoundTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TS_VIN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlanOrderId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Flag" Type="int" Nullable="false" />
+    <Property Name="CreateOper" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="ErrorCode" Type="int" Nullable="false" />
+    <Property Name="ErrorText" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TS_VIN_HIS">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlanOrderId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Flag" Type="int" Nullable="false" />
+    <Property Name="CreateOper" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ExecTime" Type="datetime" Nullable="false" />
+    <Property Name="ErrorCode" Type="int" Nullable="false" />
+    <Property Name="ErrorText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TS_VIN_PART">
+    <Key>
+      <PropertyRef Name="VinCode" />
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="CustPartCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="VinState" Type="int" Nullable="false" />
+    <Property Name="ReceiveTime" Type="datetime" Nullable="false" />
+    <Property Name="DeliverTime" Type="datetime" Nullable="false" />
+    <Property Name="BalanceTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TT_CONTAINER_TYPE">
+    <Key>
+      <PropertyRef Name="TypeCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TT_FAIL_TYPE">
+    <Key>
+      <PropertyRef Name="TypeCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VA_CUST_PART”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VA_CUST_PART">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="CustPartCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="SalePrice" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="BeginDate" />
+      <PropertyRef Name="EndDate" />
+      <PropertyRef Name="ErpPartCode" />
+      <PropertyRef Name="PartDesc1" />
+      <PropertyRef Name="PartDesc2" />
+      <PropertyRef Name="CarMode" />
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="BM" />
+      <PropertyRef Name="PartKind" />
+      <PropertyRef Name="CustPackQty" />
+    </Key>
+    <Property Name="UID" Type="bigint" Nullable="false" />
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SalePrice" Type="money" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="BeginDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="ErpPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CarMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartType" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartKind" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustPackQty" Type="money" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_ASN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_ASN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="单据类型" />
+      <PropertyRef Name="单据时间" />
+      <PropertyRef Name="供应商" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="发货时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据类型" Type="int" Nullable="false" />
+    <Property Name="单据时间" Type="datetime" Nullable="false" />
+    <Property Name="采购订单号" Type="nvarchar" MaxLength="50" />
+    <Property Name="ERP发货单号" Type="nvarchar" MaxLength="50" />
+    <Property Name="ERP采购订单号" Type="nvarchar" MaxLength="30" />
+    <Property Name="供应商" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="发货时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_ASN_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_ASN_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_BASEDATA_LOG”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_BASEDATA_LOG">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="日志时间" />
+      <PropertyRef Name="日志类型" />
+      <PropertyRef Name="数据类型" />
+      <PropertyRef Name="原值" />
+      <PropertyRef Name="新值" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="日志时间" Type="datetime" Nullable="false" />
+    <Property Name="日志类型" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="数据类型" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="原值" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="新值" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_BILL_LOG”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_BILL_LOG">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="日志时间" />
+      <PropertyRef Name="日志类型" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="单据类型" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="日志时间" Type="datetime" Nullable="false" />
+    <Property Name="日志类型" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据类型" Type="int" Nullable="false" />
+    <Property Name="日志信息" Type="nvarchar(max)" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_CalOverdue_DAYS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_CalOverdue_DAYS">
+    <Key>
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="所在库位" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="项目号" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="生产日期" />
+      <PropertyRef Name="过期日期" />
+    </Key>
+    <Property Name="安全天数" Type="int" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="所在库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="供应商" Type="nvarchar" MaxLength="50" />
+    <Property Name="计划号" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="生产日期" Type="datetime" Nullable="false" />
+    <Property Name="过期日期" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_CalSafeQty”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_CalSafeQty">
+    <Key>
+      <PropertyRef Name="最低库存" />
+      <PropertyRef Name="最高库存" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="零件描述" />
+    </Key>
+    <Property Name="最低库存" Type="money" Nullable="false" />
+    <Property Name="最高库存" Type="money" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件描述" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="在库合格数量" Type="money" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_DELIVER_PLAN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_DELIVER_PLAN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="截止时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="截止时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_EQPT_LOAD”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_EQPT_LOAD">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="器具号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="库位号" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="库位号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_INSPECT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_INSPECT">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="库位号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="报检数" />
+      <PropertyRef Name="合格数" />
+      <PropertyRef Name="不合格数" />
+      <PropertyRef Name="破坏数" />
+      <PropertyRef Name="合格" />
+      <PropertyRef Name="生产日期" />
+      <PropertyRef Name="失效日期" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="库位号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="报检数" Type="money" Nullable="false" />
+    <Property Name="合格数" Type="money" Nullable="false" />
+    <Property Name="不合格数" Type="money" Nullable="false" />
+    <Property Name="破坏数" Type="money" Nullable="false" />
+    <Property Name="合格" Type="int" Nullable="false" />
+    <Property Name="检验文件" Type="nvarchar" MaxLength="20" />
+    <Property Name="检验结论" Type="nvarchar(max)" />
+    <Property Name="检验时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="检验人" Type="nvarchar" MaxLength="50" />
+    <Property Name="检验库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="生产日期" Type="datetime" Nullable="false" />
+    <Property Name="失效日期" Type="datetime" Nullable="false" />
+    <Property Name="供应商批次" Type="nvarchar" MaxLength="200" />
+    <Property Name="备注" Type="nvarchar(max)" />
+    <Property Name="状态" Type="int" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_INTERFACE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_INTERFACE">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="接口类型" />
+      <PropertyRef Name="接口文本" />
+      <PropertyRef Name="状态" />
+      <PropertyRef Name="创建时间" />
+      <PropertyRef Name="执行时间" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="单据类型" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="接口类型" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="接口文本" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+    <Property Name="创建时间" Type="datetime" Nullable="false" />
+    <Property Name="执行时间" Type="datetime" Nullable="false" />
+    <Property Name="单据编号" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据类型" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_INTERFACE_HIS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_INTERFACE_HIS">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="接口类型" />
+      <PropertyRef Name="接口文本" />
+      <PropertyRef Name="状态" />
+      <PropertyRef Name="创建时间" />
+      <PropertyRef Name="执行时间" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="单据类型" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="接口类型" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="接口文本" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+    <Property Name="创建时间" Type="datetime" Nullable="false" />
+    <Property Name="执行时间" Type="datetime" Nullable="false" />
+    <Property Name="单据编号" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据类型" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_INVENTORY_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_INVENTORY_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="账面库位" />
+      <PropertyRef Name="盘点库位" />
+      <PropertyRef Name="标签号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="器具号" />
+      <PropertyRef Name="账面数" />
+      <PropertyRef Name="初盘数" />
+      <PropertyRef Name="重盘数" />
+      <PropertyRef Name="入库数" />
+      <PropertyRef Name="出库数" />
+      <PropertyRef Name="差异数" />
+      <PropertyRef Name="盘点时间" />
+      <PropertyRef Name="操作员" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="账面库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="盘点库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="标签号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="账面数" Type="money" Nullable="false" />
+    <Property Name="初盘数" Type="money" Nullable="false" />
+    <Property Name="重盘数" Type="money" Nullable="false" />
+    <Property Name="入库数" Type="money" Nullable="false" />
+    <Property Name="出库数" Type="money" Nullable="false" />
+    <Property Name="差异数" Type="money" Nullable="false" />
+    <Property Name="盘点时间" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_INVENTORY_LOC”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_INVENTORY_LOC">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="库位号" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="操作时间" />
+      <PropertyRef Name="状态" />
+      <PropertyRef Name="备注" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="库位号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="操作时间" Type="datetime" Nullable="false" />
+    <Property Name="初盘开始时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="初盘结束时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="重盘开始时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="重盘结束时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_IO_SUMMARY”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_IO_SUMMARY">
+    <Key>
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="入库数量" />
+      <PropertyRef Name="出库数量" />
+    </Key>
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="入库数量" Type="money" Nullable="false" />
+    <Property Name="出库数量" Type="money" Nullable="false" />
+    <Property Name="库存数量" Type="money" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_IO_SUMMARY_ByArea”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_IO_SUMMARY_ByArea">
+    <Key>
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="库区" />
+      <PropertyRef Name="入库数量" />
+      <PropertyRef Name="出库数量" />
+    </Key>
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="库区" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="入库数量" Type="money" Nullable="false" />
+    <Property Name="出库数量" Type="money" Nullable="false" />
+    <Property Name="库存数量" Type="money" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_MATERIAL_ASK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_MATERIAL_ASK">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="截止时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="截止时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_MATERIAL_BACK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_MATERIAL_BACK">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_MATERIAL_RECEIVE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_MATERIAL_RECEIVE">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="采购订单号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="来源库位" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="生产日期" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="采购订单号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="生产日期" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_MATERIAL_RETURN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_MATERIAL_RETURN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_NOTIFY”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_NOTIFY">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="提示类型" />
+      <PropertyRef Name="提示信息" />
+      <PropertyRef Name="创建人" />
+      <PropertyRef Name="创建时间" />
+      <PropertyRef Name="关闭时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="提示类型" Type="int" Nullable="false" />
+    <Property Name="提示信息" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="创建人" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="创建时间" Type="datetime" Nullable="false" />
+    <Property Name="关闭人" Type="nvarchar" MaxLength="50" />
+    <Property Name="关闭时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_OM_PLAN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_OM_PLAN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="委外商" />
+      <PropertyRef Name="计划数" />
+      <PropertyRef Name="未完成数" />
+      <PropertyRef Name="完成数" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="委外商" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="计划数" Type="money" Nullable="false" />
+    <Property Name="未完成数" Type="money" Nullable="false" />
+    <Property Name="完成数" Type="money" Nullable="false" />
+    <Property Name="开始时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="结束时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_OPER_LOG”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_OPER_LOG">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="工号" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="日志时间" />
+      <PropertyRef Name="日志类型" />
+      <PropertyRef Name="客户端" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="工号" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="日志时间" Type="datetime" Nullable="false" />
+    <Property Name="日志类型" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="客户端" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="日志信息" Type="nvarchar(max)" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_OTHER_INOUT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_OTHER_INOUT">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PACK_UNPACK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PACK_UNPACK">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="来源标签号" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="来源标签号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标标签号" Type="nvarchar" MaxLength="50" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="来源器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PICK_FACT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PICK_FACT">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="标签号" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="来源库位" />
+      <PropertyRef Name="拣货时间" />
+      <PropertyRef Name="截止时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="标签号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="拣货时间" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="截止时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PICK_PLAN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PICK_PLAN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="来源库位" />
+      <PropertyRef Name="截止时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="截止时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PO”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PO">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="单据类型" />
+      <PropertyRef Name="供应商" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="单据时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ERP采购订单号" Type="nvarchar" MaxLength="30" />
+    <Property Name="单据类型" Type="int" Nullable="false" />
+    <Property Name="供应商" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PO_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PO_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="订单数量" />
+      <PropertyRef Name="待收货数量" />
+      <PropertyRef Name="已收货数量" />
+      <PropertyRef Name="单位" />
+      <PropertyRef Name="是否免检" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="订单数量" Type="money" Nullable="false" />
+    <Property Name="待收货数量" Type="money" Nullable="false" />
+    <Property Name="已收货数量" Type="money" Nullable="false" />
+    <Property Name="单位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="是否免检" Type="bit" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PRODUCE_PLAN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PRODUCE_PLAN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="生产线" />
+      <PropertyRef Name="计划数" />
+      <PropertyRef Name="未完成数" />
+      <PropertyRef Name="完成数" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="生产线" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="计划数" Type="money" Nullable="false" />
+    <Property Name="未完成数" Type="money" Nullable="false" />
+    <Property Name="完成数" Type="money" Nullable="false" />
+    <Property Name="班组" Type="nvarchar" MaxLength="50" />
+    <Property Name="班次" Type="nvarchar" MaxLength="50" />
+    <Property Name="开始时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="结束时间" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PRODUCT_RECEIVE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PRODUCT_RECEIVE">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="计划单号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="FromLocCode" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+      <PropertyRef Name="生产日期" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="计划单号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="生产日期" Type="datetime" Nullable="false" />
+    <Property Name="生产线" Type="nvarchar" MaxLength="50" />
+    <Property Name="班次" Type="nvarchar" MaxLength="50" />
+    <Property Name="班组" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PRODUCT_REPAIR”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PRODUCT_REPAIR">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PRODUCT_RETURN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PRODUCT_RETURN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_PRODUCT_SELL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_PRODUCT_SELL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="销售订单号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="来源库位" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="销售订单号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_SO”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_SO">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="单据类型" />
+      <PropertyRef Name="客户" />
+      <PropertyRef Name="单据时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据类型" Type="int" Nullable="false" />
+    <Property Name="ERP销售订单号" Type="nvarchar" MaxLength="30" />
+    <Property Name="客户" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" />
+    <Property Name="单据时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_SO_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_SO_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="订单数量" />
+      <PropertyRef Name="待发货数量" />
+      <PropertyRef Name="已发货数量" />
+      <PropertyRef Name="单位" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="订单数量" Type="money" Nullable="false" />
+    <Property Name="待发货数量" Type="money" Nullable="false" />
+    <Property Name="已发货数量" Type="money" Nullable="false" />
+    <Property Name="单位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_SORT_BILL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_SORT_BILL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="创建人" />
+      <PropertyRef Name="创建时间" />
+      <PropertyRef Name="执行时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="创建人" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="创建时间" Type="datetime" Nullable="false" />
+    <Property Name="执行人" Type="nvarchar" MaxLength="50" />
+    <Property Name="执行时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar(max)" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_SORT_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_SORT_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="VIN码" />
+      <PropertyRef Name="序列号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="项目编码" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VIN码" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="序列号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目编码" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="状态" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_STOCK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_STOCK">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="库位" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="更新数量" />
+      <PropertyRef Name="更新时间" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="更新数量" Type="money" Nullable="false" />
+    <Property Name="更新时间" Type="datetime" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+    <Property Name="参考号" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="标签号" />
+      <PropertyRef Name="库位" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="项目编号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="状态" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="价格" />
+      <PropertyRef Name="生产日期" />
+      <PropertyRef Name="失效日期" />
+      <PropertyRef Name="更新时间" />
+      <PropertyRef Name="更新数量" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="标签号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="供应商" Type="nvarchar" MaxLength="50" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="计划顺序号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="价格" Type="money" Nullable="false" />
+    <Property Name="生产日期" Type="datetime" Nullable="false" />
+    <Property Name="失效日期" Type="datetime" Nullable="false" />
+    <Property Name="更新时间" Type="datetime" Nullable="false" />
+    <Property Name="更新数量" Type="money" Nullable="false" />
+    <Property Name="追溯号" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_STOCK_FREEZE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_STOCK_FREEZE">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_STOCK_MOVE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_STOCK_MOVE">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="单据号" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="来源库位" />
+      <PropertyRef Name="目标库位" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="来源库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="目标库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_STOCKDETAIL_DAYS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_STOCKDETAIL_DAYS">
+    <Key>
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="所在库位" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="项目号" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="生产日期" />
+      <PropertyRef Name="过期日期" />
+    </Key>
+    <Property Name="在库天数" Type="int" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="所在库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="供应商" Type="nvarchar" MaxLength="50" />
+    <Property Name="计划号" Type="nvarchar" MaxLength="50" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="生产日期" Type="datetime" Nullable="false" />
+    <Property Name="过期日期" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_STORE_WHSE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_STORE_WHSE">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="仓库编号" />
+      <PropertyRef Name="仓库名称" />
+      <PropertyRef Name="仓库地址" />
+      <PropertyRef Name="仓库类型" />
+      <PropertyRef Name="状态" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="仓库编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="仓库名称" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="仓库地址" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="仓库类型" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_TRANSACTION”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_TRANSACTION">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="日志时间" />
+      <PropertyRef Name="单据编号" />
+      <PropertyRef Name="单据类型" />
+      <PropertyRef Name="条码号" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="库位" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="日志时间" Type="datetime" Nullable="false" />
+    <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="单据类型" Type="int" Nullable="false" />
+    <Property Name="条码号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="器具号" Type="nvarchar" MaxLength="50" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_VIN”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_VIN">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="源单号" />
+      <PropertyRef Name="器具编号" />
+      <PropertyRef Name="VIN码" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="项目编号" />
+      <PropertyRef Name="标志" />
+      <PropertyRef Name="创建者" />
+      <PropertyRef Name="生效时间" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="源单号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="器具编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VIN码" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="计划顺序号" Type="nvarchar" MaxLength="50" />
+    <Property Name="标志" Type="int" Nullable="false" />
+    <Property Name="创建者" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="生效时间" Type="datetime" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_VIN_HIS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_VIN_HIS">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="源单号" />
+      <PropertyRef Name="器具编号" />
+      <PropertyRef Name="VIN码" />
+      <PropertyRef Name="零件号" />
+      <PropertyRef Name="批次" />
+      <PropertyRef Name="项目编号" />
+      <PropertyRef Name="标志" />
+      <PropertyRef Name="创建者" />
+      <PropertyRef Name="生效时间" />
+      <PropertyRef Name="执行时间" />
+      <PropertyRef Name="错误代码" />
+      <PropertyRef Name="错误信息" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="源单号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="器具编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VIN码" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="计划顺序号" Type="nvarchar" MaxLength="50" />
+    <Property Name="标志" Type="int" Nullable="false" />
+    <Property Name="创建者" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="生效时间" Type="datetime" Nullable="false" />
+    <Property Name="备注" Type="nvarchar" MaxLength="500" />
+    <Property Name="执行时间" Type="datetime" Nullable="false" />
+    <Property Name="错误代码" Type="int" Nullable="false" />
+    <Property Name="错误信息" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VIEW_VIN_PART”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VIEW_VIN_PART">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="VIN码" />
+      <PropertyRef Name="项目编码" />
+      <PropertyRef Name="客户零件号" />
+      <PropertyRef Name="ERP零件号" />
+      <PropertyRef Name="数量" />
+      <PropertyRef Name="单价" />
+      <PropertyRef Name="价格" />
+      <PropertyRef Name="状态" />
+      <PropertyRef Name="收货时间" />
+      <PropertyRef Name="发货时间" />
+      <PropertyRef Name="结算时间" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VIN码" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="项目编码" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="客户零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ERP零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="数量" Type="money" Nullable="false" />
+    <Property Name="单价" Type="money" Nullable="false" />
+    <Property Name="价格" Type="money" Nullable="false" />
+    <Property Name="状态" Type="int" Nullable="false" />
+    <Property Name="收货时间" Type="datetime" Nullable="false" />
+    <Property Name="发货时间" Type="datetime" Nullable="false" />
+    <Property Name="结算时间" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VS_STOCK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_STOCK">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="UpdateTime" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ErpLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalePrice" Type="money" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" />
+    <Property Name="CarMode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VS_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="BarCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="UpdateTime" />
+      <PropertyRef Name="ProduceDate" />
+      <PropertyRef Name="OverdueDate" />
+      <PropertyRef Name="UpdateQty" />
+      <PropertyRef Name="VinState" />
+    </Key>
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" />
+    <Property Name="CarMode" Type="nvarchar" MaxLength="50" />
+    <Property Name="UID" Type="bigint" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlanOrderId" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ErpSiteCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ErpPartCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="OverdueDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateQty" Type="money" Nullable="false" />
+    <Property Name="TracebackCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="VinState" Type="int" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VS_STOCK_GROUP”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_STOCK_GROUP">
+    <Key>
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="StockQty" Type="money" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeWMS.dbo.VS_VIN_PART”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_VIN_PART">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="CustPartCode" />
+      <PropertyRef Name="ErpPartCode" />
+      <PropertyRef Name="VinCode" />
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="ReceiveTime" />
+      <PropertyRef Name="DeliverTime" />
+      <PropertyRef Name="BalanceTime" />
+      <PropertyRef Name="PartDesc1" />
+      <PropertyRef Name="PartDesc2" />
+      <PropertyRef Name="CarMode" />
+      <PropertyRef Name="BM" />
+      <PropertyRef Name="PartKind" />
+      <PropertyRef Name="VinState" />
+    </Key>
+    <Property Name="UID" Type="bigint" Nullable="false" />
+    <Property Name="CustPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpPartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="ReceiveTime" Type="datetime" Nullable="false" />
+    <Property Name="DeliverTime" Type="datetime" Nullable="false" />
+    <Property Name="BalanceTime" Type="datetime" Nullable="false" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CarMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartKind" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VinState" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="WMSModelStoreContainer">
+    <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_BOM" EntityType="Self.TA_BOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_CUST_BOM" EntityType="Self.TA_CUST_BOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_CUST_PART" EntityType="Self.TA_CUST_PART" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_CUSTOMER" EntityType="Self.TA_CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_OUTSOURCER" EntityType="Self.TA_OUTSOURCER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_PART" EntityType="Self.TA_PART" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_PAYMENT_DAY" EntityType="Self.TA_PAYMENT_DAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_SHIFT" EntityType="Self.TA_SHIFT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_AREA" EntityType="Self.TA_STORE_AREA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_GROUP" EntityType="Self.TA_STORE_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_LOCATION" EntityType="Self.TA_STORE_LOCATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_WHSE" EntityType="Self.TA_STORE_WHSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_SUB_BILLTYPE" EntityType="Self.TA_SUB_BILLTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_SUPERLIER" EntityType="Self.TA_SUPERLIER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_TEAM" EntityType="Self.TA_TEAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_UNIT" EntityType="Self.TA_UNIT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_WORKLINE" EntityType="Self.TA_WORKLINE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_BILL" EntityType="Self.TB_BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_DELIVER_PLAN" EntityType="Self.TB_DELIVER_PLAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_INSPECT" EntityType="Self.TB_INSPECT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_INSPECT_FAIL" EntityType="Self.TB_INSPECT_FAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="Self.TB_INVENTORY_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_INVENTORY_LOC" EntityType="Self.TB_INVENTORY_LOC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_MATERIAL_ASK" EntityType="Self.TB_MATERIAL_ASK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_MATERIAL_BACK" EntityType="Self.TB_MATERIAL_BACK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_MATERIAL_RECEIVE" EntityType="Self.TB_MATERIAL_RECEIVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_MATERIAL_RETURN" EntityType="Self.TB_MATERIAL_RETURN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_OTHER_INOUT" EntityType="Self.TB_OTHER_INOUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PACK_UNPACK" EntityType="Self.TB_PACK_UNPACK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PICK_FACT" EntityType="Self.TB_PICK_FACT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PICK_PLAN" EntityType="Self.TB_PICK_PLAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PRODUCE_PLAN" EntityType="Self.TB_PRODUCE_PLAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PRODUCT_RECEIVE" EntityType="Self.TB_PRODUCT_RECEIVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PRODUCT_REPAIR" EntityType="Self.TB_PRODUCT_REPAIR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PRODUCT_RETURN" EntityType="Self.TB_PRODUCT_RETURN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PRODUCT_SELL" EntityType="Self.TB_PRODUCT_SELL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_STOCK_MOVE" EntityType="Self.TB_STOCK_MOVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_ASN" EntityType="Self.TF_ASN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_ASN_DETAIL" EntityType="Self.TF_ASN_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_OM" EntityType="Self.TF_OM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_OM_DETAIL" EntityType="Self.TF_OM_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_PO" EntityType="Self.TF_PO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_PO_DETAIL" EntityType="Self.TF_PO_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_SO" EntityType="Self.TF_SO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TF_SO_DETAIL" EntityType="Self.TF_SO_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_BASEDATA" EntityType="Self.TL_BASEDATA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_BILL" EntityType="Self.TL_BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TR_BALANCE_COMPARE" EntityType="Self.TR_BALANCE_COMPARE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TR_BALANCE_COMPARE_PART" EntityType="Self.TR_BALANCE_COMPARE_PART" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TR_BALANCE_COMPARE_VIN" EntityType="Self.TR_BALANCE_COMPARE_VIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TR_SCM" EntityType="Self.TR_SCM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_BARCODE" EntityType="Self.TS_BARCODE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_BARCODE_RULE" EntityType="Self.TS_BARCODE_RULE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_CONTAINER" EntityType="Self.TS_CONTAINER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_EQUIPMENT" EntityType="Self.TS_EQUIPMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_INTERFACE" EntityType="Self.TS_INTERFACE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_INTERFACE_HIS" EntityType="Self.TS_INTERFACE_HIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_NOTIFY" EntityType="Self.TS_NOTIFY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_SORT_BILL" EntityType="Self.TS_SORT_BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_SORT_DETAIL" EntityType="Self.TS_SORT_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_STOCK" EntityType="Self.TS_STOCK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_STOCK_DETAIL" EntityType="Self.TS_STOCK_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_STOCK_FREEZE" EntityType="Self.TS_STOCK_FREEZE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_TRACEBACK" EntityType="Self.TS_TRACEBACK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_TRACEBACK_MATERIAL" EntityType="Self.TS_TRACEBACK_MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_UNKNOW_CUSTPART" EntityType="Self.TS_UNKNOW_CUSTPART" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_VIN" EntityType="Self.TS_VIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_VIN_HIS" EntityType="Self.TS_VIN_HIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_VIN_PART" EntityType="Self.TS_VIN_PART" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_CONTAINER_TYPE" EntityType="Self.TT_CONTAINER_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_FAIL_TYPE" EntityType="Self.TT_FAIL_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_EQPT_LOAD" EntityType="Self.TB_EQPT_LOAD" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_EQPT_LOAD].[UID] AS [UID], 
+    [TB_EQPT_LOAD].[BillNum] AS [BillNum], 
+    [TB_EQPT_LOAD].[EqptCode] AS [EqptCode], 
+    [TB_EQPT_LOAD].[BarCode] AS [BarCode], 
+    [TB_EQPT_LOAD].[PartCode] AS [PartCode], 
+    [TB_EQPT_LOAD].[Batch] AS [Batch], 
+    [TB_EQPT_LOAD].[LocCode] AS [LocCode], 
+    [TB_EQPT_LOAD].[Qty] AS [Qty], 
+    [TB_EQPT_LOAD].[State] AS [State], 
+    [TB_EQPT_LOAD].[Remark] AS [Remark]
+    FROM [dbo].[TB_EQPT_LOAD] AS [TB_EQPT_LOAD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TB_OM_PLAN" EntityType="Self.TB_OM_PLAN" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_OM_PLAN].[UID] AS [UID], 
+    [TB_OM_PLAN].[BillNum] AS [BillNum], 
+    [TB_OM_PLAN].[PartCode] AS [PartCode], 
+    [TB_OM_PLAN].[OtscId] AS [OtscId], 
+    [TB_OM_PLAN].[PlanQty] AS [PlanQty], 
+    [TB_OM_PLAN].[OpenQty] AS [OpenQty], 
+    [TB_OM_PLAN].[ClosedQty] AS [ClosedQty], 
+    [TB_OM_PLAN].[BeginTime] AS [BeginTime], 
+    [TB_OM_PLAN].[EndTime] AS [EndTime], 
+    [TB_OM_PLAN].[State] AS [State], 
+    [TB_OM_PLAN].[Remark] AS [Remark]
+    FROM [dbo].[TB_OM_PLAN] AS [TB_OM_PLAN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VA_CUST_PART" EntityType="Self.VA_CUST_PART" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VA_CUST_PART].[UID] AS [UID], 
+    [VA_CUST_PART].[CustPartCode] AS [CustPartCode], 
+    [VA_CUST_PART].[PartCode] AS [PartCode], 
+    [VA_CUST_PART].[SalePrice] AS [SalePrice], 
+    [VA_CUST_PART].[State] AS [State], 
+    [VA_CUST_PART].[BeginDate] AS [BeginDate], 
+    [VA_CUST_PART].[EndDate] AS [EndDate], 
+    [VA_CUST_PART].[Remark] AS [Remark], 
+    [VA_CUST_PART].[ErpPartCode] AS [ErpPartCode], 
+    [VA_CUST_PART].[PartDesc1] AS [PartDesc1], 
+    [VA_CUST_PART].[PartDesc2] AS [PartDesc2], 
+    [VA_CUST_PART].[CarMode] AS [CarMode], 
+    [VA_CUST_PART].[ProjectId] AS [ProjectId], 
+    [VA_CUST_PART].[Unit] AS [Unit], 
+    [VA_CUST_PART].[BM] AS [BM], 
+    [VA_CUST_PART].[PartType] AS [PartType], 
+    [VA_CUST_PART].[PartKind] AS [PartKind], 
+    [VA_CUST_PART].[CustPackQty] AS [CustPackQty]
+    FROM [dbo].[VA_CUST_PART] AS [VA_CUST_PART]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_ASN" EntityType="Self.VIEW_ASN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_ASN].[UID] AS [UID], 
+    [VIEW_ASN].[单据号] AS [单据号], 
+    [VIEW_ASN].[单据类型] AS [单据类型], 
+    [VIEW_ASN].[单据时间] AS [单据时间], 
+    [VIEW_ASN].[采购订单号] AS [采购订单号], 
+    [VIEW_ASN].[ERP发货单号] AS [ERP发货单号], 
+    [VIEW_ASN].[ERP采购订单号] AS [ERP采购订单号], 
+    [VIEW_ASN].[供应商] AS [供应商], 
+    [VIEW_ASN].[操作员] AS [操作员], 
+    [VIEW_ASN].[发货时间] AS [发货时间], 
+    [VIEW_ASN].[状态] AS [状态], 
+    [VIEW_ASN].[备注] AS [备注]
+    FROM [dbo].[VIEW_ASN] AS [VIEW_ASN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_ASN_DETAIL" EntityType="Self.VIEW_ASN_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_ASN_DETAIL].[UID] AS [UID], 
+    [VIEW_ASN_DETAIL].[单据号] AS [单据号], 
+    [VIEW_ASN_DETAIL].[条码号] AS [条码号], 
+    [VIEW_ASN_DETAIL].[零件号] AS [零件号], 
+    [VIEW_ASN_DETAIL].[数量] AS [数量], 
+    [VIEW_ASN_DETAIL].[批次] AS [批次], 
+    [VIEW_ASN_DETAIL].[器具号] AS [器具号], 
+    [VIEW_ASN_DETAIL].[状态] AS [状态]
+    FROM [dbo].[VIEW_ASN_DETAIL] AS [VIEW_ASN_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_BASEDATA_LOG" EntityType="Self.VIEW_BASEDATA_LOG" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_BASEDATA_LOG].[UID] AS [UID], 
+    [VIEW_BASEDATA_LOG].[操作员] AS [操作员], 
+    [VIEW_BASEDATA_LOG].[日志时间] AS [日志时间], 
+    [VIEW_BASEDATA_LOG].[日志类型] AS [日志类型], 
+    [VIEW_BASEDATA_LOG].[数据类型] AS [数据类型], 
+    [VIEW_BASEDATA_LOG].[原值] AS [原值], 
+    [VIEW_BASEDATA_LOG].[新值] AS [新值], 
+    [VIEW_BASEDATA_LOG].[备注] AS [备注]
+    FROM [dbo].[VIEW_BASEDATA_LOG] AS [VIEW_BASEDATA_LOG]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_BILL_LOG" EntityType="Self.VIEW_BILL_LOG" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_BILL_LOG].[UID] AS [UID], 
+    [VIEW_BILL_LOG].[操作员] AS [操作员], 
+    [VIEW_BILL_LOG].[日志时间] AS [日志时间], 
+    [VIEW_BILL_LOG].[日志类型] AS [日志类型], 
+    [VIEW_BILL_LOG].[单据编号] AS [单据编号], 
+    [VIEW_BILL_LOG].[单据类型] AS [单据类型], 
+    [VIEW_BILL_LOG].[日志信息] AS [日志信息]
+    FROM [dbo].[VIEW_BILL_LOG] AS [VIEW_BILL_LOG]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_CalOverdue_DAYS" EntityType="Self.VIEW_CalOverdue_DAYS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_CalOverdue_DAYS].[安全天数] AS [安全天数], 
+    [VIEW_CalOverdue_DAYS].[条码号] AS [条码号], 
+    [VIEW_CalOverdue_DAYS].[所在库位] AS [所在库位], 
+    [VIEW_CalOverdue_DAYS].[零件号] AS [零件号], 
+    [VIEW_CalOverdue_DAYS].[项目号] AS [项目号], 
+    [VIEW_CalOverdue_DAYS].[供应商] AS [供应商], 
+    [VIEW_CalOverdue_DAYS].[计划号] AS [计划号], 
+    [VIEW_CalOverdue_DAYS].[数量] AS [数量], 
+    [VIEW_CalOverdue_DAYS].[生产日期] AS [生产日期], 
+    [VIEW_CalOverdue_DAYS].[过期日期] AS [过期日期]
+    FROM [dbo].[VIEW_CalOverdue_DAYS] AS [VIEW_CalOverdue_DAYS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_CalSafeQty" EntityType="Self.VIEW_CalSafeQty" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_CalSafeQty].[最低库存] AS [最低库存], 
+    [VIEW_CalSafeQty].[最高库存] AS [最高库存], 
+    [VIEW_CalSafeQty].[零件号] AS [零件号], 
+    [VIEW_CalSafeQty].[零件描述] AS [零件描述], 
+    [VIEW_CalSafeQty].[在库合格数量] AS [在库合格数量]
+    FROM [dbo].[VIEW_CalSafeQty] AS [VIEW_CalSafeQty]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_DELIVER_PLAN" EntityType="Self.VIEW_DELIVER_PLAN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_DELIVER_PLAN].[UID] AS [UID], 
+    [VIEW_DELIVER_PLAN].[单据编号] AS [单据编号], 
+    [VIEW_DELIVER_PLAN].[零件号] AS [零件号], 
+    [VIEW_DELIVER_PLAN].[目标库位] AS [目标库位], 
+    [VIEW_DELIVER_PLAN].[数量] AS [数量], 
+    [VIEW_DELIVER_PLAN].[截止时间] AS [截止时间], 
+    [VIEW_DELIVER_PLAN].[状态] AS [状态], 
+    [VIEW_DELIVER_PLAN].[备注] AS [备注]
+    FROM [dbo].[VIEW_DELIVER_PLAN] AS [VIEW_DELIVER_PLAN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_EQPT_LOAD" EntityType="Self.VIEW_EQPT_LOAD" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_EQPT_LOAD].[UID] AS [UID], 
+    [VIEW_EQPT_LOAD].[单据号] AS [单据号], 
+    [VIEW_EQPT_LOAD].[器具号] AS [器具号], 
+    [VIEW_EQPT_LOAD].[条码号] AS [条码号], 
+    [VIEW_EQPT_LOAD].[零件号] AS [零件号], 
+    [VIEW_EQPT_LOAD].[批次] AS [批次], 
+    [VIEW_EQPT_LOAD].[库位号] AS [库位号], 
+    [VIEW_EQPT_LOAD].[数量] AS [数量], 
+    [VIEW_EQPT_LOAD].[状态] AS [状态], 
+    [VIEW_EQPT_LOAD].[备注] AS [备注]
+    FROM [dbo].[VIEW_EQPT_LOAD] AS [VIEW_EQPT_LOAD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_INSPECT" EntityType="Self.VIEW_INSPECT" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_INSPECT].[UID] AS [UID], 
+    [VIEW_INSPECT].[单据号] AS [单据号], 
+    [VIEW_INSPECT].[条码号] AS [条码号], 
+    [VIEW_INSPECT].[库位号] AS [库位号], 
+    [VIEW_INSPECT].[零件号] AS [零件号], 
+    [VIEW_INSPECT].[批次] AS [批次], 
+    [VIEW_INSPECT].[报检数] AS [报检数], 
+    [VIEW_INSPECT].[合格数] AS [合格数], 
+    [VIEW_INSPECT].[不合格数] AS [不合格数], 
+    [VIEW_INSPECT].[破坏数] AS [破坏数], 
+    [VIEW_INSPECT].[合格] AS [合格], 
+    [VIEW_INSPECT].[检验文件] AS [检验文件], 
+    [VIEW_INSPECT].[检验结论] AS [检验结论], 
+    [VIEW_INSPECT].[检验时间] AS [检验时间], 
+    [VIEW_INSPECT].[检验人] AS [检验人], 
+    [VIEW_INSPECT].[检验库位] AS [检验库位], 
+    [VIEW_INSPECT].[生产日期] AS [生产日期], 
+    [VIEW_INSPECT].[失效日期] AS [失效日期], 
+    [VIEW_INSPECT].[供应商批次] AS [供应商批次], 
+    [VIEW_INSPECT].[备注] AS [备注], 
+    [VIEW_INSPECT].[状态] AS [状态]
+    FROM [dbo].[VIEW_INSPECT] AS [VIEW_INSPECT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_INTERFACE" EntityType="Self.VIEW_INTERFACE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_INTERFACE].[UID] AS [UID], 
+    [VIEW_INTERFACE].[接口类型] AS [接口类型], 
+    [VIEW_INTERFACE].[接口文本] AS [接口文本], 
+    [VIEW_INTERFACE].[状态] AS [状态], 
+    [VIEW_INTERFACE].[备注] AS [备注], 
+    [VIEW_INTERFACE].[创建时间] AS [创建时间], 
+    [VIEW_INTERFACE].[执行时间] AS [执行时间], 
+    [VIEW_INTERFACE].[单据编号] AS [单据编号], 
+    [VIEW_INTERFACE].[单据类型] AS [单据类型]
+    FROM [dbo].[VIEW_INTERFACE] AS [VIEW_INTERFACE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_INTERFACE_HIS" EntityType="Self.VIEW_INTERFACE_HIS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_INTERFACE_HIS].[UID] AS [UID], 
+    [VIEW_INTERFACE_HIS].[接口类型] AS [接口类型], 
+    [VIEW_INTERFACE_HIS].[接口文本] AS [接口文本], 
+    [VIEW_INTERFACE_HIS].[状态] AS [状态], 
+    [VIEW_INTERFACE_HIS].[备注] AS [备注], 
+    [VIEW_INTERFACE_HIS].[创建时间] AS [创建时间], 
+    [VIEW_INTERFACE_HIS].[执行时间] AS [执行时间], 
+    [VIEW_INTERFACE_HIS].[单据编号] AS [单据编号], 
+    [VIEW_INTERFACE_HIS].[单据类型] AS [单据类型]
+    FROM [dbo].[VIEW_INTERFACE_HIS] AS [VIEW_INTERFACE_HIS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="Self.VIEW_INVENTORY_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_INVENTORY_DETAIL].[UID] AS [UID], 
+    [VIEW_INVENTORY_DETAIL].[单据号] AS [单据号], 
+    [VIEW_INVENTORY_DETAIL].[账面库位] AS [账面库位], 
+    [VIEW_INVENTORY_DETAIL].[盘点库位] AS [盘点库位], 
+    [VIEW_INVENTORY_DETAIL].[标签号] AS [标签号], 
+    [VIEW_INVENTORY_DETAIL].[零件号] AS [零件号], 
+    [VIEW_INVENTORY_DETAIL].[批次] AS [批次], 
+    [VIEW_INVENTORY_DETAIL].[器具号] AS [器具号], 
+    [VIEW_INVENTORY_DETAIL].[账面数] AS [账面数], 
+    [VIEW_INVENTORY_DETAIL].[初盘数] AS [初盘数], 
+    [VIEW_INVENTORY_DETAIL].[重盘数] AS [重盘数], 
+    [VIEW_INVENTORY_DETAIL].[入库数] AS [入库数], 
+    [VIEW_INVENTORY_DETAIL].[出库数] AS [出库数], 
+    [VIEW_INVENTORY_DETAIL].[差异数] AS [差异数], 
+    [VIEW_INVENTORY_DETAIL].[盘点时间] AS [盘点时间], 
+    [VIEW_INVENTORY_DETAIL].[操作员] AS [操作员]
+    FROM [dbo].[VIEW_INVENTORY_DETAIL] AS [VIEW_INVENTORY_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_INVENTORY_LOC" EntityType="Self.VIEW_INVENTORY_LOC" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_INVENTORY_LOC].[UID] AS [UID], 
+    [VIEW_INVENTORY_LOC].[单据号] AS [单据号], 
+    [VIEW_INVENTORY_LOC].[库位号] AS [库位号], 
+    [VIEW_INVENTORY_LOC].[操作员] AS [操作员], 
+    [VIEW_INVENTORY_LOC].[操作时间] AS [操作时间], 
+    [VIEW_INVENTORY_LOC].[初盘开始时间] AS [初盘开始时间], 
+    [VIEW_INVENTORY_LOC].[初盘结束时间] AS [初盘结束时间], 
+    [VIEW_INVENTORY_LOC].[重盘开始时间] AS [重盘开始时间], 
+    [VIEW_INVENTORY_LOC].[重盘结束时间] AS [重盘结束时间], 
+    [VIEW_INVENTORY_LOC].[状态] AS [状态], 
+    [VIEW_INVENTORY_LOC].[备注] AS [备注]
+    FROM [dbo].[VIEW_INVENTORY_LOC] AS [VIEW_INVENTORY_LOC]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_IO_SUMMARY" EntityType="Self.VIEW_IO_SUMMARY" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_IO_SUMMARY].[零件号] AS [零件号], 
+    [VIEW_IO_SUMMARY].[入库数量] AS [入库数量], 
+    [VIEW_IO_SUMMARY].[出库数量] AS [出库数量], 
+    [VIEW_IO_SUMMARY].[库存数量] AS [库存数量]
+    FROM [dbo].[VIEW_IO_SUMMARY] AS [VIEW_IO_SUMMARY]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_IO_SUMMARY_ByArea" EntityType="Self.VIEW_IO_SUMMARY_ByArea" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_IO_SUMMARY_ByArea].[零件号] AS [零件号], 
+    [VIEW_IO_SUMMARY_ByArea].[库区] AS [库区], 
+    [VIEW_IO_SUMMARY_ByArea].[入库数量] AS [入库数量], 
+    [VIEW_IO_SUMMARY_ByArea].[出库数量] AS [出库数量], 
+    [VIEW_IO_SUMMARY_ByArea].[库存数量] AS [库存数量]
+    FROM [dbo].[VIEW_IO_SUMMARY_ByArea] AS [VIEW_IO_SUMMARY_ByArea]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_MATERIAL_ASK" EntityType="Self.VIEW_MATERIAL_ASK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_MATERIAL_ASK].[UID] AS [UID], 
+    [VIEW_MATERIAL_ASK].[单据号] AS [单据号], 
+    [VIEW_MATERIAL_ASK].[零件号] AS [零件号], 
+    [VIEW_MATERIAL_ASK].[目标库位] AS [目标库位], 
+    [VIEW_MATERIAL_ASK].[数量] AS [数量], 
+    [VIEW_MATERIAL_ASK].[截止时间] AS [截止时间], 
+    [VIEW_MATERIAL_ASK].[状态] AS [状态], 
+    [VIEW_MATERIAL_ASK].[备注] AS [备注]
+    FROM [dbo].[VIEW_MATERIAL_ASK] AS [VIEW_MATERIAL_ASK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_MATERIAL_BACK" EntityType="Self.VIEW_MATERIAL_BACK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_MATERIAL_BACK].[UID] AS [UID], 
+    [VIEW_MATERIAL_BACK].[单据号] AS [单据号], 
+    [VIEW_MATERIAL_BACK].[条码号] AS [条码号], 
+    [VIEW_MATERIAL_BACK].[零件号] AS [零件号], 
+    [VIEW_MATERIAL_BACK].[批次] AS [批次], 
+    [VIEW_MATERIAL_BACK].[来源库位] AS [来源库位], 
+    [VIEW_MATERIAL_BACK].[目标库位] AS [目标库位], 
+    [VIEW_MATERIAL_BACK].[数量] AS [数量], 
+    [VIEW_MATERIAL_BACK].[器具号] AS [器具号], 
+    [VIEW_MATERIAL_BACK].[状态] AS [状态], 
+    [VIEW_MATERIAL_BACK].[备注] AS [备注]
+    FROM [dbo].[VIEW_MATERIAL_BACK] AS [VIEW_MATERIAL_BACK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_MATERIAL_RECEIVE" EntityType="Self.VIEW_MATERIAL_RECEIVE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_MATERIAL_RECEIVE].[UID] AS [UID], 
+    [VIEW_MATERIAL_RECEIVE].[单据号] AS [单据号], 
+    [VIEW_MATERIAL_RECEIVE].[采购订单号] AS [采购订单号], 
+    [VIEW_MATERIAL_RECEIVE].[条码号] AS [条码号], 
+    [VIEW_MATERIAL_RECEIVE].[零件号] AS [零件号], 
+    [VIEW_MATERIAL_RECEIVE].[批次] AS [批次], 
+    [VIEW_MATERIAL_RECEIVE].[来源库位] AS [来源库位], 
+    [VIEW_MATERIAL_RECEIVE].[目标库位] AS [目标库位], 
+    [VIEW_MATERIAL_RECEIVE].[数量] AS [数量], 
+    [VIEW_MATERIAL_RECEIVE].[器具号] AS [器具号], 
+    [VIEW_MATERIAL_RECEIVE].[生产日期] AS [生产日期], 
+    [VIEW_MATERIAL_RECEIVE].[状态] AS [状态], 
+    [VIEW_MATERIAL_RECEIVE].[备注] AS [备注]
+    FROM [dbo].[VIEW_MATERIAL_RECEIVE] AS [VIEW_MATERIAL_RECEIVE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_MATERIAL_RETURN" EntityType="Self.VIEW_MATERIAL_RETURN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_MATERIAL_RETURN].[UID] AS [UID], 
+    [VIEW_MATERIAL_RETURN].[单据号] AS [单据号], 
+    [VIEW_MATERIAL_RETURN].[条码号] AS [条码号], 
+    [VIEW_MATERIAL_RETURN].[零件号] AS [零件号], 
+    [VIEW_MATERIAL_RETURN].[批次] AS [批次], 
+    [VIEW_MATERIAL_RETURN].[来源库位] AS [来源库位], 
+    [VIEW_MATERIAL_RETURN].[目标库位] AS [目标库位], 
+    [VIEW_MATERIAL_RETURN].[数量] AS [数量], 
+    [VIEW_MATERIAL_RETURN].[器具号] AS [器具号], 
+    [VIEW_MATERIAL_RETURN].[状态] AS [状态], 
+    [VIEW_MATERIAL_RETURN].[备注] AS [备注]
+    FROM [dbo].[VIEW_MATERIAL_RETURN] AS [VIEW_MATERIAL_RETURN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_NOTIFY" EntityType="Self.VIEW_NOTIFY" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_NOTIFY].[UID] AS [UID], 
+    [VIEW_NOTIFY].[单据编号] AS [单据编号], 
+    [VIEW_NOTIFY].[提示类型] AS [提示类型], 
+    [VIEW_NOTIFY].[提示信息] AS [提示信息], 
+    [VIEW_NOTIFY].[创建人] AS [创建人], 
+    [VIEW_NOTIFY].[创建时间] AS [创建时间], 
+    [VIEW_NOTIFY].[关闭人] AS [关闭人], 
+    [VIEW_NOTIFY].[关闭时间] AS [关闭时间], 
+    [VIEW_NOTIFY].[状态] AS [状态]
+    FROM [dbo].[VIEW_NOTIFY] AS [VIEW_NOTIFY]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_OM_PLAN" EntityType="Self.VIEW_OM_PLAN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_OM_PLAN].[UID] AS [UID], 
+    [VIEW_OM_PLAN].[单据号] AS [单据号], 
+    [VIEW_OM_PLAN].[零件号] AS [零件号], 
+    [VIEW_OM_PLAN].[委外商] AS [委外商], 
+    [VIEW_OM_PLAN].[计划数] AS [计划数], 
+    [VIEW_OM_PLAN].[未完成数] AS [未完成数], 
+    [VIEW_OM_PLAN].[完成数] AS [完成数], 
+    [VIEW_OM_PLAN].[开始时间] AS [开始时间], 
+    [VIEW_OM_PLAN].[结束时间] AS [结束时间], 
+    [VIEW_OM_PLAN].[状态] AS [状态], 
+    [VIEW_OM_PLAN].[备注] AS [备注]
+    FROM [dbo].[VIEW_OM_PLAN] AS [VIEW_OM_PLAN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_OPER_LOG" EntityType="Self.VIEW_OPER_LOG" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_OPER_LOG].[UID] AS [UID], 
+    [VIEW_OPER_LOG].[工号] AS [工号], 
+    [VIEW_OPER_LOG].[操作员] AS [操作员], 
+    [VIEW_OPER_LOG].[日志时间] AS [日志时间], 
+    [VIEW_OPER_LOG].[日志类型] AS [日志类型], 
+    [VIEW_OPER_LOG].[客户端] AS [客户端], 
+    [VIEW_OPER_LOG].[日志信息] AS [日志信息]
+    FROM [dbo].[VIEW_OPER_LOG] AS [VIEW_OPER_LOG]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_OTHER_INOUT" EntityType="Self.VIEW_OTHER_INOUT" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_OTHER_INOUT].[UID] AS [UID], 
+    [VIEW_OTHER_INOUT].[单据号] AS [单据号], 
+    [VIEW_OTHER_INOUT].[条码号] AS [条码号], 
+    [VIEW_OTHER_INOUT].[零件号] AS [零件号], 
+    [VIEW_OTHER_INOUT].[批次] AS [批次], 
+    [VIEW_OTHER_INOUT].[来源库位] AS [来源库位], 
+    [VIEW_OTHER_INOUT].[目标库位] AS [目标库位], 
+    [VIEW_OTHER_INOUT].[数量] AS [数量], 
+    [VIEW_OTHER_INOUT].[器具号] AS [器具号], 
+    [VIEW_OTHER_INOUT].[状态] AS [状态], 
+    [VIEW_OTHER_INOUT].[备注] AS [备注]
+    FROM [dbo].[VIEW_OTHER_INOUT] AS [VIEW_OTHER_INOUT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PACK_UNPACK" EntityType="Self.VIEW_PACK_UNPACK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PACK_UNPACK].[UID] AS [UID], 
+    [VIEW_PACK_UNPACK].[单据号] AS [单据号], 
+    [VIEW_PACK_UNPACK].[零件号] AS [零件号], 
+    [VIEW_PACK_UNPACK].[批次] AS [批次], 
+    [VIEW_PACK_UNPACK].[数量] AS [数量], 
+    [VIEW_PACK_UNPACK].[来源标签号] AS [来源标签号], 
+    [VIEW_PACK_UNPACK].[目标标签号] AS [目标标签号], 
+    [VIEW_PACK_UNPACK].[来源库位] AS [来源库位], 
+    [VIEW_PACK_UNPACK].[目标库位] AS [目标库位], 
+    [VIEW_PACK_UNPACK].[来源器具号] AS [来源器具号], 
+    [VIEW_PACK_UNPACK].[目标库位号] AS [目标库位号], 
+    [VIEW_PACK_UNPACK].[状态] AS [状态], 
+    [VIEW_PACK_UNPACK].[备注] AS [备注]
+    FROM [dbo].[VIEW_PACK_UNPACK] AS [VIEW_PACK_UNPACK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PICK_FACT" EntityType="Self.VIEW_PICK_FACT" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PICK_FACT].[UID] AS [UID], 
+    [VIEW_PICK_FACT].[单据号] AS [单据号], 
+    [VIEW_PICK_FACT].[标签号] AS [标签号], 
+    [VIEW_PICK_FACT].[目标库位] AS [目标库位], 
+    [VIEW_PICK_FACT].[零件号] AS [零件号], 
+    [VIEW_PICK_FACT].[批次] AS [批次], 
+    [VIEW_PICK_FACT].[数量] AS [数量], 
+    [VIEW_PICK_FACT].[来源库位] AS [来源库位], 
+    [VIEW_PICK_FACT].[拣货时间] AS [拣货时间], 
+    [VIEW_PICK_FACT].[截止时间] AS [截止时间], 
+    [VIEW_PICK_FACT].[状态] AS [状态], 
+    [VIEW_PICK_FACT].[备注] AS [备注]
+    FROM [dbo].[VIEW_PICK_FACT] AS [VIEW_PICK_FACT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PICK_PLAN" EntityType="Self.VIEW_PICK_PLAN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PICK_PLAN].[UID] AS [UID], 
+    [VIEW_PICK_PLAN].[单据号] AS [单据号], 
+    [VIEW_PICK_PLAN].[目标库位] AS [目标库位], 
+    [VIEW_PICK_PLAN].[零件号] AS [零件号], 
+    [VIEW_PICK_PLAN].[批次] AS [批次], 
+    [VIEW_PICK_PLAN].[数量] AS [数量], 
+    [VIEW_PICK_PLAN].[来源库位] AS [来源库位], 
+    [VIEW_PICK_PLAN].[截止时间] AS [截止时间], 
+    [VIEW_PICK_PLAN].[状态] AS [状态], 
+    [VIEW_PICK_PLAN].[备注] AS [备注]
+    FROM [dbo].[VIEW_PICK_PLAN] AS [VIEW_PICK_PLAN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PO" EntityType="Self.VIEW_PO" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PO].[UID] AS [UID], 
+    [VIEW_PO].[单据号] AS [单据号], 
+    [VIEW_PO].[ERP采购订单号] AS [ERP采购订单号], 
+    [VIEW_PO].[单据类型] AS [单据类型], 
+    [VIEW_PO].[供应商] AS [供应商], 
+    [VIEW_PO].[操作员] AS [操作员], 
+    [VIEW_PO].[单据时间] AS [单据时间], 
+    [VIEW_PO].[状态] AS [状态], 
+    [VIEW_PO].[备注] AS [备注]
+    FROM [dbo].[VIEW_PO] AS [VIEW_PO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PO_DETAIL" EntityType="Self.VIEW_PO_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PO_DETAIL].[UID] AS [UID], 
+    [VIEW_PO_DETAIL].[单据号] AS [单据号], 
+    [VIEW_PO_DETAIL].[零件号] AS [零件号], 
+    [VIEW_PO_DETAIL].[订单数量] AS [订单数量], 
+    [VIEW_PO_DETAIL].[待收货数量] AS [待收货数量], 
+    [VIEW_PO_DETAIL].[已收货数量] AS [已收货数量], 
+    [VIEW_PO_DETAIL].[单位] AS [单位], 
+    [VIEW_PO_DETAIL].[是否免检] AS [是否免检], 
+    [VIEW_PO_DETAIL].[状态] AS [状态], 
+    [VIEW_PO_DETAIL].[备注] AS [备注]
+    FROM [dbo].[VIEW_PO_DETAIL] AS [VIEW_PO_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PRODUCE_PLAN" EntityType="Self.VIEW_PRODUCE_PLAN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PRODUCE_PLAN].[UID] AS [UID], 
+    [VIEW_PRODUCE_PLAN].[单据号] AS [单据号], 
+    [VIEW_PRODUCE_PLAN].[零件号] AS [零件号], 
+    [VIEW_PRODUCE_PLAN].[生产线] AS [生产线], 
+    [VIEW_PRODUCE_PLAN].[计划数] AS [计划数], 
+    [VIEW_PRODUCE_PLAN].[未完成数] AS [未完成数], 
+    [VIEW_PRODUCE_PLAN].[完成数] AS [完成数], 
+    [VIEW_PRODUCE_PLAN].[班组] AS [班组], 
+    [VIEW_PRODUCE_PLAN].[班次] AS [班次], 
+    [VIEW_PRODUCE_PLAN].[开始时间] AS [开始时间], 
+    [VIEW_PRODUCE_PLAN].[结束时间] AS [结束时间], 
+    [VIEW_PRODUCE_PLAN].[状态] AS [状态], 
+    [VIEW_PRODUCE_PLAN].[备注] AS [备注]
+    FROM [dbo].[VIEW_PRODUCE_PLAN] AS [VIEW_PRODUCE_PLAN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PRODUCT_RECEIVE" EntityType="Self.VIEW_PRODUCT_RECEIVE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PRODUCT_RECEIVE].[UID] AS [UID], 
+    [VIEW_PRODUCT_RECEIVE].[单据号] AS [单据号], 
+    [VIEW_PRODUCT_RECEIVE].[计划单号] AS [计划单号], 
+    [VIEW_PRODUCT_RECEIVE].[条码号] AS [条码号], 
+    [VIEW_PRODUCT_RECEIVE].[零件号] AS [零件号], 
+    [VIEW_PRODUCT_RECEIVE].[批次] AS [批次], 
+    [VIEW_PRODUCT_RECEIVE].[FromLocCode] AS [FromLocCode], 
+    [VIEW_PRODUCT_RECEIVE].[目标库位] AS [目标库位], 
+    [VIEW_PRODUCT_RECEIVE].[数量] AS [数量], 
+    [VIEW_PRODUCT_RECEIVE].[器具号] AS [器具号], 
+    [VIEW_PRODUCT_RECEIVE].[备注] AS [备注], 
+    [VIEW_PRODUCT_RECEIVE].[状态] AS [状态], 
+    [VIEW_PRODUCT_RECEIVE].[生产日期] AS [生产日期], 
+    [VIEW_PRODUCT_RECEIVE].[生产线] AS [生产线], 
+    [VIEW_PRODUCT_RECEIVE].[班次] AS [班次], 
+    [VIEW_PRODUCT_RECEIVE].[班组] AS [班组]
+    FROM [dbo].[VIEW_PRODUCT_RECEIVE] AS [VIEW_PRODUCT_RECEIVE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PRODUCT_REPAIR" EntityType="Self.VIEW_PRODUCT_REPAIR" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PRODUCT_REPAIR].[UID] AS [UID], 
+    [VIEW_PRODUCT_REPAIR].[单据号] AS [单据号], 
+    [VIEW_PRODUCT_REPAIR].[条码号] AS [条码号], 
+    [VIEW_PRODUCT_REPAIR].[零件号] AS [零件号], 
+    [VIEW_PRODUCT_REPAIR].[批次] AS [批次], 
+    [VIEW_PRODUCT_REPAIR].[来源库位] AS [来源库位], 
+    [VIEW_PRODUCT_REPAIR].[目标库位] AS [目标库位], 
+    [VIEW_PRODUCT_REPAIR].[数量] AS [数量], 
+    [VIEW_PRODUCT_REPAIR].[器具号] AS [器具号], 
+    [VIEW_PRODUCT_REPAIR].[状态] AS [状态], 
+    [VIEW_PRODUCT_REPAIR].[备注] AS [备注]
+    FROM [dbo].[VIEW_PRODUCT_REPAIR] AS [VIEW_PRODUCT_REPAIR]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PRODUCT_RETURN" EntityType="Self.VIEW_PRODUCT_RETURN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PRODUCT_RETURN].[UID] AS [UID], 
+    [VIEW_PRODUCT_RETURN].[单据号] AS [单据号], 
+    [VIEW_PRODUCT_RETURN].[条码号] AS [条码号], 
+    [VIEW_PRODUCT_RETURN].[零件号] AS [零件号], 
+    [VIEW_PRODUCT_RETURN].[批次] AS [批次], 
+    [VIEW_PRODUCT_RETURN].[来源库位] AS [来源库位], 
+    [VIEW_PRODUCT_RETURN].[目标库位] AS [目标库位], 
+    [VIEW_PRODUCT_RETURN].[数量] AS [数量], 
+    [VIEW_PRODUCT_RETURN].[器具号] AS [器具号], 
+    [VIEW_PRODUCT_RETURN].[状态] AS [状态], 
+    [VIEW_PRODUCT_RETURN].[备注] AS [备注]
+    FROM [dbo].[VIEW_PRODUCT_RETURN] AS [VIEW_PRODUCT_RETURN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_PRODUCT_SELL" EntityType="Self.VIEW_PRODUCT_SELL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_PRODUCT_SELL].[UID] AS [UID], 
+    [VIEW_PRODUCT_SELL].[单据号] AS [单据号], 
+    [VIEW_PRODUCT_SELL].[销售订单号] AS [销售订单号], 
+    [VIEW_PRODUCT_SELL].[条码号] AS [条码号], 
+    [VIEW_PRODUCT_SELL].[零件号] AS [零件号], 
+    [VIEW_PRODUCT_SELL].[批次] AS [批次], 
+    [VIEW_PRODUCT_SELL].[来源库位] AS [来源库位], 
+    [VIEW_PRODUCT_SELL].[数量] AS [数量], 
+    [VIEW_PRODUCT_SELL].[器具号] AS [器具号], 
+    [VIEW_PRODUCT_SELL].[状态] AS [状态], 
+    [VIEW_PRODUCT_SELL].[备注] AS [备注]
+    FROM [dbo].[VIEW_PRODUCT_SELL] AS [VIEW_PRODUCT_SELL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_SO" EntityType="Self.VIEW_SO" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SO].[UID] AS [UID], 
+    [VIEW_SO].[单据号] AS [单据号], 
+    [VIEW_SO].[单据类型] AS [单据类型], 
+    [VIEW_SO].[ERP销售订单号] AS [ERP销售订单号], 
+    [VIEW_SO].[客户] AS [客户], 
+    [VIEW_SO].[操作员] AS [操作员], 
+    [VIEW_SO].[单据时间] AS [单据时间], 
+    [VIEW_SO].[状态] AS [状态], 
+    [VIEW_SO].[备注] AS [备注]
+    FROM [dbo].[VIEW_SO] AS [VIEW_SO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_SO_DETAIL" EntityType="Self.VIEW_SO_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SO_DETAIL].[UID] AS [UID], 
+    [VIEW_SO_DETAIL].[单据号] AS [单据号], 
+    [VIEW_SO_DETAIL].[零件号] AS [零件号], 
+    [VIEW_SO_DETAIL].[订单数量] AS [订单数量], 
+    [VIEW_SO_DETAIL].[待发货数量] AS [待发货数量], 
+    [VIEW_SO_DETAIL].[已发货数量] AS [已发货数量], 
+    [VIEW_SO_DETAIL].[单位] AS [单位], 
+    [VIEW_SO_DETAIL].[状态] AS [状态], 
+    [VIEW_SO_DETAIL].[备注] AS [备注]
+    FROM [dbo].[VIEW_SO_DETAIL] AS [VIEW_SO_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_SORT_BILL" EntityType="Self.VIEW_SORT_BILL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SORT_BILL].[UID] AS [UID], 
+    [VIEW_SORT_BILL].[单据编号] AS [单据编号], 
+    [VIEW_SORT_BILL].[创建人] AS [创建人], 
+    [VIEW_SORT_BILL].[创建时间] AS [创建时间], 
+    [VIEW_SORT_BILL].[执行人] AS [执行人], 
+    [VIEW_SORT_BILL].[执行时间] AS [执行时间], 
+    [VIEW_SORT_BILL].[状态] AS [状态], 
+    [VIEW_SORT_BILL].[备注] AS [备注]
+    FROM [dbo].[VIEW_SORT_BILL] AS [VIEW_SORT_BILL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_SORT_DETAIL" EntityType="Self.VIEW_SORT_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_SORT_DETAIL].[UID] AS [UID], 
+    [VIEW_SORT_DETAIL].[单据编号] AS [单据编号], 
+    [VIEW_SORT_DETAIL].[VIN码] AS [VIN码], 
+    [VIEW_SORT_DETAIL].[序列号] AS [序列号], 
+    [VIEW_SORT_DETAIL].[零件号] AS [零件号], 
+    [VIEW_SORT_DETAIL].[项目编码] AS [项目编码], 
+    [VIEW_SORT_DETAIL].[状态] AS [状态]
+    FROM [dbo].[VIEW_SORT_DETAIL] AS [VIEW_SORT_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_STOCK" EntityType="Self.VIEW_STOCK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_STOCK].[UID] AS [UID], 
+    [VIEW_STOCK].[库位] AS [库位], 
+    [VIEW_STOCK].[零件号] AS [零件号], 
+    [VIEW_STOCK].[批次] AS [批次], 
+    [VIEW_STOCK].[数量] AS [数量], 
+    [VIEW_STOCK].[更新数量] AS [更新数量], 
+    [VIEW_STOCK].[更新时间] AS [更新时间], 
+    [VIEW_STOCK].[状态] AS [状态], 
+    [VIEW_STOCK].[备注] AS [备注], 
+    [VIEW_STOCK].[参考号] AS [参考号]
+    FROM [dbo].[VIEW_STOCK] AS [VIEW_STOCK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="Self.VIEW_STOCK_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_STOCK_DETAIL].[UID] AS [UID], 
+    [VIEW_STOCK_DETAIL].[标签号] AS [标签号], 
+    [VIEW_STOCK_DETAIL].[库位] AS [库位], 
+    [VIEW_STOCK_DETAIL].[零件号] AS [零件号], 
+    [VIEW_STOCK_DETAIL].[项目编号] AS [项目编号], 
+    [VIEW_STOCK_DETAIL].[批次] AS [批次], 
+    [VIEW_STOCK_DETAIL].[供应商] AS [供应商], 
+    [VIEW_STOCK_DETAIL].[器具号] AS [器具号], 
+    [VIEW_STOCK_DETAIL].[计划顺序号] AS [计划顺序号], 
+    [VIEW_STOCK_DETAIL].[状态] AS [状态], 
+    [VIEW_STOCK_DETAIL].[数量] AS [数量], 
+    [VIEW_STOCK_DETAIL].[价格] AS [价格], 
+    [VIEW_STOCK_DETAIL].[生产日期] AS [生产日期], 
+    [VIEW_STOCK_DETAIL].[失效日期] AS [失效日期], 
+    [VIEW_STOCK_DETAIL].[更新时间] AS [更新时间], 
+    [VIEW_STOCK_DETAIL].[更新数量] AS [更新数量], 
+    [VIEW_STOCK_DETAIL].[追溯号] AS [追溯号]
+    FROM [dbo].[VIEW_STOCK_DETAIL] AS [VIEW_STOCK_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_STOCK_FREEZE" EntityType="Self.VIEW_STOCK_FREEZE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_STOCK_FREEZE].[UID] AS [UID], 
+    [VIEW_STOCK_FREEZE].[单据编号] AS [单据编号], 
+    [VIEW_STOCK_FREEZE].[零件号] AS [零件号], 
+    [VIEW_STOCK_FREEZE].[批次] AS [批次], 
+    [VIEW_STOCK_FREEZE].[数量] AS [数量]
+    FROM [dbo].[VIEW_STOCK_FREEZE] AS [VIEW_STOCK_FREEZE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_STOCK_MOVE" EntityType="Self.VIEW_STOCK_MOVE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_STOCK_MOVE].[UID] AS [UID], 
+    [VIEW_STOCK_MOVE].[单据号] AS [单据号], 
+    [VIEW_STOCK_MOVE].[条码号] AS [条码号], 
+    [VIEW_STOCK_MOVE].[零件号] AS [零件号], 
+    [VIEW_STOCK_MOVE].[批次] AS [批次], 
+    [VIEW_STOCK_MOVE].[来源库位] AS [来源库位], 
+    [VIEW_STOCK_MOVE].[目标库位] AS [目标库位], 
+    [VIEW_STOCK_MOVE].[数量] AS [数量], 
+    [VIEW_STOCK_MOVE].[器具号] AS [器具号], 
+    [VIEW_STOCK_MOVE].[状态] AS [状态], 
+    [VIEW_STOCK_MOVE].[备注] AS [备注]
+    FROM [dbo].[VIEW_STOCK_MOVE] AS [VIEW_STOCK_MOVE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_STOCKDETAIL_DAYS" EntityType="Self.VIEW_STOCKDETAIL_DAYS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_STOCKDETAIL_DAYS].[在库天数] AS [在库天数], 
+    [VIEW_STOCKDETAIL_DAYS].[条码号] AS [条码号], 
+    [VIEW_STOCKDETAIL_DAYS].[所在库位] AS [所在库位], 
+    [VIEW_STOCKDETAIL_DAYS].[零件号] AS [零件号], 
+    [VIEW_STOCKDETAIL_DAYS].[项目号] AS [项目号], 
+    [VIEW_STOCKDETAIL_DAYS].[供应商] AS [供应商], 
+    [VIEW_STOCKDETAIL_DAYS].[计划号] AS [计划号], 
+    [VIEW_STOCKDETAIL_DAYS].[数量] AS [数量], 
+    [VIEW_STOCKDETAIL_DAYS].[生产日期] AS [生产日期], 
+    [VIEW_STOCKDETAIL_DAYS].[过期日期] AS [过期日期]
+    FROM [dbo].[VIEW_STOCKDETAIL_DAYS] AS [VIEW_STOCKDETAIL_DAYS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_STORE_WHSE" EntityType="Self.VIEW_STORE_WHSE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_STORE_WHSE].[UID] AS [UID], 
+    [VIEW_STORE_WHSE].[仓库编号] AS [仓库编号], 
+    [VIEW_STORE_WHSE].[仓库名称] AS [仓库名称], 
+    [VIEW_STORE_WHSE].[仓库地址] AS [仓库地址], 
+    [VIEW_STORE_WHSE].[仓库类型] AS [仓库类型], 
+    [VIEW_STORE_WHSE].[状态] AS [状态], 
+    [VIEW_STORE_WHSE].[备注] AS [备注]
+    FROM [dbo].[VIEW_STORE_WHSE] AS [VIEW_STORE_WHSE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_TRANSACTION" EntityType="Self.VIEW_TRANSACTION" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_TRANSACTION].[UID] AS [UID], 
+    [VIEW_TRANSACTION].[操作员] AS [操作员], 
+    [VIEW_TRANSACTION].[日志时间] AS [日志时间], 
+    [VIEW_TRANSACTION].[单据编号] AS [单据编号], 
+    [VIEW_TRANSACTION].[单据类型] AS [单据类型], 
+    [VIEW_TRANSACTION].[条码号] AS [条码号], 
+    [VIEW_TRANSACTION].[零件号] AS [零件号], 
+    [VIEW_TRANSACTION].[批次] AS [批次], 
+    [VIEW_TRANSACTION].[数量] AS [数量], 
+    [VIEW_TRANSACTION].[库位] AS [库位], 
+    [VIEW_TRANSACTION].[器具号] AS [器具号], 
+    [VIEW_TRANSACTION].[备注] AS [备注]
+    FROM [dbo].[VIEW_TRANSACTION] AS [VIEW_TRANSACTION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_VIN" EntityType="Self.VIEW_VIN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_VIN].[UID] AS [UID], 
+    [VIEW_VIN].[源单号] AS [源单号], 
+    [VIEW_VIN].[器具编号] AS [器具编号], 
+    [VIEW_VIN].[VIN码] AS [VIN码], 
+    [VIEW_VIN].[零件号] AS [零件号], 
+    [VIEW_VIN].[批次] AS [批次], 
+    [VIEW_VIN].[项目编号] AS [项目编号], 
+    [VIEW_VIN].[计划顺序号] AS [计划顺序号], 
+    [VIEW_VIN].[标志] AS [标志], 
+    [VIEW_VIN].[创建者] AS [创建者], 
+    [VIEW_VIN].[生效时间] AS [生效时间], 
+    [VIEW_VIN].[备注] AS [备注]
+    FROM [dbo].[VIEW_VIN] AS [VIEW_VIN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_VIN_HIS" EntityType="Self.VIEW_VIN_HIS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_VIN_HIS].[UID] AS [UID], 
+    [VIEW_VIN_HIS].[源单号] AS [源单号], 
+    [VIEW_VIN_HIS].[器具编号] AS [器具编号], 
+    [VIEW_VIN_HIS].[VIN码] AS [VIN码], 
+    [VIEW_VIN_HIS].[零件号] AS [零件号], 
+    [VIEW_VIN_HIS].[批次] AS [批次], 
+    [VIEW_VIN_HIS].[项目编号] AS [项目编号], 
+    [VIEW_VIN_HIS].[计划顺序号] AS [计划顺序号], 
+    [VIEW_VIN_HIS].[标志] AS [标志], 
+    [VIEW_VIN_HIS].[创建者] AS [创建者], 
+    [VIEW_VIN_HIS].[生效时间] AS [生效时间], 
+    [VIEW_VIN_HIS].[备注] AS [备注], 
+    [VIEW_VIN_HIS].[执行时间] AS [执行时间], 
+    [VIEW_VIN_HIS].[错误代码] AS [错误代码], 
+    [VIEW_VIN_HIS].[错误信息] AS [错误信息]
+    FROM [dbo].[VIEW_VIN_HIS] AS [VIEW_VIN_HIS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_VIN_PART" EntityType="Self.VIEW_VIN_PART" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_VIN_PART].[UID] AS [UID], 
+    [VIEW_VIN_PART].[VIN码] AS [VIN码], 
+    [VIEW_VIN_PART].[项目编码] AS [项目编码], 
+    [VIEW_VIN_PART].[客户零件号] AS [客户零件号], 
+    [VIEW_VIN_PART].[ERP零件号] AS [ERP零件号], 
+    [VIEW_VIN_PART].[数量] AS [数量], 
+    [VIEW_VIN_PART].[单价] AS [单价], 
+    [VIEW_VIN_PART].[价格] AS [价格], 
+    [VIEW_VIN_PART].[状态] AS [状态], 
+    [VIEW_VIN_PART].[收货时间] AS [收货时间], 
+    [VIEW_VIN_PART].[发货时间] AS [发货时间], 
+    [VIEW_VIN_PART].[结算时间] AS [结算时间]
+    FROM [dbo].[VIEW_VIN_PART] AS [VIEW_VIN_PART]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_STOCK" EntityType="Self.VS_STOCK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_STOCK].[UID] AS [UID], 
+    [VS_STOCK].[LocCode] AS [LocCode], 
+    [VS_STOCK].[PartCode] AS [PartCode], 
+    [VS_STOCK].[Batch] AS [Batch], 
+    [VS_STOCK].[Qty] AS [Qty], 
+    [VS_STOCK].[State] AS [State], 
+    [VS_STOCK].[Remark] AS [Remark], 
+    [VS_STOCK].[UpdateTime] AS [UpdateTime], 
+    [VS_STOCK].[RefCode] AS [RefCode], 
+    [VS_STOCK].[AreaCode] AS [AreaCode], 
+    [VS_STOCK].[ErpLocCode] AS [ErpLocCode], 
+    [VS_STOCK].[CustPartCode] AS [CustPartCode], 
+    [VS_STOCK].[SalePrice] AS [SalePrice], 
+    [VS_STOCK].[BM] AS [BM], 
+    [VS_STOCK].[PartDesc1] AS [PartDesc1], 
+    [VS_STOCK].[PartDesc2] AS [PartDesc2], 
+    [VS_STOCK].[CarMode] AS [CarMode], 
+    [VS_STOCK].[ProjectId] AS [ProjectId]
+    FROM [dbo].[VS_STOCK] AS [VS_STOCK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_STOCK_DETAIL" EntityType="Self.VS_STOCK_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_STOCK_DETAIL].[CustPartCode] AS [CustPartCode], 
+    [VS_STOCK_DETAIL].[PartDesc1] AS [PartDesc1], 
+    [VS_STOCK_DETAIL].[PartDesc2] AS [PartDesc2], 
+    [VS_STOCK_DETAIL].[CarMode] AS [CarMode], 
+    [VS_STOCK_DETAIL].[UID] AS [UID], 
+    [VS_STOCK_DETAIL].[ProjectId] AS [ProjectId], 
+    [VS_STOCK_DETAIL].[BarCode] AS [BarCode], 
+    [VS_STOCK_DETAIL].[PartCode] AS [PartCode], 
+    [VS_STOCK_DETAIL].[Batch] AS [Batch], 
+    [VS_STOCK_DETAIL].[EqptCode] AS [EqptCode], 
+    [VS_STOCK_DETAIL].[LocCode] AS [LocCode], 
+    [VS_STOCK_DETAIL].[PlanOrderId] AS [PlanOrderId], 
+    [VS_STOCK_DETAIL].[State] AS [State], 
+    [VS_STOCK_DETAIL].[Qty] AS [Qty], 
+    [VS_STOCK_DETAIL].[Amount] AS [Amount], 
+    [VS_STOCK_DETAIL].[AreaCode] AS [AreaCode], 
+    [VS_STOCK_DETAIL].[ErpSiteCode] AS [ErpSiteCode], 
+    [VS_STOCK_DETAIL].[ErpPartCode] AS [ErpPartCode], 
+    [VS_STOCK_DETAIL].[UpdateTime] AS [UpdateTime], 
+    [VS_STOCK_DETAIL].[ProduceDate] AS [ProduceDate], 
+    [VS_STOCK_DETAIL].[OverdueDate] AS [OverdueDate], 
+    [VS_STOCK_DETAIL].[UpdateQty] AS [UpdateQty], 
+    [VS_STOCK_DETAIL].[TracebackCode] AS [TracebackCode], 
+    [VS_STOCK_DETAIL].[VinState] AS [VinState], 
+    [VS_STOCK_DETAIL].[SplyId] AS [SplyId]
+    FROM [dbo].[VS_STOCK_DETAIL] AS [VS_STOCK_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_STOCK_GROUP" EntityType="Self.VS_STOCK_GROUP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_STOCK_GROUP].[PartCode] AS [PartCode], 
+    [VS_STOCK_GROUP].[AreaCode] AS [AreaCode], 
+    [VS_STOCK_GROUP].[StockQty] AS [StockQty]
+    FROM [dbo].[VS_STOCK_GROUP] AS [VS_STOCK_GROUP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_VIN_PART" EntityType="Self.VS_VIN_PART" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_VIN_PART].[UID] AS [UID], 
+    [VS_VIN_PART].[CustPartCode] AS [CustPartCode], 
+    [VS_VIN_PART].[ErpPartCode] AS [ErpPartCode], 
+    [VS_VIN_PART].[VinCode] AS [VinCode], 
+    [VS_VIN_PART].[ProjectId] AS [ProjectId], 
+    [VS_VIN_PART].[Qty] AS [Qty], 
+    [VS_VIN_PART].[UnitPrice] AS [UnitPrice], 
+    [VS_VIN_PART].[Amount] AS [Amount], 
+    [VS_VIN_PART].[ReceiveTime] AS [ReceiveTime], 
+    [VS_VIN_PART].[DeliverTime] AS [DeliverTime], 
+    [VS_VIN_PART].[BalanceTime] AS [BalanceTime], 
+    [VS_VIN_PART].[PartDesc1] AS [PartDesc1], 
+    [VS_VIN_PART].[PartDesc2] AS [PartDesc2], 
+    [VS_VIN_PART].[CarMode] AS [CarMode], 
+    [VS_VIN_PART].[PartType] AS [PartType], 
+    [VS_VIN_PART].[BM] AS [BM], 
+    [VS_VIN_PART].[PartKind] AS [PartKind], 
+    [VS_VIN_PART].[VinState] AS [VinState]
+    FROM [dbo].[VS_VIN_PART] AS [VS_VIN_PART]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

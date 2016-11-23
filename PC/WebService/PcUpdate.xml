@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AutoUpdate>
+  <SoftWare Name="Wms.WinForm.exe" >
+    <Version>1.1.16.0525</Version>
+    <FilePath>PcUpdate</FilePath>
+    <FileName>PC.1.1.16.0525.zip</FileName>
+    <LastUpdateTime>2016-05-25</LastUpdateTime>
+    <Desc>修改底盘号位数，由9位修改为7位</Desc>
+  </SoftWare>
+</AutoUpdate>

@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{088E4362-54D1-4F2B-806F-695FB4039CF1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChangKeTec.Wms.WinForm</RootNamespace>
+    <AssemblyName>Wms.WinForm</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.9.0315.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>factoryyellow.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ChangKeTec.Wms.WinForm.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.gregn6Lib, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\work\Wms.CcIntier\Resource\dll\AxInterop.gregn6Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Keyboard, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=12.5.0.2, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.grdes6Lib">
+      <HintPath>D:\work\Wms.CcIntier\Resource\dll\Interop.grdes6Lib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.gregn6Lib, Version=6.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>D:\work\Wms.CcIntier\Resource\dll\Interop.gregn6Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseData\FormWorkline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormWorkline.Designer.cs">
+      <DependentUpon>FormWorkline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseData\FormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormUnit.Designer.cs">
+      <DependentUpon>FormUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseData\FormSuperlier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormSuperlier.Designer.cs">
+      <DependentUpon>FormSuperlier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseData\FormStoreLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormStoreLocation.Designer.cs">
+      <DependentUpon>FormStoreLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseData\FormStoreGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormStoreGroup.Designer.cs">
+      <DependentUpon>FormStoreGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bills\FormProductReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormProductReturn.designer.cs">
+      <DependentUpon>FormProductReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\FormErpInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs\FormErpInterface.Designer.cs">
+      <DependentUpon>FormErpInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\FormNotify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage\FormNotify.Designer.cs">
+      <DependentUpon>FormNotify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseData\FormPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormPart.Designer.cs">
+      <DependentUpon>FormPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\FormConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage\FormConfig.Designer.cs">
+      <DependentUpon>FormConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\FormBillType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage\FormBillType.Designer.cs">
+      <DependentUpon>FormBillType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseData\FormStoreWhse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseData\FormStoreWhse.Designer.cs">
+      <DependentUpon>FormStoreWhse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupInventoryLoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupInventoryLoc.designer.cs">
+      <DependentUpon>PopupInventoryLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptCalSafeQty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptCalSafeQty.Designer.cs">
+      <DependentUpon>FormRptCalSafeQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptInOutList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptInOutList.Designer.cs">
+      <DependentUpon>FormRptInOutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptCalOverduDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptCalOverduDays.Designer.cs">
+      <DependentUpon>FormRptCalOverduDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptInOutSummaryByArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptInOutSummaryByArea.Designer.cs">
+      <DependentUpon>FormRptInOutSummaryByArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptVin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptVin.Designer.cs">
+      <DependentUpon>FormRptVin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptStockDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptStockDays.Designer.cs">
+      <DependentUpon>FormRptStockDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptInOutSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptInOutSummary.Designer.cs">
+      <DependentUpon>FormRptInOutSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bills\FormPickFact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormPickFact.designer.cs">
+      <DependentUpon>FormPickFact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bills\FormStockMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormStockMove.designer.cs">
+      <DependentUpon>FormStockMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bills\FormMaterialAsk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormMaterialAsk.designer.cs">
+      <DependentUpon>FormMaterialAsk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bills\FormOtherInout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormOtherInout.designer.cs">
+      <DependentUpon>FormOtherInout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bills\FormMaterialReceive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormMaterialReceive.designer.cs">
+      <DependentUpon>FormMaterialReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDefault.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDefault.Designer.cs">
+      <DependentUpon>FormDefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormModifyPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyPassword.Designer.cs">
+      <DependentUpon>FormModifyPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetting.Designer.cs">
+      <DependentUpon>FormSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPo.designer.cs">
+      <DependentUpon>FormPo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalVar.cs" />
+    <Compile Include="Logs\FormBillLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs\FormBillLog.Designer.cs">
+      <DependentUpon>FormBillLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\FormTransactionLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs\FormTransactionLog.Designer.cs">
+      <DependentUpon>FormTransactionLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\FormBaseDataLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs\FormBaseDataLog.Designer.cs">
+      <DependentUpon>FormBaseDataLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\FormOperLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs\FormOperLog.Designer.cs">
+      <DependentUpon>FormOperLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupPickFact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupPickFact.designer.cs">
+      <DependentUpon>PopupPickFact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupMaterialAsk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupMaterialAsk.designer.cs">
+      <DependentUpon>PopupMaterialAsk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupAbout.Designer.cs">
+      <DependentUpon>PopupAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupPartWithQty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupPartWithQty.Designer.cs">
+      <DependentUpon>PopupPartWithQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupDateFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupDateFilter.Designer.cs">
+      <DependentUpon>PopupDateFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormRptBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormRptBill.Designer.cs">
+      <DependentUpon>FormRptBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\FormStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\FormStock.Designer.cs">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ReportHelper.cs" />
+    <EmbeddedResource Include="BaseData\FormWorkline.resx">
+      <DependentUpon>FormWorkline.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseData\FormUnit.resx">
+      <DependentUpon>FormUnit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseData\FormSuperlier.resx">
+      <DependentUpon>FormSuperlier.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseData\FormStoreLocation.resx">
+      <DependentUpon>FormStoreLocation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseData\FormStoreGroup.resx">
+      <DependentUpon>FormStoreGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormProductReturn.resx">
+      <DependentUpon>FormProductReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\FormErpInterface.resx">
+      <DependentUpon>FormErpInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage\FormNotify.resx">
+      <DependentUpon>FormNotify.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseData\FormPart.resx">
+      <DependentUpon>FormPart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage\FormConfig.resx">
+      <DependentUpon>FormConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage\FormBillType.resx">
+      <DependentUpon>FormBillType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseData\FormStoreWhse.resx">
+      <DependentUpon>FormStoreWhse.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupInventoryLoc.resx">
+      <DependentUpon>PopupInventoryLoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptCalSafeQty.resx">
+      <DependentUpon>FormRptCalSafeQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptInOutList.resx">
+      <DependentUpon>FormRptInOutList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptCalOverduDays.resx">
+      <DependentUpon>FormRptCalOverduDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptInOutSummaryByArea.resx">
+      <DependentUpon>FormRptInOutSummaryByArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptVin.resx">
+      <DependentUpon>FormRptVin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptStockDays.resx">
+      <DependentUpon>FormRptStockDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptInOutSummary.resx">
+      <DependentUpon>FormRptInOutSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormPickFact.resx">
+      <DependentUpon>FormPickFact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormStockMove.resx">
+      <DependentUpon>FormStockMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormMaterialAsk.resx">
+      <DependentUpon>FormMaterialAsk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormOtherInout.resx">
+      <DependentUpon>FormOtherInout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormMaterialReceive.resx">
+      <DependentUpon>FormMaterialReceive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDefault.resx">
+      <DependentUpon>FormDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModifyPassword.resx">
+      <DependentUpon>FormModifyPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetting.resx">
+      <DependentUpon>FormSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPo.resx">
+      <DependentUpon>FormPo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\FormBillLog.resx">
+      <DependentUpon>FormBillLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\FormTransactionLog.resx">
+      <DependentUpon>FormTransactionLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\FormBaseDataLog.resx">
+      <DependentUpon>FormBaseDataLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\FormOperLog.resx">
+      <DependentUpon>FormOperLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupPickFact.resx">
+      <DependentUpon>PopupPickFact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupMaterialAsk.resx">
+      <DependentUpon>PopupMaterialAsk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupAbout.resx">
+      <DependentUpon>PopupAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupPartWithQty.resx">
+      <DependentUpon>PopupPartWithQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupDateFilter.resx">
+      <DependentUpon>PopupDateFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormRptBill.resx">
+      <DependentUpon>FormRptBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\FormStock.resx">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImportTemplete\DeliverPlan.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImportTemplete\InventoryPlan.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImportTemplete\OutsourcePlan.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImportTemplete\Po.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImportTemplete\ProducePlan.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImportTemplete\So.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImportTemplete\TsVin.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="PrintTemplate\Asn.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\DeliverPlan.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\Inspect.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\InventoryPlan.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\MaterialAsk.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\MaterialIn.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\MaterialReceive.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\OtherIn.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\OtherOut.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\OutsourcePlan.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\PickFact.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\PickPlan.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\Po.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\ProducePlan.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\ProductIn.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\ProductReceive.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PrintTemplate\So.grf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoUpdate\AutoUpdate.csproj">
+      <Project>{B2A5892E-A99E-4E26-B298-CE36488213CC}</Project>
+      <Name>AutoUpdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bll\Controllers.csproj">
+      <Project>{e13f3e26-8b2e-4e29-b8ce-0b5f488fed89}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{5cd744ce-3837-4dfd-94b2-bbc0be2eced6}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Models.csproj">
+      <Project>{ced4a042-434d-49b8-9b0b-6036fd61d8ac}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Utils.csproj">
+      <Project>{6f0145f2-8a11-428a-a782-17f81d30faca}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="factoryyellow.ico" />
+    <Content Include="Resources\about.jpg" />
+    <None Include="Resources\classy_icons_002.png" />
+    <None Include="Resources\classy_icons_001.png" />
+    <Content Include="Resources\classy_icons_020.png" />
+    <Content Include="Resources\classy_icons_024.png" />
+    <Content Include="Resources\classy_icons_033.png" />
+    <Content Include="Resources\classy_icons_034.png" />
+    <Content Include="Resources\classy_icons_035.png" />
+    <Content Include="Resources\classy_icons_036.png" />
+    <Content Include="Resources\classy_icons_051.png" />
+    <Content Include="Resources\classy_icons_052.png" />
+    <Content Include="Resources\classy_icons_053.png" />
+    <Content Include="Resources\classy_icons_055.png" />
+    <Content Include="Resources\classy_icons_056.png" />
+    <Content Include="Resources\classy_icons_059.png" />
+    <Content Include="Resources\classy_icons_061.png" />
+    <Content Include="Resources\classy_icons_064.png" />
+    <None Include="Resources\classy_icons_066.png" />
+    <None Include="Resources\classy_icons_075.png" />
+    <Content Include="Resources\classy_icons_099.png" />
+    <Content Include="Resources\classy_icons_115.png" />
+    <Content Include="Resources\classy_icons_137.png" />
+    <Content Include="Resources\classy_icons_172.png" />
+    <Content Include="Resources\classy_icons_178.png" />
+    <Content Include="Resources\classy_icons_179.png" />
+    <None Include="Resources\classy_icons_180.png" />
+    <Content Include="Resources\classy_icons_183.png" />
+    <Content Include="Resources\classy_icons_184.png" />
+    <None Include="Resources\classy_icons_188.png" />
+    <Content Include="Resources\classy_icons_192.png" />
+    <None Include="Resources\classy_icons_194.png" />
+    <Content Include="Resources\classy_icons_195.png" />
+    <Content Include="Resources\classy_icons_203.png" />
+    <Content Include="Resources\classy_icons_208.png" />
+    <None Include="Resources\classy_icons_211.png" />
+    <Content Include="Resources\classy_icons_217.png" />
+    <Content Include="Resources\classy_icons_223.png" />
+    <Content Include="Resources\classy_icons_230.png" />
+    <None Include="Resources\classy_icons_231.png" />
+    <None Include="Resources\classy_icons_249.png" />
+    <None Include="Resources\classy_icons_242.png" />
+    <None Include="Resources\classy_icons_253.png" />
+    <Content Include="Resources\classy_icons_283.png" />
+    <Content Include="Resources\classy_icons_289.png" />
+    <None Include="Resources\classy_icons_290.png" />
+    <Content Include="Resources\classy_icons_297.png" />
+    <Content Include="Resources\classy_icons_299.png" />
+    <Content Include="Resources\Truck_car_Delivery_72px_510927_easyicon.net.png" />
+    <Content Include="Resources\地球背景底图.jpg" />
+    <Content Include="UpdateLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

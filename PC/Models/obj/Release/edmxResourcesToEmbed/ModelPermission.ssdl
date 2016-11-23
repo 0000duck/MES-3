@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RolePowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TS_Button">
+    <Key>
+      <PropertyRef Name="ButtonCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ButtonCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ButtonName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ButtonType" Type="nvarchar" MaxLength="50" />
+    <Property Name="PotralCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenuCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_Dept">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DeptName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TS_Menu">
+    <Key>
+      <PropertyRef Name="MenuCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PortalCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenuType" Type="nvarchar" MaxLength="50" />
+    <Property Name="NameSpace" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TS_Operator_B">
+    <Key>
+      <PropertyRef Name="OperCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OperPassword" Type="nvarchar" MaxLength="200" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_OperRole">
+    <Key>
+      <PropertyRef Name="OperCode" />
+      <PropertyRef Name="RoleCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_Portal">
+    <Key>
+      <PropertyRef Name="PortalCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PortalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PortalName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PortalType" Type="nvarchar" MaxLength="50" />
+    <Property Name="PortalUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TS_Power">
+    <Key>
+      <PropertyRef Name="RoleCode" />
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PortalCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Permission" Type="int" />
+  </EntityType>
+  <EntityType Name="TS_Role_B">
+    <Key>
+      <PropertyRef Name="RoleCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityContainer Name="RolePowerModelStoreContainer">
+    <EntitySet Name="TS_Button" EntityType="Self.TS_Button" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Dept" EntityType="Self.TS_Dept" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Menu" EntityType="Self.TS_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Operator_B" EntityType="Self.TS_Operator_B" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_OperRole" EntityType="Self.TS_OperRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Portal" EntityType="Self.TS_Portal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Power" EntityType="Self.TS_Power" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Role_B" EntityType="Self.TS_Role_B" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

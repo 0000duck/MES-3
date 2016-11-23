@@ -1,0 +1,2198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WMSModelStoreContainer" CdmEntityContainer="WmsEntities">
+    <EntitySetMapping Name="TA_BILLTYPE">
+      <EntityTypeMapping TypeName="WMSModel.TA_BILLTYPE">
+        <MappingFragment StoreEntitySet="TA_BILLTYPE">
+          <ScalarProperty Name="IsCalc" ColumnName="IsCalc" />
+          <ScalarProperty Name="ImportTemplateFileName" ColumnName="ImportTemplateFileName" />
+          <ScalarProperty Name="PrintTemplateFileName" ColumnName="PrintTemplateFileName" />
+          <ScalarProperty Name="LastBillTime" ColumnName="LastBillTime" />
+          <ScalarProperty Name="LastBillNum" ColumnName="LastBillNum" />
+          <ScalarProperty Name="LastNumber" ColumnName="LastNumber" />
+          <ScalarProperty Name="BillNumRule" ColumnName="BillNumRule" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_BOM">
+      <EntityTypeMapping TypeName="WMSModel.TA_BOM">
+        <MappingFragment StoreEntitySet="TA_BOM">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsKeyPart" ColumnName="IsKeyPart" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="SubErpPartCode" ColumnName="SubErpPartCode" />
+          <ScalarProperty Name="SubPartCode" ColumnName="SubPartCode" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_CONFIG">
+      <EntityTypeMapping TypeName="WMSModel.TA_CONFIG">
+        <MappingFragment StoreEntitySet="TA_CONFIG">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+          <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_CUST_BOM">
+      <EntityTypeMapping TypeName="WMSModel.TA_CUST_BOM">
+        <MappingFragment StoreEntitySet="TA_CUST_BOM">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsKeyPart" ColumnName="IsKeyPart" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="SubErpPartCode" ColumnName="SubErpPartCode" />
+          <ScalarProperty Name="SubPartCode" ColumnName="SubPartCode" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_CUST_PART">
+      <EntityTypeMapping TypeName="WMSModel.TA_CUST_PART">
+        <MappingFragment StoreEntitySet="TA_CUST_PART">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_CUSTOMER">
+      <EntityTypeMapping TypeName="WMSModel.TA_CUSTOMER">
+        <MappingFragment StoreEntitySet="TA_CUSTOMER">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ErpCode" ColumnName="ErpCode" />
+          <ScalarProperty Name="CustName" ColumnName="CustName" />
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_OUTSOURCER">
+      <EntityTypeMapping TypeName="WMSModel.TA_OUTSOURCER">
+        <MappingFragment StoreEntitySet="TA_OUTSOURCER">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OutLocCode" ColumnName="OutLocCode" />
+          <ScalarProperty Name="InLocCode" ColumnName="InLocCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ErpCode" ColumnName="ErpCode" />
+          <ScalarProperty Name="OtscName" ColumnName="OtscName" />
+          <ScalarProperty Name="OtscId" ColumnName="OtscId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_PART">
+      <EntityTypeMapping TypeName="WMSModel.TA_PART">
+        <MappingFragment StoreEntitySet="TA_PART">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DefaultReceiveLocCode" ColumnName="DefaultReceiveLocCode" />
+          <ScalarProperty Name="ReceivePort" ColumnName="ReceivePort" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
+          <ScalarProperty Name="CustPackQty" ColumnName="CustPackQty" />
+          <ScalarProperty Name="LinesidePackQty" ColumnName="LinesidePackQty" />
+          <ScalarProperty Name="SplyPackQty" ColumnName="SplyPackQty" />
+          <ScalarProperty Name="ContainerQty" ColumnName="ContainerQty" />
+          <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
+          <ScalarProperty Name="MinQty" ColumnName="MinQty" />
+          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="InspectType" ColumnName="InspectType" />
+          <ScalarProperty Name="ManageType" ColumnName="ManageType" />
+          <ScalarProperty Name="PartKind" ColumnName="PartKind" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="CarMode" ColumnName="CarMode" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_PAYMENT_DAY">
+      <EntityTypeMapping TypeName="WMSModel.TA_PAYMENT_DAY">
+        <MappingFragment StoreEntitySet="TA_PAYMENT_DAY">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="BillHour" ColumnName="BillHour" />
+          <ScalarProperty Name="BillDay" ColumnName="BillDay" />
+          <ScalarProperty Name="BillMonth" ColumnName="BillMonth" />
+          <ScalarProperty Name="BillYear" ColumnName="BillYear" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_SHIFT">
+      <EntityTypeMapping TypeName="WMSModel.TA_SHIFT">
+        <MappingFragment StoreEntitySet="TA_SHIFT">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_STORE_AREA">
+      <EntityTypeMapping TypeName="WMSModel.TA_STORE_AREA">
+        <MappingFragment StoreEntitySet="TA_STORE_AREA">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_STORE_GROUP">
+      <EntityTypeMapping TypeName="WMSModel.TA_STORE_GROUP">
+        <MappingFragment StoreEntitySet="TA_STORE_GROUP">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+          <ScalarProperty Name="GroupType" ColumnName="GroupType" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_STORE_LOCATION">
+      <EntityTypeMapping TypeName="WMSModel.TA_STORE_LOCATION">
+        <MappingFragment StoreEntitySet="TA_STORE_LOCATION">
+          <ScalarProperty Name="AutoRemoveZeroStockDetail" ColumnName="AutoRemoveZeroStockDetail" />
+          <ScalarProperty Name="AutoRemoveZeroStock" ColumnName="AutoRemoveZeroStock" />
+          <ScalarProperty Name="IsEnableNegativeStock" ColumnName="IsEnableNegativeStock" />
+          <ScalarProperty Name="IsQualifiedProductLoc" ColumnName="IsQualifiedProductLoc" />
+          <ScalarProperty Name="IsFunctional" ColumnName="IsFunctional" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="LocType" ColumnName="LocType" />
+          <ScalarProperty Name="DefaultPartCode" ColumnName="DefaultPartCode" />
+          <ScalarProperty Name="StoredPercent" ColumnName="StoredPercent" />
+          <ScalarProperty Name="MaxBoxQty" ColumnName="MaxBoxQty" />
+          <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+          <ScalarProperty Name="ErpLocCode" ColumnName="ErpLocCode" />
+          <ScalarProperty Name="ErpSiteCode" ColumnName="ErpSiteCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_STORE_WHSE">
+      <EntityTypeMapping TypeName="WMSModel.TA_STORE_WHSE">
+        <MappingFragment StoreEntitySet="TA_STORE_WHSE">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="WhseType" ColumnName="WhseType" />
+          <ScalarProperty Name="WhseAddress" ColumnName="WhseAddress" />
+          <ScalarProperty Name="WhseName" ColumnName="WhseName" />
+          <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_SUB_BILLTYPE">
+      <EntityTypeMapping TypeName="WMSModel.TA_SUB_BILLTYPE">
+        <MappingFragment StoreEntitySet="TA_SUB_BILLTYPE">
+          <ScalarProperty Name="ImportTemplateFileName" ColumnName="ImportTemplateFileName" />
+          <ScalarProperty Name="PrintTemplateFileName" ColumnName="PrintTemplateFileName" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_SUPERLIER">
+      <EntityTypeMapping TypeName="WMSModel.TA_SUPERLIER">
+        <MappingFragment StoreEntitySet="TA_SUPERLIER">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ErpCode" ColumnName="ErpCode" />
+          <ScalarProperty Name="SplyAbbCode" ColumnName="SplyAbbCode" />
+          <ScalarProperty Name="SplyName" ColumnName="SplyName" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_TEAM">
+      <EntityTypeMapping TypeName="WMSModel.TA_TEAM">
+        <MappingFragment StoreEntitySet="TA_TEAM">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_UNIT">
+      <EntityTypeMapping TypeName="WMSModel.TA_UNIT">
+        <MappingFragment StoreEntitySet="TA_UNIT">
+          <ScalarProperty Name="Remak" ColumnName="Remak" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_WORKLINE">
+      <EntityTypeMapping TypeName="WMSModel.TA_WORKLINE">
+        <MappingFragment StoreEntitySet="TA_WORKLINE">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="PrepareMins" ColumnName="PrepareMins" />
+          <ScalarProperty Name="OutLocCode" ColumnName="OutLocCode" />
+          <ScalarProperty Name="InLocCode" ColumnName="InLocCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="LineType" ColumnName="LineType" />
+          <ScalarProperty Name="LineName" ColumnName="LineName" />
+          <ScalarProperty Name="LineId" ColumnName="LineId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_BILL">
+      <EntityTypeMapping TypeName="WMSModel.TB_BILL">
+        <MappingFragment StoreEntitySet="TB_BILL">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="OtscId" ColumnName="OtscId" />
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+          <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="SourceBillNum2" ColumnName="SourceBillNum2" />
+          <ScalarProperty Name="SourceBillNum" ColumnName="SourceBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DELIVER_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.TB_DELIVER_PLAN">
+        <MappingFragment StoreEntitySet="TB_DELIVER_PLAN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INSPECT">
+      <EntityTypeMapping TypeName="WMSModel.TB_INSPECT">
+        <MappingFragment StoreEntitySet="TB_INSPECT">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="SplyBatch" ColumnName="SplyBatch" />
+          <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="InspLocCode" ColumnName="InspLocCode" />
+          <ScalarProperty Name="InspName" ColumnName="InspName" />
+          <ScalarProperty Name="InspTime" ColumnName="InspTime" />
+          <ScalarProperty Name="InspResult" ColumnName="InspResult" />
+          <ScalarProperty Name="InspFIleNo" ColumnName="InspFIleNo" />
+          <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
+          <ScalarProperty Name="CrackQty" ColumnName="CrackQty" />
+          <ScalarProperty Name="FailQty" ColumnName="FailQty" />
+          <ScalarProperty Name="PassQty" ColumnName="PassQty" />
+          <ScalarProperty Name="InspQty" ColumnName="InspQty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INSPECT_FAIL">
+      <EntityTypeMapping TypeName="WMSModel.TB_INSPECT_FAIL">
+        <MappingFragment StoreEntitySet="TB_INSPECT_FAIL">
+          <ScalarProperty Name="FailQty" ColumnName="FailQty" />
+          <ScalarProperty Name="FailType" ColumnName="FailType" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INVENTORY_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TB_INVENTORY_DETAIL">
+        <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+          <ScalarProperty Name="DiffQty" ColumnName="DiffQty" />
+          <ScalarProperty Name="OutQty" ColumnName="OutQty" />
+          <ScalarProperty Name="InQty" ColumnName="InQty" />
+          <ScalarProperty Name="ReCheckQty" ColumnName="ReCheckQty" />
+          <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
+          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
+          <ScalarProperty Name="BookLocCode" ColumnName="BookLocCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INVENTORY_LOC">
+      <EntityTypeMapping TypeName="WMSModel.TB_INVENTORY_LOC">
+        <MappingFragment StoreEntitySet="TB_INVENTORY_LOC">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ReCheckEndTime" ColumnName="ReCheckEndTime" />
+          <ScalarProperty Name="ReCheckBeginTime" ColumnName="ReCheckBeginTime" />
+          <ScalarProperty Name="CheckEndTime" ColumnName="CheckEndTime" />
+          <ScalarProperty Name="CheckBeginTime" ColumnName="CheckBeginTime" />
+          <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MATERIAL_ASK">
+      <EntityTypeMapping TypeName="WMSModel.TB_MATERIAL_ASK">
+        <MappingFragment StoreEntitySet="TB_MATERIAL_ASK">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MATERIAL_RECEIVE">
+      <EntityTypeMapping TypeName="WMSModel.TB_MATERIAL_RECEIVE">
+        <MappingFragment StoreEntitySet="TB_MATERIAL_RECEIVE">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_OTHER_INOUT">
+      <EntityTypeMapping TypeName="WMSModel.TB_OTHER_INOUT">
+        <MappingFragment StoreEntitySet="TB_OTHER_INOUT">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PACK_UNPACK">
+      <EntityTypeMapping TypeName="WMSModel.TB_PACK_UNPACK">
+        <MappingFragment StoreEntitySet="TB_PACK_UNPACK">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ToEqptCode" ColumnName="ToEqptCode" />
+          <ScalarProperty Name="FromEqptCode" ColumnName="FromEqptCode" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="ToBarCode" ColumnName="ToBarCode" />
+          <ScalarProperty Name="FromBarCode" ColumnName="FromBarCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PICK_FACT">
+      <EntityTypeMapping TypeName="WMSModel.TB_PICK_FACT">
+        <MappingFragment StoreEntitySet="TB_PICK_FACT">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PICK_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.TB_PICK_PLAN">
+        <MappingFragment StoreEntitySet="TB_PICK_PLAN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRODUCE_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.TB_PRODUCE_PLAN">
+        <MappingFragment StoreEntitySet="TB_PRODUCE_PLAN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="ClosedQty" ColumnName="ClosedQty" />
+          <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+          <ScalarProperty Name="PlanQty" ColumnName="PlanQty" />
+          <ScalarProperty Name="LineId" ColumnName="LineId" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRODUCT_RECEIVE">
+      <EntityTypeMapping TypeName="WMSModel.TB_PRODUCT_RECEIVE">
+        <MappingFragment StoreEntitySet="TB_PRODUCT_RECEIVE">
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="LineId" ColumnName="LineId" />
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="PpBillNum" ColumnName="PpBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRODUCT_SELL">
+      <EntityTypeMapping TypeName="WMSModel.TB_PRODUCT_SELL">
+        <MappingFragment StoreEntitySet="TB_PRODUCT_SELL">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="SoBillNum" ColumnName="SoBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_STOCK_MOVE">
+      <EntityTypeMapping TypeName="WMSModel.TB_STOCK_MOVE">
+        <MappingFragment StoreEntitySet="TB_STOCK_MOVE">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_ASN">
+      <EntityTypeMapping TypeName="WMSModel.TF_ASN">
+        <MappingFragment StoreEntitySet="TF_ASN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ShipTime" ColumnName="ShipTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="ErpPoNum" ColumnName="ErpPoNum" />
+          <ScalarProperty Name="ErpAsnNum" ColumnName="ErpAsnNum" />
+          <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
+          <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_ASN_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TF_ASN_DETAIL">
+        <MappingFragment StoreEntitySet="TF_ASN_DETAIL">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_OM">
+      <EntityTypeMapping TypeName="WMSModel.TF_OM">
+        <MappingFragment StoreEntitySet="TF_OM">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="OtscId" ColumnName="OtscId" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="ErpBillNum" ColumnName="ErpBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_OM_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TF_OM_DETAIL">
+        <MappingFragment StoreEntitySet="TF_OM_DETAIL">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ClosedQty" ColumnName="ClosedQty" />
+          <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+          <ScalarProperty Name="PlanQty" ColumnName="PlanQty" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_PO">
+      <EntityTypeMapping TypeName="WMSModel.TF_PO">
+        <MappingFragment StoreEntitySet="TF_PO">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="ErpBillNum" ColumnName="ErpBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_PO_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TF_PO_DETAIL">
+        <MappingFragment StoreEntitySet="TF_PO_DETAIL">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="IsExemption" ColumnName="IsExemption" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ClosedQty" ColumnName="ClosedQty" />
+          <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+          <ScalarProperty Name="BillQty" ColumnName="BillQty" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_SO">
+      <EntityTypeMapping TypeName="WMSModel.TF_SO">
+        <MappingFragment StoreEntitySet="TF_SO">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+          <ScalarProperty Name="ErpBillNum" ColumnName="ErpBillNum" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TF_SO_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TF_SO_DETAIL">
+        <MappingFragment StoreEntitySet="TF_SO_DETAIL">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ClosedQty" ColumnName="ClosedQty" />
+          <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+          <ScalarProperty Name="BillQty" ColumnName="BillQty" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TL_BASEDATA">
+      <EntityTypeMapping TypeName="WMSModel.TL_BASEDATA">
+        <MappingFragment StoreEntitySet="TL_BASEDATA">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TL_BILL">
+      <EntityTypeMapping TypeName="WMSModel.TL_BILL">
+        <MappingFragment StoreEntitySet="TL_BILL">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TL_OPER">
+      <EntityTypeMapping TypeName="WMSModel.TL_OPER">
+        <MappingFragment StoreEntitySet="TL_OPER">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="LogSite" ColumnName="LogSite" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="OperCode" ColumnName="OperCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TL_TRANSACTION">
+      <EntityTypeMapping TypeName="WMSModel.TL_TRANSACTION">
+        <MappingFragment StoreEntitySet="TL_TRANSACTION">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TR_BALANCE_COMPARE">
+      <EntityTypeMapping TypeName="WMSModel.TR_BALANCE_COMPARE">
+        <MappingFragment StoreEntitySet="TR_BALANCE_COMPARE">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CompFileName" ColumnName="CompFileName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateName" ColumnName="CreateName" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TR_BALANCE_COMPARE_PART">
+      <EntityTypeMapping TypeName="WMSModel.TR_BALANCE_COMPARE_PART">
+        <MappingFragment StoreEntitySet="TR_BALANCE_COMPARE_PART">
+          <ScalarProperty Name="BalanceDate" ColumnName="BalanceDate" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="DiffAmount" ColumnName="DiffAmount" />
+          <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+          <ScalarProperty Name="SendAmount" ColumnName="SendAmount" />
+          <ScalarProperty Name="DiffQty" ColumnName="DiffQty" />
+          <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+          <ScalarProperty Name="SendQty" ColumnName="SendQty" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="SubPartCode" ColumnName="SubPartCode" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TR_BALANCE_COMPARE_VIN">
+      <EntityTypeMapping TypeName="WMSModel.TR_BALANCE_COMPARE_VIN">
+        <MappingFragment StoreEntitySet="TR_BALANCE_COMPARE_VIN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="VinState" ColumnName="VinState" />
+          <ScalarProperty Name="DiffQty" ColumnName="DiffQty" />
+          <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+          <ScalarProperty Name="SendQty" ColumnName="SendQty" />
+          <ScalarProperty Name="BalanceDate" ColumnName="BalanceDate" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TR_SCM">
+      <EntityTypeMapping TypeName="WMSModel.TR_SCM">
+        <MappingFragment StoreEntitySet="TR_SCM">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Shth" ColumnName="Shth" />
+          <ScalarProperty Name="Zlyc" ColumnName="Zlyc" />
+          <ScalarProperty Name="Skfy" ColumnName="Skfy" />
+          <ScalarProperty Name="Prr" ColumnName="Prr" />
+          <ScalarProperty Name="Ppm" ColumnName="Ppm" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_BARCODE">
+      <EntityTypeMapping TypeName="WMSModel.TS_BARCODE">
+        <MappingFragment StoreEntitySet="TS_BARCODE">
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="SourceBillNum" ColumnName="SourceBillNum" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PrintCount" ColumnName="PrintCount" />
+          <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateOper" ColumnName="CreateOper" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="PartKind" ColumnName="PartKind" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="BarCodeType" ColumnName="BarCodeType" />
+          <ScalarProperty Name="FullString" ColumnName="FullString" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="ManageType" ColumnName="ManageType" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="FullBarCode" ColumnName="FullBarCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_BARCODE_RULE">
+      <EntityTypeMapping TypeName="WMSModel.TS_BARCODE_RULE">
+        <MappingFragment StoreEntitySet="TS_BARCODE_RULE">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="LastBarCode" ColumnName="LastBarCode" />
+          <ScalarProperty Name="LastNumber" ColumnName="LastNumber" />
+          <ScalarProperty Name="BarCodeRule" ColumnName="BarCodeRule" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_CONTAINER">
+      <EntityTypeMapping TypeName="WMSModel.TS_CONTAINER">
+        <MappingFragment StoreEntitySet="TS_CONTAINER">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="CantainerType" ColumnName="CantainerType" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_EQUIPMENT">
+      <EntityTypeMapping TypeName="WMSModel.TS_EQUIPMENT">
+        <MappingFragment StoreEntitySet="TS_EQUIPMENT">
+          <ScalarProperty Name="MaintainTIme" ColumnName="MaintainTIme" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="MaintainDuration" ColumnName="MaintainDuration" />
+          <ScalarProperty Name="NeedMaintain" ColumnName="NeedMaintain" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="MaintainQty" ColumnName="MaintainQty" />
+          <ScalarProperty Name="UsedQty" ColumnName="UsedQty" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_INTERFACE">
+      <EntityTypeMapping TypeName="WMSModel.TS_INTERFACE">
+        <MappingFragment StoreEntitySet="TS_INTERFACE">
+          <ScalarProperty Name="p20" ColumnName="p20" />
+          <ScalarProperty Name="p19" ColumnName="p19" />
+          <ScalarProperty Name="p18" ColumnName="p18" />
+          <ScalarProperty Name="p17" ColumnName="p17" />
+          <ScalarProperty Name="p16" ColumnName="p16" />
+          <ScalarProperty Name="p15" ColumnName="p15" />
+          <ScalarProperty Name="p14" ColumnName="p14" />
+          <ScalarProperty Name="p13" ColumnName="p13" />
+          <ScalarProperty Name="p12" ColumnName="p12" />
+          <ScalarProperty Name="p11" ColumnName="p11" />
+          <ScalarProperty Name="p10" ColumnName="p10" />
+          <ScalarProperty Name="p09" ColumnName="p09" />
+          <ScalarProperty Name="p08" ColumnName="p08" />
+          <ScalarProperty Name="p07" ColumnName="p07" />
+          <ScalarProperty Name="p06" ColumnName="p06" />
+          <ScalarProperty Name="p05" ColumnName="p05" />
+          <ScalarProperty Name="p04" ColumnName="p04" />
+          <ScalarProperty Name="p03" ColumnName="p03" />
+          <ScalarProperty Name="p02" ColumnName="p02" />
+          <ScalarProperty Name="p01" ColumnName="p01" />
+          <ScalarProperty Name="pQty" ColumnName="pQty" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="ProcessTime" ColumnName="ProcessTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="InterfaceString" ColumnName="InterfaceString" />
+          <ScalarProperty Name="InterfaceType" ColumnName="InterfaceType" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_INTERFACE_HIS">
+      <EntityTypeMapping TypeName="WMSModel.TS_INTERFACE_HIS">
+        <MappingFragment StoreEntitySet="TS_INTERFACE_HIS">
+          <ScalarProperty Name="p20" ColumnName="p20" />
+          <ScalarProperty Name="p19" ColumnName="p19" />
+          <ScalarProperty Name="p18" ColumnName="p18" />
+          <ScalarProperty Name="p17" ColumnName="p17" />
+          <ScalarProperty Name="p16" ColumnName="p16" />
+          <ScalarProperty Name="p15" ColumnName="p15" />
+          <ScalarProperty Name="p14" ColumnName="p14" />
+          <ScalarProperty Name="p13" ColumnName="p13" />
+          <ScalarProperty Name="p12" ColumnName="p12" />
+          <ScalarProperty Name="p11" ColumnName="p11" />
+          <ScalarProperty Name="p10" ColumnName="p10" />
+          <ScalarProperty Name="p09" ColumnName="p09" />
+          <ScalarProperty Name="p08" ColumnName="p08" />
+          <ScalarProperty Name="p07" ColumnName="p07" />
+          <ScalarProperty Name="p06" ColumnName="p06" />
+          <ScalarProperty Name="p05" ColumnName="p05" />
+          <ScalarProperty Name="p04" ColumnName="p04" />
+          <ScalarProperty Name="p03" ColumnName="p03" />
+          <ScalarProperty Name="p02" ColumnName="p02" />
+          <ScalarProperty Name="p01" ColumnName="p01" />
+          <ScalarProperty Name="pQty" ColumnName="pQty" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="ProcessTime" ColumnName="ProcessTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="InterfaceString" ColumnName="InterfaceString" />
+          <ScalarProperty Name="InterfaceType" ColumnName="InterfaceType" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_NOTIFY">
+      <EntityTypeMapping TypeName="WMSModel.TS_NOTIFY">
+        <MappingFragment StoreEntitySet="TS_NOTIFY">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+          <ScalarProperty Name="CloseOperName" ColumnName="CloseOperName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateOperName" ColumnName="CreateOperName" />
+          <ScalarProperty Name="NotifyString" ColumnName="NotifyString" />
+          <ScalarProperty Name="NotifyType" ColumnName="NotifyType" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_SORT_BILL">
+      <EntityTypeMapping TypeName="WMSModel.TS_SORT_BILL">
+        <MappingFragment StoreEntitySet="TS_SORT_BILL">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ProcessTime" ColumnName="ProcessTime" />
+          <ScalarProperty Name="ProcessOper" ColumnName="ProcessOper" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateOper" ColumnName="CreateOper" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_SORT_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TS_SORT_DETAIL">
+        <MappingFragment StoreEntitySet="TS_SORT_DETAIL">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="SeqNum" ColumnName="SeqNum" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_STOCK">
+      <EntityTypeMapping TypeName="WMSModel.TS_STOCK">
+        <MappingFragment StoreEntitySet="TS_STOCK">
+          <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_STOCK_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.TS_STOCK_DETAIL">
+        <MappingFragment StoreEntitySet="TS_STOCK_DETAIL">
+          <ScalarProperty Name="VinState" ColumnName="VinState" />
+          <ScalarProperty Name="TracebackCode" ColumnName="TracebackCode" />
+          <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PlanOrderId" ColumnName="PlanOrderId" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_STOCK_FREEZE">
+      <EntityTypeMapping TypeName="WMSModel.TS_STOCK_FREEZE">
+        <MappingFragment StoreEntitySet="TS_STOCK_FREEZE">
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_TRACEBACK">
+      <EntityTypeMapping TypeName="WMSModel.TS_TRACEBACK">
+        <MappingFragment StoreEntitySet="TS_TRACEBACK">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="TracebackData" ColumnName="TracebackData" />
+          <ScalarProperty Name="TracebackCode" ColumnName="TracebackCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_TRACEBACK_MATERIAL">
+      <EntityTypeMapping TypeName="WMSModel.TS_TRACEBACK_MATERIAL">
+        <MappingFragment StoreEntitySet="TS_TRACEBACK_MATERIAL">
+          <ScalarProperty Name="SubQty" ColumnName="SubQty" />
+          <ScalarProperty Name="SubBatch" ColumnName="SubBatch" />
+          <ScalarProperty Name="SubPartCode" ColumnName="SubPartCode" />
+          <ScalarProperty Name="SubBarCode" ColumnName="SubBarCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_UNKNOW_CUSTPART">
+      <EntityTypeMapping TypeName="WMSModel.TS_UNKNOW_CUSTPART">
+        <MappingFragment StoreEntitySet="TS_UNKNOW_CUSTPART">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="FoundTime" ColumnName="FoundTime" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_VIN">
+      <EntityTypeMapping TypeName="WMSModel.TS_VIN">
+        <MappingFragment StoreEntitySet="TS_VIN">
+          <ScalarProperty Name="ErrorText" ColumnName="ErrorText" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateOper" ColumnName="CreateOper" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="PlanOrderId" ColumnName="PlanOrderId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_VIN_HIS">
+      <EntityTypeMapping TypeName="WMSModel.TS_VIN_HIS">
+        <MappingFragment StoreEntitySet="TS_VIN_HIS">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ErrorText" ColumnName="ErrorText" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ExecTime" ColumnName="ExecTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateOper" ColumnName="CreateOper" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="PlanOrderId" ColumnName="PlanOrderId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_VIN_PART">
+      <EntityTypeMapping TypeName="WMSModel.TS_VIN_PART">
+        <MappingFragment StoreEntitySet="TS_VIN_PART">
+          <ScalarProperty Name="BalanceTime" ColumnName="BalanceTime" />
+          <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+          <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+          <ScalarProperty Name="VinState" ColumnName="VinState" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TT_CONTAINER_TYPE">
+      <EntityTypeMapping TypeName="WMSModel.TT_CONTAINER_TYPE">
+        <MappingFragment StoreEntitySet="TT_CONTAINER_TYPE">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TT_FAIL_TYPE">
+      <EntityTypeMapping TypeName="WMSModel.TT_FAIL_TYPE">
+        <MappingFragment StoreEntitySet="TT_FAIL_TYPE">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_EQPT_LOAD">
+      <EntityTypeMapping TypeName="WMSModel.TB_EQPT_LOAD">
+        <MappingFragment StoreEntitySet="TB_EQPT_LOAD">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_OM_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.TB_OM_PLAN">
+        <MappingFragment StoreEntitySet="TB_OM_PLAN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="ClosedQty" ColumnName="ClosedQty" />
+          <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+          <ScalarProperty Name="PlanQty" ColumnName="PlanQty" />
+          <ScalarProperty Name="OtscId" ColumnName="OtscId" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VA_CUST_PART">
+      <EntityTypeMapping TypeName="WMSModel.VA_CUST_PART">
+        <MappingFragment StoreEntitySet="VA_CUST_PART">
+          <ScalarProperty Name="CustPackQty" ColumnName="CustPackQty" />
+          <ScalarProperty Name="PartKind" ColumnName="PartKind" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="CarMode" ColumnName="CarMode" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_ASN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_ASN">
+        <MappingFragment StoreEntitySet="VIEW_ASN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="发货时间" ColumnName="发货时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="供应商" ColumnName="供应商" />
+          <ScalarProperty Name="ERP采购订单号" ColumnName="ERP采购订单号" />
+          <ScalarProperty Name="ERP发货单号" ColumnName="ERP发货单号" />
+          <ScalarProperty Name="采购订单号" ColumnName="采购订单号" />
+          <ScalarProperty Name="单据时间" ColumnName="单据时间" />
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_ASN_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_ASN_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_ASN_DETAIL">
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_BASEDATA_LOG">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_BASEDATA_LOG">
+        <MappingFragment StoreEntitySet="VIEW_BASEDATA_LOG">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="新值" ColumnName="新值" />
+          <ScalarProperty Name="原值" ColumnName="原值" />
+          <ScalarProperty Name="数据类型" ColumnName="数据类型" />
+          <ScalarProperty Name="日志类型" ColumnName="日志类型" />
+          <ScalarProperty Name="日志时间" ColumnName="日志时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_BILL_LOG">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_BILL_LOG">
+        <MappingFragment StoreEntitySet="VIEW_BILL_LOG">
+          <ScalarProperty Name="日志信息" ColumnName="日志信息" />
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="日志类型" ColumnName="日志类型" />
+          <ScalarProperty Name="日志时间" ColumnName="日志时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_CalOverdue_DAYS">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_CalOverdue_DAYS">
+        <MappingFragment StoreEntitySet="VIEW_CalOverdue_DAYS">
+          <ScalarProperty Name="过期日期" ColumnName="过期日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="计划号" ColumnName="计划号" />
+          <ScalarProperty Name="供应商" ColumnName="供应商" />
+          <ScalarProperty Name="项目号" ColumnName="项目号" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="所在库位" ColumnName="所在库位" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="安全天数" ColumnName="安全天数" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_CalSafeQty">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_CalSafeQty">
+        <MappingFragment StoreEntitySet="VIEW_CalSafeQty">
+          <ScalarProperty Name="在库合格数量" ColumnName="在库合格数量" />
+          <ScalarProperty Name="零件描述" ColumnName="零件描述" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="最高库存" ColumnName="最高库存" />
+          <ScalarProperty Name="最低库存" ColumnName="最低库存" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_DELIVER_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_DELIVER_PLAN">
+        <MappingFragment StoreEntitySet="VIEW_DELIVER_PLAN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="截止时间" ColumnName="截止时间" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_EQPT_LOAD">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_EQPT_LOAD">
+        <MappingFragment StoreEntitySet="VIEW_EQPT_LOAD">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="库位号" ColumnName="库位号" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_INSPECT">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_INSPECT">
+        <MappingFragment StoreEntitySet="VIEW_INSPECT">
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="供应商批次" ColumnName="供应商批次" />
+          <ScalarProperty Name="失效日期" ColumnName="失效日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="检验库位" ColumnName="检验库位" />
+          <ScalarProperty Name="检验人" ColumnName="检验人" />
+          <ScalarProperty Name="检验时间" ColumnName="检验时间" />
+          <ScalarProperty Name="检验结论" ColumnName="检验结论" />
+          <ScalarProperty Name="检验文件" ColumnName="检验文件" />
+          <ScalarProperty Name="合格" ColumnName="合格" />
+          <ScalarProperty Name="破坏数" ColumnName="破坏数" />
+          <ScalarProperty Name="不合格数" ColumnName="不合格数" />
+          <ScalarProperty Name="合格数" ColumnName="合格数" />
+          <ScalarProperty Name="报检数" ColumnName="报检数" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="库位号" ColumnName="库位号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_INTERFACE">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_INTERFACE">
+        <MappingFragment StoreEntitySet="VIEW_INTERFACE">
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="执行时间" ColumnName="执行时间" />
+          <ScalarProperty Name="创建时间" ColumnName="创建时间" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="接口文本" ColumnName="接口文本" />
+          <ScalarProperty Name="接口类型" ColumnName="接口类型" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_INTERFACE_HIS">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_INTERFACE_HIS">
+        <MappingFragment StoreEntitySet="VIEW_INTERFACE_HIS">
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="执行时间" ColumnName="执行时间" />
+          <ScalarProperty Name="创建时间" ColumnName="创建时间" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="接口文本" ColumnName="接口文本" />
+          <ScalarProperty Name="接口类型" ColumnName="接口类型" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_INVENTORY_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_INVENTORY_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_INVENTORY_DETAIL">
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="盘点时间" ColumnName="盘点时间" />
+          <ScalarProperty Name="差异数" ColumnName="差异数" />
+          <ScalarProperty Name="出库数" ColumnName="出库数" />
+          <ScalarProperty Name="入库数" ColumnName="入库数" />
+          <ScalarProperty Name="重盘数" ColumnName="重盘数" />
+          <ScalarProperty Name="初盘数" ColumnName="初盘数" />
+          <ScalarProperty Name="账面数" ColumnName="账面数" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="标签号" ColumnName="标签号" />
+          <ScalarProperty Name="盘点库位" ColumnName="盘点库位" />
+          <ScalarProperty Name="账面库位" ColumnName="账面库位" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_INVENTORY_LOC">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_INVENTORY_LOC">
+        <MappingFragment StoreEntitySet="VIEW_INVENTORY_LOC">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="重盘结束时间" ColumnName="重盘结束时间" />
+          <ScalarProperty Name="重盘开始时间" ColumnName="重盘开始时间" />
+          <ScalarProperty Name="初盘结束时间" ColumnName="初盘结束时间" />
+          <ScalarProperty Name="初盘开始时间" ColumnName="初盘开始时间" />
+          <ScalarProperty Name="操作时间" ColumnName="操作时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="库位号" ColumnName="库位号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_IO_SUMMARY">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_IO_SUMMARY">
+        <MappingFragment StoreEntitySet="VIEW_IO_SUMMARY">
+          <ScalarProperty Name="库存数量" ColumnName="库存数量" />
+          <ScalarProperty Name="出库数量" ColumnName="出库数量" />
+          <ScalarProperty Name="入库数量" ColumnName="入库数量" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_IO_SUMMARY_ByArea">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_IO_SUMMARY_ByArea">
+        <MappingFragment StoreEntitySet="VIEW_IO_SUMMARY_ByArea">
+          <ScalarProperty Name="库存数量" ColumnName="库存数量" />
+          <ScalarProperty Name="出库数量" ColumnName="出库数量" />
+          <ScalarProperty Name="入库数量" ColumnName="入库数量" />
+          <ScalarProperty Name="库区" ColumnName="库区" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_MATERIAL_ASK">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_MATERIAL_ASK">
+        <MappingFragment StoreEntitySet="VIEW_MATERIAL_ASK">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="截止时间" ColumnName="截止时间" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_MATERIAL_RECEIVE">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_MATERIAL_RECEIVE">
+        <MappingFragment StoreEntitySet="VIEW_MATERIAL_RECEIVE">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="采购订单号" ColumnName="采购订单号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_NOTIFY">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_NOTIFY">
+        <MappingFragment StoreEntitySet="VIEW_NOTIFY">
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="关闭时间" ColumnName="关闭时间" />
+          <ScalarProperty Name="关闭人" ColumnName="关闭人" />
+          <ScalarProperty Name="创建时间" ColumnName="创建时间" />
+          <ScalarProperty Name="创建人" ColumnName="创建人" />
+          <ScalarProperty Name="提示信息" ColumnName="提示信息" />
+          <ScalarProperty Name="提示类型" ColumnName="提示类型" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_OM_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_OM_PLAN">
+        <MappingFragment StoreEntitySet="VIEW_OM_PLAN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="结束时间" ColumnName="结束时间" />
+          <ScalarProperty Name="开始时间" ColumnName="开始时间" />
+          <ScalarProperty Name="完成数" ColumnName="完成数" />
+          <ScalarProperty Name="未完成数" ColumnName="未完成数" />
+          <ScalarProperty Name="计划数" ColumnName="计划数" />
+          <ScalarProperty Name="委外商" ColumnName="委外商" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_OPER_LOG">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_OPER_LOG">
+        <MappingFragment StoreEntitySet="VIEW_OPER_LOG">
+          <ScalarProperty Name="日志信息" ColumnName="日志信息" />
+          <ScalarProperty Name="客户端" ColumnName="客户端" />
+          <ScalarProperty Name="日志类型" ColumnName="日志类型" />
+          <ScalarProperty Name="日志时间" ColumnName="日志时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="工号" ColumnName="工号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_OTHER_INOUT">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_OTHER_INOUT">
+        <MappingFragment StoreEntitySet="VIEW_OTHER_INOUT">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PACK_UNPACK">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PACK_UNPACK">
+        <MappingFragment StoreEntitySet="VIEW_PACK_UNPACK">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="目标库位号" ColumnName="目标库位号" />
+          <ScalarProperty Name="来源器具号" ColumnName="来源器具号" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="目标标签号" ColumnName="目标标签号" />
+          <ScalarProperty Name="来源标签号" ColumnName="来源标签号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PICK_FACT">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PICK_FACT">
+        <MappingFragment StoreEntitySet="VIEW_PICK_FACT">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="截止时间" ColumnName="截止时间" />
+          <ScalarProperty Name="拣货时间" ColumnName="拣货时间" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="标签号" ColumnName="标签号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PICK_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PICK_PLAN">
+        <MappingFragment StoreEntitySet="VIEW_PICK_PLAN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="截止时间" ColumnName="截止时间" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PO">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PO">
+        <MappingFragment StoreEntitySet="VIEW_PO">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="单据时间" ColumnName="单据时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="供应商" ColumnName="供应商" />
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="ERP采购订单号" ColumnName="ERP采购订单号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PO_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PO_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_PO_DETAIL">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="是否免检" ColumnName="是否免检" />
+          <ScalarProperty Name="单位" ColumnName="单位" />
+          <ScalarProperty Name="已收货数量" ColumnName="已收货数量" />
+          <ScalarProperty Name="待收货数量" ColumnName="待收货数量" />
+          <ScalarProperty Name="订单数量" ColumnName="订单数量" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PRODUCE_PLAN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PRODUCE_PLAN">
+        <MappingFragment StoreEntitySet="VIEW_PRODUCE_PLAN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="结束时间" ColumnName="结束时间" />
+          <ScalarProperty Name="开始时间" ColumnName="开始时间" />
+          <ScalarProperty Name="班次" ColumnName="班次" />
+          <ScalarProperty Name="班组" ColumnName="班组" />
+          <ScalarProperty Name="完成数" ColumnName="完成数" />
+          <ScalarProperty Name="未完成数" ColumnName="未完成数" />
+          <ScalarProperty Name="计划数" ColumnName="计划数" />
+          <ScalarProperty Name="生产线" ColumnName="生产线" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PRODUCT_RECEIVE">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PRODUCT_RECEIVE">
+        <MappingFragment StoreEntitySet="VIEW_PRODUCT_RECEIVE">
+          <ScalarProperty Name="班组" ColumnName="班组" />
+          <ScalarProperty Name="班次" ColumnName="班次" />
+          <ScalarProperty Name="生产线" ColumnName="生产线" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="计划单号" ColumnName="计划单号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PRODUCT_SELL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PRODUCT_SELL">
+        <MappingFragment StoreEntitySet="VIEW_PRODUCT_SELL">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="销售订单号" ColumnName="销售订单号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_SO">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_SO">
+        <MappingFragment StoreEntitySet="VIEW_SO">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="单据时间" ColumnName="单据时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="客户" ColumnName="客户" />
+          <ScalarProperty Name="ERP销售订单号" ColumnName="ERP销售订单号" />
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_SO_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_SO_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_SO_DETAIL">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="单位" ColumnName="单位" />
+          <ScalarProperty Name="已发货数量" ColumnName="已发货数量" />
+          <ScalarProperty Name="待发货数量" ColumnName="待发货数量" />
+          <ScalarProperty Name="订单数量" ColumnName="订单数量" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_SORT_BILL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_SORT_BILL">
+        <MappingFragment StoreEntitySet="VIEW_SORT_BILL">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="执行时间" ColumnName="执行时间" />
+          <ScalarProperty Name="执行人" ColumnName="执行人" />
+          <ScalarProperty Name="创建时间" ColumnName="创建时间" />
+          <ScalarProperty Name="创建人" ColumnName="创建人" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_SORT_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_SORT_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_SORT_DETAIL">
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="项目编码" ColumnName="项目编码" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="序列号" ColumnName="序列号" />
+          <ScalarProperty Name="VIN码" ColumnName="VIN码" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCK">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_STOCK">
+        <MappingFragment StoreEntitySet="VIEW_STOCK">
+          <ScalarProperty Name="参考号" ColumnName="参考号" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="更新时间" ColumnName="更新时间" />
+          <ScalarProperty Name="更新数量" ColumnName="更新数量" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="库位" ColumnName="库位" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCK_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_STOCK_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_STOCK_DETAIL">
+          <ScalarProperty Name="追溯号" ColumnName="追溯号" />
+          <ScalarProperty Name="更新数量" ColumnName="更新数量" />
+          <ScalarProperty Name="更新时间" ColumnName="更新时间" />
+          <ScalarProperty Name="失效日期" ColumnName="失效日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="价格" ColumnName="价格" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="计划顺序号" ColumnName="计划顺序号" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="供应商" ColumnName="供应商" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="项目编号" ColumnName="项目编号" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="库位" ColumnName="库位" />
+          <ScalarProperty Name="标签号" ColumnName="标签号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCK_FREEZE">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_STOCK_FREEZE">
+        <MappingFragment StoreEntitySet="VIEW_STOCK_FREEZE">
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCK_MOVE">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_STOCK_MOVE">
+        <MappingFragment StoreEntitySet="VIEW_STOCK_MOVE">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCKDETAIL_DAYS">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_STOCKDETAIL_DAYS">
+        <MappingFragment StoreEntitySet="VIEW_STOCKDETAIL_DAYS">
+          <ScalarProperty Name="过期日期" ColumnName="过期日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="计划号" ColumnName="计划号" />
+          <ScalarProperty Name="供应商" ColumnName="供应商" />
+          <ScalarProperty Name="项目号" ColumnName="项目号" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="所在库位" ColumnName="所在库位" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="在库天数" ColumnName="在库天数" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STORE_WHSE">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_STORE_WHSE">
+        <MappingFragment StoreEntitySet="VIEW_STORE_WHSE">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="仓库类型" ColumnName="仓库类型" />
+          <ScalarProperty Name="仓库地址" ColumnName="仓库地址" />
+          <ScalarProperty Name="仓库名称" ColumnName="仓库名称" />
+          <ScalarProperty Name="仓库编号" ColumnName="仓库编号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_TRANSACTION">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_TRANSACTION">
+        <MappingFragment StoreEntitySet="VIEW_TRANSACTION">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="库位" ColumnName="库位" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+          <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+          <ScalarProperty Name="日志时间" ColumnName="日志时间" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_VIN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_VIN">
+        <MappingFragment StoreEntitySet="VIEW_VIN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="生效时间" ColumnName="生效时间" />
+          <ScalarProperty Name="创建者" ColumnName="创建者" />
+          <ScalarProperty Name="标志" ColumnName="标志" />
+          <ScalarProperty Name="计划顺序号" ColumnName="计划顺序号" />
+          <ScalarProperty Name="项目编号" ColumnName="项目编号" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="VIN码" ColumnName="VIN码" />
+          <ScalarProperty Name="器具编号" ColumnName="器具编号" />
+          <ScalarProperty Name="源单号" ColumnName="源单号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_VIN_HIS">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_VIN_HIS">
+        <MappingFragment StoreEntitySet="VIEW_VIN_HIS">
+          <ScalarProperty Name="错误信息" ColumnName="错误信息" />
+          <ScalarProperty Name="错误代码" ColumnName="错误代码" />
+          <ScalarProperty Name="执行时间" ColumnName="执行时间" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="生效时间" ColumnName="生效时间" />
+          <ScalarProperty Name="创建者" ColumnName="创建者" />
+          <ScalarProperty Name="标志" ColumnName="标志" />
+          <ScalarProperty Name="计划顺序号" ColumnName="计划顺序号" />
+          <ScalarProperty Name="项目编号" ColumnName="项目编号" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="VIN码" ColumnName="VIN码" />
+          <ScalarProperty Name="器具编号" ColumnName="器具编号" />
+          <ScalarProperty Name="源单号" ColumnName="源单号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_VIN_PART">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_VIN_PART">
+        <MappingFragment StoreEntitySet="VIEW_VIN_PART">
+          <ScalarProperty Name="结算时间" ColumnName="结算时间" />
+          <ScalarProperty Name="发货时间" ColumnName="发货时间" />
+          <ScalarProperty Name="收货时间" ColumnName="收货时间" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="价格" ColumnName="价格" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="ERP零件号" ColumnName="ERP零件号" />
+          <ScalarProperty Name="客户零件号" ColumnName="客户零件号" />
+          <ScalarProperty Name="项目编码" ColumnName="项目编码" />
+          <ScalarProperty Name="VIN码" ColumnName="VIN码" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VS_STOCK">
+      <EntityTypeMapping TypeName="WMSModel.VS_STOCK">
+        <MappingFragment StoreEntitySet="VS_STOCK">
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="CarMode" ColumnName="CarMode" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+          <ScalarProperty Name="ErpLocCode" ColumnName="ErpLocCode" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VS_STOCK_DETAIL">
+      <EntityTypeMapping TypeName="WMSModel.VS_STOCK_DETAIL">
+        <MappingFragment StoreEntitySet="VS_STOCK_DETAIL">
+          <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+          <ScalarProperty Name="VinState" ColumnName="VinState" />
+          <ScalarProperty Name="TracebackCode" ColumnName="TracebackCode" />
+          <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+          <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
+          <ScalarProperty Name="ErpSiteCode" ColumnName="ErpSiteCode" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PlanOrderId" ColumnName="PlanOrderId" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="CarMode" ColumnName="CarMode" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VS_STOCK_GROUP">
+      <EntityTypeMapping TypeName="WMSModel.VS_STOCK_GROUP">
+        <MappingFragment StoreEntitySet="VS_STOCK_GROUP">
+          <ScalarProperty Name="StockQty" ColumnName="StockQty" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VS_VIN_PART">
+      <EntityTypeMapping TypeName="WMSModel.VS_VIN_PART">
+        <MappingFragment StoreEntitySet="VS_VIN_PART">
+          <ScalarProperty Name="VinState" ColumnName="VinState" />
+          <ScalarProperty Name="PartKind" ColumnName="PartKind" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="CarMode" ColumnName="CarMode" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="BalanceTime" ColumnName="BalanceTime" />
+          <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+          <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="VinCode" ColumnName="VinCode" />
+          <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
+          <ScalarProperty Name="CustPartCode" ColumnName="CustPartCode" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MATERIAL_BACK">
+      <EntityTypeMapping TypeName="WMSModel.TB_MATERIAL_BACK">
+        <MappingFragment StoreEntitySet="TB_MATERIAL_BACK">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MATERIAL_RETURN">
+      <EntityTypeMapping TypeName="WMSModel.TB_MATERIAL_RETURN">
+        <MappingFragment StoreEntitySet="TB_MATERIAL_RETURN">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRODUCT_REPAIR">
+      <EntityTypeMapping TypeName="WMSModel.TB_PRODUCT_REPAIR">
+        <MappingFragment StoreEntitySet="TB_PRODUCT_REPAIR">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRODUCT_RETURN">
+      <EntityTypeMapping TypeName="WMSModel.TB_PRODUCT_RETURN">
+        <MappingFragment StoreEntitySet="TB_PRODUCT_RETURN">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_MATERIAL_BACK">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_MATERIAL_BACK">
+        <MappingFragment StoreEntitySet="VIEW_MATERIAL_BACK">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_MATERIAL_RETURN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_MATERIAL_RETURN">
+        <MappingFragment StoreEntitySet="VIEW_MATERIAL_RETURN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PRODUCT_REPAIR">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PRODUCT_REPAIR">
+        <MappingFragment StoreEntitySet="VIEW_PRODUCT_REPAIR">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_PRODUCT_RETURN">
+      <EntityTypeMapping TypeName="WMSModel.VIEW_PRODUCT_RETURN">
+        <MappingFragment StoreEntitySet="VIEW_PRODUCT_RETURN">
+          <ScalarProperty Name="备注" ColumnName="备注" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="器具号" ColumnName="器具号" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="目标库位" ColumnName="目标库位" />
+          <ScalarProperty Name="来源库位" ColumnName="来源库位" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="条码号" ColumnName="条码号" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

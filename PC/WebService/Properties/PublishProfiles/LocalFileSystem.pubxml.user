@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Work\Wms.CsAntolin\WebPublish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="BillService.asmx">
+      <publishTime>07/05/2016 14:48:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/Wms.Bll.dll">
+      <publishTime>11/04/2016 15:47:30</publishTime>
+    </File>
+    <File Include="bin/Wms.Entity.dll">
+      <publishTime>11/04/2016 15:47:29</publishTime>
+    </File>
+    <File Include="bin/Wms.Util.dll">
+      <publishTime>11/04/2016 15:47:26</publishTime>
+    </File>
+    <File Include="bin/Wms.WebService.dll">
+      <publishTime>11/04/2016 15:47:31</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>10/28/2016 01:23:34</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/12/2016 12:17:44</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>11/04/2016 15:47:32</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/28/2016 01:23:34</publishTime>
+    </File>
+    <File Include="WmsService.asmx">
+      <publishTime>10/28/2016 01:23:34</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

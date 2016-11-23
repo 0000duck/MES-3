@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPbuqDa6i90yi7q3Lp4sE2AAAAAACAAAAAAAQZgAAAAEAACAAAABe+dJzApIYlJjAKtC2ny9TsUt4TB/jzxIz/eHeOyAzfAAAAAAOgAAAAAIAACAAAACWaEu+sn5/sOTy8oG7YGtoX4fMSdYUqZkmDPzQ5bbqDiAAAABwUZG4a272cHbtbhR3rpzMu6UCu0+VHbycq2B9Vl0WkkAAAAA95jAGKhPgAkjkH4wmT3SflI1WwXBjwuJooJjlwazC6QgWWLy5T8kAyF9ngxfZ76peYsnsBFSA2EwjUgn+QpcA</EncryptedPassword>
+    <_PublishTargetUrl>ftp://10.233.8.7</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="BillService.asmx">
+      <publishTime>07/05/2016 14:48:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/Wms.Bll.dll">
+      <publishTime>07/29/2016 11:11:31</publishTime>
+    </File>
+    <File Include="bin/Wms.Entity.dll">
+      <publishTime>07/29/2016 11:11:31</publishTime>
+    </File>
+    <File Include="bin/Wms.Util.dll">
+      <publishTime>07/28/2016 14:38:22</publishTime>
+    </File>
+    <File Include="bin/Wms.WebService.dll">
+      <publishTime>07/29/2016 11:11:31</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/12/2016 12:17:44</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>07/29/2016 11:11:33</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/25/2016 10:22:26</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

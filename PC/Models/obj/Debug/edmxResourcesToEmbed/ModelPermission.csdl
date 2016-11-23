@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RolePowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="RolePowerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TS_Button" EntityType="RolePowerModel.TS_Button" />
+    <EntitySet Name="TS_Dept" EntityType="RolePowerModel.TS_Dept" />
+    <EntitySet Name="TS_Menu" EntityType="RolePowerModel.TS_Menu" />
+    <EntitySet Name="TS_Operator_B" EntityType="RolePowerModel.TS_Operator_B" />
+    <EntitySet Name="TS_OperRole" EntityType="RolePowerModel.TS_OperRole" />
+    <EntitySet Name="TS_Portal" EntityType="RolePowerModel.TS_Portal" />
+    <EntitySet Name="TS_Power" EntityType="RolePowerModel.TS_Power" />
+    <EntitySet Name="TS_Role_B" EntityType="RolePowerModel.TS_Role_B" />
+    <EntitySet Name="GetPowers" EntityType="RolePowerModel.GetPower" />
+  </EntityContainer>
+  <EntityType Name="TS_Button">
+    <Key>
+      <PropertyRef Name="ButtonCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ButtonCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ButtonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ButtonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PotralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_Dept">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_Menu">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NameSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_Operator_B">
+    <Key>
+      <PropertyRef Name="OperCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OperPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_OperRole">
+    <Key>
+      <PropertyRef Name="OperCode" />
+      <PropertyRef Name="RoleCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_Portal">
+    <Key>
+      <PropertyRef Name="PortalCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortalType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortalUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_Power">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Permission" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TS_Role_B">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GetPower">
+    <Key>
+      <PropertyRef Name="OperCode" />
+      <PropertyRef Name="RoleCode" />
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="OperCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Permission" Type="Int32" />
+  </EntityType>
+</Schema>

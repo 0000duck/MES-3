@@ -1,0 +1,320 @@
+﻿Object Report
+	Version='6.0.0.2'
+	Title='中转发运单'
+	Author='长春安通林汽车饰件有限公司'
+	Description='Power By ChangKeTec'
+	Object Font
+		Name='宋体'
+		Size=105000,0
+		Weight=400
+		Charset=134
+	End
+	ConnectionString='Provider=SQLOLEDB.1;Password=microsoft;Persist Security Info=True;User ID=sa;Initial Catalog=ChangKeWMS;Data Source=127.0.0.1;Use Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Workstation ID=JIARGCN-HOME-PC;Use Encryption for Data=False;Tag with column collation when possible=False'
+	QuerySQL='select * from tb_bill where  billnum = 'MA1609180001''
+	Object Printer
+		Height=29.7
+		TopMargin=1.5
+		BottomMargin=1.5
+	End
+	Object DetailGrid
+		Object Recordset
+			ConnectionString='Provider=SQLOLEDB.1;Password=microsoft;Persist Security Info=True;User ID=sa;Initial Catalog=ChangKeWMS;Data Source=127.0.0.1;Use Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Workstation ID=JIARGCN-HOME-PC;Use Encryption for Data=False;Tag with column collation when possible=False'
+			QuerySQL='select * from tb_material_ask where billnum = 'PI1609180001''
+			Items Field
+				Item
+					Name='UID'
+					Type=Integer
+				End
+				Item
+					Name='BillNum'
+				End
+				Item
+					Name='PartCode'
+				End
+				Item
+					Name='ToLocCode'
+				End
+				Item
+					Name='Qty'
+					Type=Currency
+				End
+				Item
+					Name='EndTime'
+					Type=DateTime
+				End
+				Item
+					Name='State'
+					Type=Integer
+				End
+				Item
+					Name='Remark'
+				End
+			End
+		End
+		Items Column
+			Item
+				Name='PartCode'
+				Width=3.96875
+			End
+			Item
+				Name='Qty'
+				Width=2.01083
+			End
+			Item
+				Name='ToLocCode'
+				Width=2.98979
+			End
+			Item
+				Name='ProduceDate'
+				Width=7.01146
+			End
+		End
+		Object ColumnContent
+			Height=1.00542
+			Items ColumnContentCell
+				Item
+					Column='PartCode'
+					DataField='PartCode'
+				End
+				Item
+					Column='Qty'
+					TextAlign=MiddleRight
+					DataField='Qty'
+				End
+				Item
+					Column='ToLocCode'
+					DataField='ToLocCode'
+				End
+				Item
+					Column='ProduceDate'
+					DataField='EndTime'
+				End
+			End
+		End
+		Object ColumnTitle
+			Height=1.00542
+			Items ColumnTitleCell
+				Item
+					GroupTitle=F
+					Column='PartCode'
+					TextAlign=MiddleCenter
+					Text='零件号'
+				End
+				Item
+					GroupTitle=F
+					Column='Qty'
+					TextAlign=MiddleCenter
+					Text='数量'
+				End
+				Item
+					GroupTitle=F
+					Column='ToLocCode'
+					TextAlign=MiddleCenter
+					Text='目标库位'
+				End
+				Item
+					GroupTitle=F
+					Column='ProduceDate'
+					TextAlign=MiddleCenter
+					Text='截止时间'
+				End
+			End
+		End
+	End
+	Object PageHeader
+		Height=1.00542
+		Items Control
+			Item
+				Type=MemoBox
+				Name='MemoBox1'
+				Anchor=[Top|Right]
+				Left=0.211667
+				Top=0.211667
+				Width=5.97958
+				Height=0.396875
+				Text='XXXX汽车饰件有限公司'
+			End
+			Item
+				Type=Line
+				Name='Line1'
+				Anchor=[Left|Top|Right]
+				Top=0.79375
+				Width=16.0073
+				Object Pen
+					Width=2
+				End
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox19'
+				Anchor=[Top|Right]
+				Left=9.65729
+				Top=0.211667
+				Width=6.19125
+				Height=0.396875
+				TextAlign=MiddleRight
+				Text='文件编号：Bill-2015-031VN'
+			End
+		End
+	End
+	Object PageFooter
+		Height=1.00542
+		Items Control
+			Item
+				Type=MemoBox
+				Name='MemoBox2'
+				Anchor=[Top|Right]
+				Left=13.2027
+				Top=0.211667
+				Width=2.59292
+				Height=0.582083
+				Text='第[#SystemVar(PageNumber)#]页 共[#SystemVar(PageCount)#]页'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox3'
+				Left=0.211667
+				Top=0.211667
+				Width=6.19125
+				Height=0.582083
+				Text='打印时间：[#SystemVar(CurrentDateTime):yyyy年MM月dd日 HH:mm:ss#]'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox22'
+				Left=6.58813
+				Top=0.211667
+				Width=6.21771
+				Height=0.582083
+				Text='签字：                                         '
+			End
+		End
+	End
+	Items Parameter
+		Item
+			Name='UID'
+			DataType=Integer
+		End
+		Item
+			Name='BillNum'
+		End
+		Item
+			Name='SourceBillNum'
+		End
+		Item
+			Name='SourceBillNum2'
+		End
+		Item
+			Name='BillType'
+			DataType=Integer
+		End
+		Item
+			Name='SubBillType'
+			DataType=Integer
+		End
+		Item
+			Name='BillTime'
+			DataType=DateTime
+		End
+		Item
+			Name='StartTime'
+		End
+		Item
+			Name='FinishTime'
+		End
+		Item
+			Name='OperName'
+		End
+		Item
+			Name='SplyId'
+		End
+		Item
+			Name='CustId'
+		End
+		Item
+			Name='State'
+			DataType=Integer
+		End
+		Item
+			Name='Remark'
+		End
+	End
+	Items ReportHeader
+		Item
+			Height=4.39208
+			Items Control
+				Item
+					Type=StaticBox
+					Name='StaticBox1'
+					Center=Horizontal
+					Left=5.50333
+					Top=0.211667
+					Width=5.00063
+					Height=0.582083
+					Object Font
+						Name='宋体'
+						Size=150000,0
+						Bold=T
+						Charset=134
+					End
+					TextAlign=MiddleCenter
+					Text='叫料单'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox16'
+					Left=0.211667
+					Top=1.79917
+					Width=5.95313
+					Height=0.608542
+					Object Border
+						Styles=[DrawBottom]
+					End
+					Text='创建时间：[#{BillTime}#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox18'
+					Left=11.1919
+					Top=1.79917
+					Width=7.01146
+					Height=0.582083
+					Object Border
+						Styles=[DrawBottom]
+					End
+					Text='　操作员：[#{OperName}#]'
+				End
+				Item
+					Type=Line
+					Name='Line3'
+					Anchor=[Left|Top|Right]
+					Top=3.81
+					Width=16.0073
+				End
+				Item
+					Type=Barcode
+					Name='Barcode2'
+					Left=0.211667
+					Top=0.396875
+					Width=5.18583
+					Height=1.19063
+					BarcodeType=Code128Auto
+					Text='[#{BillNum}#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox26'
+					Left=11.1919
+					Top=2.59292
+					Width=6.985
+					Height=0.608542
+					Object Border
+						Styles=[DrawBottom]
+					End
+					Text='来源单据：[#{SourceBillNum}#]'
+				End
+			End
+			RepeatOnPage=T
+		End
+	End
+End

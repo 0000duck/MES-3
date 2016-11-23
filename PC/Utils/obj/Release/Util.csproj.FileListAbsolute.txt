@@ -1,0 +1,15 @@
+C:\Wms.CsAntolin\Util\bin\Release\Wms.Util.dll
+C:\Wms.CsAntolin\Util\bin\Release\Wms.Util.pdb
+C:\Wms.CsAntolin\Util\obj\Release\Util.csprojResolveAssemblyReference.cache
+C:\Wms.CsAntolin\Util\obj\Release\Wms.Util.dll
+C:\Wms.CsAntolin\Util\obj\Release\Wms.Util.pdb
+D:\work\Wms.CsAntolin\Util\bin\Release\Wms.Util.dll
+D:\work\Wms.CsAntolin\Util\bin\Release\Wms.Util.pdb
+D:\work\Wms.CsAntolin\Util\obj\Release\Util.csprojResolveAssemblyReference.cache
+D:\work\Wms.CsAntolin\Util\obj\Release\Wms.Util.dll
+D:\work\Wms.CsAntolin\Util\obj\Release\Wms.Util.pdb
+C:\Work\Wms.CsAntolin\PC\Util\bin\Release\Wms.Util.dll
+C:\Work\Wms.CsAntolin\PC\Util\bin\Release\Wms.Util.pdb
+C:\Work\Wms.CsAntolin\PC\Util\obj\Release\Util.csprojResolveAssemblyReference.cache
+C:\Work\Wms.CsAntolin\PC\Util\obj\Release\Wms.Util.dll
+C:\Work\Wms.CsAntolin\PC\Util\obj\Release\Wms.Util.pdb

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AutoUpdate>
+  <SoftWare Name="Wms.PdaForm.exe" >
+    <Version>1.0.16.0421</Version>
+    <FilePath>PdaUpdate</FilePath>
+    <FileName>pda.1.1.16.0425.zip</FileName>
+    <LastUpdateTime>2016-04-21</LastUpdateTime>
+    <Desc>修复BUG</Desc>
+  </SoftWare>
+</AutoUpdate>

@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CED4A042-434D-49B8-9B0B-6036FD61D8AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChangKeTec.Wms.Models</RootNamespace>
+    <AssemblyName>Wms.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EniitiesHelper.cs" />
+    <Compile Include="Enums\CarType.cs" />
+    <Compile Include="Enums\ControlType.cs" />
+    <Compile Include="Enums\GroupType.cs" />
+    <Compile Include="Enums\InventoryState.cs" />
+    <Compile Include="Enums\LocType.cs" />
+    <Compile Include="Enums\ManageType.cs" />
+    <Compile Include="Enums\PartKind.cs" />
+    <Compile Include="Enums\PortalType.cs" />
+    <Compile Include="Enums\Project.cs" />
+    <Compile Include="Enums\StockDetailState.cs" />
+    <Compile Include="Enums\StockWhereType.cs" />
+    <Compile Include="Enums\SubBillType.cs" />
+    <Compile Include="Enums\WhseType.cs" />
+    <Compile Include="Enums\WorkLineType.cs" />
+    <Compile Include="GlobalBuffer.cs" />
+    <Compile Include="ModelSpare.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSpare.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSpare.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSpare.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSpare.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TA_BILLTYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_CONFIG.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_DEPT.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_EQUIPMENT.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_MENU.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_PART.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_PROJECT.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_STORE_GROUP.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_STORE_LOCATION.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_STORE_WHSE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_SUB_BILLTYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_SUPERLIER.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_UNIT.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_WORKLINE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_ASK.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_BILL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_IN.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_INVENTORY_DETAIL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_INVENTORY_LOC.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_OTHER_IN.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_OTHER_OUT.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_OUT.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_PO.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_RETURN.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_STOCK_MOVE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_BASEDATA.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_BILL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_INTERFACE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_NOTIFY.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_OPER.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TL_TRANSACTION.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\BillState.cs" />
+    <Compile Include="Enums\BillType.cs" />
+    <Compile Include="Enums\DataState.cs" />
+    <Compile Include="EntitiesExtention.cs" />
+    <Compile Include="Enums\ErpInterfaceType.cs" />
+    <Compile Include="Enums\ResultCode.cs" />
+    <Compile Include="Enums\PartBuyOrMake.cs" />
+    <Compile Include="Enums\ServiceType.cs" />
+    <Compile Include="TS_STOCK_DETAIL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_EQPT_TYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_GROUP_TYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_LOC_TYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_PART_TYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VS_IDLE_STOCK_DETAIL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VS_OVERDUE_STOCK.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VS_STOCK.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VS_STOCK_AGE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WmsException.cs" />
+    <Compile Include="EntitiesFactory.cs" />
+    <Compile Include="ModelPower.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPower.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelPower.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelPower.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPower.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\NotifyType.cs" />
+    <Compile Include="Enums\OperateType.cs" />
+    <Compile Include="Enums\PrintType.cs" />
+    <Compile Include="Enums\EquipmentState.cs" />
+    <Compile Include="Enums\StoreArea.cs" />
+    <Compile Include="SumByPart.cs" />
+    <Compile Include="TS_BUTTON.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_DEPT.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_MENU.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_OPERATOR.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_OPER_ROLE.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_PORTAL.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_ROLE.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\VinState.cs" />
+    <Compile Include="TS_ROLE_NOTIFYTYPE.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TS_ROLE_POWER.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\LogType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="VS_OPER_ROLE.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VS_POWER_MENU.cs">
+      <DependentUpon>ModelPower.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="ModelPower.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelPower.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelPower.edmx.diagram">
+      <DependentUpon>ModelPower.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="ModelSpare.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSpare.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelSpare.edmx.diagram">
+      <DependentUpon>ModelSpare.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Util\Utils.csproj">
+      <Project>{6F0145F2-8A11-428A-A782-17F81D30FACA}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelPower.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPower.edmx</DependentUpon>
+      <LastGenOutput>ModelPower.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelPower.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPower.edmx</DependentUpon>
+      <LastGenOutput>ModelPower.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelSpare.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSpare.edmx</DependentUpon>
+      <LastGenOutput>ModelSpare.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelSpare.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSpare.edmx</DependentUpon>
+      <LastGenOutput>ModelSpare.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CD744CE-3837-4DFD-94B2-BBC0BE2ECED6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChangKeTec.Wms.Common</RootNamespace>
+    <AssemblyName>Wms.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=12.5.0.2, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComboBox\BmComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\ControlTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\GroupTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\LeafDeptComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\LocTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\ManageTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\MenuComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\NotifyTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\ParentDeptComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\PartComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\PartKindComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\PortalComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\PortalTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\ProjectComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\StoreGroupComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\StoreLocComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\StoreWhseComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\UnitComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\WhseTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\WorkLineTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="StringRedir.cs" />
+    <Compile Include="UC\CktMasterDetailGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\CktMasterDetailGrid.Designer.cs">
+      <DependentUpon>CktMasterDetailGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\PageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\PageControl.Designer.cs">
+      <DependentUpon>PageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UcLabelDateTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UcLabelDateTime.Designer.cs">
+      <DependentUpon>UcLabelDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UcLabelDropDownList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UcLabelDropDownList.Designer.cs">
+      <DependentUpon>UcLabelDropDownList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UcLabelDouble.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UcLabelDouble.Designer.cs">
+      <DependentUpon>UcLabelDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UcLabelInteger.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UcLabelInteger.Designer.cs">
+      <DependentUpon>UcLabelInteger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UcLabelTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UcLabelTextBox.Designer.cs">
+      <DependentUpon>UcLabelTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC\UcPart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UcPart.Designer.cs">
+      <DependentUpon>UcPart.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\Models.csproj">
+      <Project>{ced4a042-434d-49b8-9b0b-6036fd61d8ac}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Utils.csproj">
+      <Project>{6f0145f2-8a11-428a-a782-17f81d30faca}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\CktMasterDetailGrid.resx">
+      <DependentUpon>CktMasterDetailGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\PageControl.resx">
+      <DependentUpon>PageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UcLabelDateTime.resx">
+      <DependentUpon>UcLabelDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UcLabelDropDownList.resx">
+      <DependentUpon>UcLabelDropDownList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UcLabelDouble.resx">
+      <DependentUpon>UcLabelDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UcLabelInteger.resx">
+      <DependentUpon>UcLabelInteger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UcLabelTextBox.resx">
+      <DependentUpon>UcLabelTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UcPart.resx">
+      <DependentUpon>UcPart.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\DefaultButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\App.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Basket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CdYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Db.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbGear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbQuestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DbYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dialog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dialogs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Faverite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileGear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileQuestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilesAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilesEmptyAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\First.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderGrear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderQuestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ForlderEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearLock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearQuestion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Global.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Headphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdOrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ids.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdSign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IdYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ipod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Last.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MailOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MonitorClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Monitors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotbookYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotebookAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotebookDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotebookEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotebookLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotebookSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrinterInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrinterSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrinterStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrinterWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrinterYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Qeustion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Share.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Speaker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UKey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlackAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlackDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlackEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlackInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlackSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlackYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlueAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlueDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlueEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlueInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlueSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserBlueYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserGroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserGroupAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserGroupDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserGroupEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserGroupYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserSpeak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserTalk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WIndow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindoweInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowStop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowYes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilesWarning.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
