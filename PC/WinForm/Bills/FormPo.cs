@@ -75,9 +75,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<VIEW_PO, dynamic>> select = c => c;
-            Expression<Func<VIEW_PO, bool>> where = c => c.单据号 == billNum;
-            Expression<Func<VIEW_PO, long>> order = c => c.UID;
+            Expression<Func<TB_PO, dynamic>> select = c => c;
+            Expression<Func<TB_PO, bool>> where = c => c.BillNum == billNum;
+            Expression<Func<TB_PO, long>> order = c => c.UID;
 
             grid.Detail1DataSource = EniitiesHelper.GetData(_db,
                 select,

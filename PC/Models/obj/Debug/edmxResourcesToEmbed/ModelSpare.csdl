@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TA_BILLTYPE">
+    <Key>
+      <PropertyRef Name="BillType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillType" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillNumRule" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastNumber" Type="Int32" Nullable="false" />
+    <Property Name="LastBillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastBillTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PrintTemplateFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImportTemplateFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_CONFIG">
+    <Key>
+      <PropertyRef Name="ParamName" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParamValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_DEPT">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_EQUIPMENT">
+    <Key>
+      <PropertyRef Name="EqptCode" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EqptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EqptType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EqptModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EqptLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EqptManager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_PART">
+    <Key>
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ErpPartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartType" Type="Int32" Nullable="false" />
+    <Property Name="MaxQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="MinQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="SafeQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IdleDays" Type="Int32" Nullable="false" />
+    <Property Name="SplyPackQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ValidityDays" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TA_PROJECT">
+    <Key>
+      <PropertyRef Name="ProjectCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_STORE_GROUP">
+    <Key>
+      <PropertyRef Name="GroupCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GroupType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WhseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AreaCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_STORE_LOCATION">
+    <Key>
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WhseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_STORE_WHSE">
+    <Key>
+      <PropertyRef Name="WhseCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WhseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WhseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WhseAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WhseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_SUB_BILLTYPE">
+    <Key>
+      <PropertyRef Name="SubBillType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubBillType" Type="Int32" Nullable="false" />
+    <Property Name="BillType" Type="Int32" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TA_SUPERLIER">
+    <Key>
+      <PropertyRef Name="SplyId" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SplyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SplyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ErpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_UNIT">
+    <Key>
+      <PropertyRef Name="Unit" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remak" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TA_WORKLINE">
+    <Key>
+      <PropertyRef Name="WorklineCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WokrlineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_ASK">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AskUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AskTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ConfirmUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmTime" Type="DateTime" Precision="3" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_BILL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SourceBillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BillType" Type="Int32" Nullable="false" />
+    <Property Name="SubBillType" Type="Int32" Nullable="false" />
+    <Property Name="BillTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FinishTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SplyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_IN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PoBillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PoLineNum" Type="Int32" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CheckLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BookQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CheckQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CheckTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_LOC">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CheckBeginTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CheckEndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_OTHER_IN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProduceDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TB_OUT">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FromLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="OutType" Type="Int32" Nullable="false" />
+    <Property Name="OutUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OutTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_PO">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="LineNum" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LineNum" Type="Int32" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="OpenQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ClosedQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_RETURN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ReturnType" Type="Int32" Nullable="false" />
+    <Property Name="ReturnUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReturnTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_STOCK_MOVE">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FromLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TL_BASEDATA">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OldValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NewValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TL_BILL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillType" Type="Int32" Nullable="false" />
+    <Property Name="SubBillType" Type="Int32" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TL_INTERFACE">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InterfaceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InterfaceString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProcessTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BillType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="pQty" Type="Int32" />
+    <Property Name="p01" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p02" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p03" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p04" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p05" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p06" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p07" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p08" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p09" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p16" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p17" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p18" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p19" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p20" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TL_NOTIFY">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NotifyType" Type="Int32" Nullable="false" />
+    <Property Name="NotifyMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateOperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CloseOperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CloseTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TL_OPER">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperCode" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LogSite" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TL_TRANSACTION">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BillType" Type="Int32" Nullable="false" />
+    <Property Name="SubBillType" Type="Int32" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TT_EQPT_TYPE">
+    <Key>
+      <PropertyRef Name="EqptType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EqptType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TT_GROUP_TYPE">
+    <Key>
+      <PropertyRef Name="GroupType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TT_LOC_TYPE">
+    <Key>
+      <PropertyRef Name="LocType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TT_PART_TYPE">
+    <Key>
+      <PropertyRef Name="PartType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_OTHER_OUT">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="FromLocCode" />
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FromLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VS_IDLE_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+      <PropertyRef Name="ProduceDate" />
+    </Key>
+    <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartType" Type="Int32" />
+    <Property Name="IdleDays" Type="Int32" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+    <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="VS_OVERDUE_STOCK">
+    <Key>
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TotalQty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartType" Type="Int32" />
+    <Property Name="ValidityDays" Type="Int32" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VS_STOCK">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+    </Key>
+    <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartType" Type="Int32" />
+    <Property Name="MaxQty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MinQty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SafeQty" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="VS_STOCK_AGE">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+      <PropertyRef Name="ProduceDate" />
+      <PropertyRef Name="OverdueDate" />
+    </Key>
+    <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OverdueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+    <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartType" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="SpareEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" />
+    <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" />
+    <EntitySet Name="TA_DEPT" EntityType="Self.TA_DEPT" />
+    <EntitySet Name="TA_EQUIPMENT" EntityType="Self.TA_EQUIPMENT" />
+    <EntitySet Name="TA_PART" EntityType="Self.TA_PART" />
+    <EntitySet Name="TA_PROJECT" EntityType="Self.TA_PROJECT" />
+    <EntitySet Name="TA_STORE_GROUP" EntityType="Self.TA_STORE_GROUP" />
+    <EntitySet Name="TA_STORE_LOCATION" EntityType="Self.TA_STORE_LOCATION" />
+    <EntitySet Name="TA_STORE_WHSE" EntityType="Self.TA_STORE_WHSE" />
+    <EntitySet Name="TA_SUB_BILLTYPE" EntityType="Self.TA_SUB_BILLTYPE" />
+    <EntitySet Name="TA_SUPERLIER" EntityType="Self.TA_SUPERLIER" />
+    <EntitySet Name="TA_UNIT" EntityType="Self.TA_UNIT" />
+    <EntitySet Name="TA_WORKLINE" EntityType="Self.TA_WORKLINE" />
+    <EntitySet Name="TB_ASK" EntityType="Self.TB_ASK" />
+    <EntitySet Name="TB_BILL" EntityType="Self.TB_BILL" />
+    <EntitySet Name="TB_IN" EntityType="Self.TB_IN" />
+    <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="Self.TB_INVENTORY_DETAIL" />
+    <EntitySet Name="TB_INVENTORY_LOC" EntityType="Self.TB_INVENTORY_LOC" />
+    <EntitySet Name="TB_OTHER_IN" EntityType="Self.TB_OTHER_IN" />
+    <EntitySet Name="TB_OUT" EntityType="Self.TB_OUT" />
+    <EntitySet Name="TB_PO" EntityType="Self.TB_PO" />
+    <EntitySet Name="TB_RETURN" EntityType="Self.TB_RETURN" />
+    <EntitySet Name="TB_STOCK_MOVE" EntityType="Self.TB_STOCK_MOVE" />
+    <EntitySet Name="TL_BASEDATA" EntityType="Self.TL_BASEDATA" />
+    <EntitySet Name="TL_BILL" EntityType="Self.TL_BILL" />
+    <EntitySet Name="TL_INTERFACE" EntityType="Self.TL_INTERFACE" />
+    <EntitySet Name="TL_NOTIFY" EntityType="Self.TL_NOTIFY" />
+    <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" />
+    <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" />
+    <EntitySet Name="TT_EQPT_TYPE" EntityType="Self.TT_EQPT_TYPE" />
+    <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" />
+    <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" />
+    <EntitySet Name="TT_PART_TYPE" EntityType="Self.TT_PART_TYPE" />
+    <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" />
+    <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="Self.VS_IDLE_STOCK_DETAIL" />
+    <EntitySet Name="VS_OVERDUE_STOCK" EntityType="Self.VS_OVERDUE_STOCK" />
+    <EntitySet Name="VS_STOCK" EntityType="Self.VS_STOCK" />
+    <EntitySet Name="VS_STOCK_AGE" EntityType="Self.VS_STOCK_AGE" />
+    <EntitySet Name="TS_STOCK_DETAIL" EntityType="SpareModel.TS_STOCK_DETAIL" />
+  </EntityContainer>
+  <EntityType Name="TS_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+    </Key>
+    <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OverdueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+</Schema>

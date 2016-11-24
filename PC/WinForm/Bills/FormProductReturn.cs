@@ -101,9 +101,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<VIEW_PRODUCT_RETURN, dynamic>> select = c => c;
-            Expression<Func<VIEW_PRODUCT_RETURN, bool>> where = c => c.单据号 == billNum;
-            Expression<Func<VIEW_PRODUCT_RETURN, long>> order = c => c.UID;
+            Expression<Func<TB_RETURN, dynamic>> select = c => c;
+            Expression<Func<TB_RETURN, bool>> where = c => c.BillNum == billNum;
+            Expression<Func<TB_RETURN, long>> order = c => c.UID;
 
             grid.Detail1DataSource = EniitiesHelper.GetData(_db,
                 select,

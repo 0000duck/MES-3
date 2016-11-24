@@ -1,0 +1,4 @@
+C:\Work\Spare.CcFjc\PC\Utils\bin\Debug\Wms.Util.dll
+C:\Work\Spare.CcFjc\PC\Utils\bin\Debug\Wms.Util.pdb
+C:\Work\Spare.CcFjc\PC\Utils\obj\Debug\Wms.Util.dll
+C:\Work\Spare.CcFjc\PC\Utils\obj\Debug\Wms.Util.pdb

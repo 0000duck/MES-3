@@ -146,6 +146,12 @@
     <Compile Include="BaseData\FormStoreGroup.Designer.cs">
       <DependentUpon>FormStoreGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bills\FormOtherIn - 复制.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bills\FormOtherIn - 复制.designer.cs">
+      <DependentUpon>FormOtherIn - 复制.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bills\FormProductReturn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,42 +200,6 @@
     <Compile Include="PopUp\PopupInventoryLoc.designer.cs">
       <DependentUpon>PopupInventoryLoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\FormRptCalSafeQty.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptCalSafeQty.Designer.cs">
-      <DependentUpon>FormRptCalSafeQty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\FormRptInOutList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptInOutList.Designer.cs">
-      <DependentUpon>FormRptInOutList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\FormRptCalOverduDays.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptCalOverduDays.Designer.cs">
-      <DependentUpon>FormRptCalOverduDays.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\FormRptInOutSummaryByArea.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptInOutSummaryByArea.Designer.cs">
-      <DependentUpon>FormRptInOutSummaryByArea.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\FormRptStockDays.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptStockDays.Designer.cs">
-      <DependentUpon>FormRptStockDays.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\FormRptInOutSummary.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptInOutSummary.Designer.cs">
-      <DependentUpon>FormRptInOutSummary.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bills\FormPickFact.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,11 +218,11 @@
     <Compile Include="Bills\FormMaterialAsk.designer.cs">
       <DependentUpon>FormMaterialAsk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bills\FormOtherInout.cs">
+    <Compile Include="Bills\FormOtherIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bills\FormOtherInout.designer.cs">
-      <DependentUpon>FormOtherInout.cs</DependentUpon>
+    <Compile Include="Bills\FormOtherIn.designer.cs">
+      <DependentUpon>FormOtherIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Bills\FormMaterialReceive.cs">
       <SubType>Form</SubType>
@@ -358,12 +328,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Report\FormRptBill.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\FormRptBill.Designer.cs">
-      <DependentUpon>FormRptBill.cs</DependentUpon>
-    </Compile>
     <Compile Include="Stock\FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +354,9 @@
     <EmbeddedResource Include="BaseData\FormStoreGroup.resx">
       <DependentUpon>FormStoreGroup.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bills\FormOtherIn - 复制.resx">
+      <DependentUpon>FormOtherIn - 复制.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bills\FormProductReturn.resx">
       <DependentUpon>FormProductReturn.cs</DependentUpon>
@@ -420,24 +387,6 @@
     <EmbeddedResource Include="PopUp\PopupInventoryLoc.resx">
       <DependentUpon>PopupInventoryLoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptCalSafeQty.resx">
-      <DependentUpon>FormRptCalSafeQty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptInOutList.resx">
-      <DependentUpon>FormRptInOutList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptCalOverduDays.resx">
-      <DependentUpon>FormRptCalOverduDays.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptInOutSummaryByArea.resx">
-      <DependentUpon>FormRptInOutSummaryByArea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptStockDays.resx">
-      <DependentUpon>FormRptStockDays.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptInOutSummary.resx">
-      <DependentUpon>FormRptInOutSummary.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Bills\FormPickFact.resx">
       <DependentUpon>FormPickFact.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,8 +396,8 @@
     <EmbeddedResource Include="Bills\FormMaterialAsk.resx">
       <DependentUpon>FormMaterialAsk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bills\FormOtherInout.resx">
-      <DependentUpon>FormOtherInout.cs</DependentUpon>
+    <EmbeddedResource Include="Bills\FormOtherIn.resx">
+      <DependentUpon>FormOtherIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bills\FormMaterialReceive.resx">
       <DependentUpon>FormMaterialReceive.cs</DependentUpon>
@@ -502,9 +451,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\FormRptBill.resx">
-      <DependentUpon>FormRptBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stock\FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
@@ -682,6 +628,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />
+    <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">

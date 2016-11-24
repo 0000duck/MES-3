@@ -47,8 +47,6 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             try
             {
-                List<VIEW_PICK_FACT> detailList = (List<VIEW_PICK_FACT>) grid.MasterDataSource;
-                var tList = detailList.Select(detail => detail.ToTable()).ToList();
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
 //            BillHandler.AddMaterialAsk(db,_bill, tList);
                 EntitiesFactory.SaveDb(db);
@@ -62,9 +60,9 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billnum)
         {
             int count;
-            Expression<Func<VIEW_PICK_FACT, dynamic>> select =c => c;
-            Expression<Func<VIEW_PICK_FACT, bool>> where = c => c.单据号==billnum;
-            Expression<Func<VIEW_PICK_FACT, long>> order = c => c.UID;
+            Expression<Func<TB_OUT, dynamic>> select =c => c;
+            Expression<Func<TB_OUT, bool>> where = c => c.BillNum==billnum;
+            Expression<Func<TB_OUT, long>> order = c => c.UID;
             grid.MasterDataSource = EniitiesHelper.GetData(_db,
                 select,
                 where,

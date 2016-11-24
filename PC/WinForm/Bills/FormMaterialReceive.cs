@@ -82,7 +82,6 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         单据类型 = c.BillType,
                         单据子类型 = c.SubBillType,
                         采购订单编号 = c.SourceBillNum,
-                        采购发货单编号 = c.SourceBillNum2,
 //                        开始时间 = c.StartTime,
 //                        结束时间 = c.FinishTime,
                         供应商编号 = c.SplyId,
@@ -111,9 +110,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<VIEW_MATERIAL_RECEIVE, dynamic>> select = c => c;
-            Expression<Func<VIEW_MATERIAL_RECEIVE, bool>> where = c => c.单据号 == billNum;
-            Expression<Func<VIEW_MATERIAL_RECEIVE, long>> order = c => c.UID;
+            Expression<Func<TB_IN, dynamic>> select = c => c;
+            Expression<Func<TB_IN, bool>> where = c => c.BillNum == billNum;
+            Expression<Func<TB_IN, long>> order = c => c.UID;
 
             grid.Detail1DataSource = EniitiesHelper.GetData(_db,
                 select,

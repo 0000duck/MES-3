@@ -17,13 +17,11 @@ namespace ChangKeTec.Wms.WinForm.Stock
 {
     public partial class FormStock : Office2007Form
     {
-        private readonly string _storeArea;
         private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
         public FormStock()
         {
             InitializeComponent();
             Init();
-            _storeArea = null;
             btnSell.Visible = false;
             gridStockDetail.MasterPrimaryGrid.CheckBoxes = true;
 
@@ -32,7 +30,6 @@ namespace ChangKeTec.Wms.WinForm.Stock
         {
             InitializeComponent();
             Init();
-            _storeArea = storeArea;
             btnSell.Visible = storeArea == StoreArea.SALE.ToString();
 
         }
@@ -62,18 +59,14 @@ namespace ChangKeTec.Wms.WinForm.Stock
 
         private void SetStockMasterDataSource(int pageSize)
         {
-            Expression<Func<VIEW_STOCK, dynamic>> select = c => c;
+            Expression<Func<VS_STOCK, dynamic>> select = c => c;
 
 
-            Expression<Func<VIEW_STOCK, bool>> where;
-            if (_storeArea == null)
+            Expression<Func<VS_STOCK, bool>> where;
+          
                 where = c => true;
-            else
-            {
-                var locs = GlobalBuffer.LocList.Where(p => p.AreaCode == _storeArea).Select(p=>p.LocCode);
-                where = c => locs.Contains(c.库位);
-            }
-            Expression<Func<VIEW_STOCK, long>> order = c => c.UID;
+          
+            Expression<Func<VS_STOCK, string>> order = c => c.PartCode;
             var grid = gridStock;
             int total;
             grid.MasterDataSource = EniitiesHelper.GetPagedDataAsc(_db,
@@ -89,16 +82,9 @@ namespace ChangKeTec.Wms.WinForm.Stock
 
         private void SetStockDetailMasterDataSource(int pageSize)
         {
-            Expression<Func<VIEW_STOCK_DETAIL, dynamic>> select = c => c;
-            Expression<Func<VIEW_STOCK_DETAIL, bool>> where;
-            if (_storeArea == null)
-                where = c => true;
-            else
-            {
-                var locs = GlobalBuffer.LocList.Where(p => p.AreaCode == _storeArea).Select(p => p.LocCode);
-                where = c => locs.Contains(c.库位);
-            }
-            Expression<Func<VIEW_STOCK_DETAIL, long>> order = c => c.UID;
+            Expression<Func<TS_STOCK_DETAIL, dynamic>> select = c => c;
+            Expression<Func<TS_STOCK_DETAIL, bool>> @where = c => true;
+            Expression<Func<TS_STOCK_DETAIL, long>> order = c => c.UID;
             var grid = gridStockDetail;
             int total;
             grid.MasterDataSource = EniitiesHelper.GetPagedDataAsc(_db,

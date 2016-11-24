@@ -1,0 +1,714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TA_BILLTYPE">
+    <Key>
+      <PropertyRef Name="BillType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Prefix" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillNumRule" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LastNumber" Type="int" Nullable="false" />
+    <Property Name="LastBillNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastBillTime" Type="datetime" Nullable="false" />
+    <Property Name="PrintTemplateFileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImportTemplateFileName" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_CONFIG">
+    <Key>
+      <PropertyRef Name="ParamName" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParamValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_DEPT">
+    <Key>
+      <PropertyRef Name="DeptCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DeptName" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_EQUIPMENT">
+    <Key>
+      <PropertyRef Name="EqptCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EqptModel" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqptLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqptManager" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_PART">
+    <Key>
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpPartCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartType" Type="int" Nullable="false" />
+    <Property Name="MaxQty" Type="money" Nullable="false" />
+    <Property Name="MinQty" Type="money" Nullable="false" />
+    <Property Name="SafeQty" Type="money" Nullable="false" />
+    <Property Name="IdleDays" Type="int" Nullable="false" />
+    <Property Name="SplyPackQty" Type="money" Nullable="false" />
+    <Property Name="ValidityDays" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityType Name="TA_PROJECT">
+    <Key>
+      <PropertyRef Name="ProjectCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_STORE_GROUP">
+    <Key>
+      <PropertyRef Name="GroupCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AreaCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_STORE_LOCATION">
+    <Key>
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocType" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_STORE_WHSE">
+    <Key>
+      <PropertyRef Name="WhseCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WhseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhseAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="WhseType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_SUB_BILLTYPE">
+    <Key>
+      <PropertyRef Name="SubBillType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubBillType" Type="int" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TA_SUPERLIER">
+    <Key>
+      <PropertyRef Name="SplyId" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SplyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ErpCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="120" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contacter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TA_UNIT">
+    <Key>
+      <PropertyRef Name="Unit" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remak" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TA_WORKLINE">
+    <Key>
+      <PropertyRef Name="WorklineCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WokrlineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_ASK">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AskUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AskTime" Type="datetime" Nullable="false" />
+    <Property Name="ConfirmUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmTime" Type="datetime" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_BILL">
+    <Key>
+      <PropertyRef Name="BillNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SourceBillNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="SubBillType" Type="int" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="StartTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="FinishTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SplyId" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TB_IN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoBillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoLineNum" Type="int" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CheckLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BookQty" Type="money" Nullable="false" />
+    <Property Name="CheckQty" Type="money" Nullable="false" />
+    <Property Name="CheckTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_LOC">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="LocCode" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillTime" Type="datetime" Nullable="false" />
+    <Property Name="CheckBeginTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="CheckEndTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_OTHER_IN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProduceDate" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.TB_OTHER_OUT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="TB_OTHER_OUT">
+    <Key>
+      <PropertyRef Name="UID" />
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="FromLocCode" />
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_OUT">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="OutType" Type="int" Nullable="false" />
+    <Property Name="OutUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OutTime" Type="datetime" Nullable="false" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_PO">
+    <Key>
+      <PropertyRef Name="BillNum" />
+      <PropertyRef Name="LineNum" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LineNum" Type="int" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillQty" Type="money" Nullable="false" />
+    <Property Name="OpenQty" Type="money" Nullable="false" />
+    <Property Name="ClosedQty" Type="money" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_RETURN">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="ReturnType" Type="int" Nullable="false" />
+    <Property Name="ReturnUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReturnTime" Type="datetime" Nullable="false" />
+    <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TB_STOCK_MOVE">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TL_BASEDATA">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DataType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OldValue" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="NewValue" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TL_BILL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="SubBillType" Type="int" />
+    <Property Name="Message" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TL_INTERFACE">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InterfaceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InterfaceString" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ProcessTime" Type="datetime" Nullable="false" />
+    <Property Name="BillNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="pQty" Type="int" />
+    <Property Name="p01" Type="varchar" MaxLength="50" />
+    <Property Name="p02" Type="varchar" MaxLength="50" />
+    <Property Name="p03" Type="varchar" MaxLength="50" />
+    <Property Name="p04" Type="varchar" MaxLength="50" />
+    <Property Name="p05" Type="varchar" MaxLength="50" />
+    <Property Name="p06" Type="varchar" MaxLength="50" />
+    <Property Name="p07" Type="varchar" MaxLength="50" />
+    <Property Name="p08" Type="varchar" MaxLength="50" />
+    <Property Name="p09" Type="varchar" MaxLength="50" />
+    <Property Name="p10" Type="varchar" MaxLength="50" />
+    <Property Name="p11" Type="varchar" MaxLength="50" />
+    <Property Name="p12" Type="varchar" MaxLength="50" />
+    <Property Name="p13" Type="varchar" MaxLength="50" />
+    <Property Name="p14" Type="varchar" MaxLength="50" />
+    <Property Name="p15" Type="varchar" MaxLength="50" />
+    <Property Name="p16" Type="varchar" MaxLength="50" />
+    <Property Name="p17" Type="varchar" MaxLength="50" />
+    <Property Name="p18" Type="varchar" MaxLength="50" />
+    <Property Name="p19" Type="varchar" MaxLength="50" />
+    <Property Name="p20" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TL_NOTIFY">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NotifyType" Type="int" Nullable="false" />
+    <Property Name="NotifyMessage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateOperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CloseOperName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CloseTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TL_OPER">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperCode" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LogSite" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TL_TRANSACTION">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BillType" Type="int" Nullable="false" />
+    <Property Name="SubBillType" Type="int" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TS_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="OverdueDate" Type="datetime" Nullable="false" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateQty" Type="money" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TT_EQPT_TYPE">
+    <Key>
+      <PropertyRef Name="EqptType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EqptType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TT_GROUP_TYPE">
+    <Key>
+      <PropertyRef Name="GroupType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TT_LOC_TYPE">
+    <Key>
+      <PropertyRef Name="LocType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TT_PART_TYPE">
+    <Key>
+      <PropertyRef Name="PartType" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VS_IDLE_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_IDLE_STOCK_DETAIL">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+      <PropertyRef Name="ProduceDate" />
+    </Key>
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartType" Type="int" />
+    <Property Name="IdleDays" Type="int" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VS_OVERDUE_STOCK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_OVERDUE_STOCK">
+    <Key>
+      <PropertyRef Name="PartCode" />
+    </Key>
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TotalQty" Type="money" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartType" Type="int" />
+    <Property Name="ValidityDays" Type="int" />
+    <Property Name="ReceiveDate" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VS_STOCK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_STOCK">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+    </Key>
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartType" Type="int" />
+    <Property Name="MaxQty" Type="money" />
+    <Property Name="MinQty" Type="money" />
+    <Property Name="SafeQty" Type="money" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VS_STOCK_AGE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VS_STOCK_AGE">
+    <Key>
+      <PropertyRef Name="LocCode" />
+      <PropertyRef Name="PartCode" />
+      <PropertyRef Name="Batch" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitPrice" />
+      <PropertyRef Name="ProduceDate" />
+      <PropertyRef Name="OverdueDate" />
+    </Key>
+    <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="ProduceDate" Type="datetime" Nullable="false" />
+    <Property Name="OverdueDate" Type="datetime" Nullable="false" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="PartDesc1" Type="nvarchar(max)" />
+    <Property Name="PartDesc2" Type="nvarchar(max)" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="BM" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartType" Type="int" />
+  </EntityType>
+  <EntityContainer Name="SpareModelStoreContainer">
+    <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_DEPT" EntityType="Self.TA_DEPT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_EQUIPMENT" EntityType="Self.TA_EQUIPMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_PART" EntityType="Self.TA_PART" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_PROJECT" EntityType="Self.TA_PROJECT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_GROUP" EntityType="Self.TA_STORE_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_LOCATION" EntityType="Self.TA_STORE_LOCATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_STORE_WHSE" EntityType="Self.TA_STORE_WHSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_SUB_BILLTYPE" EntityType="Self.TA_SUB_BILLTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_SUPERLIER" EntityType="Self.TA_SUPERLIER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_UNIT" EntityType="Self.TA_UNIT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_WORKLINE" EntityType="Self.TA_WORKLINE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_ASK" EntityType="Self.TB_ASK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_BILL" EntityType="Self.TB_BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_IN" EntityType="Self.TB_IN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="Self.TB_INVENTORY_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_INVENTORY_LOC" EntityType="Self.TB_INVENTORY_LOC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_OTHER_IN" EntityType="Self.TB_OTHER_IN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_OUT" EntityType="Self.TB_OUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PO" EntityType="Self.TB_PO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_RETURN" EntityType="Self.TB_RETURN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_STOCK_MOVE" EntityType="Self.TB_STOCK_MOVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_BASEDATA" EntityType="Self.TL_BASEDATA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_BILL" EntityType="Self.TL_BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_INTERFACE" EntityType="Self.TL_INTERFACE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_NOTIFY" EntityType="Self.TL_NOTIFY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_STOCK_DETAIL" EntityType="Self.TS_STOCK_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_EQPT_TYPE" EntityType="Self.TT_EQPT_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TT_PART_TYPE" EntityType="Self.TT_PART_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_OTHER_OUT].[UID] AS [UID], 
+    [TB_OTHER_OUT].[BillNum] AS [BillNum], 
+    [TB_OTHER_OUT].[PartCode] AS [PartCode], 
+    [TB_OTHER_OUT].[Batch] AS [Batch], 
+    [TB_OTHER_OUT].[FromLocCode] AS [FromLocCode], 
+    [TB_OTHER_OUT].[Qty] AS [Qty], 
+    [TB_OTHER_OUT].[UnitPrice] AS [UnitPrice], 
+    [TB_OTHER_OUT].[Remark] AS [Remark]
+    FROM [dbo].[TB_OTHER_OUT] AS [TB_OTHER_OUT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="Self.VS_IDLE_STOCK_DETAIL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_IDLE_STOCK_DETAIL].[LocCode] AS [LocCode], 
+    [VS_IDLE_STOCK_DETAIL].[PartCode] AS [PartCode], 
+    [VS_IDLE_STOCK_DETAIL].[Batch] AS [Batch], 
+    [VS_IDLE_STOCK_DETAIL].[Qty] AS [Qty], 
+    [VS_IDLE_STOCK_DETAIL].[UnitPrice] AS [UnitPrice], 
+    [VS_IDLE_STOCK_DETAIL].[PartDesc1] AS [PartDesc1], 
+    [VS_IDLE_STOCK_DETAIL].[PartDesc2] AS [PartDesc2], 
+    [VS_IDLE_STOCK_DETAIL].[Unit] AS [Unit], 
+    [VS_IDLE_STOCK_DETAIL].[BM] AS [BM], 
+    [VS_IDLE_STOCK_DETAIL].[PartType] AS [PartType], 
+    [VS_IDLE_STOCK_DETAIL].[IdleDays] AS [IdleDays], 
+    [VS_IDLE_STOCK_DETAIL].[ReceiveDate] AS [ReceiveDate], 
+    [VS_IDLE_STOCK_DETAIL].[ProduceDate] AS [ProduceDate]
+    FROM [dbo].[VS_IDLE_STOCK_DETAIL] AS [VS_IDLE_STOCK_DETAIL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_OVERDUE_STOCK" EntityType="Self.VS_OVERDUE_STOCK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_OVERDUE_STOCK].[PartCode] AS [PartCode], 
+    [VS_OVERDUE_STOCK].[TotalQty] AS [TotalQty], 
+    [VS_OVERDUE_STOCK].[PartDesc1] AS [PartDesc1], 
+    [VS_OVERDUE_STOCK].[PartDesc2] AS [PartDesc2], 
+    [VS_OVERDUE_STOCK].[Unit] AS [Unit], 
+    [VS_OVERDUE_STOCK].[BM] AS [BM], 
+    [VS_OVERDUE_STOCK].[PartType] AS [PartType], 
+    [VS_OVERDUE_STOCK].[ValidityDays] AS [ValidityDays], 
+    [VS_OVERDUE_STOCK].[ReceiveDate] AS [ReceiveDate]
+    FROM [dbo].[VS_OVERDUE_STOCK] AS [VS_OVERDUE_STOCK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_STOCK" EntityType="Self.VS_STOCK" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_STOCK].[LocCode] AS [LocCode], 
+    [VS_STOCK].[PartCode] AS [PartCode], 
+    [VS_STOCK].[Qty] AS [Qty], 
+    [VS_STOCK].[UnitPrice] AS [UnitPrice], 
+    [VS_STOCK].[Amount] AS [Amount], 
+    [VS_STOCK].[PartDesc1] AS [PartDesc1], 
+    [VS_STOCK].[PartDesc2] AS [PartDesc2], 
+    [VS_STOCK].[Unit] AS [Unit], 
+    [VS_STOCK].[BM] AS [BM], 
+    [VS_STOCK].[PartType] AS [PartType], 
+    [VS_STOCK].[MaxQty] AS [MaxQty], 
+    [VS_STOCK].[MinQty] AS [MinQty], 
+    [VS_STOCK].[SafeQty] AS [SafeQty]
+    FROM [dbo].[VS_STOCK] AS [VS_STOCK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VS_STOCK_AGE" EntityType="Self.VS_STOCK_AGE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VS_STOCK_AGE].[LocCode] AS [LocCode], 
+    [VS_STOCK_AGE].[PartCode] AS [PartCode], 
+    [VS_STOCK_AGE].[Batch] AS [Batch], 
+    [VS_STOCK_AGE].[Qty] AS [Qty], 
+    [VS_STOCK_AGE].[UnitPrice] AS [UnitPrice], 
+    [VS_STOCK_AGE].[ProduceDate] AS [ProduceDate], 
+    [VS_STOCK_AGE].[OverdueDate] AS [OverdueDate], 
+    [VS_STOCK_AGE].[ReceiveDate] AS [ReceiveDate], 
+    [VS_STOCK_AGE].[PartDesc1] AS [PartDesc1], 
+    [VS_STOCK_AGE].[PartDesc2] AS [PartDesc2], 
+    [VS_STOCK_AGE].[Unit] AS [Unit], 
+    [VS_STOCK_AGE].[BM] AS [BM], 
+    [VS_STOCK_AGE].[PartType] AS [PartType]
+    FROM [dbo].[VS_STOCK_AGE] AS [VS_STOCK_AGE]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

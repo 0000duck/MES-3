@@ -56,9 +56,9 @@ namespace ChangKeTec.Wms.Controllers.Bill
             foreach (TB_INVENTORY_DETAIL detail in details)
             {
                StoreLocationController.UnLock(db, detail.CheckLocCode);//解锁库位
-             
 
-                if (detail.DiffQty == 0) continue;
+                var diffqty = detail.BookQty - detail.CheckQty;
+                if (diffqty == 0) continue;
                 //                if (!string.IsNullOrEmpty(detail.BookLocCode))
                 //                {
                 //                    detail.BookLocCode =
@@ -70,23 +70,16 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 //                    var stockIn = detail.ToStockIn();
                 //                    stockInList.Add(stockIn);
                 //                }
-                if (String.IsNullOrEmpty(detail.BookLocCode))
-                    detail.BookLocCode = "OTHER";
                 var stockMove = detail.ToStockMove();
-                if (detail.DiffQty < 0)
+                if (diffqty < 0)
                 {
                     stockMove.FromLocCode = stockMove.ToLocCode;
                     stockMove.ToLocCode = "OTHER";
-                    stockMove.Qty = -detail.DiffQty;
+                    stockMove.Qty = -diffqty;
                 }
                 stockMoveList.Add(stockMove);
             }
             StockDetailController.ListMove(db,bill,stockMoveList);//盘点差异执行移库
-            //TODO 创建ERP接口
-            foreach (var detail in stockMoveList)
-            {
-                ErpInterfaceController.CreateTR(db, detail.PartCode, detail.Qty, detail.FromLocCode, detail.ToLocCode, detail.Batch, detail.Batch, bill.BillNum, (BillType)(bill.BillType), bill.BillTime);
-            }
 
            
         }
@@ -154,9 +147,9 @@ namespace ChangKeTec.Wms.Controllers.Bill
             return db.TB_INVENTORY_LOC.Where(p => p.BillNum == billNum).ToList();
         }
 
-        public static List<TB_INVENTORY_DETAIL> GetDetail(SpareEntities db, string billNum,string locCode)
+        public static List<TB_INVENTORY_DETAIL> GetDetail(SpareEntities db, string billNum)
         {
-            return db.TB_INVENTORY_DETAIL.Where(p => p.BillNum == billNum && p.BookLocCode == locCode).ToList();
+            return db.TB_INVENTORY_DETAIL.Where(p => p.BillNum == billNum).ToList();
         }
 
         public static List<TB_INVENTORY_DETAIL> GetDetailList(SpareEntities db, string billNum)
@@ -174,12 +167,9 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 BillNum = vdetail.BillNum ?? "",
                 PartCode = vdetail.PartCode,
                 Batch = vdetail.Batch,
-                EqptCode = vdetail.EqptCode,
                 BookQty = vdetail.BookQty,
                 CheckQty = vdetail.CheckQty,
-                DiffQty = vdetail.DiffQty,
                 CheckLocCode = vdetail.CheckLocCode,
-                ReCheckQty = vdetail.ReCheckQty
             }).ToList();
             db.TB_INVENTORY_DETAIL.AddRange(list);
         }
@@ -192,12 +182,9 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 BillNum = vdetail.BillNum ?? "",
                 PartCode = vdetail.PartCode,
                 Batch = vdetail.Batch,
-                EqptCode = vdetail.EqptCode,
                 BookQty = vdetail.BookQty,
                 CheckQty = vdetail.CheckQty,
-                DiffQty = vdetail.DiffQty,
                 CheckLocCode = vdetail.CheckLocCode,
-                ReCheckQty = vdetail.ReCheckQty
             }).ToList();
             db.TB_INVENTORY_DETAIL.AddOrUpdate(p => p.UID, list.ToArray());
         }

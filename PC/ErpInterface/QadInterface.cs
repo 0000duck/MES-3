@@ -287,7 +287,6 @@ namespace ChangKeTec.Wms.ErpInterface
                 }
                 try
                 {
-                    ErpInterfaceController.AddHisList(db, sumList);
                     ErpInterfaceController.RemoveList(db, list);
                     EntitiesFactory.SaveDb(db);
                 }
@@ -430,7 +429,7 @@ namespace ChangKeTec.Wms.ErpInterface
                     }
                     try
                     {
-                        ErpInterfaceController.UpdateList(db, list);
+//                        ErpInterfaceController.UpdateList(db, list);
                         EntitiesFactory.SaveDb(db);
                     }
                     catch (WmsException ex)
@@ -596,22 +595,7 @@ namespace ChangKeTec.Wms.ErpInterface
 //                    //                    Console.WriteLine(strErr + " barCode重复" + Environment.NewLine + "\t\t\t\t" + data);
 //                    continue;
 //                }
-                var stock = new VS_STOCK
-                {
-//                    VinCode = barCode,
-                    LocCode = locCode,
-                    PartCode = cols[2].ToUpper(),
-                    Batch = cols[3].ToUpper(),
-                    RefCode = cols[4].ToUpper(),
-                    Qty = Convert.ToInt32(cols[5]),
-                    UpdateTime = DateTime.Now
-                };
-                if (stock.Qty != 1)
-                {
-                    Console.WriteLine(strErr + " 数量错误" + Environment.NewLine + "\t\t\t\t" + data);
-                    continue;
-                }
-                newStockList.Add(stock);
+            
             }
 //            StockController.Update(db, newStockList);
             Console.WriteLine(@"新增库存数据 " + newStockList.Count);
@@ -646,7 +630,6 @@ namespace ChangKeTec.Wms.ErpInterface
                 {
                     ErpPartCode = partCode,
                     State = (int)DataState.Enabled,
-                    ContainerQty = 0,
                     MaxQty = 0,
                     MinQty = 0,
                     SafeQty = 0
@@ -660,8 +643,6 @@ namespace ChangKeTec.Wms.ErpInterface
                 part.PartDesc1 = cols[1];
                 part.PartDesc2 = cols[2];
                 part.BM = cols[3];
-                part.ProjectId = cols[4];
-                part.PartKind = cols[4];
                 part.Unit = cols[5];
 
                 partList.Add(part);

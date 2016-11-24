@@ -1,0 +1,14 @@
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\Wms.Models.dll.config
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\Wms.Models.dll
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\Wms.Models.pdb
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\EntityFramework.dll
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\Wms.Util.dll
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\Wms.Util.pdb
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\EntityFramework.xml
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Work\Spare.CcFjc\PC\Models\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Work\Spare.CcFjc\PC\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Work\Spare.CcFjc\PC\Models\obj\Debug\Wms.Models.dll
+C:\Work\Spare.CcFjc\PC\Models\obj\Debug\Wms.Models.pdb

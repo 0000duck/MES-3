@@ -48,8 +48,6 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             report.ParameterByName("BillTime").AsString = locBill.BillTime.ToString(GlobalVar.LongTimeString);
             report.ParameterByName("CheckBeginTime").AsString = locBill.CheckBeginTime;
             report.ParameterByName("CheckEndTime").AsString = locBill.CheckEndTime;
-            report.ParameterByName("ReCheckBeginTime").AsString = locBill.ReCheckBeginTime;
-            report.ParameterByName("ReCheckEndTime").AsString = locBill.ReCheckEndTime;
             report.ParameterByName("OperName").AsString = locBill.OperName;
             report.ParameterByName("State").AsString = locBill.State.ToString();
             report.ParameterByName("Remark").AsString = locBill.Remark;
@@ -82,9 +80,9 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetLocDataSource(string billnum)
         {
             int count;
-            Expression<Func<VIEW_INVENTORY_LOC, dynamic>> select =c => c;
-            Expression<Func<VIEW_INVENTORY_LOC, bool>> where = c => c.单据号==billnum;
-            Expression<Func<VIEW_INVENTORY_LOC, long>> order = c => c.UID;
+            Expression<Func<TB_INVENTORY_LOC, dynamic>> select =c => c;
+            Expression<Func<TB_INVENTORY_LOC, bool>> where = c => c.BillNum==billnum;
+            Expression<Func<TB_INVENTORY_LOC, long>> order = c => c.UID;
                 
             _list = EniitiesHelper.GetData(_db,
                 @select,
@@ -108,9 +106,9 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billNum, string locCode)
         {
             int count;
-            Expression<Func<VIEW_INVENTORY_DETAIL, dynamic>> select = c => c;
-            Expression<Func<VIEW_INVENTORY_DETAIL, bool>> where = c => c.单据号 == billNum && c.盘点库位==locCode;
-            Expression<Func<VIEW_INVENTORY_DETAIL, long>> order = c => c.UID;
+            Expression<Func<TB_INVENTORY_DETAIL, dynamic>> select = c => c;
+            Expression<Func<TB_INVENTORY_DETAIL, bool>> where = c => c.BillNum == billNum && c.CheckLocCode==locCode;
+            Expression<Func<TB_INVENTORY_DETAIL, long>> order = c => c.UID;
 
             grid.Detail1DataSource = EniitiesHelper.GetData(_db,
                 select,

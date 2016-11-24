@@ -36,3 +36,11 @@ C:\Work\Wms.CsAntolin\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.Properti
 C:\Work\Wms.CsAntolin\PC\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
 C:\Work\Wms.CsAntolin\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.exe
 C:\Work\Wms.CsAntolin\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.pdb
+C:\Work\Spare.CcFjc\PC\AutoUpdate\bin\Debug\Wms.AutoUpdate.exe.config
+C:\Work\Spare.CcFjc\PC\AutoUpdate\bin\Debug\Wms.AutoUpdate.exe
+C:\Work\Spare.CcFjc\PC\AutoUpdate\bin\Debug\Wms.AutoUpdate.pdb
+C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.FormAutoUpdate.resources
+C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.Properties.Resources.resources
+C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
+C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.exe
+C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.pdb

@@ -50,7 +50,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             try
             {
-                List<TB_ASK> detailList = (from VIEW_MATERIAL_ASK d in _list select d.ToTable()).ToList();
+                List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
                 BillHandler.AddMaterialAsk(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
@@ -64,9 +64,9 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billnum)
         {
             int count;
-            Expression<Func<VIEW_MATERIAL_ASK, dynamic>> select =c => c;
-            Expression<Func<VIEW_MATERIAL_ASK, bool>> where = c => c.单据号==billnum;
-            Expression<Func<VIEW_MATERIAL_ASK, long>> order = c => c.UID;
+            Expression<Func<TB_ASK, dynamic>> select =c => c;
+            Expression<Func<TB_ASK, bool>> where = c => c.BillNum==billnum;
+            Expression<Func<TB_ASK, long>> order = c => c.UID;
             _list = EniitiesHelper.GetData(_db,
                 select,
                 where,
