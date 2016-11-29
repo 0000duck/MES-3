@@ -146,11 +146,11 @@
     <Compile Include="BaseData\FormStoreGroup.Designer.cs">
       <DependentUpon>FormStoreGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bills\FormOtherIn - 复制.cs">
+    <Compile Include="Bills\FormOtherOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bills\FormOtherIn - 复制.designer.cs">
-      <DependentUpon>FormOtherIn - 复制.cs</DependentUpon>
+    <Compile Include="Bills\FormOtherOut.designer.cs">
+      <DependentUpon>FormOtherOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Bills\FormProductReturn.cs">
       <SubType>Form</SubType>
@@ -355,8 +355,8 @@
       <DependentUpon>FormStoreGroup.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bills\FormOtherIn - 复制.resx">
-      <DependentUpon>FormOtherIn - 复制.cs</DependentUpon>
+    <EmbeddedResource Include="Bills\FormOtherOut.resx">
+      <DependentUpon>FormOtherOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bills\FormProductReturn.resx">
       <DependentUpon>FormProductReturn.cs</DependentUpon>
