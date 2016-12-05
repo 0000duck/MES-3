@@ -183,7 +183,7 @@
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TL_BASEDATA.cs">
-      <DependentUpon>ModelSpare.tt</DependentUpon>
+      <DependentUpon>ModelPower.tt</DependentUpon>
     </Compile>
     <Compile Include="TL_BILL.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>

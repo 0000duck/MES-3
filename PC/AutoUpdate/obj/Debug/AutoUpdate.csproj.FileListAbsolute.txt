@@ -44,3 +44,12 @@ C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.Properties
 C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
 C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.exe
 C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.pdb
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\bin\Debug\Wms.AutoUpdate.exe.config
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\bin\Debug\Wms.AutoUpdate.exe
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\bin\Debug\Wms.AutoUpdate.pdb
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\AutoUpdate.csprojResolveAssemblyReference.cache
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.FormAutoUpdate.resources
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.Properties.Resources.resources
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.exe
+D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.pdb

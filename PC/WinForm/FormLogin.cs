@@ -51,9 +51,6 @@ namespace ChangKeTec.Wms.WinForm
 
                 using (SpareEntities wmsdb = EntitiesFactory.CreateWmsInstance())
                 {
-
-
-
                     OperLogController.AddLog(wmsdb, LogType.Login, oper.OperName, operCode, "登录成功");
                     EntitiesFactory.SaveDb(wmsdb);
                     GlobalVar.InitGlobalVar(wmsdb, GlobalVar.Oper);

@@ -64,7 +64,7 @@ namespace ChangKeTec.Wms.WinForm
 
         private void InitMenu()
         {
-            var menuList = GlobalVar.PowerMenuList.Where(p=>p.IsVisible&&p.State==(int)DataState.Enabled).ToList();
+            var menuList = GlobalVar.PowerMenuList.Where(p=>p.IsVisible).ToList();
             RibbonMain.Items.Clear();
             RibbonMain.Items.Add(t1);
             

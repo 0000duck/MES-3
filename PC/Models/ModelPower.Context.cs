@@ -25,6 +25,7 @@ namespace ChangKeTec.Wms.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<TA_MENU> TA_MENU { get; set; }
         public virtual DbSet<TL_BASEDATA> TL_BASEDATA { get; set; }
         public virtual DbSet<TS_BUTTON> TS_BUTTON { get; set; }
         public virtual DbSet<TS_DEPT> TS_DEPT { get; set; }
@@ -36,7 +37,6 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<TS_ROLE_NOTIFYTYPE> TS_ROLE_NOTIFYTYPE { get; set; }
         public virtual DbSet<TS_ROLE_POWER> TS_ROLE_POWER { get; set; }
         public virtual DbSet<VS_OPER_ROLE> VS_OPER_ROLE { get; set; }
-        public virtual DbSet<TA_MENU> TA_MENU { get; set; }
         public virtual DbSet<VS_POWER_MENU> VS_POWER_MENU { get; set; }
     }
 }

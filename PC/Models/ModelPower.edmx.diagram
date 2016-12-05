@@ -5,6 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cd8a925c80fb4453aefe650d0813c242" Name="Diagram1">
+        <EntityTypeShape EntityType="PowerModel.TA_MENU" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PowerModel.TL_BASEDATA" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="PowerModel.TS_BUTTON" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="PowerModel.TS_DEPT" Width="1.5" PointX="2.75" PointY="4.75" />
@@ -15,9 +16,8 @@
         <EntityTypeShape EntityType="PowerModel.TS_ROLE" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="PowerModel.TS_ROLE_NOTIFYTYPE" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="PowerModel.TS_ROLE_POWER" Width="1.5" PointX="2.75" PointY="8.75" />
-        <EntityTypeShape EntityType="PowerModel.VS_OPER_ROLE" Width="1.5" PointX="5.375" PointY="9.75" />
-        <EntityTypeShape EntityType="PowerModel.TA_MENU" Width="1.5" PointX="9.375" PointY="3.75" />
-        <EntityTypeShape EntityType="PowerModel.VS_POWER_MENU" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="PowerModel.VS_OPER_ROLE" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PowerModel.VS_POWER_MENU" Width="1.5" PointX="8.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
