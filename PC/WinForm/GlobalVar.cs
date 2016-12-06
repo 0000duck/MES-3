@@ -51,7 +51,7 @@ namespace ChangKeTec.Wms.WinForm
             Oper = oper;
 
             ConfigList = ConfigController.GetList(db);
-            GetConfig();
+            //GetConfig();
 
 
         }

@@ -150,12 +150,13 @@ namespace ChangKeTec.Wms.Controllers
                         if (poDetail == null)
                             throw new WmsException(ResultCode.DataNotFound, detail.BillNum,
                                 "订单明细不存在" + "\t" + detail.PartCode);
-                        if (poDetail.OpenQty < detail.Qty)
-                            throw new WmsException(ResultCode.DataQtyError, detail.BillNum,
-                                "收货数量超出订单剩余数量" + "\t" + detail.PartCode + "\t" + detail.Qty + "<->" + poDetail.OpenQty);
+//                        if (poDetail.OpenQty < detail.Qty)
+//                            throw new WmsException(ResultCode.DataQtyError, detail.BillNum,
+//                                "收货数量超出订单剩余数量" + "\t" + detail.PartCode + "\t" + detail.Qty + "<->" + poDetail.OpenQty);
                         //更新订单收货数量
-                        poDetail.OpenQty -= detail.Qty;
-                        poDetail.ClosedQty += detail.Qty;
+                        //poDetail.OpenQty -= detail.Qty;
+                        //poDetail.ClosedQty += detail.Qty;
+                        poDetail.ArrialQty += detail.Qty;
                     }
 
                     SetBillNum(bill); //设置单据编号

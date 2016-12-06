@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="TA_BILLTYPE">
     <Key>
       <PropertyRef Name="BillType" />
@@ -307,17 +307,14 @@
   <EntityType Name="TB_PO">
     <Key>
       <PropertyRef Name="BillNum" />
-      <PropertyRef Name="LineNum" />
+      <PropertyRef Name="Line" />
     </Key>
     <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LineNum" Type="int" Nullable="false" />
+    <Property Name="Line" Type="int" Nullable="false" />
     <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="BillQty" Type="money" Nullable="false" />
-    <Property Name="OpenQty" Type="money" Nullable="false" />
-    <Property Name="ClosedQty" Type="money" Nullable="false" />
-    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="ArrialQty" Type="money" Nullable="false" />
     <Property Name="State" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>
@@ -518,6 +515,7 @@
       <PropertyRef Name="Batch" />
       <PropertyRef Name="Qty" />
       <PropertyRef Name="UnitPrice" />
+      <PropertyRef Name="ReceiveDate" />
       <PropertyRef Name="ProduceDate" />
     </Key>
     <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -531,7 +529,7 @@
     <Property Name="BM" Type="nvarchar" MaxLength="50" />
     <Property Name="PartType" Type="int" />
     <Property Name="IdleDays" Type="int" />
-    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
     <Property Name="ProduceDate" Type="datetime" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
@@ -539,6 +537,7 @@
   <EntityType Name="VS_OVERDUE_STOCK">
     <Key>
       <PropertyRef Name="PartCode" />
+      <PropertyRef Name="ReceiveDate" />
     </Key>
     <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TotalQty" Type="money" />
@@ -548,7 +547,7 @@
     <Property Name="BM" Type="nvarchar" MaxLength="50" />
     <Property Name="PartType" Type="int" />
     <Property Name="ValidityDays" Type="int" />
-    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VS_STOCK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -584,6 +583,7 @@
       <PropertyRef Name="UnitPrice" />
       <PropertyRef Name="ProduceDate" />
       <PropertyRef Name="OverdueDate" />
+      <PropertyRef Name="ReceiveDate" />
     </Key>
     <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -592,7 +592,7 @@
     <Property Name="UnitPrice" Type="money" Nullable="false" />
     <Property Name="ProduceDate" Type="datetime" Nullable="false" />
     <Property Name="OverdueDate" Type="datetime" Nullable="false" />
-    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
     <Property Name="PartDesc1" Type="nvarchar(max)" />
     <Property Name="PartDesc2" Type="nvarchar(max)" />
     <Property Name="Unit" Type="nvarchar" MaxLength="50" />

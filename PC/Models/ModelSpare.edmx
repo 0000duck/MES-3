@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TA_BILLTYPE">
           <Key>
             <PropertyRef Name="BillType" />
@@ -312,17 +312,14 @@
         <EntityType Name="TB_PO">
           <Key>
             <PropertyRef Name="BillNum" />
-            <PropertyRef Name="LineNum" />
+            <PropertyRef Name="Line" />
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LineNum" Type="int" Nullable="false" />
+          <Property Name="Line" Type="int" Nullable="false" />
           <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="BillQty" Type="money" Nullable="false" />
-          <Property Name="OpenQty" Type="money" Nullable="false" />
-          <Property Name="ClosedQty" Type="money" Nullable="false" />
-          <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="ArrialQty" Type="money" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
@@ -523,6 +520,7 @@
             <PropertyRef Name="Batch" />
             <PropertyRef Name="Qty" />
             <PropertyRef Name="UnitPrice" />
+            <PropertyRef Name="ReceiveDate" />
             <PropertyRef Name="ProduceDate" />
           </Key>
           <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -536,7 +534,7 @@
           <Property Name="BM" Type="nvarchar" MaxLength="50" />
           <Property Name="PartType" Type="int" />
           <Property Name="IdleDays" Type="int" />
-          <Property Name="ReceiveDate" Type="datetime" />
+          <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
           <Property Name="ProduceDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
@@ -544,6 +542,7 @@
         <EntityType Name="VS_OVERDUE_STOCK">
           <Key>
             <PropertyRef Name="PartCode" />
+            <PropertyRef Name="ReceiveDate" />
           </Key>
           <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalQty" Type="money" />
@@ -553,7 +552,7 @@
           <Property Name="BM" Type="nvarchar" MaxLength="50" />
           <Property Name="PartType" Type="int" />
           <Property Name="ValidityDays" Type="int" />
-          <Property Name="ReceiveDate" Type="datetime" />
+          <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VS_STOCK”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -589,6 +588,7 @@
             <PropertyRef Name="UnitPrice" />
             <PropertyRef Name="ProduceDate" />
             <PropertyRef Name="OverdueDate" />
+            <PropertyRef Name="ReceiveDate" />
           </Key>
           <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -597,7 +597,7 @@
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="ProduceDate" Type="datetime" Nullable="false" />
           <Property Name="OverdueDate" Type="datetime" Nullable="false" />
-          <Property Name="ReceiveDate" Type="datetime" />
+          <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
           <Property Name="PartDesc1" Type="nvarchar(max)" />
           <Property Name="PartDesc2" Type="nvarchar(max)" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" />
@@ -720,17 +720,58 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SpareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SpareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TA_BILLTYPE" EntityType="SpareModel.TA_BILLTYPE" />
+          <EntitySet Name="TA_CONFIG" EntityType="SpareModel.TA_CONFIG" />
+          <EntitySet Name="TA_DEPT" EntityType="SpareModel.TA_DEPT" />
+          <EntitySet Name="TA_EQUIPMENT" EntityType="SpareModel.TA_EQUIPMENT" />
+          <EntitySet Name="TA_PART" EntityType="SpareModel.TA_PART" />
+          <EntitySet Name="TA_PROJECT" EntityType="SpareModel.TA_PROJECT" />
+          <EntitySet Name="TA_STORE_GROUP" EntityType="SpareModel.TA_STORE_GROUP" />
+          <EntitySet Name="TA_STORE_LOCATION" EntityType="SpareModel.TA_STORE_LOCATION" />
+          <EntitySet Name="TA_STORE_WHSE" EntityType="SpareModel.TA_STORE_WHSE" />
+          <EntitySet Name="TA_SUB_BILLTYPE" EntityType="SpareModel.TA_SUB_BILLTYPE" />
+          <EntitySet Name="TA_SUPERLIER" EntityType="SpareModel.TA_SUPERLIER" />
+          <EntitySet Name="TA_UNIT" EntityType="SpareModel.TA_UNIT" />
+          <EntitySet Name="TA_WORKLINE" EntityType="SpareModel.TA_WORKLINE" />
+          <EntitySet Name="TB_ASK" EntityType="SpareModel.TB_ASK" />
+          <EntitySet Name="TB_BILL" EntityType="SpareModel.TB_BILL" />
+          <EntitySet Name="TB_IN" EntityType="SpareModel.TB_IN" />
+          <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="SpareModel.TB_INVENTORY_DETAIL" />
+          <EntitySet Name="TB_INVENTORY_LOC" EntityType="SpareModel.TB_INVENTORY_LOC" />
+          <EntitySet Name="TB_OTHER_IN" EntityType="SpareModel.TB_OTHER_IN" />
+          <EntitySet Name="TB_OUT" EntityType="SpareModel.TB_OUT" />
+          <EntitySet Name="TB_PO" EntityType="SpareModel.TB_PO" />
+          <EntitySet Name="TB_RETURN" EntityType="SpareModel.TB_RETURN" />
+          <EntitySet Name="TB_STOCK_MOVE" EntityType="SpareModel.TB_STOCK_MOVE" />
+          <EntitySet Name="TL_BASEDATA" EntityType="SpareModel.TL_BASEDATA" />
+          <EntitySet Name="TL_BILL" EntityType="SpareModel.TL_BILL" />
+          <EntitySet Name="TL_INTERFACE" EntityType="SpareModel.TL_INTERFACE" />
+          <EntitySet Name="TL_NOTIFY" EntityType="SpareModel.TL_NOTIFY" />
+          <EntitySet Name="TL_OPER" EntityType="SpareModel.TL_OPER" />
+          <EntitySet Name="TL_TRANSACTION" EntityType="SpareModel.TL_TRANSACTION" />
+          <EntitySet Name="TS_STOCK_DETAIL" EntityType="SpareModel.TS_STOCK_DETAIL" />
+          <EntitySet Name="TT_EQPT_TYPE" EntityType="SpareModel.TT_EQPT_TYPE" />
+          <EntitySet Name="TT_GROUP_TYPE" EntityType="SpareModel.TT_GROUP_TYPE" />
+          <EntitySet Name="TT_LOC_TYPE" EntityType="SpareModel.TT_LOC_TYPE" />
+          <EntitySet Name="TT_PART_TYPE" EntityType="SpareModel.TT_PART_TYPE" />
+          <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
+          <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" />
+          <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
+          <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
+          <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
+        </EntityContainer>
         <EntityType Name="TA_BILLTYPE">
           <Key>
             <PropertyRef Name="BillType" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BillType" Type="Int32" Nullable="false" />
-          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BillNumRule" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prefix" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillNumRule" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="LastNumber" Type="Int32" Nullable="false" />
           <Property Name="LastBillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastBillTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -742,8 +783,8 @@
             <PropertyRef Name="ParamName" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ParamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ParamValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParamName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -752,7 +793,7 @@
             <PropertyRef Name="DeptCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -762,9 +803,9 @@
             <PropertyRef Name="EqptCode" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EqptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EqptType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EqptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EqptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EqptType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EqptModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EqptLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -777,18 +818,18 @@
             <PropertyRef Name="PartCode" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ErpPartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartDesc1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PartDesc2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PartType" Type="Int32" Nullable="false" />
-          <Property Name="MaxQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="MinQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="SafeQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="MaxQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MinQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SafeQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="IdleDays" Type="Int32" Nullable="false" />
-          <Property Name="SplyPackQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SplyPackQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ValidityDays" Type="Int32" Nullable="false" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -799,7 +840,7 @@
             <PropertyRef Name="ProjectCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -809,11 +850,11 @@
             <PropertyRef Name="GroupCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GroupType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WhseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AreaCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -822,8 +863,8 @@
             <PropertyRef Name="LocCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WhseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LocType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
@@ -834,10 +875,10 @@
             <PropertyRef Name="WhseCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WhseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WhseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WhseAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WhseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhseAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="WhseType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -848,8 +889,8 @@
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubBillType" Type="Int32" Nullable="false" />
           <Property Name="BillType" Type="Int32" Nullable="false" />
-          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TA_SUPERLIER">
@@ -857,8 +898,8 @@
             <PropertyRef Name="SplyId" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SplyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SplyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SplyId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SplyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ErpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
           <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -874,7 +915,7 @@
             <PropertyRef Name="Unit" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remak" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TA_WORKLINE">
@@ -882,8 +923,8 @@
             <PropertyRef Name="WorklineCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WokrlineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorklineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WokrlineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -892,14 +933,14 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AskUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AskUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AskTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ConfirmUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ConfirmTime" Type="DateTime" Precision="3" />
@@ -911,14 +952,14 @@
             <PropertyRef Name="BillNum" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SourceBillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BillType" Type="Int32" Nullable="false" />
           <Property Name="SubBillType" Type="Int32" Nullable="false" />
           <Property Name="BillTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FinishTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SplyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -928,14 +969,14 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PoBillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PoBillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PoLineNum" Type="Int32" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ToLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -945,14 +986,14 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CheckLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BookQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="CheckQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="CheckTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CheckQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CheckTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TB_INVENTORY_LOC">
           <Key>
@@ -960,25 +1001,25 @@
             <PropertyRef Name="LocCode" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BillTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CheckBeginTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CheckEndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remark" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TB_OTHER_IN">
           <Key>
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ToLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ProduceDate" Type="DateTime" Precision="3" />
@@ -988,14 +1029,14 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FromLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="OutType" Type="Int32" Nullable="false" />
-          <Property Name="OutUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OutUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OutTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1007,17 +1048,14 @@
         <EntityType Name="TB_PO">
           <Key>
             <PropertyRef Name="BillNum" />
-            <PropertyRef Name="LineNum" />
+            <PropertyRef Name="Line" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LineNum" Type="Int32" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BillQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="OpenQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ClosedQty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Line" Type="Int32" Nullable="false" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ArrialQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -1026,13 +1064,13 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ToLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ReturnType" Type="Int32" Nullable="false" />
-          <Property Name="ReturnUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReturnUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ReturnTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1046,12 +1084,12 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FromLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ToLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ToLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TL_BASEDATA">
@@ -1059,12 +1097,12 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OperName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OldValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NewValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LogType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OldValue" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NewValue" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TL_BILL">
@@ -1072,10 +1110,10 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OperName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LogType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BillType" Type="Int32" Nullable="false" />
           <Property Name="SubBillType" Type="Int32" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1085,13 +1123,13 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InterfaceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InterfaceString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InterfaceType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InterfaceString" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ProcessTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="BillType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="pQty" Type="Int32" />
           <Property Name="p01" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1121,9 +1159,9 @@
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NotifyType" Type="Int32" Nullable="false" />
-          <Property Name="NotifyMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreateOperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NotifyMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateOperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CloseOperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CloseTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -1134,11 +1172,11 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OperCode" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperCode" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LogType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LogSite" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LogType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LogSite" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TL_TRANSACTION">
@@ -1146,191 +1184,18 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OperName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BillType" Type="Int32" Nullable="false" />
           <Property Name="SubBillType" Type="Int32" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TT_EQPT_TYPE">
-          <Key>
-            <PropertyRef Name="EqptType" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EqptType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TT_GROUP_TYPE">
-          <Key>
-            <PropertyRef Name="GroupType" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TT_LOC_TYPE">
-          <Key>
-            <PropertyRef Name="LocType" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TT_PART_TYPE">
-          <Key>
-            <PropertyRef Name="PartType" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TB_OTHER_OUT">
-          <Key>
-            <PropertyRef Name="UID" />
-            <PropertyRef Name="BillNum" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Batch" />
-            <PropertyRef Name="FromLocCode" />
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FromLocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VS_IDLE_STOCK_DETAIL">
-          <Key>
-            <PropertyRef Name="LocCode" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Batch" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="UnitPrice" />
-            <PropertyRef Name="ProduceDate" />
-          </Key>
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartType" Type="Int32" />
-          <Property Name="IdleDays" Type="Int32" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-          <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="VS_OVERDUE_STOCK">
-          <Key>
-            <PropertyRef Name="PartCode" />
-          </Key>
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TotalQty" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartType" Type="Int32" />
-          <Property Name="ValidityDays" Type="Int32" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="VS_STOCK">
-          <Key>
-            <PropertyRef Name="LocCode" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="UnitPrice" />
-          </Key>
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartType" Type="Int32" />
-          <Property Name="MaxQty" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="MinQty" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="SafeQty" Type="Decimal" Precision="19" Scale="4" />
-        </EntityType>
-        <EntityType Name="VS_STOCK_AGE">
-          <Key>
-            <PropertyRef Name="LocCode" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Batch" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="UnitPrice" />
-            <PropertyRef Name="ProduceDate" />
-            <PropertyRef Name="OverdueDate" />
-          </Key>
-          <Property Name="LocCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OverdueDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartType" Type="Int32" />
-        </EntityType>
-        <EntityContainer Name="SpareEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" />
-          <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" />
-          <EntitySet Name="TA_DEPT" EntityType="Self.TA_DEPT" />
-          <EntitySet Name="TA_EQUIPMENT" EntityType="Self.TA_EQUIPMENT" />
-          <EntitySet Name="TA_PART" EntityType="Self.TA_PART" />
-          <EntitySet Name="TA_PROJECT" EntityType="Self.TA_PROJECT" />
-          <EntitySet Name="TA_STORE_GROUP" EntityType="Self.TA_STORE_GROUP" />
-          <EntitySet Name="TA_STORE_LOCATION" EntityType="Self.TA_STORE_LOCATION" />
-          <EntitySet Name="TA_STORE_WHSE" EntityType="Self.TA_STORE_WHSE" />
-          <EntitySet Name="TA_SUB_BILLTYPE" EntityType="Self.TA_SUB_BILLTYPE" />
-          <EntitySet Name="TA_SUPERLIER" EntityType="Self.TA_SUPERLIER" />
-          <EntitySet Name="TA_UNIT" EntityType="Self.TA_UNIT" />
-          <EntitySet Name="TA_WORKLINE" EntityType="Self.TA_WORKLINE" />
-          <EntitySet Name="TB_ASK" EntityType="Self.TB_ASK" />
-          <EntitySet Name="TB_BILL" EntityType="Self.TB_BILL" />
-          <EntitySet Name="TB_IN" EntityType="Self.TB_IN" />
-          <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="Self.TB_INVENTORY_DETAIL" />
-          <EntitySet Name="TB_INVENTORY_LOC" EntityType="Self.TB_INVENTORY_LOC" />
-          <EntitySet Name="TB_OTHER_IN" EntityType="Self.TB_OTHER_IN" />
-          <EntitySet Name="TB_OUT" EntityType="Self.TB_OUT" />
-          <EntitySet Name="TB_PO" EntityType="Self.TB_PO" />
-          <EntitySet Name="TB_RETURN" EntityType="Self.TB_RETURN" />
-          <EntitySet Name="TB_STOCK_MOVE" EntityType="Self.TB_STOCK_MOVE" />
-          <EntitySet Name="TL_BASEDATA" EntityType="Self.TL_BASEDATA" />
-          <EntitySet Name="TL_BILL" EntityType="Self.TL_BILL" />
-          <EntitySet Name="TL_INTERFACE" EntityType="Self.TL_INTERFACE" />
-          <EntitySet Name="TL_NOTIFY" EntityType="Self.TL_NOTIFY" />
-          <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" />
-          <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" />
-          <EntitySet Name="TT_EQPT_TYPE" EntityType="Self.TT_EQPT_TYPE" />
-          <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" />
-          <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" />
-          <EntitySet Name="TT_PART_TYPE" EntityType="Self.TT_PART_TYPE" />
-          <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" />
-          <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="Self.VS_IDLE_STOCK_DETAIL" />
-          <EntitySet Name="VS_OVERDUE_STOCK" EntityType="Self.VS_OVERDUE_STOCK" />
-          <EntitySet Name="VS_STOCK" EntityType="Self.VS_STOCK" />
-          <EntitySet Name="VS_STOCK_AGE" EntityType="Self.VS_STOCK_AGE" />
-          <EntitySet Name="TS_STOCK_DETAIL" EntityType="SpareModel.TS_STOCK_DETAIL" />
-        </EntityContainer>
         <EntityType Name="TS_STOCK_DETAIL">
           <Key>
             <PropertyRef Name="LocCode" />
@@ -1350,6 +1215,141 @@
           <Property Name="UpdateQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="TT_EQPT_TYPE">
+          <Key>
+            <PropertyRef Name="EqptType" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EqptType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TT_GROUP_TYPE">
+          <Key>
+            <PropertyRef Name="GroupType" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TT_LOC_TYPE">
+          <Key>
+            <PropertyRef Name="LocType" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TT_PART_TYPE">
+          <Key>
+            <PropertyRef Name="PartType" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TB_OTHER_OUT">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="BillNum" />
+            <PropertyRef Name="PartCode" />
+            <PropertyRef Name="Batch" />
+            <PropertyRef Name="FromLocCode" />
+            <PropertyRef Name="Qty" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VS_IDLE_STOCK_DETAIL">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="PartCode" />
+            <PropertyRef Name="Batch" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="UnitPrice" />
+            <PropertyRef Name="ReceiveDate" />
+            <PropertyRef Name="ProduceDate" />
+          </Key>
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartType" Type="Int32" />
+          <Property Name="IdleDays" Type="Int32" />
+          <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VS_OVERDUE_STOCK">
+          <Key>
+            <PropertyRef Name="PartCode" />
+            <PropertyRef Name="ReceiveDate" />
+          </Key>
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalQty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartType" Type="Int32" />
+          <Property Name="ValidityDays" Type="Int32" />
+          <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VS_STOCK">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="PartCode" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="UnitPrice" />
+          </Key>
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartType" Type="Int32" />
+          <Property Name="MaxQty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MinQty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SafeQty" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="VS_STOCK_AGE">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="PartCode" />
+            <PropertyRef Name="Batch" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="UnitPrice" />
+            <PropertyRef Name="ProduceDate" />
+            <PropertyRef Name="OverdueDate" />
+            <PropertyRef Name="ReceiveDate" />
+          </Key>
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ProduceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OverdueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PartDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PartDesc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartType" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1359,266 +1359,266 @@
           <EntitySetMapping Name="TA_BILLTYPE">
             <EntityTypeMapping TypeName="SpareModel.TA_BILLTYPE">
               <MappingFragment StoreEntitySet="TA_BILLTYPE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
-                <ScalarProperty Name="BillNumRule" ColumnName="BillNumRule" />
-                <ScalarProperty Name="LastNumber" ColumnName="LastNumber" />
-                <ScalarProperty Name="LastBillNum" ColumnName="LastBillNum" />
-                <ScalarProperty Name="LastBillTime" ColumnName="LastBillTime" />
-                <ScalarProperty Name="PrintTemplateFileName" ColumnName="PrintTemplateFileName" />
                 <ScalarProperty Name="ImportTemplateFileName" ColumnName="ImportTemplateFileName" />
+                <ScalarProperty Name="PrintTemplateFileName" ColumnName="PrintTemplateFileName" />
+                <ScalarProperty Name="LastBillTime" ColumnName="LastBillTime" />
+                <ScalarProperty Name="LastBillNum" ColumnName="LastBillNum" />
+                <ScalarProperty Name="LastNumber" ColumnName="LastNumber" />
+                <ScalarProperty Name="BillNumRule" ColumnName="BillNumRule" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_CONFIG">
             <EntityTypeMapping TypeName="SpareModel.TA_CONFIG">
               <MappingFragment StoreEntitySet="TA_CONFIG">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="ParamName" ColumnName="ParamName" />
-                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+                <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_DEPT">
             <EntityTypeMapping TypeName="SpareModel.TA_DEPT">
               <MappingFragment StoreEntitySet="TA_DEPT">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_EQUIPMENT">
             <EntityTypeMapping TypeName="SpareModel.TA_EQUIPMENT">
               <MappingFragment StoreEntitySet="TA_EQUIPMENT">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
-                <ScalarProperty Name="EqptName" ColumnName="EqptName" />
-                <ScalarProperty Name="EqptType" ColumnName="EqptType" />
-                <ScalarProperty Name="EqptModel" ColumnName="EqptModel" />
-                <ScalarProperty Name="EqptLocation" ColumnName="EqptLocation" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="EqptManager" ColumnName="EqptManager" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="EqptManager" ColumnName="EqptManager" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="EqptLocation" ColumnName="EqptLocation" />
+                <ScalarProperty Name="EqptModel" ColumnName="EqptModel" />
+                <ScalarProperty Name="EqptType" ColumnName="EqptType" />
+                <ScalarProperty Name="EqptName" ColumnName="EqptName" />
+                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_PART">
             <EntityTypeMapping TypeName="SpareModel.TA_PART">
               <MappingFragment StoreEntitySet="TA_PART">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
-                <ScalarProperty Name="MinQty" ColumnName="MinQty" />
-                <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
-                <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
-                <ScalarProperty Name="SplyPackQty" ColumnName="SplyPackQty" />
-                <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
+                <ScalarProperty Name="SplyPackQty" ColumnName="SplyPackQty" />
+                <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
+                <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
+                <ScalarProperty Name="MinQty" ColumnName="MinQty" />
+                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="ErpPartCode" ColumnName="ErpPartCode" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_PROJECT">
             <EntityTypeMapping TypeName="SpareModel.TA_PROJECT">
               <MappingFragment StoreEntitySet="TA_PROJECT">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_STORE_GROUP">
             <EntityTypeMapping TypeName="SpareModel.TA_STORE_GROUP">
               <MappingFragment StoreEntitySet="TA_STORE_GROUP">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="GroupType" ColumnName="GroupType" />
-                <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
-                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+                <ScalarProperty Name="GroupType" ColumnName="GroupType" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_STORE_LOCATION">
             <EntityTypeMapping TypeName="SpareModel.TA_STORE_LOCATION">
               <MappingFragment StoreEntitySet="TA_STORE_LOCATION">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
-                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
-                <ScalarProperty Name="LocType" ColumnName="LocType" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="LocType" ColumnName="LocType" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_STORE_WHSE">
             <EntityTypeMapping TypeName="SpareModel.TA_STORE_WHSE">
               <MappingFragment StoreEntitySet="TA_STORE_WHSE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
-                <ScalarProperty Name="WhseName" ColumnName="WhseName" />
-                <ScalarProperty Name="WhseAddress" ColumnName="WhseAddress" />
-                <ScalarProperty Name="WhseType" ColumnName="WhseType" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="WhseType" ColumnName="WhseType" />
+                <ScalarProperty Name="WhseAddress" ColumnName="WhseAddress" />
+                <ScalarProperty Name="WhseName" ColumnName="WhseName" />
+                <ScalarProperty Name="WhseCode" ColumnName="WhseCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_SUB_BILLTYPE">
             <EntityTypeMapping TypeName="SpareModel.TA_SUB_BILLTYPE">
               <MappingFragment StoreEntitySet="TA_SUB_BILLTYPE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
                 <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_SUPERLIER">
             <EntityTypeMapping TypeName="SpareModel.TA_SUPERLIER">
               <MappingFragment StoreEntitySet="TA_SUPERLIER">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="SplyId" ColumnName="SplyId" />
-                <ScalarProperty Name="SplyName" ColumnName="SplyName" />
-                <ScalarProperty Name="ErpCode" ColumnName="ErpCode" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ErpCode" ColumnName="ErpCode" />
+                <ScalarProperty Name="SplyName" ColumnName="SplyName" />
+                <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_UNIT">
             <EntityTypeMapping TypeName="SpareModel.TA_UNIT">
               <MappingFragment StoreEntitySet="TA_UNIT">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Remak" ColumnName="Remak" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TA_WORKLINE">
             <EntityTypeMapping TypeName="SpareModel.TA_WORKLINE">
               <MappingFragment StoreEntitySet="TA_WORKLINE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
-                <ScalarProperty Name="WokrlineName" ColumnName="WokrlineName" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="WokrlineName" ColumnName="WokrlineName" />
+                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_ASK">
             <EntityTypeMapping TypeName="SpareModel.TB_ASK">
               <MappingFragment StoreEntitySet="TB_ASK">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
-                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
-                <ScalarProperty Name="AskUser" ColumnName="AskUser" />
-                <ScalarProperty Name="AskTime" ColumnName="AskTime" />
-                <ScalarProperty Name="ConfirmUser" ColumnName="ConfirmUser" />
-                <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
+                <ScalarProperty Name="ConfirmUser" ColumnName="ConfirmUser" />
+                <ScalarProperty Name="AskTime" ColumnName="AskTime" />
+                <ScalarProperty Name="AskUser" ColumnName="AskUser" />
+                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_BILL">
             <EntityTypeMapping TypeName="SpareModel.TB_BILL">
               <MappingFragment StoreEntitySet="TB_BILL">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="SourceBillNum" ColumnName="SourceBillNum" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
-                <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
-                <ScalarProperty Name="BillTime" ColumnName="BillTime" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="SplyId" ColumnName="SplyId" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="SplyId" ColumnName="SplyId" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+                <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="SourceBillNum" ColumnName="SourceBillNum" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_IN">
             <EntityTypeMapping TypeName="SpareModel.TB_IN">
               <MappingFragment StoreEntitySet="TB_IN">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
-                <ScalarProperty Name="PoLineNum" ColumnName="PoLineNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="PoLineNum" ColumnName="PoLineNum" />
+                <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_INVENTORY_DETAIL">
             <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
               <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="BookQty" ColumnName="BookQty" />
-                <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
-                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
                 <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+                <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
+                <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_INVENTORY_LOC">
             <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_LOC">
               <MappingFragment StoreEntitySet="TB_INVENTORY_LOC">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="BillTime" ColumnName="BillTime" />
-                <ScalarProperty Name="CheckBeginTime" ColumnName="CheckBeginTime" />
-                <ScalarProperty Name="CheckEndTime" ColumnName="CheckEndTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CheckEndTime" ColumnName="CheckEndTime" />
+                <ScalarProperty Name="CheckBeginTime" ColumnName="CheckBeginTime" />
+                <ScalarProperty Name="BillTime" ColumnName="BillTime" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1626,320 +1626,195 @@
             <EntityTypeMapping TypeName="SpareModel.TB_OTHER_IN">
               <MappingFragment StoreEntitySet="TB_OTHER_IN">
                 <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_OUT">
             <EntityTypeMapping TypeName="SpareModel.TB_OUT">
               <MappingFragment StoreEntitySet="TB_OUT">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="OutType" ColumnName="OutType" />
-                <ScalarProperty Name="OutUser" ColumnName="OutUser" />
-                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
-                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="OutUser" ColumnName="OutUser" />
+                <ScalarProperty Name="OutType" ColumnName="OutType" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_PO">
             <EntityTypeMapping TypeName="SpareModel.TB_PO">
               <MappingFragment StoreEntitySet="TB_PO">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="LineNum" ColumnName="LineNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="BillQty" ColumnName="BillQty" />
-                <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
-                <ScalarProperty Name="ClosedQty" ColumnName="ClosedQty" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ArrialQty" ColumnName="ArrialQty" />
+                <ScalarProperty Name="BillQty" ColumnName="BillQty" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="Line" ColumnName="Line" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_RETURN">
             <EntityTypeMapping TypeName="SpareModel.TB_RETURN">
               <MappingFragment StoreEntitySet="TB_RETURN">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="ReturnType" ColumnName="ReturnType" />
-                <ScalarProperty Name="ReturnUser" ColumnName="ReturnUser" />
-                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
-                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="ReturnUser" ColumnName="ReturnUser" />
+                <ScalarProperty Name="ReturnType" ColumnName="ReturnType" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TB_STOCK_MOVE">
             <EntityTypeMapping TypeName="SpareModel.TB_STOCK_MOVE">
               <MappingFragment StoreEntitySet="TB_STOCK_MOVE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
-                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TL_BASEDATA">
             <EntityTypeMapping TypeName="SpareModel.TL_BASEDATA">
               <MappingFragment StoreEntitySet="TL_BASEDATA">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="LogType" ColumnName="LogType" />
-                <ScalarProperty Name="DataType" ColumnName="DataType" />
-                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
-                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TL_BILL">
             <EntityTypeMapping TypeName="SpareModel.TL_BILL">
               <MappingFragment StoreEntitySet="TL_BILL">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="LogType" ColumnName="LogType" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
-                <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TL_INTERFACE">
             <EntityTypeMapping TypeName="SpareModel.TL_INTERFACE">
               <MappingFragment StoreEntitySet="TL_INTERFACE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="InterfaceType" ColumnName="InterfaceType" />
-                <ScalarProperty Name="InterfaceString" ColumnName="InterfaceString" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="ProcessTime" ColumnName="ProcessTime" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="pQty" ColumnName="pQty" />
-                <ScalarProperty Name="p01" ColumnName="p01" />
-                <ScalarProperty Name="p02" ColumnName="p02" />
-                <ScalarProperty Name="p03" ColumnName="p03" />
-                <ScalarProperty Name="p04" ColumnName="p04" />
-                <ScalarProperty Name="p05" ColumnName="p05" />
-                <ScalarProperty Name="p06" ColumnName="p06" />
-                <ScalarProperty Name="p07" ColumnName="p07" />
-                <ScalarProperty Name="p08" ColumnName="p08" />
-                <ScalarProperty Name="p09" ColumnName="p09" />
-                <ScalarProperty Name="p10" ColumnName="p10" />
-                <ScalarProperty Name="p11" ColumnName="p11" />
-                <ScalarProperty Name="p12" ColumnName="p12" />
-                <ScalarProperty Name="p13" ColumnName="p13" />
-                <ScalarProperty Name="p14" ColumnName="p14" />
-                <ScalarProperty Name="p15" ColumnName="p15" />
-                <ScalarProperty Name="p16" ColumnName="p16" />
-                <ScalarProperty Name="p17" ColumnName="p17" />
-                <ScalarProperty Name="p18" ColumnName="p18" />
-                <ScalarProperty Name="p19" ColumnName="p19" />
                 <ScalarProperty Name="p20" ColumnName="p20" />
+                <ScalarProperty Name="p19" ColumnName="p19" />
+                <ScalarProperty Name="p18" ColumnName="p18" />
+                <ScalarProperty Name="p17" ColumnName="p17" />
+                <ScalarProperty Name="p16" ColumnName="p16" />
+                <ScalarProperty Name="p15" ColumnName="p15" />
+                <ScalarProperty Name="p14" ColumnName="p14" />
+                <ScalarProperty Name="p13" ColumnName="p13" />
+                <ScalarProperty Name="p12" ColumnName="p12" />
+                <ScalarProperty Name="p11" ColumnName="p11" />
+                <ScalarProperty Name="p10" ColumnName="p10" />
+                <ScalarProperty Name="p09" ColumnName="p09" />
+                <ScalarProperty Name="p08" ColumnName="p08" />
+                <ScalarProperty Name="p07" ColumnName="p07" />
+                <ScalarProperty Name="p06" ColumnName="p06" />
+                <ScalarProperty Name="p05" ColumnName="p05" />
+                <ScalarProperty Name="p04" ColumnName="p04" />
+                <ScalarProperty Name="p03" ColumnName="p03" />
+                <ScalarProperty Name="p02" ColumnName="p02" />
+                <ScalarProperty Name="p01" ColumnName="p01" />
+                <ScalarProperty Name="pQty" ColumnName="pQty" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="ProcessTime" ColumnName="ProcessTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="InterfaceString" ColumnName="InterfaceString" />
+                <ScalarProperty Name="InterfaceType" ColumnName="InterfaceType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TL_NOTIFY">
             <EntityTypeMapping TypeName="SpareModel.TL_NOTIFY">
               <MappingFragment StoreEntitySet="TL_NOTIFY">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="NotifyType" ColumnName="NotifyType" />
-                <ScalarProperty Name="NotifyMessage" ColumnName="NotifyMessage" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="CreateOperName" ColumnName="CreateOperName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="CloseOperName" ColumnName="CloseOperName" />
-                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
                 <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+                <ScalarProperty Name="CloseOperName" ColumnName="CloseOperName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateOperName" ColumnName="CreateOperName" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="NotifyMessage" ColumnName="NotifyMessage" />
+                <ScalarProperty Name="NotifyType" ColumnName="NotifyType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TL_OPER">
             <EntityTypeMapping TypeName="SpareModel.TL_OPER">
               <MappingFragment StoreEntitySet="TL_OPER">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="OperCode" ColumnName="OperCode" />
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="LogType" ColumnName="LogType" />
-                <ScalarProperty Name="LogSite" ColumnName="LogSite" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="LogSite" ColumnName="LogSite" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="OperCode" ColumnName="OperCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TL_TRANSACTION">
             <EntityTypeMapping TypeName="SpareModel.TL_TRANSACTION">
               <MappingFragment StoreEntitySet="TL_TRANSACTION">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="SubBillType" ColumnName="SubBillType" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TT_EQPT_TYPE">
-            <EntityTypeMapping TypeName="SpareModel.TT_EQPT_TYPE">
-              <MappingFragment StoreEntitySet="TT_EQPT_TYPE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="EqptType" ColumnName="EqptType" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TT_GROUP_TYPE">
-            <EntityTypeMapping TypeName="SpareModel.TT_GROUP_TYPE">
-              <MappingFragment StoreEntitySet="TT_GROUP_TYPE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="GroupType" ColumnName="GroupType" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TT_LOC_TYPE">
-            <EntityTypeMapping TypeName="SpareModel.TT_LOC_TYPE">
-              <MappingFragment StoreEntitySet="TT_LOC_TYPE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="LocType" ColumnName="LocType" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TT_PART_TYPE">
-            <EntityTypeMapping TypeName="SpareModel.TT_PART_TYPE">
-              <MappingFragment StoreEntitySet="TT_PART_TYPE">
-                <ScalarProperty Name="UID" ColumnName="UID" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TB_OTHER_OUT">
-            <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
-              <MappingFragment StoreEntitySet="TB_OTHER_OUT">
-                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
                 <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
-            <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
-              <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_OVERDUE_STOCK">
-            <EntityTypeMapping TypeName="SpareModel.VS_OVERDUE_STOCK">
-              <MappingFragment StoreEntitySet="VS_OVERDUE_STOCK">
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_STOCK">
-            <EntityTypeMapping TypeName="SpareModel.VS_STOCK">
-              <MappingFragment StoreEntitySet="VS_STOCK">
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
-                <ScalarProperty Name="MinQty" ColumnName="MinQty" />
-                <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_STOCK_AGE">
-            <EntityTypeMapping TypeName="SpareModel.VS_STOCK_AGE">
-              <MappingFragment StoreEntitySet="VS_STOCK_AGE">
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-                <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1958,6 +1833,128 @@
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="LocCode" ColumnName="LocCode" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TT_EQPT_TYPE">
+            <EntityTypeMapping TypeName="SpareModel.TT_EQPT_TYPE">
+              <MappingFragment StoreEntitySet="TT_EQPT_TYPE">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="EqptType" ColumnName="EqptType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TT_GROUP_TYPE">
+            <EntityTypeMapping TypeName="SpareModel.TT_GROUP_TYPE">
+              <MappingFragment StoreEntitySet="TT_GROUP_TYPE">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="GroupType" ColumnName="GroupType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TT_LOC_TYPE">
+            <EntityTypeMapping TypeName="SpareModel.TT_LOC_TYPE">
+              <MappingFragment StoreEntitySet="TT_LOC_TYPE">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="LocType" ColumnName="LocType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TT_PART_TYPE">
+            <EntityTypeMapping TypeName="SpareModel.TT_PART_TYPE">
+              <MappingFragment StoreEntitySet="TT_PART_TYPE">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_OTHER_OUT">
+            <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
+              <MappingFragment StoreEntitySet="TB_OTHER_OUT">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
+            <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
+              <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
+                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VS_OVERDUE_STOCK">
+            <EntityTypeMapping TypeName="SpareModel.VS_OVERDUE_STOCK">
+              <MappingFragment StoreEntitySet="VS_OVERDUE_STOCK">
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VS_STOCK">
+            <EntityTypeMapping TypeName="SpareModel.VS_STOCK">
+              <MappingFragment StoreEntitySet="VS_STOCK">
+                <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
+                <ScalarProperty Name="MinQty" ColumnName="MinQty" />
+                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VS_STOCK_AGE">
+            <EntityTypeMapping TypeName="SpareModel.VS_STOCK_AGE">
+              <MappingFragment StoreEntitySet="VS_STOCK_AGE">
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
