@@ -66,7 +66,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         状态 = ((BillState)c.State).ToString(),
                         备注 = c.Remark,
                     };
-            Expression<Func<TB_BILL, bool>> where = c => true;
+            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType;
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;

@@ -207,7 +207,7 @@
     <Key>
       <PropertyRef Name="UID" />
     </Key>
-    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PoBillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PoLineNum" Type="int" Nullable="false" />

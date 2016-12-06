@@ -278,11 +278,15 @@ namespace ChangKeTec.Wms.Controllers
             details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
 
             BillController.AddOrUpdate(db, bill); //添加【生产叫料单】单据
-            SpareAskController.AddList(db, details); //添加【生产叫料单】明细
+            foreach (var detail in details)
+            {
+                SpareAskController.AddOrUpdate(db,detail);//添加或修改【生产叫料单】明细
+            }
+            //SpareAskController.AddList(db, details); //添加【生产叫料单】明细
             NotifyController.AddNotify(db, bill.OperName, NotifyType.MaterialAsk, bill.BillNum, ""); //添加【叫料提醒单】
             
-                if (SysConfig.AutoHandleMaterialAsk)
-                     HandleMaterialAsk(db, bill, details);
+//                if (SysConfig.AutoHandleMaterialAsk)
+//                     HandleMaterialAsk(db, bill, details);
 
         }
 

@@ -40,7 +40,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void BtnExport_Click(object sender, EventArgs e)
         {
-            DataTable dt = DataGridViewHelper.DgvToTable(grid.MasterPrimaryGrid, EnumHelper.GetDescription(_billType));
+            DataTable dt = DataGridViewHelper.DgvToTable(grid.PrimaryGrid, EnumHelper.GetDescription(_billType));
             ExcelWriter.Write(dt);
         }
 
@@ -50,10 +50,18 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             try
             {
-                List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
+                bs.EndEdit();
+                var detailList = (List<TB_ASK>)bs.DataSource;
+                if (detailList.Count == 0)
+                {
+                    MessageHelper.ShowError("请维护领用申请明细！");
+                    return;
+                }
+                //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
                 BillHandler.AddMaterialAsk(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
+                MessageHelper.ShowInfo("保存成功！");
             }
             catch (Exception ex)
             {
@@ -64,7 +72,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billnum)
         {
             int count;
-            Expression<Func<TB_ASK, dynamic>> select =c => c;
+            Expression<Func<TB_ASK, dynamic>> select = c => c;
             Expression<Func<TB_ASK, bool>> where = c => c.BillNum==billnum;
             Expression<Func<TB_ASK, long>> order = c => c.UID;
             _list = EniitiesHelper.GetData(_db,
@@ -72,9 +80,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 where,
                 order,
                 out count);
-            grid.MasterDataSource = _list;
+            bs.DataSource = _db.TB_ASK.Where(p => p.BillNum == billnum).ToList();
+            //bs.DataSource = _list;
+            grid.PrimaryGrid.DataSource = bs;            
+            bn.BindingSource = bs;
             List<string> readonlyColumns = new List<string> { "UID", "单据号", };
-            foreach (GridColumn column in grid.MasterPrimaryGrid.Columns)
+            foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 if (readonlyColumns.Contains(column.DataPropertyName))
                     column.ReadOnly = true;
@@ -82,20 +93,8 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     column.ReadOnly = false;
             }
             return count;
-
-            
-
         }
 
-
-        
-
-        private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
-        {
-
-        }
-
-        
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
             SetDetailDataSource(_bill.BillNum);
@@ -104,7 +103,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)
         {
-            e.Handled = true;
+            //e.Handled = true;
         }
     }
 }

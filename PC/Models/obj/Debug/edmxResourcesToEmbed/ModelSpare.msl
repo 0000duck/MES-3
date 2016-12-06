@@ -219,24 +219,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_IN">
-      <EntityTypeMapping TypeName="SpareModel.TB_IN">
-        <MappingFragment StoreEntitySet="TB_IN">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="PoLineNum" ColumnName="PoLineNum" />
-          <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
-          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TB_INVENTORY_DETAIL">
       <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
         <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
@@ -600,6 +582,24 @@
           <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
           <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_IN">
+      <EntityTypeMapping TypeName="SpareModel.TB_IN">
+        <MappingFragment StoreEntitySet="TB_IN">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="PoLineNum" ColumnName="PoLineNum" />
+          <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
