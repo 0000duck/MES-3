@@ -36,6 +36,8 @@
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
             this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
+            this.ItemBtnApprove = new DevComponents.DotNetBar.ButtonItem();
+            this.ItemBtnImport = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,12 +52,14 @@
             this.btnModify,
             this.btnCancel,
             this.BtnHandle,
+            this.ItemBtnApprove,
+            this.ItemBtnImport,
             this.ItemBtnExport,
             this.ItemBtnPrint});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1189, 29);
+            this.bar1.Size = new System.Drawing.Size(892, 29);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 0;
@@ -125,32 +129,48 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;
             this.grid.PageSize = 100;
             this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.grid.Size = new System.Drawing.Size(1189, 672);
+            this.grid.Size = new System.Drawing.Size(892, 532);
             this.grid.TabIndex = 9;
             this.grid.Total = 0;
             this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
             this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
             this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
             // 
+            // ItemBtnApprove
+            // 
+            this.ItemBtnApprove.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.ItemBtnApprove.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_001;
+            this.ItemBtnApprove.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.ItemBtnApprove.Name = "ItemBtnApprove";
+            this.ItemBtnApprove.Text = "批准";
+            // 
+            // ItemBtnImport
+            // 
+            this.ItemBtnImport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.ItemBtnImport.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_055;
+            this.ItemBtnImport.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.ItemBtnImport.Name = "ItemBtnImport";
+            this.ItemBtnImport.Text = "导入";
+            // 
             // FormMaterialAsk
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 701);
+            this.ClientSize = new System.Drawing.Size(892, 561);
             this.ControlBox = false;
             this.Controls.Add(this.grid);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormMaterialAsk";
             this.ShowIcon = false;
-            this.Text = "叫料单";
+            this.Text = "领用申请单";
             this.Load += new System.EventHandler(this.FormWhseReceive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.ResumeLayout(false);
@@ -167,5 +187,7 @@
         private DevComponents.DotNetBar.ButtonItem btnAdd;
         private DevComponents.DotNetBar.ButtonItem btnCancel;
         private DevComponents.DotNetBar.ButtonItem btnModify;
+        private DevComponents.DotNetBar.ButtonItem ItemBtnApprove;
+        private DevComponents.DotNetBar.ButtonItem ItemBtnImport;
     }
 }
