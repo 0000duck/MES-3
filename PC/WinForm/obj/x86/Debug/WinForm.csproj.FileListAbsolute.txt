@@ -698,3 +698,5 @@ D:\工作工程\CcFjcSpare\PC\WinForm\bin\x86\Debug\EntityFramework.xml
 D:\工作工程\CcFjcSpare\PC\WinForm\bin\x86\Debug\EntityFramework.SqlServer.xml
 D:\工作工程\CcFjcSpare\PC\WinForm\bin\x86\Debug\zh-Hans\EntityFramework.resources.dll
 D:\工作工程\CcFjcSpare\PC\WinForm\bin\x86\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormMaterialOut.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupMaterialOut.resources

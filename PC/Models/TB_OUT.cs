@@ -19,15 +19,21 @@ namespace ChangKeTec.Wms.Models
         public string PartCode { get; set; }
         public string Batch { get; set; }
         public string FromLocCode { get; set; }
-        public decimal Qty { get; set; }
+        public Nullable<decimal> BillQty { get; set; }
+        public decimal OutQty { get; set; }
         public decimal UnitPrice { get; set; }
-        public int OutType { get; set; }
-        public string OutUser { get; set; }
-        public System.DateTime OutTime { get; set; }
+        public Nullable<decimal> Amount { get; set; }
         public string DeptCode { get; set; }
         public string ProjectCode { get; set; }
         public string WorklineCode { get; set; }
         public string EqptCode { get; set; }
+        public string AskUser { get; set; }
+        public Nullable<System.DateTime> AskTime { get; set; }
+        public string ConfirmUser { get; set; }
+        public Nullable<System.DateTime> ConfirmTime { get; set; }
+        public int TakeType { get; set; }
+        public string TakeUser { get; set; }
+        public System.DateTime TakeTime { get; set; }
         public int State { get; set; }
         public string Remark { get; set; }
     }

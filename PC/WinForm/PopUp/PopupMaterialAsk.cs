@@ -1,10 +1,12 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
-using System.Data;
+    using System.ComponentModel;
+    using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using ChangKeTec.Wms.Common;
-using ChangKeTec.Wms.Common.UC;
+    using ChangKeTec.Wms.Common.ComboBox;
+    using ChangKeTec.Wms.Common.UC;
 using ChangKeTec.Wms.Controllers;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
@@ -32,8 +34,30 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             _bill = bill;
         }
 
+        private DateTime _Date = DateTime.Today;
+        [PropertyDateTimeEditor(), Description("日期编辑")]
+        public DateTime BillTime
+        {
+            get { return _Date; }
+            set { _Date = value; OnPropertyChanged(new PropertyChangedEventArgs("BillTime")); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChangedEventHandler eh = PropertyChanged;
+            if (eh != null) eh(this, e);
+        }
+
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
+            gcPartCode.EditorType = typeof (PartComboBox);
+            gcDeptCode.EditorType = typeof(DeptComboBox);
+            gcProjectCode.EditorType = typeof(ProjectComboBox);
+            gcWorklineCode.EditorType = typeof(WorkLineComboBox);
+            gcEqptCode.EditorType = typeof(PartComboBox);
+
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }

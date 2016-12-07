@@ -190,6 +190,12 @@
           <Property Name="ConfirmTime" Type="datetime" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Batch" Type="nvarchar" MaxLength="50" />
+          <Property Name="TakeType" Type="int" />
+          <Property Name="TakeUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="TakeTime" Type="datetime" />
+          <Property Name="UintPrice" Type="money" />
+          <Property Name="Amount" Type="money" />
         </EntityType>
         <EntityType Name="TB_BILL">
           <Key>
@@ -297,15 +303,21 @@
           <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Qty" Type="money" Nullable="false" />
+          <Property Name="BillQty" Type="money" />
+          <Property Name="OutQty" Type="money" Nullable="false" />
           <Property Name="UnitPrice" Type="money" Nullable="false" />
-          <Property Name="OutType" Type="int" Nullable="false" />
-          <Property Name="OutUser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="OutTime" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="money" />
           <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
           <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
           <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" />
           <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AskUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="AskTime" Type="datetime" />
+          <Property Name="ConfirmUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfirmTime" Type="datetime" />
+          <Property Name="TakeType" Type="int" Nullable="false" />
+          <Property Name="TakeUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TakeTime" Type="datetime" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
@@ -739,7 +751,6 @@
           <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="SpareModel.TB_INVENTORY_DETAIL" />
           <EntitySet Name="TB_INVENTORY_LOC" EntityType="SpareModel.TB_INVENTORY_LOC" />
           <EntitySet Name="TB_OTHER_IN" EntityType="SpareModel.TB_OTHER_IN" />
-          <EntitySet Name="TB_OUT" EntityType="SpareModel.TB_OUT" />
           <EntitySet Name="TB_PO" EntityType="SpareModel.TB_PO" />
           <EntitySet Name="TB_RETURN" EntityType="SpareModel.TB_RETURN" />
           <EntitySet Name="TB_STOCK_MOVE" EntityType="SpareModel.TB_STOCK_MOVE" />
@@ -760,6 +771,7 @@
           <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
           <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
           <EntitySet Name="TB_IN" EntityType="SpareModel.TB_IN" />
+          <EntitySet Name="TB_OUT" EntityType="SpareModel.TB_OUT" />
         </EntityContainer>
         <EntityType Name="TA_BILLTYPE">
           <Key>
@@ -946,6 +958,12 @@
           <Property Name="ConfirmTime" Type="DateTime" Precision="3" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TakeType" Type="Int32" />
+          <Property Name="TakeUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TakeTime" Type="DateTime" Precision="3" />
+          <Property Name="UintPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="TB_BILL">
           <Key>
@@ -1006,27 +1024,6 @@
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ProduceDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="TB_OUT">
-          <Key>
-            <PropertyRef Name="UID" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="OutType" Type="Int32" Nullable="false" />
-          <Property Name="OutUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OutTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TB_PO">
           <Key>
@@ -1350,6 +1347,33 @@
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="TB_OUT">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillQty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OutQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorklineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EqptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AskUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AskTime" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmTime" Type="DateTime" Precision="3" />
+          <Property Name="TakeType" Type="Int32" Nullable="false" />
+          <Property Name="TakeUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TakeTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1539,6 +1563,12 @@
           <EntitySetMapping Name="TB_ASK">
             <EntityTypeMapping TypeName="SpareModel.TB_ASK">
               <MappingFragment StoreEntitySet="TB_ASK">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UintPrice" ColumnName="UintPrice" />
+                <ScalarProperty Name="TakeTime" ColumnName="TakeTime" />
+                <ScalarProperty Name="TakeUser" ColumnName="TakeUser" />
+                <ScalarProperty Name="TakeType" ColumnName="TakeType" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
@@ -1612,28 +1642,6 @@
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TB_OUT">
-            <EntityTypeMapping TypeName="SpareModel.TB_OUT">
-              <MappingFragment StoreEntitySet="TB_OUT">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
-                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
-                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
-                <ScalarProperty Name="OutUser" ColumnName="OutUser" />
-                <ScalarProperty Name="OutType" ColumnName="OutType" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="BillNum" ColumnName="BillNum" />
@@ -1953,6 +1961,34 @@
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="PoLineNum" ColumnName="PoLineNum" />
                 <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_OUT">
+            <EntityTypeMapping TypeName="SpareModel.TB_OUT">
+              <MappingFragment StoreEntitySet="TB_OUT">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="TakeTime" ColumnName="TakeTime" />
+                <ScalarProperty Name="TakeUser" ColumnName="TakeUser" />
+                <ScalarProperty Name="TakeType" ColumnName="TakeType" />
+                <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
+                <ScalarProperty Name="ConfirmUser" ColumnName="ConfirmUser" />
+                <ScalarProperty Name="AskTime" ColumnName="AskTime" />
+                <ScalarProperty Name="AskUser" ColumnName="AskUser" />
+                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="OutQty" ColumnName="OutQty" />
+                <ScalarProperty Name="BillQty" ColumnName="BillQty" />
+                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="BillNum" ColumnName="BillNum" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>

@@ -43,7 +43,6 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<TB_INVENTORY_DETAIL> TB_INVENTORY_DETAIL { get; set; }
         public virtual DbSet<TB_INVENTORY_LOC> TB_INVENTORY_LOC { get; set; }
         public virtual DbSet<TB_OTHER_IN> TB_OTHER_IN { get; set; }
-        public virtual DbSet<TB_OUT> TB_OUT { get; set; }
         public virtual DbSet<TB_PO> TB_PO { get; set; }
         public virtual DbSet<TB_RETURN> TB_RETURN { get; set; }
         public virtual DbSet<TB_STOCK_MOVE> TB_STOCK_MOVE { get; set; }
@@ -64,5 +63,6 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<VS_STOCK> VS_STOCK { get; set; }
         public virtual DbSet<VS_STOCK_AGE> VS_STOCK_AGE { get; set; }
         public virtual DbSet<TB_IN> TB_IN { get; set; }
+        public virtual DbSet<TB_OUT> TB_OUT { get; set; }
     }
 }

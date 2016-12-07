@@ -184,6 +184,12 @@
     <EntitySetMapping Name="TB_ASK">
       <EntityTypeMapping TypeName="SpareModel.TB_ASK">
         <MappingFragment StoreEntitySet="TB_ASK">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UintPrice" ColumnName="UintPrice" />
+          <ScalarProperty Name="TakeTime" ColumnName="TakeTime" />
+          <ScalarProperty Name="TakeUser" ColumnName="TakeUser" />
+          <ScalarProperty Name="TakeType" ColumnName="TakeType" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="Remark" ColumnName="Remark" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
@@ -257,28 +263,6 @@
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TB_OUT">
-      <EntityTypeMapping TypeName="SpareModel.TB_OUT">
-        <MappingFragment StoreEntitySet="TB_OUT">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
-          <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
-          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
-          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-          <ScalarProperty Name="OutTime" ColumnName="OutTime" />
-          <ScalarProperty Name="OutUser" ColumnName="OutUser" />
-          <ScalarProperty Name="OutType" ColumnName="OutType" />
-          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
           <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
           <ScalarProperty Name="BillNum" ColumnName="BillNum" />
@@ -598,6 +582,34 @@
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
           <ScalarProperty Name="PoLineNum" ColumnName="PoLineNum" />
           <ScalarProperty Name="PoBillNum" ColumnName="PoBillNum" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_OUT">
+      <EntityTypeMapping TypeName="SpareModel.TB_OUT">
+        <MappingFragment StoreEntitySet="TB_OUT">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TakeTime" ColumnName="TakeTime" />
+          <ScalarProperty Name="TakeUser" ColumnName="TakeUser" />
+          <ScalarProperty Name="TakeType" ColumnName="TakeType" />
+          <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
+          <ScalarProperty Name="ConfirmUser" ColumnName="ConfirmUser" />
+          <ScalarProperty Name="AskTime" ColumnName="AskTime" />
+          <ScalarProperty Name="AskUser" ColumnName="AskUser" />
+          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="OutQty" ColumnName="OutQty" />
+          <ScalarProperty Name="BillQty" ColumnName="BillQty" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
           <ScalarProperty Name="BillNum" ColumnName="BillNum" />
           <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>

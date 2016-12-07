@@ -88,7 +88,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         c.UID,
                         单据编号=c.BillNum,
                         单据类型 = c.BillType,
-//                        单据子类型 = c.SubBillType,
+                        单据子类型 = c.SubBillType,
 //                        采购订单编号 = c.SourceBillNum,
 //                        发货单编号 = c.SourceBillNum2,
 //                        开始时间 = c.StartTime,
@@ -209,6 +209,11 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 return;
             }
             ReportHelper.Print(_report);
+        }
+
+        private void ItemBtnImport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

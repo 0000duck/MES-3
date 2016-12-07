@@ -185,6 +185,12 @@
     <Property Name="ConfirmTime" Type="datetime" />
     <Property Name="State" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" />
+    <Property Name="TakeType" Type="int" />
+    <Property Name="TakeUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="TakeTime" Type="datetime" />
+    <Property Name="UintPrice" Type="money" />
+    <Property Name="Amount" Type="money" />
   </EntityType>
   <EntityType Name="TB_BILL">
     <Key>
@@ -292,15 +298,21 @@
     <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Qty" Type="money" Nullable="false" />
+    <Property Name="BillQty" Type="money" />
+    <Property Name="OutQty" Type="money" Nullable="false" />
     <Property Name="UnitPrice" Type="money" Nullable="false" />
-    <Property Name="OutType" Type="int" Nullable="false" />
-    <Property Name="OutUser" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="OutTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="money" />
     <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
     <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
     <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" />
     <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AskUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="AskTime" Type="datetime" />
+    <Property Name="ConfirmUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmTime" Type="datetime" />
+    <Property Name="TakeType" Type="int" Nullable="false" />
+    <Property Name="TakeUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TakeTime" Type="datetime" Nullable="false" />
     <Property Name="State" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>

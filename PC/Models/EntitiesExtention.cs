@@ -74,7 +74,7 @@ namespace ChangKeTec.Wms.Models
                 Batch = this.Batch,
                 FromLocCode = this.FromLocCode,
                 ToLocCode = this.FromLocCode,
-                Qty = this.Qty,
+                Qty = this.OutQty,
             };
         }
     }

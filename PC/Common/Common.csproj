@@ -104,6 +104,9 @@
     <Compile Include="ComboBox\NotifyTypeComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ComboBox\DeptComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ComboBox\ParentDeptComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -135,6 +138,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\WhseTypeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\EqptComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\WorkLineComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\WorkLineTypeComboBox.cs">

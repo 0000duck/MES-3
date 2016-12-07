@@ -33,11 +33,11 @@
             this.btnModify = new DevComponents.DotNetBar.ButtonItem();
             this.btnCancel = new DevComponents.DotNetBar.ButtonItem();
             this.BtnHandle = new DevComponents.DotNetBar.ButtonItem();
+            this.ItemBtnApprove = new DevComponents.DotNetBar.ButtonItem();
+            this.ItemBtnImport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
             this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
-            this.ItemBtnApprove = new DevComponents.DotNetBar.ButtonItem();
-            this.ItemBtnImport = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             this.ItemBtnExport,
             this.ItemBtnPrint});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
             this.bar1.Size = new System.Drawing.Size(892, 29);
             this.bar1.Stretch = true;
@@ -99,8 +99,25 @@
             this.BtnHandle.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_194;
             this.BtnHandle.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.BtnHandle.Name = "BtnHandle";
-            this.BtnHandle.Text = "生成备料单";
+            this.BtnHandle.Text = "生成领用单";
             this.BtnHandle.Click += new System.EventHandler(this.BtnHandle_Click);
+            // 
+            // ItemBtnApprove
+            // 
+            this.ItemBtnApprove.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.ItemBtnApprove.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_001;
+            this.ItemBtnApprove.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.ItemBtnApprove.Name = "ItemBtnApprove";
+            this.ItemBtnApprove.Text = "批准";
+            // 
+            // ItemBtnImport
+            // 
+            this.ItemBtnImport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.ItemBtnImport.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_055;
+            this.ItemBtnImport.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.ItemBtnImport.Name = "ItemBtnImport";
+            this.ItemBtnImport.Text = "导入";
+            this.ItemBtnImport.Click += new System.EventHandler(this.ItemBtnImport_Click);
             // 
             // ItemBtnExport
             // 
@@ -142,22 +159,6 @@
             this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
             this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
             // 
-            // ItemBtnApprove
-            // 
-            this.ItemBtnApprove.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.ItemBtnApprove.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_001;
-            this.ItemBtnApprove.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.ItemBtnApprove.Name = "ItemBtnApprove";
-            this.ItemBtnApprove.Text = "批准";
-            // 
-            // ItemBtnImport
-            // 
-            this.ItemBtnImport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.ItemBtnImport.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_055;
-            this.ItemBtnImport.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.ItemBtnImport.Name = "ItemBtnImport";
-            this.ItemBtnImport.Text = "导入";
-            // 
             // FormMaterialAsk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -167,7 +168,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMaterialAsk";
             this.ShowIcon = false;
             this.Text = "领用申请单";
@@ -182,12 +183,12 @@
         private DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.ButtonItem BtnHandle;
         private DevComponents.DotNetBar.ButtonItem ItemBtnExport;
-        private Common.UC.CktMasterDetailGrid grid;
         private DevComponents.DotNetBar.ButtonItem ItemBtnPrint;
         private DevComponents.DotNetBar.ButtonItem btnAdd;
         private DevComponents.DotNetBar.ButtonItem btnCancel;
         private DevComponents.DotNetBar.ButtonItem btnModify;
         private DevComponents.DotNetBar.ButtonItem ItemBtnApprove;
         private DevComponents.DotNetBar.ButtonItem ItemBtnImport;
+        private Common.UC.CktMasterDetailGrid grid;
     }
 }

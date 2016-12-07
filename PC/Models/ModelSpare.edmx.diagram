@@ -23,7 +23,6 @@
         <EntityTypeShape EntityType="SpareModel.TB_INVENTORY_DETAIL" Width="1.5" PointX="10.75" PointY="8.75" />
         <EntityTypeShape EntityType="SpareModel.TB_INVENTORY_LOC" Width="1.5" PointX="4.75" PointY="11.75" />
         <EntityTypeShape EntityType="SpareModel.TB_OTHER_IN" Width="1.5" PointX="6.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TB_PO" Width="1.5" PointX="12.75" PointY="5.75" />
         <EntityTypeShape EntityType="SpareModel.TB_RETURN" Width="1.5" PointX="8.75" PointY="12.75" />
         <EntityTypeShape EntityType="SpareModel.TB_STOCK_MOVE" Width="1.5" PointX="12.75" PointY="9.75" />
@@ -44,6 +43,7 @@
         <EntityTypeShape EntityType="SpareModel.VS_STOCK" Width="1.5" PointX="8.75" PointY="17.75" />
         <EntityTypeShape EntityType="SpareModel.VS_STOCK_AGE" Width="1.5" PointX="10.75" PointY="17.75" />
         <EntityTypeShape EntityType="SpareModel.TB_IN" Width="1.5" PointX="13.375" PointY="17.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="15.375" PointY="18.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
