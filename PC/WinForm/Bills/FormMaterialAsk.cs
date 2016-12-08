@@ -67,9 +67,16 @@ namespace ChangKeTec.Wms.WinForm.Bills
             var details = SpareAskController.GetList(_db, _bill.BillNum);
             try
             {
-                BillHandler.HandleMaterialAsk(_db, _bill, details);
-                MessageHelper.ShowInfo("生成备料单成功");
-                EntitiesFactory.SaveDb(_db);
+                string strInfo = BillHandler.HandleMaterialAsk(_db, _bill, details);
+                if (strInfo != "OK")
+                {
+                    MessageHelper.ShowError(strInfo);
+                }
+                else
+                {
+                    MessageHelper.ShowInfo("生成领用单成功");
+                    EntitiesFactory.SaveDb(_db);
+                }
             }
             catch (Exception ex)
             {
@@ -168,15 +175,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
         
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetMasterDataSource(e.PageIndex,e.PageSize);
-            
+            SetMasterDataSource(e.PageIndex,e.PageSize);          
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             try
             {
-                BillHandler.CancelMaterialAsk(_db, _bill);
+                if (_bill == null || _bill.BillNum == null)
+                {
+                    MessageHelper.ShowInfo("请选择单据！");
+                    return;
+                }
+                BillController.UpdateState(_db, _bill, BillState.Cancelled);
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }
@@ -214,6 +225,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private void ItemBtnImport_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ItemBtnApprove_Click(object sender, EventArgs e)
+        {
+            if (_bill == null || _bill.BillNum == null)
+            {
+                MessageHelper.ShowInfo("请选择单据！");
+                return;
+            }
+            BillController.UpdateState(_db,_bill,BillState.Approve);
+            EntitiesFactory.SaveDb(_db);
+            MessageHelper.ShowInfo("审核通过！");
+            SetMasterDataSource(1, grid.PageSize);
         }
     }
 }

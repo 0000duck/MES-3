@@ -21,6 +21,7 @@ namespace ChangKeTec.Wms.Models
         public string FromLocCode { get; set; }
         public decimal Qty { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
+        public Nullable<decimal> Amount { get; set; }
         public string Remark { get; set; }
     }
 }

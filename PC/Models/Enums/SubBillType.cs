@@ -14,6 +14,10 @@ namespace ChangKeTec.Wms.Models.Enums
         InventoryProfit = 30103,
         [Description("报废销毁")]
         ScrapDestroy=30104,
+        [Description("备件领用")]
+        SpareOut = 30105,
+        [Description("备件借出")]
+        SpareLoan = 30106,
 
         //其它出入库-入库
         [Description("其它入库")]
@@ -22,6 +26,8 @@ namespace ChangKeTec.Wms.Models.Enums
         //ProductReturn=30112,
         [Description("盘亏单")]
         InventoryLoss=30113,
+        [Description("备件归还")]
+        SpareReturn = 30114,
 
         //其它出入库-移库
         [Description("成品隔离")]
@@ -45,7 +51,7 @@ namespace ChangKeTec.Wms.Models.Enums
         ProductStockOut = 30204,
         [Description("原料出库单")]
         PartPickFact = 30205,
-
+        
 
         //采购收货
         [Description("订单收货单")]

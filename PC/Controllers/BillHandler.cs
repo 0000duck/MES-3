@@ -174,6 +174,35 @@ namespace ChangKeTec.Wms.Controllers
 
         }
 
+        /// <summary>
+        ///     执行【领用还回单】
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="billList">领用还回单列表</param>
+        /// <param name="detailList">领用还回明细列表</param>
+        /// <returns></returns>
+        public static void ExecuteSpareReturn(SpareEntities db, TB_BILL billList,
+            List<TB_RETURN> detailList)
+        {
+            {
+                foreach (var detail in detailList)
+                {
+                    var stockDetail = new TS_STOCK_DETAIL()
+                    {
+                        LocCode = detail.ToLocCode,
+                        PartCode = detail.PartCode,
+                        Batch = detail.Batch,
+                        Qty = (decimal)detail.InQty,
+                        UnitPrice = detail.UnitPrice,
+                    };
+                    var stockDetails = new List<TS_STOCK_DETAIL>();
+                    stockDetails.Add(stockDetail);
+                    StockDetailController.ListIn(db, billList, stockDetails); //更新【库存主表】【库存明细】 
+                }   
+                EntitiesFactory.SaveDb(db);
+            }
+
+        }
         #endregion
 
         #region 拣料
@@ -252,7 +281,6 @@ namespace ChangKeTec.Wms.Controllers
                 Remark = "",
             };
             AddStockMove(db, billMove, stockMoveList);
-
             
             BillController.UpdateState(db, bill, BillState.Finished); //更新【拣料单】状态为：完成
 
@@ -298,8 +326,6 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void CancelMaterialAsk(SpareEntities db, TB_BILL bill)
         {
-           
-
             {
                 //校验【叫料单】状态是否为新建
                 if (bill.State != (int) BillState.New)
@@ -308,45 +334,41 @@ namespace ChangKeTec.Wms.Controllers
                 }
                 BillController.UpdateState(db, bill, BillState.Cancelled); //更新【叫料单】状态为：取消
             }
-
         }
 
 
         /// <summary>
-        ///     执行【原料叫料单】，生成【备货单】
+        ///     执行【领用申请单】，生成【领用单】
         /// </summary>
         /// <param name="db"></param>
-        /// <param name="billAsk">叫料单</param>
-        /// <param name="details">叫料明细</param>
+        /// <param name="billAsk">申请单</param>
+        /// <param name="details">申请明细</param>
         /// <returns></returns>
-        public static void HandleMaterialAsk(SpareEntities db, TB_BILL billAsk, List<TB_ASK> details)
+        public static string HandleMaterialAsk(SpareEntities db, TB_BILL billAsk, List<TB_ASK> details)
         {
-
             try
             {
-                //校验【叫料单】状态是否为新建
-                if (billAsk.State != (int) BillState.New || billAsk.State != (int) BillState.Failed)
+                //校验【领用单】状态是否为批准
+                if (billAsk.State != (int) BillState.Approve)
                 {
-                    throw new WmsException(ResultCode.DataStateError, billAsk.BillNum, "状态错误,不应为：" + billAsk.State);
-
+                    return "申请单状态错误，不应为：" + billAsk.State;
                 }
                 var partPickList = new List<TB_OUT>();
                 foreach (var detail in details)
                 {
-                  /*  var pList = PickPlanController.GetList(db, detail);
-                    if (pList.Count == 0 || pList.Sum(p => p.Qty) < detail.Qty)
+                    var pList = SpareOutController.GetList(db, detail);
+                    if (pList.Count == 0 || pList.Sum(p => p.OutQty) < detail.Qty)
                     {
-                        throw new WmsException(ResultCode.StockNotEnough, detail.PartCode, "库存不足,备料失败");
+                        return "库存不足，生成领用单失败！";
                     }
                     partPickList.AddRange(pList);
-                    */
                 }
                 var billPick = new TB_BILL
                 {
                     BillNum = "",
                     SourceBillNum = billAsk.BillNum,
-                    BillType = (int) BillType.PickPlan,
-                    SubBillType = (int) SubBillType.PartPickFact,
+                    BillType = (int) BillType.MaterialDeliver,
+                    SubBillType = (int) billAsk.SubBillType,
                     BillTime = DateTime.Now,
                     OperName = billAsk.OperName,
                     SplyId = billAsk.SplyId,
@@ -355,17 +377,67 @@ namespace ChangKeTec.Wms.Controllers
                 };
 
                 BillController.UpdateState(db, billAsk, BillState.Handling); //更新【叫料单】状态为：执行中
+                return "OK";
             }
             catch (Exception ex)
             {
                 BillController.UpdateState(db, billAsk, BillState.Failed);
                 billAsk.Remark = ex.ToString();
-                throw;
+                return ex.ToString();
             }
 
         }
 
+        /// <summary>
+        ///     根据【领用出库单】，生成【领用还回单】
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="billAsk">申请单</param>
+        /// <param name="details">申请明细</param>
+        /// <returns></returns>
+        public static string HandleMaterialReturn(SpareEntities db, TB_BILL billOut, List<TB_OUT> details)
+        {
+            try
+            {
+                //校验【领用单】状态是否为批准
+                if (billOut.State != (int)BillState.Handling)
+                {
+                    return "申请单状态错误，不应为：" + billOut.State;
+                }
+                if (billOut.SubBillType != (int) SubBillType.SpareLoan)
+                {
+                    return "非借出单，不能进行还回操作！";
+                }
+                var partPickList = new List<TB_RETURN>();
+                foreach (var detail in details)
+                {
+                    var pList = SpareReturnController.OutToReturnList(detail);
+                    partPickList.AddRange(pList);
+                }
+                var billPick = new TB_BILL
+                {
+                    BillNum = "",
+                    SourceBillNum = billOut.BillNum,
+                    BillType = (int)BillType.SpareReturn,
+                    SubBillType = (int)SubBillType.SpareReturn,
+                    BillTime = DateTime.Now,
+                    OperName = billOut.OperName,
+                    SplyId = billOut.SplyId,
+                    State = (int)BillState.New,
+                    Remark = "",
+                };
 
+                BillController.UpdateState(db, billOut, BillState.Handling); //更新【叫料单】状态为：执行中
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                BillController.UpdateState(db, billOut, BillState.Failed);
+                billOut.Remark = ex.ToString();
+                return ex.ToString();
+            }
+
+        }
         #endregion
 
         #region 盘点

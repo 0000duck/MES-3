@@ -51,8 +51,8 @@
             this.btnAdd,
             this.btnModify,
             this.btnCancel,
-            this.BtnHandle,
             this.ItemBtnApprove,
+            this.BtnHandle,
             this.ItemBtnImport,
             this.ItemBtnExport,
             this.ItemBtnPrint});
@@ -109,6 +109,7 @@
             this.ItemBtnApprove.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnApprove.Name = "ItemBtnApprove";
             this.ItemBtnApprove.Text = "批准";
+            this.ItemBtnApprove.Click += new System.EventHandler(this.ItemBtnApprove_Click);
             // 
             // ItemBtnImport
             // 

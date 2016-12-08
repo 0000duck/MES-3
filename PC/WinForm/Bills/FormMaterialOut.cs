@@ -34,9 +34,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
             _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
-
         }
-
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
@@ -47,36 +45,6 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             DataTable dt = DataGridViewHelper.DgvToTable(grid.MasterPrimaryGrid,EnumHelper.GetDescription(_billType));
             ExcelWriter.Write(dt);
-        }
-
-
-
-        private void BtnHandle_Click(object sender, EventArgs e)
-        {
-            if (_bill == null || _bill.BillNum == null)
-            {
-                MessageHelper.ShowInfo("请选择单据");
-                return;
-            }
-
-            if (_bill.State != (int)BillState.New)
-            {
-                MessageHelper.ShowInfo("选中单据状态错误，无法执行");
-                return;
-            }
-            var details = SpareAskController.GetList(_db, _bill.BillNum);
-            try
-            {
-                BillHandler.HandleMaterialAsk(_db, _bill, details);
-                MessageHelper.ShowInfo("生成备料单成功");
-                EntitiesFactory.SaveDb(_db);
-            }
-            catch (Exception ex)
-            {
-                MessageHelper.ShowError(ex.ToString());
-                throw;
-            }
-
         }
 
         private void SetMasterDataSource(int pageIndex,int pageSize)
@@ -223,12 +191,51 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void BtnDeliver_Click(object sender, EventArgs e)
         {
-            if (MessageHelper.ShowQuestion("确定要执行选定的领料单？") == DialogResult.Yes)
+            if (_bill == null || _bill.BillNum == null)
+            {
+                MessageHelper.ShowInfo("请选择单据");
+                return;
+            }
+            if (MessageHelper.ShowQuestion("确定要执行选定的领用单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
                 BillHandler.FinishMaterialOut(db, _bill, (List<TB_OUT>)(grid.Detail1DataSource));
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
+            }
+        }
+
+        private void ItemBtnReturn_Click(object sender, EventArgs e)
+        {
+            if (_bill == null || _bill.BillNum == null)
+            {
+                MessageHelper.ShowInfo("请选择单据");
+                return;
+            }
+
+            if (_bill.State != (int)BillState.Handling)
+            {
+                MessageHelper.ShowInfo("选中单据状态错误，无法执行");
+                return;
+            }
+            var details = SpareOutController.GetList(_db, _bill.BillNum);
+            try
+            {
+                string strInfo = BillHandler.HandleMaterialReturn(_db, _bill, details);
+                if (strInfo != "OK")
+                {
+                    MessageHelper.ShowError(strInfo);
+                }
+                else
+                {
+                    MessageHelper.ShowInfo("生成领用还回单成功");
+                    EntitiesFactory.SaveDb(_db);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.ShowError(ex.ToString());
+                throw;
             }
         }
     }
