@@ -372,6 +372,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Report\FormInaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormInaction.Designer.cs">
+      <DependentUpon>FormInaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormStockAge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormStockAge.Designer.cs">
+      <DependentUpon>FormStockAge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormStockDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormStockDetail.Designer.cs">
+      <DependentUpon>FormStockDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormInventoryDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormInventoryDetail.Designer.cs">
+      <DependentUpon>FormInventoryDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormCalSafeQty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormCalSafeQty.Designer.cs">
+      <DependentUpon>FormCalSafeQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormCalOverduDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormCalOverduDays.Designer.cs">
+      <DependentUpon>FormCalOverduDays.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stock\FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -519,6 +555,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormInaction.resx">
+      <DependentUpon>FormInaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormStockAge.resx">
+      <DependentUpon>FormStockAge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormStockDetail.resx">
+      <DependentUpon>FormStockDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormInventoryDetail.resx">
+      <DependentUpon>FormInventoryDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormCalSafeQty.resx">
+      <DependentUpon>FormCalSafeQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormCalOverduDays.resx">
+      <DependentUpon>FormCalOverduDays.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stock\FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
@@ -696,7 +750,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">

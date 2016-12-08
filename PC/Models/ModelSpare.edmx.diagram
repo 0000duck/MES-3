@@ -44,6 +44,12 @@
         <EntityTypeShape EntityType="SpareModel.VS_OVERDUE_STOCK" Width="1.5" PointX="18.75" PointY="5.75" />
         <EntityTypeShape EntityType="SpareModel.VS_STOCK" Width="1.5" PointX="18.75" PointY="9.75" />
         <EntityTypeShape EntityType="SpareModel.VS_STOCK_AGE" Width="1.5" PointX="18.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_CalInaction_DAYS" Width="1.5" PointX="15.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_CalOverdue_DAYS" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_CalSafeQty" Width="1.5" PointX="7.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_INVENTORY_DETAIL" Width="1.5" PointX="9.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="11.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" Width="1.5" PointX="18.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

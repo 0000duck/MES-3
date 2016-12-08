@@ -535,6 +535,138 @@
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_CalInaction_DAYS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VIEW_CalInaction_DAYS">
+          <Key>
+            <PropertyRef Name="所在库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="过期日期" />
+          </Key>
+          <Property Name="呆滞天数" Type="int" />
+          <Property Name="所在库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="数量" Type="money" Nullable="false" />
+          <Property Name="生产日期" Type="datetime" Nullable="false" />
+          <Property Name="过期日期" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_CalOverdue_DAYS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VIEW_CalOverdue_DAYS">
+          <Key>
+            <PropertyRef Name="所在库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="过期日期" />
+          </Key>
+          <Property Name="安全天数" Type="int" />
+          <Property Name="所在库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="数量" Type="money" Nullable="false" />
+          <Property Name="生产日期" Type="datetime" Nullable="false" />
+          <Property Name="过期日期" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_CalSafeQty”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VIEW_CalSafeQty">
+          <Key>
+            <PropertyRef Name="最低库存" />
+            <PropertyRef Name="最高库存" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="零件描述" />
+          </Key>
+          <Property Name="最低库存" Type="money" Nullable="false" />
+          <Property Name="最高库存" Type="money" Nullable="false" />
+          <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="零件描述" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_INVENTORY_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VIEW_INVENTORY_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="单据号" />
+            <PropertyRef Name="盘点库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="账面数" />
+            <PropertyRef Name="盘点数" />
+            <PropertyRef Name="盘点时间" />
+            <PropertyRef Name="操作员" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="盘点库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="账面数" Type="money" Nullable="false" />
+          <Property Name="盘点数" Type="money" Nullable="false" />
+          <Property Name="差异数" Type="money" />
+          <Property Name="盘点时间" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VIEW_STOCK_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="状态" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="失效日期" />
+            <PropertyRef Name="更新时间" />
+            <PropertyRef Name="更新数量" />
+          </Key>
+          <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="状态" Type="int" Nullable="false" />
+          <Property Name="数量" Type="money" Nullable="false" />
+          <Property Name="单价" Type="money" Nullable="false" />
+          <Property Name="金额" Type="money" />
+          <Property Name="生产日期" Type="datetime" Nullable="false" />
+          <Property Name="失效日期" Type="datetime" Nullable="false" />
+          <Property Name="更新时间" Type="datetime" Nullable="false" />
+          <Property Name="更新数量" Type="money" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_STOCK_DETAIL_AGE”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VIEW_STOCK_DETAIL_AGE">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="状态" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="入库时间" />
+          </Key>
+          <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="库位" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="状态" Type="int" Nullable="false" />
+          <Property Name="数量" Type="money" Nullable="false" />
+          <Property Name="单价" Type="money" Nullable="false" />
+          <Property Name="金额" Type="money" />
+          <Property Name="生产日期" Type="datetime" Nullable="false" />
+          <Property Name="入库时间" Type="datetime" Nullable="false" />
+          <Property Name="在库天数" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VS_IDLE_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="VS_IDLE_STOCK_DETAIL">
           <Key>
@@ -675,6 +807,81 @@
     [TB_OTHER_OUT].[Remark] AS [Remark]
     FROM [dbo].[TB_OTHER_OUT] AS [TB_OTHER_OUT]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="Self.VIEW_CalInaction_DAYS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEW_CalInaction_DAYS].[呆滞天数] AS [呆滞天数], 
+    [VIEW_CalInaction_DAYS].[所在库位] AS [所在库位], 
+    [VIEW_CalInaction_DAYS].[零件号] AS [零件号], 
+    [VIEW_CalInaction_DAYS].[批次] AS [批次], 
+    [VIEW_CalInaction_DAYS].[数量] AS [数量], 
+    [VIEW_CalInaction_DAYS].[生产日期] AS [生产日期], 
+    [VIEW_CalInaction_DAYS].[过期日期] AS [过期日期]
+    FROM [dbo].[VIEW_CalInaction_DAYS] AS [VIEW_CalInaction_DAYS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEW_CalOverdue_DAYS" EntityType="Self.VIEW_CalOverdue_DAYS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEW_CalOverdue_DAYS].[安全天数] AS [安全天数], 
+    [VIEW_CalOverdue_DAYS].[所在库位] AS [所在库位], 
+    [VIEW_CalOverdue_DAYS].[零件号] AS [零件号], 
+    [VIEW_CalOverdue_DAYS].[批次] AS [批次], 
+    [VIEW_CalOverdue_DAYS].[数量] AS [数量], 
+    [VIEW_CalOverdue_DAYS].[生产日期] AS [生产日期], 
+    [VIEW_CalOverdue_DAYS].[过期日期] AS [过期日期]
+    FROM [dbo].[VIEW_CalOverdue_DAYS] AS [VIEW_CalOverdue_DAYS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEW_CalSafeQty" EntityType="Self.VIEW_CalSafeQty" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEW_CalSafeQty].[最低库存] AS [最低库存], 
+    [VIEW_CalSafeQty].[最高库存] AS [最高库存], 
+    [VIEW_CalSafeQty].[零件号] AS [零件号], 
+    [VIEW_CalSafeQty].[零件描述] AS [零件描述]
+    FROM [dbo].[VIEW_CalSafeQty] AS [VIEW_CalSafeQty]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="Self.VIEW_INVENTORY_DETAIL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEW_INVENTORY_DETAIL].[UID] AS [UID], 
+    [VIEW_INVENTORY_DETAIL].[单据号] AS [单据号], 
+    [VIEW_INVENTORY_DETAIL].[盘点库位] AS [盘点库位], 
+    [VIEW_INVENTORY_DETAIL].[零件号] AS [零件号], 
+    [VIEW_INVENTORY_DETAIL].[批次] AS [批次], 
+    [VIEW_INVENTORY_DETAIL].[账面数] AS [账面数], 
+    [VIEW_INVENTORY_DETAIL].[盘点数] AS [盘点数], 
+    [VIEW_INVENTORY_DETAIL].[差异数] AS [差异数], 
+    [VIEW_INVENTORY_DETAIL].[盘点时间] AS [盘点时间], 
+    [VIEW_INVENTORY_DETAIL].[操作员] AS [操作员]
+    FROM [dbo].[VIEW_INVENTORY_DETAIL] AS [VIEW_INVENTORY_DETAIL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="Self.VIEW_STOCK_DETAIL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEW_STOCK_DETAIL].[UID] AS [UID], 
+    [VIEW_STOCK_DETAIL].[库位] AS [库位], 
+    [VIEW_STOCK_DETAIL].[零件号] AS [零件号], 
+    [VIEW_STOCK_DETAIL].[批次] AS [批次], 
+    [VIEW_STOCK_DETAIL].[状态] AS [状态], 
+    [VIEW_STOCK_DETAIL].[数量] AS [数量], 
+    [VIEW_STOCK_DETAIL].[单价] AS [单价], 
+    [VIEW_STOCK_DETAIL].[金额] AS [金额], 
+    [VIEW_STOCK_DETAIL].[生产日期] AS [生产日期], 
+    [VIEW_STOCK_DETAIL].[失效日期] AS [失效日期], 
+    [VIEW_STOCK_DETAIL].[更新时间] AS [更新时间], 
+    [VIEW_STOCK_DETAIL].[更新数量] AS [更新数量]
+    FROM [dbo].[VIEW_STOCK_DETAIL] AS [VIEW_STOCK_DETAIL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEW_STOCK_DETAIL_AGE" EntityType="Self.VIEW_STOCK_DETAIL_AGE" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEW_STOCK_DETAIL_AGE].[UID] AS [UID], 
+    [VIEW_STOCK_DETAIL_AGE].[库位] AS [库位], 
+    [VIEW_STOCK_DETAIL_AGE].[零件号] AS [零件号], 
+    [VIEW_STOCK_DETAIL_AGE].[批次] AS [批次], 
+    [VIEW_STOCK_DETAIL_AGE].[状态] AS [状态], 
+    [VIEW_STOCK_DETAIL_AGE].[数量] AS [数量], 
+    [VIEW_STOCK_DETAIL_AGE].[单价] AS [单价], 
+    [VIEW_STOCK_DETAIL_AGE].[金额] AS [金额], 
+    [VIEW_STOCK_DETAIL_AGE].[生产日期] AS [生产日期], 
+    [VIEW_STOCK_DETAIL_AGE].[入库时间] AS [入库时间], 
+    [VIEW_STOCK_DETAIL_AGE].[在库天数] AS [在库天数]
+    FROM [dbo].[VIEW_STOCK_DETAIL_AGE] AS [VIEW_STOCK_DETAIL_AGE]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="Self.VS_IDLE_STOCK_DETAIL" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VS_IDLE_STOCK_DETAIL].[LocCode] AS [LocCode], 
@@ -784,6 +991,12 @@
           <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
           <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
           <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
+          <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="SpareModel.VIEW_CalInaction_DAYS" />
+          <EntitySet Name="VIEW_CalOverdue_DAYS" EntityType="SpareModel.VIEW_CalOverdue_DAYS" />
+          <EntitySet Name="VIEW_CalSafeQty" EntityType="SpareModel.VIEW_CalSafeQty" />
+          <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="SpareModel.VIEW_INVENTORY_DETAIL" />
+          <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="SpareModel.VIEW_STOCK_DETAIL" />
+          <EntitySet Name="VIEW_STOCK_DETAIL_AGE" EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" />
         </EntityContainer>
         <EntityType Name="TA_BILLTYPE">
           <Key>
@@ -1396,6 +1609,126 @@
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PartType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VIEW_CalInaction_DAYS">
+          <Key>
+            <PropertyRef Name="所在库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="过期日期" />
+          </Key>
+          <Property Name="呆滞天数" Type="Int32" />
+          <Property Name="所在库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="过期日期" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VIEW_CalOverdue_DAYS">
+          <Key>
+            <PropertyRef Name="所在库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="过期日期" />
+          </Key>
+          <Property Name="安全天数" Type="Int32" />
+          <Property Name="所在库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="过期日期" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VIEW_CalSafeQty">
+          <Key>
+            <PropertyRef Name="最低库存" />
+            <PropertyRef Name="最高库存" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="零件描述" />
+          </Key>
+          <Property Name="最低库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="最高库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件描述" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VIEW_INVENTORY_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="单据号" />
+            <PropertyRef Name="盘点库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="账面数" />
+            <PropertyRef Name="盘点数" />
+            <PropertyRef Name="盘点时间" />
+            <PropertyRef Name="操作员" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="单据号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="盘点库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="账面数" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="盘点数" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="差异数" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="盘点时间" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="操作员" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VIEW_STOCK_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="状态" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="失效日期" />
+            <PropertyRef Name="更新时间" />
+            <PropertyRef Name="更新数量" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="状态" Type="Int32" Nullable="false" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="金额" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="失效日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新时间" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="VIEW_STOCK_DETAIL_AGE">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="状态" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="入库时间" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="状态" Type="Int32" Nullable="false" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="金额" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="入库时间" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="在库天数" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2025,6 +2358,93 @@
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_CalInaction_DAYS">
+            <EntityTypeMapping TypeName="SpareModel.VIEW_CalInaction_DAYS">
+              <MappingFragment StoreEntitySet="VIEW_CalInaction_DAYS">
+                <ScalarProperty Name="过期日期" ColumnName="过期日期" />
+                <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="批次" ColumnName="批次" />
+                <ScalarProperty Name="零件号" ColumnName="零件号" />
+                <ScalarProperty Name="所在库位" ColumnName="所在库位" />
+                <ScalarProperty Name="呆滞天数" ColumnName="呆滞天数" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_CalOverdue_DAYS">
+            <EntityTypeMapping TypeName="SpareModel.VIEW_CalOverdue_DAYS">
+              <MappingFragment StoreEntitySet="VIEW_CalOverdue_DAYS">
+                <ScalarProperty Name="过期日期" ColumnName="过期日期" />
+                <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="批次" ColumnName="批次" />
+                <ScalarProperty Name="零件号" ColumnName="零件号" />
+                <ScalarProperty Name="所在库位" ColumnName="所在库位" />
+                <ScalarProperty Name="安全天数" ColumnName="安全天数" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_CalSafeQty">
+            <EntityTypeMapping TypeName="SpareModel.VIEW_CalSafeQty">
+              <MappingFragment StoreEntitySet="VIEW_CalSafeQty">
+                <ScalarProperty Name="零件描述" ColumnName="零件描述" />
+                <ScalarProperty Name="零件号" ColumnName="零件号" />
+                <ScalarProperty Name="最高库存" ColumnName="最高库存" />
+                <ScalarProperty Name="最低库存" ColumnName="最低库存" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_INVENTORY_DETAIL">
+            <EntityTypeMapping TypeName="SpareModel.VIEW_INVENTORY_DETAIL">
+              <MappingFragment StoreEntitySet="VIEW_INVENTORY_DETAIL">
+                <ScalarProperty Name="操作员" ColumnName="操作员" />
+                <ScalarProperty Name="盘点时间" ColumnName="盘点时间" />
+                <ScalarProperty Name="差异数" ColumnName="差异数" />
+                <ScalarProperty Name="盘点数" ColumnName="盘点数" />
+                <ScalarProperty Name="账面数" ColumnName="账面数" />
+                <ScalarProperty Name="批次" ColumnName="批次" />
+                <ScalarProperty Name="零件号" ColumnName="零件号" />
+                <ScalarProperty Name="盘点库位" ColumnName="盘点库位" />
+                <ScalarProperty Name="单据号" ColumnName="单据号" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_STOCK_DETAIL">
+            <EntityTypeMapping TypeName="SpareModel.VIEW_STOCK_DETAIL">
+              <MappingFragment StoreEntitySet="VIEW_STOCK_DETAIL">
+                <ScalarProperty Name="更新数量" ColumnName="更新数量" />
+                <ScalarProperty Name="更新时间" ColumnName="更新时间" />
+                <ScalarProperty Name="失效日期" ColumnName="失效日期" />
+                <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="单价" ColumnName="单价" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="状态" ColumnName="状态" />
+                <ScalarProperty Name="批次" ColumnName="批次" />
+                <ScalarProperty Name="零件号" ColumnName="零件号" />
+                <ScalarProperty Name="库位" ColumnName="库位" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_STOCK_DETAIL_AGE">
+            <EntityTypeMapping TypeName="SpareModel.VIEW_STOCK_DETAIL_AGE">
+              <MappingFragment StoreEntitySet="VIEW_STOCK_DETAIL_AGE">
+                <ScalarProperty Name="在库天数" ColumnName="在库天数" />
+                <ScalarProperty Name="入库时间" ColumnName="入库时间" />
+                <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="单价" ColumnName="单价" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="状态" ColumnName="状态" />
+                <ScalarProperty Name="批次" ColumnName="批次" />
+                <ScalarProperty Name="零件号" ColumnName="零件号" />
+                <ScalarProperty Name="库位" ColumnName="库位" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
