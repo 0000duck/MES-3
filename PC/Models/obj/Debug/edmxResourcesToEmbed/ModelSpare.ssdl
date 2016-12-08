@@ -265,9 +265,10 @@
     <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Qty" Type="money" Nullable="false" />
-    <Property Name="UnitPrice" Type="money" />
-    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
     <Property Name="ProduceDate" Type="datetime" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.TB_OTHER_OUT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -287,6 +288,7 @@
     <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Qty" Type="money" Nullable="false" />
     <Property Name="UnitPrice" Type="money" />
+    <Property Name="Amount" Type="money" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="TB_OUT">
@@ -337,16 +339,25 @@
     <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Batch" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Qty" Type="money" Nullable="false" />
-    <Property Name="ReturnType" Type="int" Nullable="false" />
-    <Property Name="ReturnUser" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ReturnTime" Type="datetime" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromLocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToLocCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="OutQty" Type="money" Nullable="false" />
+    <Property Name="InQty" Type="money" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="Amount" Type="money" />
     <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
     <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
     <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" />
     <Property Name="EqptCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AskUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="AskTime" Type="datetime" />
+    <Property Name="ConfirmUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmTime" Type="datetime" />
+    <Property Name="ReturnUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReturnTime" Type="datetime" />
+    <Property Name="TakeUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TakeTime" Type="datetime" Nullable="false" />
     <Property Name="State" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>
@@ -655,6 +666,7 @@
     [TB_OTHER_OUT].[FromLocCode] AS [FromLocCode], 
     [TB_OTHER_OUT].[Qty] AS [Qty], 
     [TB_OTHER_OUT].[UnitPrice] AS [UnitPrice], 
+    [TB_OTHER_OUT].[Amount] AS [Amount], 
     [TB_OTHER_OUT].[Remark] AS [Remark]
     FROM [dbo].[TB_OTHER_OUT] AS [TB_OTHER_OUT]</DefiningQuery>
     </EntitySet>

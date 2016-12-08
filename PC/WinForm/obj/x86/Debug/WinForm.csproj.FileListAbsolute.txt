@@ -613,7 +613,6 @@ D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.BaseD
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.BaseData.FormStoreLocation.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.BaseData.FormStoreGroup.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormOtherOut.resources
-D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormProductReturn.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Logs.FormErpInterface.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Manage.FormNotify.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.BaseData.FormPart.resources
@@ -700,3 +699,10 @@ D:\工作工程\CcFjcSpare\PC\WinForm\bin\x86\Debug\zh-Hans\EntityFramework.reso
 D:\工作工程\CcFjcSpare\PC\WinForm\bin\x86\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormMaterialOut.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupMaterialOut.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormSpareReturn.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupOtherOut.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupOtherIn.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupSpareReturn.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormInventoryPlan.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupStockMove.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupInventoryDetail.resources

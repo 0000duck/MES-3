@@ -75,7 +75,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
-                var detailList = (List<TB_ASK>)bs.DataSource;
+                var detailList = (List<TB_RETURN>)bs.DataSource;
                 if (detailList.Count == 0)
                 {
                     MessageHelper.ShowError("请维护领用申请明细！");
@@ -83,7 +83,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
-                BillHandler.AddMaterialAsk(db, _bill, detailList);
+                BillHandler.AddMaterialReturn(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

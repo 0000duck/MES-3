@@ -20,15 +20,11 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void AddStockMove(SpareEntities db, TB_BILL bill, List<TB_STOCK_MOVE> details)
         {
-
             SetBillNum(bill); //设置单据编号
             details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
-
             BillController.AddOrUpdate(db, bill); //添加【移库单】单据
             StockMoveController.AddList(db, details); //添加【移库单】明细
-
             StockDetailController.ListMove(db, bill, details); //更新【库存主表】【库存明细】
-
         }
 
         /// <summary>
@@ -38,17 +34,17 @@ namespace ChangKeTec.Wms.Controllers
         /// <param name="bill">其它出入库单</param>
         /// <param name="details">其它出入库明细</param>
         /// <returns></returns>
-        public static void AddOtherInOut(SpareEntities db, TB_BILL bill, List<TB_OTHER_IN> details)
+        public static void AddOtherIn(SpareEntities db, TB_BILL bill, List<TB_OTHER_IN> details)
         {
-           
-
             {
                 SetBillNum(bill); //设置单据编号
                 details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
-
-
                 BillController.AddOrUpdate(db, bill); //添加单据
-                OtherInController.AddList(db, details); //添加明细
+                foreach (var detail in details)
+                {
+                    OtherInController.AddOrUpdate(db, detail); //添加明细
+                }
+                
                 var subBillType = (SubBillType) bill.SubBillType;
                 switch (subBillType)
                 {
@@ -59,7 +55,7 @@ namespace ChangKeTec.Wms.Controllers
                     case SubBillType.ScrapDestroy: //报废销毁
 //                        var detailsOut = details.Select(detail => detail.ToStockDetailOut(bill)).ToList();
 //                         StockDetailController.ListOut(db, bill, detailsOut); //更新【库存主表】【库存明细】出库
-                       
+//                       
                         break;
                     //入库
                     case SubBillType.OtherIn: //其它入库
@@ -69,9 +65,6 @@ namespace ChangKeTec.Wms.Controllers
                          StockDetailController.ListIn(db, bill, detailsIn); //更新【库存主表】【库存明细】入库
                        
                         break;
-                    //移库
-//                    case SubBillType.ProductRepair: //成品返修
-//                    case SubBillType.BackToStore: //生产退库
                     case SubBillType.ProductUndecide: //隔离
                     case SubBillType.ProductScrap: //报废
 //                        var detailsMove = details.Select(p => p.ToStockMove()).ToList();
@@ -80,25 +73,53 @@ namespace ChangKeTec.Wms.Controllers
                         break;
                     default:
                         throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
-
                 }
             }
-
         }
-        
+
+        /// <summary>
+        ///     添加【其它出库单】
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="bill">其它出库单</param>
+        /// <param name="details">其它出库明细</param>
+        /// <returns></returns>
+        public static void AddOtherOut(SpareEntities db, TB_BILL bill, List<TB_OTHER_OUT> details)
+        {
+            {
+                SetBillNum(bill); //设置单据编号
+                details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
+                BillController.AddOrUpdate(db, bill); //添加单据
+                foreach (var detail in details)
+                {
+                    OtherOutController.AddOrUpdate(db, detail); //添加明细
+                }
+
+                var subBillType = (SubBillType)bill.SubBillType;
+                switch (subBillType)
+                {
+                    //出库
+                    case SubBillType.OtherOut: //其它出库
+                    //                    case SubBillType.ReturnToSupplier: //原料退货
+                    case SubBillType.InventoryLoss: //盘亏
+                    case SubBillType.ScrapDestroy: //报废销毁
+                        var detailsOut = details.Select(detail => detail.ToStockDetailOut(bill)).ToList();
+                        StockDetailController.ListOut(db, bill, detailsOut); //更新【库存主表】【库存明细】出库
+                        break;
+
+                    default:
+                        throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
+                }
+            }
+        }
+
         public static void AddMaterialReturn(SpareEntities db, TB_BILL bill, List<TB_RETURN> details)
         {
-           
-
-            SetBillNum(bill); //设置单据编号
-            details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
-
-
             BillController.AddOrUpdate(db, bill); //添加单据
-            
-//            var detailsIn = details.Select(detail => detail.ToStockDetailIn(bill)).ToList();
-//             StockDetailController.ListIn(db, bill, detailsIn); //更新【库存主表】【库存明细】入库
-
+            foreach (var detail in details)
+            {
+                SpareReturnController.AddOrUpdate(db, detail);//添加或修改【领用归还单】明细
+            }
         }
 
 
@@ -299,9 +320,6 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void AddMaterialAsk(SpareEntities db, TB_BILL bill, List<TB_ASK> details)
         {
-           
-
-
             SetBillNum(bill); //设置单据编号
             details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
 
@@ -451,29 +469,46 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void AddInventoryLoc(SpareEntities db, TB_BILL bill, List<TB_INVENTORY_LOC> locList)
         {
-           
-
             {
-                SetBillNum(bill); //设置单据编号
-                locList.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
-
-
-                foreach (var locBill in locList)
+                //新单据，增加盘点的三张表
+                if (bill.BillNum == "")
                 {
-                    var stockDetailList = StockDetailController.GetTListByLocCode(db, locBill.LocCode);
-                    var inventoryDetailList = (stockDetailList.Select(p => p.ToInventoryDetail(locBill))).ToList();
-                    InventoryController.AddDetailList(db, inventoryDetailList); //添加盘点明细
+                    SetBillNum(bill); //设置单据编号
+                    locList.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
+                    InventoryController.AddLocList(db, locList); //添加盘点库位列表
+                    foreach (var locBill in locList)
+                    {
+                        var stockDetailList = StockDetailController.GetTListByLocCode(db, locBill.LocCode);
+                        var inventoryDetailList = (stockDetailList.Select(p => p.ToInventoryDetail(locBill))).ToList();
+                        InventoryController.AddDetailList(db, inventoryDetailList); //添加盘点明细
+                    }
                 }
+                else
+                {
+                    //修改单据，对第二、三张表的增加或删除
+                    foreach (var locBill in locList)
+                    {
+                        if (db.TB_INVENTORY_LOC.FirstOrDefault(p => p.BillNum == bill.BillNum && p.LocCode == locBill.LocCode) == null)
+                        {
+                            InventoryController.AddLocList(db, locList); //添加盘点库位列表
+                            var stockDetailList = StockDetailController.GetTListByLocCode(db, locBill.LocCode);
+                            var inventoryDetailList = (stockDetailList.Select(p => p.ToInventoryDetail(locBill))).ToList();
+                            InventoryController.AddDetailList(db, inventoryDetailList); //添加盘点明细
+                        }  
+                    }
 
+                    var DBLocList = db.TB_INVENTORY_LOC.Where(p => p.BillNum == bill.BillNum).ToList();
+                    foreach (var loc in DBLocList)
+                    {
+                        if (locList.SingleOrDefault(p => p.LocCode == loc.LocCode) == null)
+                        {
+                            InventoryController.DeleteInventory(db,loc);
+                        }
+                    }
+                }
                 InventoryController.AddOrUpdate(db, bill); //添加盘点单据
-                InventoryController.AddLocList(db, locList); //添加盘点库位列表
-
                 NotifyController.AddNotify(db, bill.OperName, NotifyType.InventoryPlan, bill.BillNum, ""); //添加【叫料提醒单】
-
-                
-
             }
-
         }
 
 
@@ -671,8 +706,6 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void CancelInventoryLoc(SpareEntities db, TB_INVENTORY_LOC locBill)
         {
-           
-
             {
                 //校验【盘点单】状态是否为新建或已开始
                 if (locBill.State != (int) InventoryState.New && locBill.State != (int) InventoryState.Checked &&
@@ -680,13 +713,9 @@ namespace ChangKeTec.Wms.Controllers
                 {
                      throw new WmsException(ResultCode.DataStateError, locBill.BillNum + "." + locBill.LocCode,
                         "状态错误,不应为：" + locBill.State);
-
                 }
                  InventoryController.LocCancel(db, locBill);
-                
-
             }
-
         }
 
         /// <summary>
@@ -696,15 +725,25 @@ namespace ChangKeTec.Wms.Controllers
         /// <param name="bill"></param>
         /// <param name="details"></param>
         /// <returns></returns>
-        public static void AdjustStockByInventoryLoc(SpareEntities db, TB_BILL bill, List<TB_INVENTORY_DETAIL> details)
+        public static void AdjustStockByInventoryLoc(SpareEntities db, TB_BILL bill)
         {
-           
+            var details = db.TB_INVENTORY_DETAIL.Where(p => p.BillNum == bill.BillNum).ToList();
+            InventoryController.AdjustStockByInventory(db, bill, details);
+        }
 
+        /// <summary>
+        ///     【盘点单】更新盘点明细表
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="bill"></param>
+        /// <param name="details"></param>
+        /// <returns></returns>
+        public static void AddOrUpdateInventoryDetail(SpareEntities db, List<TB_INVENTORY_DETAIL> details)
+        {
+            foreach (var detail in details)
             {
-                 InventoryController.AdjustStockByInventory(db, bill, details);
-
+                InventoryController.AddOrUpdate(db,detail);
             }
-
         }
 
         #endregion

@@ -207,6 +207,11 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnModify_Click(object sender, EventArgs e)
         {
+            if (_bill == null || _bill.BillNum == null)
+            {
+                MessageHelper.ShowInfo("请选择单据！");
+                return;
+            }
             PopupMaterialAsk popup = new PopupMaterialAsk(_bill);
             popup.ShowDialog(this);
             SetMasterDataSource(grid.PageIndex, grid.PageSize);

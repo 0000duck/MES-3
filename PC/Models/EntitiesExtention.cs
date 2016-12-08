@@ -53,6 +53,11 @@ namespace ChangKeTec.Wms.Models
         }
     }
 
+    public partial class TA_STORE_LOCATION
+    {
+        public bool IsCheck { get; set; }
+    }
+
     public partial class TB_OUT
     {
         public override string ToString()
@@ -218,12 +223,8 @@ namespace ChangKeTec.Wms.Models
                 ProduceDate =this.ProduceDate,
                 OverdueDate = (this.ProduceDate).AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
             };
-        }
-
-     
+        }  
     }
-
-
 
     public partial class TB_STOCK_MOVE
     {

@@ -33,7 +33,6 @@
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.BtnSave = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
-            this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
             this.propertyBill = new DevComponents.DotNetBar.AdvPropertyGrid();
             this.cktMasterDetailGrid4 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             this.cktMasterDetailGrid3 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
@@ -57,7 +56,12 @@
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcDeptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcProjectCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcWorklineCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -66,15 +70,10 @@
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn14 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn15 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn17 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -93,8 +92,7 @@
             this.bar1.IsMaximized = false;
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.BtnSave,
-            this.ItemBtnExport,
-            this.ItemBtnPrint});
+            this.ItemBtnExport});
             this.bar1.Location = new System.Drawing.Point(0, 0);
             this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
@@ -122,15 +120,6 @@
             this.ItemBtnExport.Name = "ItemBtnExport";
             this.ItemBtnExport.Text = "导出";
             this.ItemBtnExport.Click += new System.EventHandler(this.BtnExport_Click);
-            // 
-            // ItemBtnPrint
-            // 
-            this.ItemBtnPrint.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.ItemBtnPrint.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_211;
-            this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.ItemBtnPrint.Name = "ItemBtnPrint";
-            this.ItemBtnPrint.Text = "打印检验单";
-            this.ItemBtnPrint.Visible = false;
             // 
             // propertyBill
             // 
@@ -435,11 +424,41 @@
             this.gcPartCode.HeaderText = "零件号";
             this.gcPartCode.Name = "gridColumn3";
             // 
+            // gridColumn3
+            // 
+            this.gridColumn3.DataPropertyName = "Batch";
+            this.gridColumn3.HeaderText = "批次";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.DataPropertyName = "ToLocCode";
+            this.gridColumn5.HeaderText = "目标库位";
+            this.gridColumn5.Name = "gridColumn5";
+            // 
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "OutQty";
             this.gridColumn4.HeaderText = "出库数量";
             this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.DataPropertyName = "InQty";
+            this.gridColumn6.HeaderText = "还回数量";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.DataPropertyName = "UnitPrice";
+            this.gridColumn7.HeaderText = "单价";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.DataPropertyName = "Amount";
+            this.gridColumn8.HeaderText = "金额";
+            this.gridColumn8.Name = "gridColumn8";
             // 
             // gcDeptCode
             // 
@@ -493,6 +512,18 @@
             this.gridColumn12.HeaderText = "批准时间";
             this.gridColumn12.Name = "Column5";
             // 
+            // gridColumn14
+            // 
+            this.gridColumn14.DataPropertyName = "TakeUser";
+            this.gridColumn14.HeaderText = "领取人";
+            this.gridColumn14.Name = "gridColumn14";
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.DataPropertyName = "TakeTime";
+            this.gridColumn15.HeaderText = "领取时间";
+            this.gridColumn15.Name = "gridColumn15";
+            // 
             // gridColumn13
             // 
             this.gridColumn13.DataPropertyName = "State";
@@ -505,48 +536,6 @@
             this.gridColumn26.DataPropertyName = "Remark";
             this.gridColumn26.HeaderText = "备注";
             this.gridColumn26.Name = "gridColumn26";
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.DataPropertyName = "Batch";
-            this.gridColumn3.HeaderText = "批次";
-            this.gridColumn3.Name = "gridColumn3";
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.DataPropertyName = "ToLocCode";
-            this.gridColumn5.HeaderText = "目标库位";
-            this.gridColumn5.Name = "gridColumn5";
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.DataPropertyName = "InQty";
-            this.gridColumn6.HeaderText = "还回数量";
-            this.gridColumn6.Name = "gridColumn6";
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.DataPropertyName = "UnitPrice";
-            this.gridColumn7.HeaderText = "单价";
-            this.gridColumn7.Name = "gridColumn7";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.DataPropertyName = "Amount";
-            this.gridColumn8.HeaderText = "金额";
-            this.gridColumn8.Name = "gridColumn8";
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.DataPropertyName = "TakeUser";
-            this.gridColumn14.HeaderText = "领取人";
-            this.gridColumn14.Name = "gridColumn14";
-            // 
-            // gridColumn15
-            // 
-            this.gridColumn15.DataPropertyName = "TakeTime";
-            this.gridColumn15.HeaderText = "领取时间";
-            this.gridColumn15.Name = "gridColumn15";
             // 
             // gridColumn16
             // 
@@ -593,7 +582,6 @@
         private DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.ButtonItem BtnSave;
         private DevComponents.DotNetBar.ButtonItem ItemBtnExport;
-        private DevComponents.DotNetBar.ButtonItem ItemBtnPrint;
         private DevComponents.DotNetBar.AdvPropertyGrid propertyBill;
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter2;
         private Common.UC.CktMasterDetailGrid cktMasterDetailGrid4;

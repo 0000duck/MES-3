@@ -53,5 +53,10 @@ namespace ChangKeTec.Wms.Controllers.Bill
             };           
             return partPickList;
         }
+
+        public static void AddOrUpdate(SpareEntities db, TB_RETURN sparereturn)
+        {
+            db.TB_RETURN.AddOrUpdate(p => p.UID, sparereturn);
+        }
     }
 }
