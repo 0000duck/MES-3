@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             this.btnAdd = new DevComponents.DotNetBar.ButtonItem();
             this.btnModify = new DevComponents.DotNetBar.ButtonItem();
             this.btnCancel = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
             this.btnFilter = new DevComponents.DotNetBar.ButtonItem();
+            this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,28 +62,6 @@
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
             // 
-            // grid
-            // 
-            this.grid.Detail1DataSource = null;
-            this.grid.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.IsNavigatorVisible = true;
-            this.grid.IsPropertyExpand = false;
-            this.grid.IsPropertyVisible = true;
-            this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grid.MasterDataSource = null;
-            this.grid.Name = "grid";
-            this.grid.PageIndex = 1;
-            this.grid.PageSize = 100;
-            this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.grid.Size = new System.Drawing.Size(892, 532);
-            this.grid.TabIndex = 9;
-            this.grid.Total = 0;
-            this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
-            this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
-            this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
-            // 
             // btnAdd
             // 
             this.btnAdd.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
@@ -100,6 +78,7 @@
             this.btnModify.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnModify.Name = "btnModify";
             this.btnModify.Text = "修改";
+            this.btnModify.Visible = false;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnCancel
@@ -109,6 +88,7 @@
             this.btnCancel.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Text = "取消";
+            this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ItemBtnExport
@@ -138,6 +118,28 @@
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Text = "筛选";
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // grid
+            // 
+            this.grid.Detail1DataSource = null;
+            this.grid.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.IsNavigatorVisible = true;
+            this.grid.IsPropertyExpand = false;
+            this.grid.IsPropertyVisible = true;
+            this.grid.Location = new System.Drawing.Point(0, 29);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.MasterDataSource = null;
+            this.grid.Name = "grid";
+            this.grid.PageIndex = 1;
+            this.grid.PageSize = 100;
+            this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.grid.Size = new System.Drawing.Size(892, 532);
+            this.grid.TabIndex = 9;
+            this.grid.Total = 0;
+            this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
+            this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
+            this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
             // 
             // FormOtherIn
             // 

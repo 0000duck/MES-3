@@ -35,7 +35,6 @@
     <EntitySet Name="TT_GROUP_TYPE" EntityType="SpareModel.TT_GROUP_TYPE" />
     <EntitySet Name="TT_LOC_TYPE" EntityType="SpareModel.TT_LOC_TYPE" />
     <EntitySet Name="TT_PART_TYPE" EntityType="SpareModel.TT_PART_TYPE" />
-    <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
     <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" />
     <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
     <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
@@ -46,6 +45,7 @@
     <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="SpareModel.VIEW_INVENTORY_DETAIL" />
     <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="SpareModel.VIEW_STOCK_DETAIL" />
     <EntitySet Name="VIEW_STOCK_DETAIL_AGE" EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" />
+    <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
   </EntityContainer>
   <EntityType Name="TA_BILLTYPE">
     <Key>
@@ -555,25 +555,6 @@
     <Property Name="PartType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="TB_OTHER_OUT">
-    <Key>
-      <PropertyRef Name="UID" />
-      <PropertyRef Name="BillNum" />
-      <PropertyRef Name="PartCode" />
-      <PropertyRef Name="Batch" />
-      <PropertyRef Name="FromLocCode" />
-      <PropertyRef Name="Qty" />
-    </Key>
-    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="VS_IDLE_STOCK_DETAIL">
     <Key>
       <PropertyRef Name="LocCode" />
@@ -704,6 +685,7 @@
     <Property Name="最高库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="零件描述" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="在库数量" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="VIEW_INVENTORY_DETAIL">
     <Key>
@@ -778,5 +760,19 @@
     <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="入库时间" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="在库天数" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TB_OTHER_OUT">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

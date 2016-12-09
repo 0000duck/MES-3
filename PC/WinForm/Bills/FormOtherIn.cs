@@ -22,7 +22,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
     public partial class FormOtherIn : Office2007Form
     {
         private BillType _billType = BillType.OtherInOut;
-        private readonly SubBillType _subBillType;
+        private readonly SubBillType _subBillType = SubBillType.OtherIn;
         private GridppReport _report;
         private TB_BILL _bill = null;
         private readonly string DetailTableName = "TB_OTHER_IN";
@@ -33,9 +33,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         public FormOtherIn()
         {
             InitializeComponent();
-            _where = c => c.BillType == (int) _billType;
-            _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+            _where = c => c.BillType == (int) _billType &&c.SubBillType == (int)_subBillType;
+//            _report = ReportHelper.InitReport(_billType);
+//            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)

@@ -539,21 +539,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_OTHER_OUT">
-      <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
-        <MappingFragment StoreEntitySet="TB_OTHER_OUT">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
       <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
         <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
@@ -655,6 +640,7 @@
     <EntitySetMapping Name="VIEW_CalSafeQty">
       <EntityTypeMapping TypeName="SpareModel.VIEW_CalSafeQty">
         <MappingFragment StoreEntitySet="VIEW_CalSafeQty">
+          <ScalarProperty Name="在库数量" ColumnName="在库数量" />
           <ScalarProperty Name="零件描述" ColumnName="零件描述" />
           <ScalarProperty Name="零件号" ColumnName="零件号" />
           <ScalarProperty Name="最高库存" ColumnName="最高库存" />
@@ -709,6 +695,21 @@
           <ScalarProperty Name="批次" ColumnName="批次" />
           <ScalarProperty Name="零件号" ColumnName="零件号" />
           <ScalarProperty Name="库位" ColumnName="库位" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_OTHER_OUT">
+      <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
+        <MappingFragment StoreEntitySet="TB_OTHER_OUT">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
           <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>
       </EntityTypeMapping>

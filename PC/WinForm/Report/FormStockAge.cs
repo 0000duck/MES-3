@@ -21,7 +21,6 @@ namespace ChangKeTec.Wms.WinForm.Report
         {
             InitializeComponent();
             _billList = new List<VIEW_STOCK_DETAIL_AGE>();
-            dgvBill.AutoGenerateColumns = false;
         }
 
 
@@ -38,13 +37,13 @@ namespace ChangKeTec.Wms.WinForm.Report
             using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
             {
                 _billList = ReportViewController.GetStockDetailAge(db);
-                dgvBill.DataSource = ListHelper.ListToDataTable(_billList);
+                grid.PrimaryGrid.DataSource = _billList;
             }
         }
 
         private void ItemBtnExport_Click(object sender, EventArgs e)
         {
-            DataTable dt = DataGridViewHelper.DgvToTable(dgvBill, "VIEW_CalOverdue_DAYS");
+            DataTable dt = DataGridViewHelper.DgvToTable(grid, "VIEW_STOCK_DETAIL_AGE");
             ExcelWriter.Write(dt);
         }
 

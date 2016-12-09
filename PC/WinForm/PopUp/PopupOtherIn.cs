@@ -8,7 +8,8 @@ using ChangKeTec.Wms.Common;
     using ChangKeTec.Wms.Common.ComboBox;
     using ChangKeTec.Wms.Common.UC;
 using ChangKeTec.Wms.Controllers;
-using ChangKeTec.Wms.Models;
+    using ChangKeTec.Wms.Controllers.Bill;
+    using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
 using ChangKeTec.Wms.WinForm.Util;
@@ -53,6 +54,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
             gcPartCode.EditorType = typeof (PartComboBox);
+            gcToLocCode.EditorType = typeof (StoreLocComboBox);
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }
@@ -90,15 +92,15 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billnum)
         {
             int count;
-            Expression<Func<TB_ASK, dynamic>> select = c => c;
-            Expression<Func<TB_ASK, bool>> where = c => c.BillNum==billnum;
-            Expression<Func<TB_ASK, long>> order = c => c.UID;
+            Expression<Func<TB_OTHER_IN, dynamic>> select = c => c;
+            Expression<Func<TB_OTHER_IN, bool>> where = c => c.BillNum==billnum;
+            Expression<Func<TB_OTHER_IN, long>> order = c => c.UID;
             _list = EniitiesHelper.GetData(_db,
                 select,
                 where,
                 order,
                 out count);
-            bs.DataSource = _db.TB_ASK.Where(p => p.BillNum == billnum).ToList();
+            bs.DataSource = _db.TB_OTHER_IN.Where(p => p.BillNum == billnum).ToList();
             //bs.DataSource = _list;
             grid.PrimaryGrid.DataSource = bs;            
             bn.BindingSource = bs;
@@ -122,6 +124,41 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)
         {
             //e.Handled = true;
+        }
+
+        private void grid_CellValueChanged(object sender, GridCellValueChangedEventArgs e)
+        {
+            GridCell cell = e.GridCell;
+            var row = (GridRow)e.GridPanel.Rows[cell.RowIndex];
+            //相同批次的物料，看库存中是否有单价
+            if (cell.GridColumn == gcPartCode || cell.GridColumn == gcBatch)
+            {
+                if (row[gcPartCode].Value!= null)
+                {
+                    var partcode = row[gcPartCode].Value.ToString();
+                    if (row[gcBatch].Value != null)
+                    {
+                        var batch = row[gcBatch].Value.ToString();
+                        var stockDetail =
+                            StockDetailController.GetListByPartCode(_db, partcode)
+                                .Where(p => p.Batch == batch)
+                                .OrderBy(p => p.Batch)
+                                .FirstOrDefault();
+                        if (stockDetail != null)
+                        {
+                            row.Cells[gcUnitPrice].Value = stockDetail.UnitPrice;
+                        }
+                    }
+                }
+            }
+            //根据出库数量，自动计算金额
+            if (cell.GridColumn == gcUnitPrice || cell.GridColumn == gcQty)
+            {
+                if (Convert.ToString(row.Cells[gcUnitPrice].Value) != "" && Convert.ToString(row.Cells[gcQty].Value) != "")
+                {
+                    row.Cells[gcAmount].Value = (decimal)row.Cells[gcUnitPrice].Value * (decimal)row.Cells[gcQty].Value;
+                }
+            }
         }
     }
 }

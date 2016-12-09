@@ -116,8 +116,10 @@ namespace ChangKeTec.Wms.Models
                 PartCode = this.PartCode,
                 Batch = this.Batch,
                 LocCode = this.ToLocCode,
-                Qty = 0,
+                Qty = this.Qty,
+                UpdateQty = this.Qty,
                 ProduceDate = this.ProduceDate.Value,
+                ReceiveDate = DateTime.Now,
                 OverdueDate = this.ProduceDate.Value.AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
             };
         }
@@ -146,6 +148,7 @@ namespace ChangKeTec.Wms.Models
                 Batch = this.Batch,
                 LocCode = this.FromLocCode,
                 Qty = this.Qty,
+                UpdateQty = 0-this.Qty
             };
         }
     }

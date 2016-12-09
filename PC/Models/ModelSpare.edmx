@@ -275,16 +275,9 @@
           <Property Name="Amount" Type="money" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“ChangKeSpare.dbo.TB_OTHER_OUT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="TB_OTHER_OUT">
           <Key>
             <PropertyRef Name="UID" />
-            <PropertyRef Name="BillNum" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Batch" />
-            <PropertyRef Name="FromLocCode" />
-            <PropertyRef Name="Qty" />
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -585,6 +578,7 @@
           <Property Name="最高库存" Type="money" Nullable="false" />
           <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="零件描述" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="在库数量" Type="money" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_INVENTORY_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -779,6 +773,7 @@
           <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="Self.TB_INVENTORY_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_INVENTORY_LOC" EntityType="Self.TB_INVENTORY_LOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_OTHER_IN" EntityType="Self.TB_OTHER_IN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_OUT" EntityType="Self.TB_OUT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_PO" EntityType="Self.TB_PO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_RETURN" EntityType="Self.TB_RETURN" Schema="dbo" store:Type="Tables" />
@@ -794,19 +789,6 @@
           <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_PART_TYPE" EntityType="Self.TT_PART_TYPE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TB_OTHER_OUT].[UID] AS [UID], 
-    [TB_OTHER_OUT].[BillNum] AS [BillNum], 
-    [TB_OTHER_OUT].[PartCode] AS [PartCode], 
-    [TB_OTHER_OUT].[Batch] AS [Batch], 
-    [TB_OTHER_OUT].[FromLocCode] AS [FromLocCode], 
-    [TB_OTHER_OUT].[Qty] AS [Qty], 
-    [TB_OTHER_OUT].[UnitPrice] AS [UnitPrice], 
-    [TB_OTHER_OUT].[Amount] AS [Amount], 
-    [TB_OTHER_OUT].[Remark] AS [Remark]
-    FROM [dbo].[TB_OTHER_OUT] AS [TB_OTHER_OUT]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="Self.VIEW_CalInaction_DAYS" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VIEW_CalInaction_DAYS].[呆滞天数] AS [呆滞天数], 
@@ -834,7 +816,8 @@
     [VIEW_CalSafeQty].[最低库存] AS [最低库存], 
     [VIEW_CalSafeQty].[最高库存] AS [最高库存], 
     [VIEW_CalSafeQty].[零件号] AS [零件号], 
-    [VIEW_CalSafeQty].[零件描述] AS [零件描述]
+    [VIEW_CalSafeQty].[零件描述] AS [零件描述], 
+    [VIEW_CalSafeQty].[在库数量] AS [在库数量]
     FROM [dbo].[VIEW_CalSafeQty] AS [VIEW_CalSafeQty]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="Self.VIEW_INVENTORY_DETAIL" store:Type="Views" store:Schema="dbo">
@@ -986,7 +969,6 @@
           <EntitySet Name="TT_GROUP_TYPE" EntityType="SpareModel.TT_GROUP_TYPE" />
           <EntitySet Name="TT_LOC_TYPE" EntityType="SpareModel.TT_LOC_TYPE" />
           <EntitySet Name="TT_PART_TYPE" EntityType="SpareModel.TT_PART_TYPE" />
-          <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
           <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" />
           <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
           <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
@@ -997,6 +979,7 @@
           <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="SpareModel.VIEW_INVENTORY_DETAIL" />
           <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="SpareModel.VIEW_STOCK_DETAIL" />
           <EntitySet Name="VIEW_STOCK_DETAIL_AGE" EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" />
+          <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
         </EntityContainer>
         <EntityType Name="TA_BILLTYPE">
           <Key>
@@ -1506,25 +1489,6 @@
           <Property Name="PartType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TB_OTHER_OUT">
-          <Key>
-            <PropertyRef Name="UID" />
-            <PropertyRef Name="BillNum" />
-            <PropertyRef Name="PartCode" />
-            <PropertyRef Name="Batch" />
-            <PropertyRef Name="FromLocCode" />
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="VS_IDLE_STOCK_DETAIL">
           <Key>
             <PropertyRef Name="LocCode" />
@@ -1655,6 +1619,7 @@
           <Property Name="最高库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="零件描述" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="在库数量" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="VIEW_INVENTORY_DETAIL">
           <Key>
@@ -1729,6 +1694,20 @@
           <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="入库时间" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="在库天数" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB_OTHER_OUT">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2274,21 +2253,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TB_OTHER_OUT">
-            <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
-              <MappingFragment StoreEntitySet="TB_OTHER_OUT">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
             <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
               <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
@@ -2390,6 +2354,7 @@
           <EntitySetMapping Name="VIEW_CalSafeQty">
             <EntityTypeMapping TypeName="SpareModel.VIEW_CalSafeQty">
               <MappingFragment StoreEntitySet="VIEW_CalSafeQty">
+                <ScalarProperty Name="在库数量" ColumnName="在库数量" />
                 <ScalarProperty Name="零件描述" ColumnName="零件描述" />
                 <ScalarProperty Name="零件号" ColumnName="零件号" />
                 <ScalarProperty Name="最高库存" ColumnName="最高库存" />
@@ -2444,6 +2409,21 @@
                 <ScalarProperty Name="批次" ColumnName="批次" />
                 <ScalarProperty Name="零件号" ColumnName="零件号" />
                 <ScalarProperty Name="库位" ColumnName="库位" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_OTHER_OUT">
+            <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
+              <MappingFragment StoreEntitySet="TB_OTHER_OUT">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>

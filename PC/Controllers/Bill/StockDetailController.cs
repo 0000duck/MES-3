@@ -66,6 +66,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 stockDetail.UpdateQty = detailOut.UpdateQty;
                 stockDetail.UpdateTime = DateTime.Now;
             }
+            db.TS_STOCK_DETAIL.AddOrUpdate(stockDetail);
             TransactionLogController.Add(db, bill, detailOut); //添加库存事务日志
         }
 

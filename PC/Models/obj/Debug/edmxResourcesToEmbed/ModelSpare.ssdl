@@ -270,16 +270,9 @@
     <Property Name="Amount" Type="money" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>
-  <!--生成过程中发现错误:
-警告 6002: 表/视图“ChangKeSpare.dbo.TB_OTHER_OUT”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="TB_OTHER_OUT">
     <Key>
       <PropertyRef Name="UID" />
-      <PropertyRef Name="BillNum" />
-      <PropertyRef Name="PartCode" />
-      <PropertyRef Name="Batch" />
-      <PropertyRef Name="FromLocCode" />
-      <PropertyRef Name="Qty" />
     </Key>
     <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -580,6 +573,7 @@
     <Property Name="最高库存" Type="money" Nullable="false" />
     <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="零件描述" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="在库数量" Type="money" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_INVENTORY_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -774,6 +768,7 @@
     <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="Self.TB_INVENTORY_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_INVENTORY_LOC" EntityType="Self.TB_INVENTORY_LOC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_OTHER_IN" EntityType="Self.TB_OTHER_IN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_OUT" EntityType="Self.TB_OUT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_PO" EntityType="Self.TB_PO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TB_RETURN" EntityType="Self.TB_RETURN" Schema="dbo" store:Type="Tables" />
@@ -789,19 +784,6 @@
     <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TT_PART_TYPE" EntityType="Self.TT_PART_TYPE" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TB_OTHER_OUT" EntityType="Self.TB_OTHER_OUT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [TB_OTHER_OUT].[UID] AS [UID], 
-    [TB_OTHER_OUT].[BillNum] AS [BillNum], 
-    [TB_OTHER_OUT].[PartCode] AS [PartCode], 
-    [TB_OTHER_OUT].[Batch] AS [Batch], 
-    [TB_OTHER_OUT].[FromLocCode] AS [FromLocCode], 
-    [TB_OTHER_OUT].[Qty] AS [Qty], 
-    [TB_OTHER_OUT].[UnitPrice] AS [UnitPrice], 
-    [TB_OTHER_OUT].[Amount] AS [Amount], 
-    [TB_OTHER_OUT].[Remark] AS [Remark]
-    FROM [dbo].[TB_OTHER_OUT] AS [TB_OTHER_OUT]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="Self.VIEW_CalInaction_DAYS" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [VIEW_CalInaction_DAYS].[呆滞天数] AS [呆滞天数], 
@@ -829,7 +811,8 @@
     [VIEW_CalSafeQty].[最低库存] AS [最低库存], 
     [VIEW_CalSafeQty].[最高库存] AS [最高库存], 
     [VIEW_CalSafeQty].[零件号] AS [零件号], 
-    [VIEW_CalSafeQty].[零件描述] AS [零件描述]
+    [VIEW_CalSafeQty].[零件描述] AS [零件描述], 
+    [VIEW_CalSafeQty].[在库数量] AS [在库数量]
     FROM [dbo].[VIEW_CalSafeQty] AS [VIEW_CalSafeQty]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="Self.VIEW_INVENTORY_DETAIL" store:Type="Views" store:Schema="dbo">

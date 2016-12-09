@@ -52,16 +52,16 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcUID = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcBillNum = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcBatch = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcToLocCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcQty = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcUnitPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcAmount = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcProduceDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn17 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcRemark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).BeginInit();
@@ -132,7 +132,7 @@
             this.cktMasterDetailGrid4.IsPropertyExpand = false;
             this.cktMasterDetailGrid4.IsPropertyVisible = true;
             this.cktMasterDetailGrid4.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid4.MasterDataSource = null;
             this.cktMasterDetailGrid4.Name = "cktMasterDetailGrid4";
             this.cktMasterDetailGrid4.PageIndex = 1;
@@ -150,7 +150,7 @@
             this.cktMasterDetailGrid3.IsPropertyExpand = false;
             this.cktMasterDetailGrid3.IsPropertyVisible = true;
             this.cktMasterDetailGrid3.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid3.MasterDataSource = null;
             this.cktMasterDetailGrid3.Name = "cktMasterDetailGrid3";
             this.cktMasterDetailGrid3.PageIndex = 1;
@@ -168,7 +168,7 @@
             this.cktMasterDetailGrid2.IsPropertyExpand = false;
             this.cktMasterDetailGrid2.IsPropertyVisible = true;
             this.cktMasterDetailGrid2.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid2.MasterDataSource = null;
             this.cktMasterDetailGrid2.Name = "cktMasterDetailGrid2";
             this.cktMasterDetailGrid2.PageIndex = 1;
@@ -186,7 +186,7 @@
             this.cktMasterDetailGrid1.IsPropertyExpand = false;
             this.cktMasterDetailGrid1.IsPropertyVisible = true;
             this.cktMasterDetailGrid1.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid1.MasterDataSource = null;
             this.cktMasterDetailGrid1.Name = "cktMasterDetailGrid1";
             this.cktMasterDetailGrid1.PageIndex = 1;
@@ -354,17 +354,16 @@
             // 
             // 
             this.grid.PrimaryGrid.AutoGenerateColumns = false;
-            this.grid.PrimaryGrid.ColumnAutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.DisplayedCells;
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn1);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
+            this.grid.PrimaryGrid.Columns.Add(this.gcUID);
+            this.grid.PrimaryGrid.Columns.Add(this.gcBillNum);
             this.grid.PrimaryGrid.Columns.Add(this.gcPartCode);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
+            this.grid.PrimaryGrid.Columns.Add(this.gcBatch);
+            this.grid.PrimaryGrid.Columns.Add(this.gcToLocCode);
+            this.grid.PrimaryGrid.Columns.Add(this.gcQty);
+            this.grid.PrimaryGrid.Columns.Add(this.gcUnitPrice);
+            this.grid.PrimaryGrid.Columns.Add(this.gcAmount);
             this.grid.PrimaryGrid.Columns.Add(this.gcProduceDate);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn17);
+            this.grid.PrimaryGrid.Columns.Add(this.gcRemark);
             // 
             // 
             // 
@@ -378,18 +377,19 @@
             this.grid.Size = new System.Drawing.Size(657, 505);
             this.grid.TabIndex = 61;
             this.grid.Text = "superGridControl1";
+            this.grid.CellValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs>(this.grid_CellValueChanged);
             // 
-            // gridColumn1
+            // gcUID
             // 
-            this.gridColumn1.DataPropertyName = "UID";
-            this.gridColumn1.HeaderText = "UID";
-            this.gridColumn1.Name = "gridColumn1";
+            this.gcUID.DataPropertyName = "UID";
+            this.gcUID.HeaderText = "UID";
+            this.gcUID.Name = "gridColumn1";
             // 
-            // gridColumn2
+            // gcBillNum
             // 
-            this.gridColumn2.DataPropertyName = "BillNum";
-            this.gridColumn2.HeaderText = "单据号";
-            this.gridColumn2.Name = "gridColumn2";
+            this.gcBillNum.DataPropertyName = "BillNum";
+            this.gcBillNum.HeaderText = "单据号";
+            this.gcBillNum.Name = "gridColumn2";
             // 
             // gcPartCode
             // 
@@ -398,47 +398,52 @@
             this.gcPartCode.HeaderText = "零件号";
             this.gcPartCode.Name = "gridColumn3";
             // 
-            // gridColumn3
+            // gcBatch
             // 
-            this.gridColumn3.DataPropertyName = "Batch";
-            this.gridColumn3.HeaderText = "批次";
-            this.gridColumn3.Name = "gridColumn3";
+            this.gcBatch.DataPropertyName = "Batch";
+            this.gcBatch.HeaderText = "批次";
+            this.gcBatch.Name = "gridColumn3";
             // 
-            // gridColumn5
+            // gcToLocCode
             // 
-            this.gridColumn5.DataPropertyName = "ToLocCode";
-            this.gridColumn5.HeaderText = "目标库位";
-            this.gridColumn5.Name = "gridColumn5";
+            this.gcToLocCode.DataPropertyName = "ToLocCode";
+            this.gcToLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcToLocCode.HeaderText = "目标库位";
+            this.gcToLocCode.Name = "gridColumn5";
             // 
-            // gridColumn6
+            // gcQty
             // 
-            this.gridColumn6.DataPropertyName = "Qty";
-            this.gridColumn6.HeaderText = "入库数量";
-            this.gridColumn6.Name = "gridColumn6";
+            this.gcQty.DataPropertyName = "Qty";
+            this.gcQty.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
+            this.gcQty.HeaderText = "入库数量";
+            this.gcQty.Name = "gridColumn6";
             // 
-            // gridColumn7
+            // gcUnitPrice
             // 
-            this.gridColumn7.DataPropertyName = "UnitPrice";
-            this.gridColumn7.HeaderText = "单价";
-            this.gridColumn7.Name = "gridColumn7";
+            this.gcUnitPrice.DataPropertyName = "UnitPrice";
+            this.gcUnitPrice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridNumericUpDownEditControl);
+            this.gcUnitPrice.HeaderText = "单价";
+            this.gcUnitPrice.Name = "gridColumn7";
             // 
-            // gridColumn16
+            // gcAmount
             // 
-            this.gridColumn16.DataPropertyName = "Amount";
-            this.gridColumn16.HeaderText = "金额";
-            this.gridColumn16.Name = "gridColumn16";
+            this.gcAmount.DataPropertyName = "Amount";
+            this.gcAmount.HeaderText = "金额";
+            this.gcAmount.Name = "gridColumn16";
+            this.gcAmount.ReadOnly = true;
             // 
             // gcProduceDate
             // 
             this.gcProduceDate.DataPropertyName = "ProduceDate";
+            this.gcProduceDate.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDateTimePickerEditControl);
             this.gcProduceDate.HeaderText = "生产日期";
             this.gcProduceDate.Name = "gridColumn8";
             // 
-            // gridColumn17
+            // gcRemark
             // 
-            this.gridColumn17.DataPropertyName = "Remark";
-            this.gridColumn17.HeaderText = "备注";
-            this.gridColumn17.Name = "gridColumn17";
+            this.gcRemark.DataPropertyName = "Remark";
+            this.gcRemark.HeaderText = "备注";
+            this.gcRemark.Name = "gridColumn17";
             // 
             // PopupOtherIn
             // 
@@ -455,6 +460,7 @@
             this.Name = "PopupOtherIn";
             this.ShowIcon = false;
             this.Text = "新增其他入库单";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWhseReceive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).EndInit();
@@ -493,15 +499,15 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource bs;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl grid;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcUID;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcBillNum;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcPartCode;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcBatch;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcToLocCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcQty;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcUnitPrice;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcProduceDate;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn16;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn17;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcAmount;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcRemark;
     }
 }

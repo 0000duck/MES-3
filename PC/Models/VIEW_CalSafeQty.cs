@@ -18,5 +18,6 @@ namespace ChangKeTec.Wms.Models
         public decimal 最高库存 { get; set; }
         public string 零件号 { get; set; }
         public string 零件描述 { get; set; }
+        public Nullable<decimal> 在库数量 { get; set; }
     }
 }

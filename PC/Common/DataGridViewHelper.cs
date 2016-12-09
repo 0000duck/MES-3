@@ -134,6 +134,30 @@ namespace ChangKeTec.Wms.Common
 //            }
             return dt;
         }
+
+        public static DataTable DgvToTable(SuperGridControl dgv, string name)
+        {
+            DataTable dt = new DataTable { TableName = name };
+            // 列强制转换
+            foreach (GridColumn column in dgv.PrimaryGrid.Columns)
+            {
+                if (!column.Visible) continue;
+                DataColumn dc = new DataColumn(column.Name);
+                dt.Columns.Add(dc);
+            }
+
+            foreach (GridRow row in dgv.PrimaryGrid.Rows)
+            {
+                var dr = dt.NewRow();
+                foreach (GridColumn column in dgv.PrimaryGrid.Columns)
+                {
+                    if (!column.Visible) continue;
+                    dr[column.Name] = Convert.ToString(row.Cells[column].Value);
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
         public static DataTable DgvToTable(GridPanel dgv, string name)
         {
             DataTable dt = new DataTable {TableName = name};

@@ -21,10 +21,7 @@ namespace ChangKeTec.Wms.WinForm.Report
         {
             InitializeComponent();
             _billList = new List<VIEW_CalInaction_DAYS>();
-            dgvBill.AutoGenerateColumns = false;
         }
-
-
 
         private void FormLog_Load(object sender, EventArgs e)
         {
@@ -38,13 +35,13 @@ namespace ChangKeTec.Wms.WinForm.Report
             using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
             {
                 _billList = ReportViewController.GetCalInaction(db);
-                dgvBill.DataSource = ListHelper.ListToDataTable(_billList);
+                grid.PrimaryGrid.DataSource = _billList;
             }
         }
 
         private void ItemBtnExport_Click(object sender, EventArgs e)
         {
-            DataTable dt = DataGridViewHelper.DgvToTable(dgvBill, "VIEW_CalOverdue_DAYS");
+            DataTable dt = DataGridViewHelper.DgvToTable(grid, "VIEW_CalInaction_DAYS");
             ExcelWriter.Write(dt);
         }
 

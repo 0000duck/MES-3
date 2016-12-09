@@ -39,7 +39,6 @@
         <EntityTypeShape EntityType="SpareModel.TT_GROUP_TYPE" Width="1.5" PointX="16.75" PointY="8.75" />
         <EntityTypeShape EntityType="SpareModel.TT_LOC_TYPE" Width="1.5" PointX="16.75" PointY="11.75" />
         <EntityTypeShape EntityType="SpareModel.TT_PART_TYPE" Width="1.5" PointX="12.75" PointY="16.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_OTHER_OUT" Width="1.5" PointX="16.75" PointY="14.75" />
         <EntityTypeShape EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" Width="1.5" PointX="18.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.VS_OVERDUE_STOCK" Width="1.5" PointX="18.75" PointY="5.75" />
         <EntityTypeShape EntityType="SpareModel.VS_STOCK" Width="1.5" PointX="18.75" PointY="9.75" />
@@ -50,6 +49,7 @@
         <EntityTypeShape EntityType="SpareModel.VIEW_INVENTORY_DETAIL" Width="1.5" PointX="9.75" PointY="19.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="11.75" PointY="19.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" Width="1.5" PointX="18.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_OTHER_OUT" Width="1.5" PointX="3.375" PointY="20.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
