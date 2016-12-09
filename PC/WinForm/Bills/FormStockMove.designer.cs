@@ -65,7 +65,6 @@
             this.BtnAdd.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Text = "新增";
-            this.BtnAdd.Visible = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnDeliver_Click);
             // 
             // ItemBtnExport
@@ -75,6 +74,7 @@
             this.ItemBtnExport.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnExport.Name = "ItemBtnExport";
             this.ItemBtnExport.Text = "导出";
+            this.ItemBtnExport.Visible = false;
             this.ItemBtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // ItemBtnPrint
@@ -84,6 +84,7 @@
             this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnPrint.Name = "ItemBtnPrint";
             this.ItemBtnPrint.Text = "打印";
+            this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
             // btnFilter
@@ -105,7 +106,7 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;

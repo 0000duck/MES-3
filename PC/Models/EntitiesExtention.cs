@@ -189,6 +189,8 @@ namespace ChangKeTec.Wms.Models
                 Qty = 0,
                 ProduceDate = this.ProduceDate,
                 OverdueDate = this.OverdueDate,
+                UnitPrice = this.UnitPrice,
+                ReceiveDate = this.ReceiveDate
             };
         }
     }
@@ -260,6 +262,7 @@ namespace ChangKeTec.Wms.Models
                 Batch = this.Batch,
                 LocCode = this.FromLocCode,
                 Qty = this.Qty,
+                UpdateQty = 0-this.Qty
             };
         }
 
@@ -268,23 +271,22 @@ namespace ChangKeTec.Wms.Models
             var stockDetail = db.TS_STOCK_DETAIL.Find(this.FromLocCode, this.PartCode,this.Batch);
             var detailIn = stockDetail.Clone();
             detailIn.LocCode = this.ToLocCode;
-            detailIn.Qty = 0;
+            detailIn.Qty = this.Qty;
+            detailIn.UpdateQty = this.Qty;
             return detailIn;
-/*
-            return new TS_STOCK_DETAIL
-            {
-                BarCode = this.BarCode,
-                PartCode = this.PartCode,
-                ProjectId = GlobalBuffer.GetProjectId(this.PartCode),
-                Batch = this.Batch,
-                EqptCode = this.EqptCode,
-                LocCode = this.ToLocCode,
-                Qty = 0,
-                UpdateQty = this.Qty,
-                ProduceDate = this.ProduceDate,
-                OverdueDate = (this.ProduceDate).AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
-            };
-*/
+
+//            return new TS_STOCK_DETAIL
+//            {
+//                LocCode = this.ToLocCode,
+//                PartCode = this.PartCode,
+//                Batch = this.Batch,
+//                EqptCode = this.EqptCode,                
+//                Qty = 0,
+//                UpdateQty = this.Qty,
+//                ProduceDate = this.ProduceDate,
+//                OverdueDate = (this.ProduceDate).AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
+//            };
+
         }
 
     }
