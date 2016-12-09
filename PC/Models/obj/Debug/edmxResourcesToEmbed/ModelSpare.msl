@@ -626,5 +626,92 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_CalInaction_DAYS">
+      <EntityTypeMapping TypeName="SpareModel.VIEW_CalInaction_DAYS">
+        <MappingFragment StoreEntitySet="VIEW_CalInaction_DAYS">
+          <ScalarProperty Name="过期日期" ColumnName="过期日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="所在库位" ColumnName="所在库位" />
+          <ScalarProperty Name="呆滞天数" ColumnName="呆滞天数" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_CalOverdue_DAYS">
+      <EntityTypeMapping TypeName="SpareModel.VIEW_CalOverdue_DAYS">
+        <MappingFragment StoreEntitySet="VIEW_CalOverdue_DAYS">
+          <ScalarProperty Name="过期日期" ColumnName="过期日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="所在库位" ColumnName="所在库位" />
+          <ScalarProperty Name="安全天数" ColumnName="安全天数" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_CalSafeQty">
+      <EntityTypeMapping TypeName="SpareModel.VIEW_CalSafeQty">
+        <MappingFragment StoreEntitySet="VIEW_CalSafeQty">
+          <ScalarProperty Name="零件描述" ColumnName="零件描述" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="最高库存" ColumnName="最高库存" />
+          <ScalarProperty Name="最低库存" ColumnName="最低库存" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_INVENTORY_DETAIL">
+      <EntityTypeMapping TypeName="SpareModel.VIEW_INVENTORY_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_INVENTORY_DETAIL">
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="盘点时间" ColumnName="盘点时间" />
+          <ScalarProperty Name="差异数" ColumnName="差异数" />
+          <ScalarProperty Name="盘点数" ColumnName="盘点数" />
+          <ScalarProperty Name="账面数" ColumnName="账面数" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="盘点库位" ColumnName="盘点库位" />
+          <ScalarProperty Name="单据号" ColumnName="单据号" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCK_DETAIL">
+      <EntityTypeMapping TypeName="SpareModel.VIEW_STOCK_DETAIL">
+        <MappingFragment StoreEntitySet="VIEW_STOCK_DETAIL">
+          <ScalarProperty Name="更新数量" ColumnName="更新数量" />
+          <ScalarProperty Name="更新时间" ColumnName="更新时间" />
+          <ScalarProperty Name="失效日期" ColumnName="失效日期" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="金额" ColumnName="金额" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="库位" ColumnName="库位" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_STOCK_DETAIL_AGE">
+      <EntityTypeMapping TypeName="SpareModel.VIEW_STOCK_DETAIL_AGE">
+        <MappingFragment StoreEntitySet="VIEW_STOCK_DETAIL_AGE">
+          <ScalarProperty Name="在库天数" ColumnName="在库天数" />
+          <ScalarProperty Name="入库时间" ColumnName="入库时间" />
+          <ScalarProperty Name="生产日期" ColumnName="生产日期" />
+          <ScalarProperty Name="金额" ColumnName="金额" />
+          <ScalarProperty Name="单价" ColumnName="单价" />
+          <ScalarProperty Name="数量" ColumnName="数量" />
+          <ScalarProperty Name="状态" ColumnName="状态" />
+          <ScalarProperty Name="批次" ColumnName="批次" />
+          <ScalarProperty Name="零件号" ColumnName="零件号" />
+          <ScalarProperty Name="库位" ColumnName="库位" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

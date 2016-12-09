@@ -55,13 +55,14 @@
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcToLocCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcInQty = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcUnitPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcAmount = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcDeptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcProjectCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcWorklineCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -74,8 +75,7 @@
             this.gridColumn15 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn17 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcReturnTime = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).BeginInit();
             this.propertyBill.SuspendLayout();
@@ -145,7 +145,7 @@
             this.cktMasterDetailGrid4.IsPropertyExpand = false;
             this.cktMasterDetailGrid4.IsPropertyVisible = true;
             this.cktMasterDetailGrid4.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid4.MasterDataSource = null;
             this.cktMasterDetailGrid4.Name = "cktMasterDetailGrid4";
             this.cktMasterDetailGrid4.PageIndex = 1;
@@ -163,7 +163,7 @@
             this.cktMasterDetailGrid3.IsPropertyExpand = false;
             this.cktMasterDetailGrid3.IsPropertyVisible = true;
             this.cktMasterDetailGrid3.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid3.MasterDataSource = null;
             this.cktMasterDetailGrid3.Name = "cktMasterDetailGrid3";
             this.cktMasterDetailGrid3.PageIndex = 1;
@@ -181,7 +181,7 @@
             this.cktMasterDetailGrid2.IsPropertyExpand = false;
             this.cktMasterDetailGrid2.IsPropertyVisible = true;
             this.cktMasterDetailGrid2.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid2.MasterDataSource = null;
             this.cktMasterDetailGrid2.Name = "cktMasterDetailGrid2";
             this.cktMasterDetailGrid2.PageIndex = 1;
@@ -199,7 +199,7 @@
             this.cktMasterDetailGrid1.IsPropertyExpand = false;
             this.cktMasterDetailGrid1.IsPropertyVisible = true;
             this.cktMasterDetailGrid1.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid1.MasterDataSource = null;
             this.cktMasterDetailGrid1.Name = "cktMasterDetailGrid1";
             this.cktMasterDetailGrid1.PageIndex = 1;
@@ -370,13 +370,14 @@
             this.grid.PrimaryGrid.ColumnAutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.DisplayedCells;
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
             this.grid.PrimaryGrid.Columns.Add(this.gcPartCode);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn5);
+            this.grid.PrimaryGrid.Columns.Add(this.gcToLocCode);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn8);
+            this.grid.PrimaryGrid.Columns.Add(this.gcInQty);
+            this.grid.PrimaryGrid.Columns.Add(this.gcUnitPrice);
+            this.grid.PrimaryGrid.Columns.Add(this.gcAmount);
             this.grid.PrimaryGrid.Columns.Add(this.gcDeptCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcProjectCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcWorklineCode);
@@ -389,8 +390,7 @@
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn15);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn17);
+            this.grid.PrimaryGrid.Columns.Add(this.gcReturnTime);
             // 
             // 
             // 
@@ -404,18 +404,28 @@
             this.grid.Size = new System.Drawing.Size(657, 505);
             this.grid.TabIndex = 61;
             this.grid.Text = "superGridControl1";
+            this.grid.CellValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs>(this.grid_CellValueChanged);
             // 
             // gridColumn1
             // 
             this.gridColumn1.DataPropertyName = "UID";
             this.gridColumn1.HeaderText = "UID";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ReadOnly = true;
             // 
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "BillNum";
             this.gridColumn2.HeaderText = "单据号";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.DataPropertyName = "ReturnUser";
+            this.gridColumn16.HeaderText = "还回人";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.ReadOnly = true;
             // 
             // gcPartCode
             // 
@@ -423,42 +433,48 @@
             this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
             this.gcPartCode.HeaderText = "零件号";
             this.gcPartCode.Name = "gridColumn3";
+            this.gcPartCode.ReadOnly = true;
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "Batch";
             this.gridColumn3.HeaderText = "批次";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             // 
-            // gridColumn5
+            // gcToLocCode
             // 
-            this.gridColumn5.DataPropertyName = "ToLocCode";
-            this.gridColumn5.HeaderText = "目标库位";
-            this.gridColumn5.Name = "gridColumn5";
+            this.gcToLocCode.DataPropertyName = "ToLocCode";
+            this.gcToLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcToLocCode.HeaderText = "目标库位";
+            this.gcToLocCode.Name = "gridColumn5";
             // 
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "OutQty";
             this.gridColumn4.HeaderText = "出库数量";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
             // 
-            // gridColumn6
+            // gcInQty
             // 
-            this.gridColumn6.DataPropertyName = "InQty";
-            this.gridColumn6.HeaderText = "还回数量";
-            this.gridColumn6.Name = "gridColumn6";
+            this.gcInQty.DataPropertyName = "InQty";
+            this.gcInQty.HeaderText = "还回数量";
+            this.gcInQty.Name = "gridColumn6";
             // 
-            // gridColumn7
+            // gcUnitPrice
             // 
-            this.gridColumn7.DataPropertyName = "UnitPrice";
-            this.gridColumn7.HeaderText = "单价";
-            this.gridColumn7.Name = "gridColumn7";
+            this.gcUnitPrice.DataPropertyName = "UnitPrice";
+            this.gcUnitPrice.HeaderText = "单价";
+            this.gcUnitPrice.Name = "gridColumn7";
+            this.gcUnitPrice.ReadOnly = true;
             // 
-            // gridColumn8
+            // gcAmount
             // 
-            this.gridColumn8.DataPropertyName = "Amount";
-            this.gridColumn8.HeaderText = "金额";
-            this.gridColumn8.Name = "gridColumn8";
+            this.gcAmount.DataPropertyName = "Amount";
+            this.gcAmount.HeaderText = "金额";
+            this.gcAmount.Name = "gridColumn8";
+            this.gcAmount.ReadOnly = true;
             // 
             // gcDeptCode
             // 
@@ -466,6 +482,7 @@
             this.gcDeptCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
             this.gcDeptCode.HeaderText = "部门编号";
             this.gcDeptCode.Name = "gridColumn5";
+            this.gcDeptCode.ReadOnly = true;
             // 
             // gcProjectCode
             // 
@@ -473,6 +490,7 @@
             this.gcProjectCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
             this.gcProjectCode.HeaderText = "项目编号";
             this.gcProjectCode.Name = "gridColumn6";
+            this.gcProjectCode.ReadOnly = true;
             // 
             // gcWorklineCode
             // 
@@ -480,6 +498,7 @@
             this.gcWorklineCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
             this.gcWorklineCode.HeaderText = "产线编号";
             this.gcWorklineCode.Name = "gridColumn7";
+            this.gcWorklineCode.ReadOnly = true;
             // 
             // gcEqptCode
             // 
@@ -487,42 +506,49 @@
             this.gcEqptCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
             this.gcEqptCode.HeaderText = "设备编号";
             this.gcEqptCode.Name = "Column1";
+            this.gcEqptCode.ReadOnly = true;
             // 
             // gridColumn9
             // 
             this.gridColumn9.DataPropertyName = "AskUser";
             this.gridColumn9.HeaderText = "申请人";
             this.gridColumn9.Name = "Column2";
+            this.gridColumn9.ReadOnly = true;
             // 
             // gridColumn10
             // 
             this.gridColumn10.DataPropertyName = "AskTime";
             this.gridColumn10.HeaderText = "申请时间";
             this.gridColumn10.Name = "Column3";
+            this.gridColumn10.ReadOnly = true;
             // 
             // gridColumn11
             // 
             this.gridColumn11.DataPropertyName = "ComfirmUser";
             this.gridColumn11.HeaderText = "批准人";
             this.gridColumn11.Name = "Column4";
+            this.gridColumn11.ReadOnly = true;
             // 
             // gridColumn12
             // 
             this.gridColumn12.DataPropertyName = "ComFirmTime";
             this.gridColumn12.HeaderText = "批准时间";
             this.gridColumn12.Name = "Column5";
+            this.gridColumn12.ReadOnly = true;
             // 
             // gridColumn14
             // 
             this.gridColumn14.DataPropertyName = "TakeUser";
             this.gridColumn14.HeaderText = "领取人";
             this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.ReadOnly = true;
             // 
             // gridColumn15
             // 
             this.gridColumn15.DataPropertyName = "TakeTime";
             this.gridColumn15.HeaderText = "领取时间";
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.ReadOnly = true;
             // 
             // gridColumn13
             // 
@@ -530,6 +556,7 @@
             this.gridColumn13.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
             this.gridColumn13.HeaderText = "状态";
             this.gridColumn13.Name = "Column6";
+            this.gridColumn13.ReadOnly = true;
             // 
             // gridColumn26
             // 
@@ -537,17 +564,11 @@
             this.gridColumn26.HeaderText = "备注";
             this.gridColumn26.Name = "gridColumn26";
             // 
-            // gridColumn16
+            // gcReturnTime
             // 
-            this.gridColumn16.DataPropertyName = "ReturnUser";
-            this.gridColumn16.HeaderText = "还回人";
-            this.gridColumn16.Name = "gridColumn16";
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.DataPropertyName = "ReturnTime";
-            this.gridColumn17.HeaderText = "还回时间";
-            this.gridColumn17.Name = "gridColumn17";
+            this.gcReturnTime.DataPropertyName = "ReturnTime";
+            this.gcReturnTime.HeaderText = "还回时间";
+            this.gcReturnTime.Name = "gridColumn17";
             // 
             // PopupSpareReturn
             // 
@@ -563,7 +584,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PopupSpareReturn";
             this.ShowIcon = false;
-            this.Text = "新增叫料单";
+            this.Text = "领用归还单";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWhseReceive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).EndInit();
@@ -617,13 +639,13 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn26;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcToLocCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcInQty;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcUnitPrice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcAmount;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn14;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn15;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn16;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn17;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcReturnTime;
     }
 }

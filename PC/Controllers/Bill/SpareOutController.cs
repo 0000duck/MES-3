@@ -75,5 +75,18 @@ namespace ChangKeTec.Wms.Controllers.Bill
             partPickList = SpareOutController.GetList(materialAsk, stockDetailList);
             return partPickList;
         }
+
+        public static void AddOrUpdateList(SpareEntities db, List<TB_OUT> details)
+        {
+            foreach (var detail in details)
+            {
+                db.TB_OUT.AddOrUpdate(detail);
+            }
+        }
+
+        public static void RemaveDetail(SpareEntities db, TB_OUT detail)
+        {
+            db.TB_OUT.Remove(detail);
+        }
     }
 }

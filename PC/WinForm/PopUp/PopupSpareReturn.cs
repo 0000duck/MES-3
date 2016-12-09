@@ -78,10 +78,10 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 var detailList = (List<TB_RETURN>)bs.DataSource;
                 if (detailList.Count == 0)
                 {
-                    MessageHelper.ShowError("请维护领用申请明细！");
+                    MessageHelper.ShowError("请维护领用还回明细！");
                     return;
                 }
-                //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
+                //List<TB_RETURN> detailList = (from TB_RETURN d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
                 BillHandler.AddMaterialReturn(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
@@ -96,15 +96,15 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billnum)
         {
             int count;
-            Expression<Func<TB_ASK, dynamic>> select = c => c;
-            Expression<Func<TB_ASK, bool>> where = c => c.BillNum==billnum;
-            Expression<Func<TB_ASK, long>> order = c => c.UID;
+            Expression<Func<TB_RETURN, dynamic>> select = c => c;
+            Expression<Func<TB_RETURN, bool>> where = c => c.BillNum==billnum;
+            Expression<Func<TB_RETURN, long>> order = c => c.UID;
             _list = EniitiesHelper.GetData(_db,
                 select,
                 where,
                 order,
                 out count);
-            bs.DataSource = _db.TB_ASK.Where(p => p.BillNum == billnum).ToList();
+            bs.DataSource = _db.TB_RETURN.Where(p => p.BillNum == billnum).ToList();
             //bs.DataSource = _list;
             grid.PrimaryGrid.DataSource = bs;            
             bn.BindingSource = bs;
@@ -121,13 +121,26 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetDetailDataSource(_bill.BillNum);
-            
+            SetDetailDataSource(_bill.BillNum);           
         }
 
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)
         {
             //e.Handled = true;
+        }
+
+        private void grid_CellValueChanged(object sender, GridCellValueChangedEventArgs e)
+        {
+            GridCell cell = e.GridCell;
+            var row = (GridRow)e.GridPanel.Rows[cell.RowIndex];
+            //根据出库数量，自动计算金额
+            if (cell.GridColumn == gcInQty)
+            {
+                if (Convert.ToString(row.Cells[gcUnitPrice].Value) != "" && Convert.ToString(row.Cells[gcInQty].Value) != "")
+                {
+                    row.Cells[gcAmount].Value = (decimal)row.Cells[gcUnitPrice].Value * (decimal)row.Cells[gcInQty].Value;
+                }
+            }
         }
     }
 }

@@ -53,7 +53,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcUID = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -62,7 +62,7 @@
             this.gcWorklineCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcEqptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcAskTime = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -136,7 +136,7 @@
             this.cktMasterDetailGrid4.IsPropertyExpand = false;
             this.cktMasterDetailGrid4.IsPropertyVisible = true;
             this.cktMasterDetailGrid4.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid4.MasterDataSource = null;
             this.cktMasterDetailGrid4.Name = "cktMasterDetailGrid4";
             this.cktMasterDetailGrid4.PageIndex = 1;
@@ -154,7 +154,7 @@
             this.cktMasterDetailGrid3.IsPropertyExpand = false;
             this.cktMasterDetailGrid3.IsPropertyVisible = true;
             this.cktMasterDetailGrid3.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid3.MasterDataSource = null;
             this.cktMasterDetailGrid3.Name = "cktMasterDetailGrid3";
             this.cktMasterDetailGrid3.PageIndex = 1;
@@ -172,7 +172,7 @@
             this.cktMasterDetailGrid2.IsPropertyExpand = false;
             this.cktMasterDetailGrid2.IsPropertyVisible = true;
             this.cktMasterDetailGrid2.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid2.MasterDataSource = null;
             this.cktMasterDetailGrid2.Name = "cktMasterDetailGrid2";
             this.cktMasterDetailGrid2.PageIndex = 1;
@@ -190,7 +190,7 @@
             this.cktMasterDetailGrid1.IsPropertyExpand = false;
             this.cktMasterDetailGrid1.IsPropertyVisible = true;
             this.cktMasterDetailGrid1.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2);
             this.cktMasterDetailGrid1.MasterDataSource = null;
             this.cktMasterDetailGrid1.Name = "cktMasterDetailGrid1";
             this.cktMasterDetailGrid1.PageIndex = 1;
@@ -357,9 +357,9 @@
             // 
             // 
             // 
-            this.grid.PrimaryGrid.AutoGenerateColumns = false;
-            this.grid.PrimaryGrid.ColumnAutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.DisplayedCells;
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.grid.PrimaryGrid.AllowRowHeaderResize = true;
+            this.grid.PrimaryGrid.AllowRowResize = true;
+            this.grid.PrimaryGrid.Columns.Add(this.gcUID);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.grid.PrimaryGrid.Columns.Add(this.gcPartCode);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
@@ -368,11 +368,13 @@
             this.grid.PrimaryGrid.Columns.Add(this.gcWorklineCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcEqptCode);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn10);
+            this.grid.PrimaryGrid.Columns.Add(this.gcAskTime);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
+            this.grid.PrimaryGrid.DefaultRowHeight = 0;
+            this.grid.PrimaryGrid.EnableNoRowsMarkup = true;
             // 
             // 
             // 
@@ -381,17 +383,21 @@
             // 
             // 
             this.grid.PrimaryGrid.GroupByRow.Visible = true;
+            this.grid.PrimaryGrid.ImmediateResize = true;
             this.grid.PrimaryGrid.NoRowsText = "（无数据）";
+            this.grid.PrimaryGrid.RowDragBehavior = DevComponents.DotNetBar.SuperGrid.RowDragBehavior.Move;
             this.grid.PrimaryGrid.ShowRowGridIndex = true;
+            this.grid.PrimaryGrid.UseAlternateRowStyle = true;
             this.grid.Size = new System.Drawing.Size(657, 505);
             this.grid.TabIndex = 61;
             this.grid.Text = "superGridControl1";
+            this.grid.RowClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridRowClickEventArgs>(this.grid_RowClick);
             // 
-            // gridColumn1
+            // gcUID
             // 
-            this.gridColumn1.DataPropertyName = "UID";
-            this.gridColumn1.HeaderText = "UID";
-            this.gridColumn1.Name = "gridColumn1";
+            this.gcUID.DataPropertyName = "UID";
+            this.gcUID.HeaderText = "UID";
+            this.gcUID.Name = "gridColumn1";
             // 
             // gridColumn2
             // 
@@ -409,6 +415,7 @@
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "Qty";
+            this.gridColumn4.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumn4.HeaderText = "数量";
             this.gridColumn4.Name = "gridColumn4";
             // 
@@ -446,11 +453,13 @@
             this.gridColumn9.HeaderText = "申请人";
             this.gridColumn9.Name = "Column2";
             // 
-            // gridColumn10
+            // gcAskTime
             // 
-            this.gridColumn10.DataPropertyName = "AskTime";
-            this.gridColumn10.HeaderText = "申请时间";
-            this.gridColumn10.Name = "Column3";
+            this.gcAskTime.DataPropertyName = "AskTime";
+            this.gcAskTime.DefaultNewRowCellValue = "";
+            this.gcAskTime.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDateTimePickerEditControl);
+            this.gcAskTime.HeaderText = "申请时间";
+            this.gcAskTime.Name = "Column3";
             // 
             // gridColumn11
             // 
@@ -461,6 +470,7 @@
             // gridColumn12
             // 
             this.gridColumn12.DataPropertyName = "ComFirmTime";
+            this.gridColumn12.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDateTimePickerEditControl);
             this.gridColumn12.HeaderText = "批准时间";
             this.gridColumn12.Name = "Column5";
             // 
@@ -492,6 +502,7 @@
             this.Name = "PopupMaterialAsk";
             this.ShowIcon = false;
             this.Text = "新增叫料单";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWhseReceive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).EndInit();
@@ -530,7 +541,7 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource bs;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl grid;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcUID;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcPartCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
@@ -539,7 +550,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcWorklineCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcEqptCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcAskTime;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;

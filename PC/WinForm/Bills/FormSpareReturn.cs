@@ -20,7 +20,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 {
     public partial class FormSpareReturn: Office2007Form
     {
-        private BillType _billType = BillType.ProductReturn;
+        private BillType _billType = BillType.SpareReturn;
         private readonly SubBillType _subBillType;
         private GridppReport _report;
         private TB_BILL _bill = null;
@@ -33,8 +33,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             InitializeComponent();
             _where = c => c.BillType == (int) _billType;
-            _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+//            _report = ReportHelper.InitReport(_billType);
+//            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 {
                     物料号 = c.PartCode,
                     批次 = c.Batch,
-                    目标库位 = c.FromLocCode,
+                    目标库位 = c.ToLocCode,
                     出库数量 = c.OutQty,
                     入库数量 = c.InQty,
                     单价 = c.UnitPrice,
@@ -174,7 +174,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("确定要执行选定的领用还回单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
-                BillHandler.ExecuteSpareReturn(db, _bill, (List<TB_RETURN>)(grid.Detail1DataSource));
+                var returnlist = db.TB_RETURN.Where(p => p.BillNum == _bill.BillNum).ToList();
+                BillHandler.ExecuteSpareReturn(db, _bill, returnlist);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

@@ -56,7 +56,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcDeptCode.EditorType = typeof(DeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorklineCode.EditorType = typeof(WorkLineComboBox);
-            gcEqptCode.EditorType = typeof(PartComboBox);
+            gcEqptCode.EditorType = typeof(EqptComboBox);
 
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
@@ -96,7 +96,24 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private int SetDetailDataSource(string billnum)
         {
             int count;
-            Expression<Func<TB_ASK, dynamic>> select = c => c;
+            Expression<Func<TB_ASK, dynamic>> select = c =>
+                new
+                {
+                    c.UID,
+                    c.BillNum,
+                    c.PartCode,
+                    c.Qty,
+                    c.DeptCode,
+                    c.ProjectCode,
+                    c.WorklineCode,
+                    c.EqptCode,
+                    c.AskUser,
+                    c.AskTime,
+                    c.ConfirmUser,
+                    c.ConfirmTime,
+                    c.State,
+                    c.Remark
+                };
             Expression<Func<TB_ASK, bool>> where = c => c.BillNum==billnum;
             Expression<Func<TB_ASK, long>> order = c => c.UID;
             _list = EniitiesHelper.GetData(_db,
@@ -128,6 +145,16 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)
         {
             //e.Handled = true;
+        }
+
+        private void grid_RowClick(object sender, GridRowClickEventArgs e)
+        {
+            int rowindex = e.GridRow.RowIndex;
+            GridRow row = (GridRow)grid.PrimaryGrid.Rows[rowindex];
+            if (row.Cells[gcUID].Value.ToString() == "0" && Convert.ToString(row.Cells[gcPartCode].Value) == "")
+            {
+                row.Cells[gcAskTime].Value = DateTime.Now;
+            }
         }
     }
 }

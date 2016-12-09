@@ -32,8 +32,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
         public FormMaterialOut()
         {
             InitializeComponent();
-            _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+//            _report = ReportHelper.InitReport(_billType);
+//            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -56,6 +56,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         c.UID,
                         单据编号=c.BillNum,
                         单据类型 = c.BillType,
+                        子单据类型 = c.SubBillType,
 //                        单据子类型 = c.SubBillType,
 //                        采购订单编号 = c.SourceBillNum,
 //                        发货单编号 = c.SourceBillNum2,
@@ -199,7 +200,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("确定要执行选定的领用单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
-                BillHandler.FinishMaterialOut(db, _bill, (List<TB_OUT>)(grid.Detail1DataSource));
+                var outlist = SpareOutController.GetList(db, _bill.BillNum);
+                BillHandler.FinishMaterialOut(db, _bill, outlist);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -213,7 +215,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 return;
             }
 
-            if (_bill.State != (int)BillState.Handling)
+            if (_bill.State != (int)BillState.Finished)
             {
                 MessageHelper.ShowInfo("选中单据状态错误，无法执行");
                 return;

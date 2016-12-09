@@ -5,7 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using ChangKeTec.Wms.Common;
 using ChangKeTec.Wms.Common.UC;
+using ChangKeTec.Wms.Common.ComboBox;
 using ChangKeTec.Wms.Controllers;
+using ChangKeTec.Wms.Controllers.Bill;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
@@ -17,7 +19,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 {
     public partial class PopupMaterialOut : Office2007Form
     {
-        private BillType _billType = BillType.MaterialAsk;
+        private BillType _billType = BillType.MaterialDeliver;
         private TB_BILL _bill = new TB_BILL();
         private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
         public PopupMaterialOut()
@@ -34,6 +36,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
+            gcPartCode.EditorType = typeof(PartComboBox);
+            gcDeptCode.EditorType = typeof(DeptComboBox);
+            gcProjectCode.EditorType = typeof(ProjectComboBox);
+            gcWorkLineCode.EditorType = typeof(WorkLineComboBox);
+            gcEqptCode.EditorType = typeof(EqptComboBox);
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }
@@ -103,6 +110,38 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)
         {
             //e.Handled = true;
+        }
+
+        private void grid_RowClick(object sender, GridRowClickEventArgs e)
+        {
+            int rowindex = e.GridRow.RowIndex;
+            GridRow row = (GridRow)grid.PrimaryGrid.Rows[rowindex];
+            if (row.Cells[gcUID].Value.ToString() == "0" && Convert.ToString(row.Cells[gcPartCode].Value) == "")
+            {
+                row.Cells[gcTakeTime].Value = DateTime.Now;
+            }
+        }
+
+        private void grid_CellValueChanged(object sender, GridCellValueChangedEventArgs e)
+        {
+            GridCell cell = e.GridCell;
+            var row = (GridRow) e.GridPanel.Rows[cell.RowIndex];
+            //根据选择的零件号，获取库存批次，单价
+            if (cell.GridColumn == gcPartCode)
+            {
+                var stockDetail = StockDetailController.GetListByPartCode(_db, cell.Value.ToString()).OrderBy(p=>p.Batch).FirstOrDefault();
+                row.Cells[gcBatch].Value = stockDetail.Batch;
+                row.Cells[gcUnitPrice].Value = stockDetail.UnitPrice;
+                row.Cells[gcFromLocCode].Value = stockDetail.LocCode;
+            }
+            //根据出库数量，自动计算金额
+            if (cell.GridColumn == gcOutQty)
+            {
+                if (Convert.ToString(row.Cells[gcUnitPrice].Value) != "" && Convert.ToString(row.Cells[gcOutQty].Value) != "")
+                {
+                    row.Cells[gcAmount].Value = (decimal)row.Cells[gcUnitPrice].Value*(decimal)row.Cells[gcOutQty].Value;
+                }
+            }
         }
     }
 }

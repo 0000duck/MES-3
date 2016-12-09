@@ -25,9 +25,8 @@ namespace ChangKeTec.Wms.Controllers.Bill
             db.TB_RETURN.AddOrUpdate(p => p.UID, details.ToArray());
         }
 
-        public static List<TB_RETURN> OutToReturnList(TB_OUT materialOut)
+        public static TB_RETURN OutToReturnList(TB_OUT materialOut)
         {
-            List<TB_RETURN> partPickList = new List<TB_RETURN>();
             var partPick = new TB_RETURN
             {
                 PartCode = materialOut.PartCode,
@@ -51,12 +50,17 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 ReturnUser = materialOut.TakeUser,
                 ReturnTime = DateTime.Now,
             };           
-            return partPickList;
+            return partPick;
         }
 
         public static void AddOrUpdate(SpareEntities db, TB_RETURN sparereturn)
         {
             db.TB_RETURN.AddOrUpdate(p => p.UID, sparereturn);
+        }
+
+        public static void RemaveDetail(SpareEntities db, TB_RETURN detail)
+        {
+            db.TB_RETURN.Remove(detail);
         }
     }
 }

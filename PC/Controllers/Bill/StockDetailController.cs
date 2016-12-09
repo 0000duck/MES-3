@@ -21,11 +21,11 @@ namespace ChangKeTec.Wms.Controllers.Bill
             {
                 throw new WmsException(ResultCode.StockNotEnough,GetDetailInfo(detailIn), "入库数量错误");
             }
-            var stockDetail = Get(db, detailIn.PartCode,detailIn.Batch, detailIn.LocCode) ?? detailIn.Clone();
+            var stockDetail = Get(db, detailIn.LocCode,detailIn.PartCode,detailIn.Batch) ?? detailIn.Clone();
             stockDetail.Qty += detailIn.UpdateQty;
             stockDetail.UpdateQty = detailIn.UpdateQty;
             stockDetail.UpdateTime = DateTime.Now;
-            db.TS_STOCK_DETAIL.AddOrUpdate(p => new {p.PartCode,p.Batch, p.LocCode}, stockDetail);
+            db.TS_STOCK_DETAIL.AddOrUpdate(stockDetail);
             SetProduceDate(db, stockDetail);
 
             TransactionLogController.Add(db, bill, detailIn); //添加库存事务日志
@@ -37,23 +37,23 @@ namespace ChangKeTec.Wms.Controllers.Bill
         }
 
 
-        private static void Out(SpareEntities db, TB_BILL bill, TS_STOCK_DETAIL detailOut)
+        public static void Out(SpareEntities db, TB_BILL bill, TS_STOCK_DETAIL detailOut)
         {
             CheckStockDetailLoc(db, detailOut.LocCode);
 
             var loc = StoreLocationController.Get(db, detailOut.LocCode);
-            if (detailOut.UpdateQty >= 0)
-            {
-                throw new WmsException(ResultCode.StockNotEnough,
-                   GetDetailInfo(detailOut), "出库数量错误，无法移出");
-            }
+//            if (detailOut.UpdateQty >= 0)
+//            {
+//                throw new WmsException(ResultCode.StockNotEnough,
+//                   GetDetailInfo(detailOut), "出库数量错误，无法移出");
+//            }
             if (detailOut.Qty + detailOut.UpdateQty < 0)
             {
                 throw new WmsException(ResultCode.StockNotEnough,
                      GetDetailInfo(detailOut), "出库库存明细不足，无法移出");
 
             }
-            var stockDetail = Get(db, detailOut.PartCode,detailOut.Batch, detailOut.LocCode);
+            var stockDetail = Get(db, detailOut.LocCode,detailOut.PartCode,detailOut.Batch);
             if (stockDetail == null) //库存明细不存在，报错
             {
                 throw new WmsException(ResultCode.DataNotFound,
@@ -66,8 +66,6 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 stockDetail.UpdateQty = detailOut.UpdateQty;
                 stockDetail.UpdateTime = DateTime.Now;
             }
-         
-
             TransactionLogController.Add(db, bill, detailOut); //添加库存事务日志
         }
 
@@ -117,9 +115,9 @@ namespace ChangKeTec.Wms.Controllers.Bill
             return db.TS_STOCK_DETAIL.Where(p => p.LocCode == locCode).ToList();
         }
 
-        public static TS_STOCK_DETAIL Get(SpareEntities db, string partCode,string batch, string locCode)
+        public static TS_STOCK_DETAIL Get(SpareEntities db, string locCode,string partCode,string batch)
         {
-            return db.TS_STOCK_DETAIL.Find(partCode,batch, locCode);
+            return db.TS_STOCK_DETAIL.Find(locCode,partCode, batch);
 //            return db.TS_STOCK_DETAIL.SingleOrDefault(p => p.BarCode == partCode && p.LocCode == locCode);
         }
 
@@ -149,10 +147,10 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 throw  new WmsException(ResultCode.DataNotFound, locCode, "库位不存在");
 
             }
-            if (loc.State == (int) DataState.Disabled)
-            {
-                throw new WmsException(ResultCode.DataStateError, locCode, "库位已锁定");
-            }
+//            if (loc.State == (int) DataState.Disabled)
+//            {
+//                throw new WmsException(ResultCode.DataStateError, locCode, "库位已锁定");
+//            }
         }
 
         private static void SetProduceDate(SpareEntities db, TS_STOCK_DETAIL detail)

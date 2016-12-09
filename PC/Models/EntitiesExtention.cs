@@ -82,6 +82,18 @@ namespace ChangKeTec.Wms.Models
                 Qty = this.OutQty,
             };
         }
+
+        public TS_STOCK_DETAIL ToStockDetailOut()
+        {
+            return new TS_STOCK_DETAIL
+            {
+                PartCode = this.PartCode,
+                Batch = this.Batch,
+                LocCode = this.FromLocCode,
+                Qty = this.OutQty,
+                UpdateQty = 0-this.OutQty
+            };
+        }
     }
     
     public partial class TB_OTHER_IN
@@ -253,7 +265,7 @@ namespace ChangKeTec.Wms.Models
 
         public TS_STOCK_DETAIL ToStockDetailIn(SpareEntities db)
         {
-            var stockDetail = db.TS_STOCK_DETAIL.Find(this.PartCode,this.Batch, this.FromLocCode);
+            var stockDetail = db.TS_STOCK_DETAIL.Find(this.FromLocCode, this.PartCode,this.Batch);
             var detailIn = stockDetail.Clone();
             detailIn.LocCode = this.ToLocCode;
             detailIn.Qty = 0;

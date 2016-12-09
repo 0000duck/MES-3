@@ -706,3 +706,9 @@ D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Bills.FormInventoryPlan.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupStockMove.resources
 D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.PopUp.PopupInventoryDetail.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Report.FormInaction.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Report.FormStockAge.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Report.FormStockDetail.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Report.FormInventoryDetail.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Report.FormCalSafeQty.resources
+D:\工作工程\CcFjcSpare\PC\WinForm\obj\x86\Debug\ChangKeTec.Wms.WinForm.Report.FormCalOverduDays.resources
