@@ -19,6 +19,11 @@ namespace ChangKeTec.Wms.Controllers.Bill
             BillLogController.Add(db, bill, bill.OperName, OperateType.Add); //创建【单据日志】
         }
 
+        public static void AddOrUpdate(SpareEntities db, TB_INVENTORY_DETAIL detail)
+        {
+            db.TB_INVENTORY_DETAIL.AddOrUpdate(p => p.UID, detail);            
+        }
+
         public static void Start(SpareEntities db, TB_BILL bill)
         {
             bill.State = (int) BillState.Handling; //更新单据状态为正在执行
@@ -51,37 +56,28 @@ namespace ChangKeTec.Wms.Controllers.Bill
         public static void AdjustStockByInventory(SpareEntities db, TB_BILL bill,List<TB_INVENTORY_DETAIL> details)
         {
             var stockMoveList = new List<TB_STOCK_MOVE>();
-//            var stockInList = new List<TS_STOCK_DETAIL>();
-//            var stockOutList = new List<TS_STOCK_DETAIL>();
             foreach (TB_INVENTORY_DETAIL detail in details)
             {
                StoreLocationController.UnLock(db, detail.CheckLocCode);//解锁库位
 
                 var diffqty = detail.BookQty - detail.CheckQty;
                 if (diffqty == 0) continue;
-                //                if (!string.IsNullOrEmpty(detail.BookLocCode))
-                //                {
-                //                    detail.BookLocCode =
-                //                    var stockOut = detail.ToStockOut();
-                //                    stockOutList.Add(stockOut);
-                //                }
-                //                if (!string.IsNullOrEmpty(detail.CheckLocCode))
-                //                {
-                //                    var stockIn = detail.ToStockIn();
-                //                    stockInList.Add(stockIn);
-                //                }
                 var stockMove = detail.ToStockMove();
                 if (diffqty < 0)
                 {
+                    stockMove.FromLocCode = "OTHER";
+                    stockMove.ToLocCode = stockMove.ToLocCode;
+                    stockMove.Qty = (decimal) -diffqty;
+                }
+                else
+                {
                     stockMove.FromLocCode = stockMove.ToLocCode;
                     stockMove.ToLocCode = "OTHER";
-                    stockMove.Qty = -diffqty;
+                    stockMove.Qty = (decimal)diffqty;
                 }
                 stockMoveList.Add(stockMove);
             }
-            StockDetailController.ListMove(db,bill,stockMoveList);//盘点差异执行移库
-
-           
+            StockDetailController.ListMove(db,bill,stockMoveList);//盘点差异执行移库         
         }
 
         public static void LocCancel(SpareEntities db, TB_INVENTORY_LOC locBill)
@@ -187,6 +183,17 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 CheckLocCode = vdetail.CheckLocCode,
             }).ToList();
             db.TB_INVENTORY_DETAIL.AddOrUpdate(p => p.UID, list.ToArray());
+        }
+
+        public static void DeleteInventory(SpareEntities db, TB_INVENTORY_LOC loc)
+        {
+            db.TB_INVENTORY_LOC.Remove(loc);
+            var detaillist =
+                db.TB_INVENTORY_DETAIL.Where(p => p.BillNum == loc.BillNum && p.CheckLocCode == loc.LocCode).ToList();
+            foreach (var detail in detaillist)
+            {
+                db.TB_INVENTORY_DETAIL.Remove(detail);
+            }
         }
     }
 }

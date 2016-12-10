@@ -54,8 +54,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void SetMasterDataSource(int pageSize)
         {
-            Expression<Func<TB_BILL, dynamic>> select =c => c;
-            Expression<Func<TB_BILL, bool>> where = c => true;
+            Expression<Func<TB_BILL, dynamic>> select =
+                c =>
+                    new
+                    {
+                        c.UID,
+                        单据编号 = c.BillNum,
+                        单据类型 = c.BillType,
+                        单据时间 = c.BillTime,
+                        操作员 = c.OperName,
+                        状态 = ((BillState)c.State).ToString(),
+                        备注 = c.Remark,
+                    };
+            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType;
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;
@@ -75,7 +86,20 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<TB_PO, dynamic>> select = c => c;
+            Expression<Func<TB_PO, dynamic>> select =
+               c =>
+                   new
+                   {
+                       c.UID,
+                       单据编号 = c.BillNum,
+                       行次 = c.Line,
+                       零件号 = c.PartCode,
+                       订单数量 = c.BillQty,
+                       收货数量 = c.ArrialQty,
+                       状态 = ((BillState)c.State).ToString(),
+                       备注 = c.Remark,
+                   };
+
             Expression<Func<TB_PO, bool>> where = c => c.BillNum == billNum;
             Expression<Func<TB_PO, long>> order = c => c.UID;
 
@@ -182,13 +206,10 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 detailList.Add(new TB_PO
                 {
                     BillNum = billNum,
-                    LineNum = Convert.ToInt32(dr[1]),
+                    Line = Convert.ToInt32(dr[1]),
                     PartCode = dr[2].ToString(),
                     BillQty = Convert.ToDecimal(dr[3]),
-                    OpenQty = Convert.ToDecimal(dr[3]),
-                    ClosedQty = 0,
-                    Unit = dr[4].ToString(),
-                    Price = Convert.ToDecimal(dr[5]),
+                    ArrialQty = Convert.ToDecimal(dr[3]),
                     State = 0,
                     Remark = dr[10].ToString(),
                 });

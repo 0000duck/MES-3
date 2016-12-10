@@ -22,6 +22,6 @@ namespace ChangKeTec.Wms.Models
         public string BM { get; set; }
         public Nullable<int> PartType { get; set; }
         public Nullable<int> ValidityDays { get; set; }
-        public Nullable<System.DateTime> ReceiveDate { get; set; }
+        public System.DateTime ReceiveDate { get; set; }
     }
 }

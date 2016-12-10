@@ -20,8 +20,8 @@ namespace ChangKeTec.Wms.Models
         public string PartCode { get; set; }
         public string Batch { get; set; }
         public decimal BookQty { get; set; }
-        public decimal CheckQty { get; set; }
-        public string CheckTime { get; set; }
+        public Nullable<decimal> CheckQty { get; set; }
+        public Nullable<System.DateTime> CheckTime { get; set; }
         public string OperName { get; set; }
     }
 }

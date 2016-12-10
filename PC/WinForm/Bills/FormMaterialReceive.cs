@@ -110,7 +110,24 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<TB_IN, dynamic>> select = c => c;
+
+            Expression<Func<TB_IN, dynamic>> select =
+               c =>
+                   new
+                   {
+                       c.UID,
+                       单据编号 = c.BillNum,
+                       订单编号 = c.PoBillNum,
+                       订单行 = c.PoLineNum,                       
+                       零件号 = c.PartCode,
+                       批次 = c.Batch,
+                       收货库位 = c.ToLocCode,
+                       收货数量 = c.Qty,
+                       单价 = c.UnitPrice,
+                       生产日期 = c.ProduceDate,
+                       状态 = ((BillState)c.State).ToString(),
+                       备注 = c.Remark,
+                   };
             Expression<Func<TB_IN, bool>> where = c => c.BillNum == billNum;
             Expression<Func<TB_IN, long>> order = c => c.UID;
 

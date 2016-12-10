@@ -223,6 +223,24 @@
     <Compile Include="TT_PART_TYPE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
+    <Compile Include="VIEW_CalInaction_DAYS.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_CalOverdue_DAYS.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_CalSafeQty.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_INVENTORY_DETAIL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_STOCK_DETAIL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW_STOCK_DETAIL_AGE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
     <Compile Include="VS_IDLE_STOCK_DETAIL.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>

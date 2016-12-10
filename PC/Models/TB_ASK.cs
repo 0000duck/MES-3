@@ -28,5 +28,11 @@ namespace ChangKeTec.Wms.Models
         public Nullable<System.DateTime> ConfirmTime { get; set; }
         public int State { get; set; }
         public string Remark { get; set; }
+        public string Batch { get; set; }
+        public Nullable<int> TakeType { get; set; }
+        public string TakeUser { get; set; }
+        public Nullable<System.DateTime> TakeTime { get; set; }
+        public Nullable<decimal> UintPrice { get; set; }
+        public Nullable<decimal> Amount { get; set; }
     }
 }

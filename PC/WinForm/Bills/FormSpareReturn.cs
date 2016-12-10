@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Windows.Forms;
 using ChangKeTec.Wms.Common;
 using ChangKeTec.Wms.Common.UC;
+using ChangKeTec.Wms.Controllers;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
@@ -17,9 +18,9 @@ using gregn6Lib;
 
 namespace ChangKeTec.Wms.WinForm.Bills
 {
-    public partial class FormProductReturn: Office2007Form
+    public partial class FormSpareReturn: Office2007Form
     {
-        private BillType _billType = BillType.ProductReturn;
+        private BillType _billType = BillType.SpareReturn;
         private readonly SubBillType _subBillType;
         private GridppReport _report;
         private TB_BILL _bill = null;
@@ -28,21 +29,18 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
         private Expression<Func<TB_BILL, bool>> _where;
 
-        public FormProductReturn()
+        public FormSpareReturn()
         {
             InitializeComponent();
             _where = c => c.BillType == (int) _billType;
-            _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+//            _report = ReportHelper.InitReport(_billType);
+//            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
-
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
-            SetMasterDataSource(grid.PageSize);
+            SetMasterDataSource(grid.PageIndex,grid.PageSize);
         }
-
-
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
@@ -55,14 +53,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             ExcelWriter.Write(dt);
         }
 
-
-
-        private void BtnDeliver_Click(object sender, EventArgs e)
-        {
-        
-        }
-
-        private void SetMasterDataSource(int pageSize)
+        private void SetMasterDataSource(int pageIndex, int pageSize)
         {
             Expression<Func<TB_BILL, dynamic>> select =
                 c =>
@@ -73,11 +64,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         单据类型 = c.BillType,
                         单据子类型 = c.SubBillType,
                         源单编号 = c.SourceBillNum,
-//                        发货单编号 = c.SourceBillNum2,
-//                        开始时间 = c.StartTime,
-//                        结束时间 = c.FinishTime,
                         供应商编号 = c.SplyId,
-//                        客户编号 = c.CustId,
                         单据时间 = c.BillTime,
                         操作员 = c.OperName,
                         状态 = ((BillState)c.State).ToString(),
@@ -94,6 +81,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 grid.PageSize,
                 out total);
             if (grid.Total != total) grid.Total = total;
+            if (grid.PageIndex != pageIndex)
+                grid.PageIndex = pageIndex;
             if (grid.PageSize != pageSize)
                 grid.PageSize = pageSize;
         }
@@ -101,7 +90,31 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<TB_RETURN, dynamic>> select = c => c;
+            Expression<Func<TB_RETURN, dynamic>> select = c =>
+                new
+                {
+                    物料号 = c.PartCode,
+                    批次 = c.Batch,
+                    目标库位 = c.ToLocCode,
+                    出库数量 = c.OutQty,
+                    入库数量 = c.InQty,
+                    单价 = c.UnitPrice,
+                    金额 = c.Amount,
+                    部门 = c.DeptCode,
+                    项目 = c.ProjectCode,
+                    产线 = c.WorklineCode,
+                    设备 = c.EqptCode,
+                    申请人 = c.AskUser,
+                    申请时间 = c.AskTime,
+                    批准人 = c.ConfirmUser,
+                    批准时间 = c.ConfirmTime,
+                    领取人 = c.TakeUser,
+                    领取时间 = c.TakeTime,
+                    归还人 = c.ReturnUser,
+                    归还时间 = c.ReturnTime,
+                    状态 = ((BillState)c.State).ToString(),
+                    备注 = c.Remark,
+                };
             Expression<Func<TB_RETURN, bool>> where = c => c.BillNum == billNum;
             Expression<Func<TB_RETURN, long>> order = c => c.UID;
 
@@ -111,13 +124,11 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 order,
                 out count);
             return count;
-
         }
-
 
         private void grid_PageSelectedIndexChanged(object sender, EventArgs e)
         {
-            SetMasterDataSource(grid.PageSize);
+            SetMasterDataSource(grid.PageIndex,grid.PageSize);
         }
 
         private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
@@ -130,12 +141,10 @@ namespace ChangKeTec.Wms.WinForm.Bills
             var count = SetDetailDataSource(billNum);
             grid.IsDetailVisible = count > 0;
         }
-
         
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetMasterDataSource(e.PageSize);
-            
+            SetMasterDataSource(e.PageIndex,e.PageSize);    
         }
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
@@ -146,6 +155,30 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 return;
             }
             ReportHelper.Print(_report);
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            PopupSpareReturn popup = new PopupSpareReturn(_bill);
+            popup.ShowDialog(this);
+            SetMasterDataSource(grid.PageIndex, grid.PageSize);
+        }
+
+        private void btnExecute_Click(object sender, EventArgs e)
+        {
+            if (_bill == null || _bill.BillNum == null)
+            {
+                MessageHelper.ShowInfo("请选择单据！");
+                return;
+            }
+            if (MessageHelper.ShowQuestion("确定要执行选定的领用还回单？") == DialogResult.Yes)
+            {
+                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                var returnlist = db.TB_RETURN.Where(p => p.BillNum == _bill.BillNum).ToList();
+                BillHandler.ExecuteSpareReturn(db, _bill, returnlist);
+                EntitiesFactory.SaveDb(db);
+                MessageHelper.ShowInfo("保存成功！");
+            }
         }
     }
 }

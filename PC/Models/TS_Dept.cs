@@ -18,7 +18,7 @@ namespace ChangKeTec.Wms.Models
         public string DeptCode { get; set; }
         public string DeptName { get; set; }
         public string ParentCode { get; set; }
-        public string Remark { get; set; }
         public bool IsLeafNode { get; set; }
+        public string Remark { get; set; }
     }
 }
