@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="SpareModel.TA_BILLTYPE" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_CONFIG" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_DEPT" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SpareModel.TA_EQUIPMENT" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_MACHINE" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_PART" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="SpareModel.TA_PROJECT" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_STORE_GROUP" Width="1.5" PointX="0.75" PointY="6.75" />
@@ -36,9 +36,9 @@
         <EntityTypeShape EntityType="SpareModel.TL_OPER" Width="1.5" PointX="2.75" PointY="15.75" />
         <EntityTypeShape EntityType="SpareModel.TL_TRANSACTION" Width="1.5" PointX="12.75" PointY="15.75" />
         <EntityTypeShape EntityType="SpareModel.TS_STOCK_DETAIL" Width="1.5" PointX="14.75" PointY="15.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_EQPT_TYPE" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_GROUP_TYPE" Width="1.5" PointX="16.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_LOC_TYPE" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_GROUP_TYPE" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_LOC_TYPE" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_MACHINE_TYPE" Width="1.5" PointX="16.75" PointY="6.75" />
         <EntityTypeShape EntityType="SpareModel.TT_PART_TYPE" Width="1.5" PointX="16.75" PointY="9.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_CalInaction_DAYS" Width="1.5" PointX="16.75" PointY="12.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_CalOverdue_DAYS" Width="1.5" PointX="16.75" PointY="16.75" />

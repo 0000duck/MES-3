@@ -56,7 +56,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcDeptCode.EditorType = typeof(DeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorklineCode.EditorType = typeof(WorkLineComboBox);
-            gcEqptCode.EditorType = typeof(EqptComboBox);
+            gcEqptCode.EditorType = typeof(MachineComboBox);
 
             if (_bill.UID == 0)
             {

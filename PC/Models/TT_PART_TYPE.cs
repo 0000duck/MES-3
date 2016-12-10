@@ -16,6 +16,7 @@ namespace ChangKeTec.Wms.Models
     {
         public int UID { get; set; }
         public string PartType { get; set; }
+        public string TypeName { get; set; }
         public string Remark { get; set; }
     }
 }

@@ -16,4 +16,16 @@ namespace ChangKeTec.Wms.Common.ComboBox
             ValueMember = "DeptCode";
         }
     }
+
+    public class ADeptComboBox : GridComboBoxExEditControl
+    {
+        public ADeptComboBox()
+        {
+            var db = EntitiesFactory.CreateSpareInstance();
+
+            DataSource = new BindingList<TA_DEPT>((db.TA_DEPT).ToList());
+            DisplayMember = "DeptName";
+            ValueMember = "DeptCode";
+        }
+    }
 }

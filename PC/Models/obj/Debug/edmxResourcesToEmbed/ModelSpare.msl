@@ -41,18 +41,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TA_EQUIPMENT">
-      <EntityTypeMapping TypeName="SpareModel.TA_EQUIPMENT">
-        <MappingFragment StoreEntitySet="TA_EQUIPMENT">
+    <EntitySetMapping Name="TA_MACHINE">
+      <EntityTypeMapping TypeName="SpareModel.TA_MACHINE">
+        <MappingFragment StoreEntitySet="TA_MACHINE">
           <ScalarProperty Name="Remark" ColumnName="Remark" />
           <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="EqptManager" ColumnName="EqptManager" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
           <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-          <ScalarProperty Name="EqptLocation" ColumnName="EqptLocation" />
-          <ScalarProperty Name="EqptModel" ColumnName="EqptModel" />
-          <ScalarProperty Name="EqptType" ColumnName="EqptType" />
-          <ScalarProperty Name="EqptName" ColumnName="EqptName" />
-          <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+          <ScalarProperty Name="MachineLocation" ColumnName="MachineLocation" />
+          <ScalarProperty Name="MachineModel" ColumnName="MachineModel" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="MachineCode" ColumnName="MachineCode" />
           <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -518,15 +518,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TT_EQPT_TYPE">
-      <EntityTypeMapping TypeName="SpareModel.TT_EQPT_TYPE">
-        <MappingFragment StoreEntitySet="TT_EQPT_TYPE">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="EqptType" ColumnName="EqptType" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TT_GROUP_TYPE">
       <EntityTypeMapping TypeName="SpareModel.TT_GROUP_TYPE">
         <MappingFragment StoreEntitySet="TT_GROUP_TYPE">
@@ -545,10 +536,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TT_MACHINE_TYPE">
+      <EntityTypeMapping TypeName="SpareModel.TT_MACHINE_TYPE">
+        <MappingFragment StoreEntitySet="TT_MACHINE_TYPE">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TT_PART_TYPE">
       <EntityTypeMapping TypeName="SpareModel.TT_PART_TYPE">
         <MappingFragment StoreEntitySet="TT_PART_TYPE">
           <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
           <ScalarProperty Name="PartType" ColumnName="PartType" />
           <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>

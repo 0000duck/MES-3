@@ -116,7 +116,7 @@
     <Compile Include="TA_DEPT.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
-    <Compile Include="TA_EQUIPMENT.cs">
+    <Compile Include="TA_MACHINE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TA_MENU.cs">
@@ -183,7 +183,7 @@
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TL_BASEDATA.cs">
-      <DependentUpon>ModelPower.tt</DependentUpon>
+      <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TL_BILL.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
@@ -211,13 +211,13 @@
     <Compile Include="TS_STOCK_DETAIL.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
-    <Compile Include="TT_EQPT_TYPE.cs">
-      <DependentUpon>ModelSpare.tt</DependentUpon>
-    </Compile>
     <Compile Include="TT_GROUP_TYPE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TT_LOC_TYPE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TT_MACHINE_TYPE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TT_PART_TYPE.cs">

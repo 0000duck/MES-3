@@ -28,7 +28,7 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<TA_BILLTYPE> TA_BILLTYPE { get; set; }
         public virtual DbSet<TA_CONFIG> TA_CONFIG { get; set; }
         public virtual DbSet<TA_DEPT> TA_DEPT { get; set; }
-        public virtual DbSet<TA_EQUIPMENT> TA_EQUIPMENT { get; set; }
+        public virtual DbSet<TA_MACHINE> TA_MACHINE { get; set; }
         public virtual DbSet<TA_PART> TA_PART { get; set; }
         public virtual DbSet<TA_PROJECT> TA_PROJECT { get; set; }
         public virtual DbSet<TA_STORE_GROUP> TA_STORE_GROUP { get; set; }
@@ -56,9 +56,9 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<TL_OPER> TL_OPER { get; set; }
         public virtual DbSet<TL_TRANSACTION> TL_TRANSACTION { get; set; }
         public virtual DbSet<TS_STOCK_DETAIL> TS_STOCK_DETAIL { get; set; }
-        public virtual DbSet<TT_EQPT_TYPE> TT_EQPT_TYPE { get; set; }
         public virtual DbSet<TT_GROUP_TYPE> TT_GROUP_TYPE { get; set; }
         public virtual DbSet<TT_LOC_TYPE> TT_LOC_TYPE { get; set; }
+        public virtual DbSet<TT_MACHINE_TYPE> TT_MACHINE_TYPE { get; set; }
         public virtual DbSet<TT_PART_TYPE> TT_PART_TYPE { get; set; }
         public virtual DbSet<VIEW_CalInaction_DAYS> VIEW_CalInaction_DAYS { get; set; }
         public virtual DbSet<VIEW_CalOverdue_DAYS> VIEW_CalOverdue_DAYS { get; set; }

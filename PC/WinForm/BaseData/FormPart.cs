@@ -30,12 +30,10 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[6].EditorType = typeof(ProjectComboBox);
-            grid.PrimaryGrid.Columns[7].EditorType = typeof(UnitComboBox);
-            grid.PrimaryGrid.Columns[8].EditorType = typeof(BmComboBox);
-            grid.PrimaryGrid.Columns[9].EditorType = typeof(PartKindComboBox);
-            grid.PrimaryGrid.Columns[10].EditorType = typeof(ManageTypeComboBox);
-            grid.PrimaryGrid.Columns[23].EditorType = typeof(StoreLocComboBox);
+
+            grid.PrimaryGrid.Columns[5].EditorType = typeof(UnitComboBox);
+            grid.PrimaryGrid.Columns[6].EditorType = typeof(BmComboBox);
+            grid.PrimaryGrid.Columns[7].EditorType = typeof(PartTypeComboBox);
 
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {

@@ -87,7 +87,7 @@
     <Compile Include="Bill\SpareInController.cs" />
     <Compile Include="Bill\OtherInController.cs" />
     <Compile Include="BaseData\PowerController.cs" />
-    <Compile Include="Bill\EquipmentController.cs" />
+    <Compile Include="Bill\MachineController.cs" />
     <Compile Include="Interface\ErpInterfaceController.cs" />
     <Compile Include="Log\OperLogController.cs" />
     <Compile Include="Bill\NotifyController.cs" />

@@ -4,7 +4,7 @@
     <EntitySet Name="TA_BILLTYPE" EntityType="SpareModel.TA_BILLTYPE" />
     <EntitySet Name="TA_CONFIG" EntityType="SpareModel.TA_CONFIG" />
     <EntitySet Name="TA_DEPT" EntityType="SpareModel.TA_DEPT" />
-    <EntitySet Name="TA_EQUIPMENT" EntityType="SpareModel.TA_EQUIPMENT" />
+    <EntitySet Name="TA_MACHINE" EntityType="SpareModel.TA_MACHINE" />
     <EntitySet Name="TA_PART" EntityType="SpareModel.TA_PART" />
     <EntitySet Name="TA_PROJECT" EntityType="SpareModel.TA_PROJECT" />
     <EntitySet Name="TA_STORE_GROUP" EntityType="SpareModel.TA_STORE_GROUP" />
@@ -32,9 +32,9 @@
     <EntitySet Name="TL_OPER" EntityType="SpareModel.TL_OPER" />
     <EntitySet Name="TL_TRANSACTION" EntityType="SpareModel.TL_TRANSACTION" />
     <EntitySet Name="TS_STOCK_DETAIL" EntityType="SpareModel.TS_STOCK_DETAIL" />
-    <EntitySet Name="TT_EQPT_TYPE" EntityType="SpareModel.TT_EQPT_TYPE" />
     <EntitySet Name="TT_GROUP_TYPE" EntityType="SpareModel.TT_GROUP_TYPE" />
     <EntitySet Name="TT_LOC_TYPE" EntityType="SpareModel.TT_LOC_TYPE" />
+    <EntitySet Name="TT_MACHINE_TYPE" EntityType="SpareModel.TT_MACHINE_TYPE" />
     <EntitySet Name="TT_PART_TYPE" EntityType="SpareModel.TT_PART_TYPE" />
     <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="SpareModel.VIEW_CalInaction_DAYS" />
     <EntitySet Name="VIEW_CalOverdue_DAYS" EntityType="SpareModel.VIEW_CalOverdue_DAYS" />
@@ -84,18 +84,18 @@
     <Property Name="State" Type="Int32" Nullable="false" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="TA_EQUIPMENT">
+  <EntityType Name="TA_MACHINE">
     <Key>
-      <PropertyRef Name="EqptCode" />
+      <PropertyRef Name="MachineCode" />
     </Key>
     <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EqptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EqptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EqptType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EqptModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EqptLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MachineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MachineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MachineType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MachineModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MachineLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EqptManager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="State" Type="Int32" Nullable="false" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -537,14 +537,6 @@
     <Property Name="UpdateQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityType Name="TT_EQPT_TYPE">
-    <Key>
-      <PropertyRef Name="EqptType" />
-    </Key>
-    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EqptType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="TT_GROUP_TYPE">
     <Key>
       <PropertyRef Name="GroupType" />
@@ -561,12 +553,22 @@
     <Property Name="LocType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="TT_MACHINE_TYPE">
+    <Key>
+      <PropertyRef Name="MachineType" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="TT_PART_TYPE">
     <Key>
       <PropertyRef Name="PartType" />
     </Key>
     <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PartType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="VIEW_CalInaction_DAYS">
