@@ -481,7 +481,7 @@ namespace ChangKeTec.Wms.Controllers
         {
             {
                 //新单据，增加盘点的三张表
-                if (bill.BillNum == "")
+                if (string.IsNullOrEmpty(bill.BillNum))
                 {
                     SetBillNum(bill); //设置单据编号
                     locList.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
@@ -739,6 +739,7 @@ namespace ChangKeTec.Wms.Controllers
         {
             var details = db.TB_INVENTORY_DETAIL.Where(p => p.BillNum == bill.BillNum).ToList();
             InventoryController.AdjustStockByInventory(db, bill, details);
+            BillController.UpdateState(db,bill,BillState.Finished);
         }
 
         /// <summary>
@@ -748,12 +749,13 @@ namespace ChangKeTec.Wms.Controllers
         /// <param name="bill"></param>
         /// <param name="details"></param>
         /// <returns></returns>
-        public static void AddOrUpdateInventoryDetail(SpareEntities db, List<TB_INVENTORY_DETAIL> details)
+        public static void AddOrUpdateInventoryDetail(SpareEntities db,TB_BILL bill, List<TB_INVENTORY_DETAIL> details)
         {
             foreach (var detail in details)
             {
                 InventoryController.AddOrUpdate(db,detail);
             }
+            BillController.UpdateState(db,bill,BillState.Handling);
         }
 
         #endregion

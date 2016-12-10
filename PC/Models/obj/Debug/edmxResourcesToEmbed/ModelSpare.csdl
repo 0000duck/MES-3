@@ -17,7 +17,6 @@
     <EntitySet Name="TB_ASK" EntityType="SpareModel.TB_ASK" />
     <EntitySet Name="TB_BILL" EntityType="SpareModel.TB_BILL" />
     <EntitySet Name="TB_IN" EntityType="SpareModel.TB_IN" />
-    <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="SpareModel.TB_INVENTORY_DETAIL" />
     <EntitySet Name="TB_INVENTORY_LOC" EntityType="SpareModel.TB_INVENTORY_LOC" />
     <EntitySet Name="TB_OTHER_IN" EntityType="SpareModel.TB_OTHER_IN" />
     <EntitySet Name="TB_OUT" EntityType="SpareModel.TB_OUT" />
@@ -46,6 +45,7 @@
     <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="SpareModel.VIEW_STOCK_DETAIL" />
     <EntitySet Name="VIEW_STOCK_DETAIL_AGE" EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" />
     <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
+    <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="SpareModel.TB_INVENTORY_DETAIL" />
   </EntityContainer>
   <EntityType Name="TA_BILLTYPE">
     <Key>
@@ -273,20 +273,6 @@
     <Property Name="State" Type="Int32" Nullable="false" />
     <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="TB_INVENTORY_DETAIL">
-    <Key>
-      <PropertyRef Name="UID" />
-    </Key>
-    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CheckLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="BookQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="CheckQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="CheckTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="TB_INVENTORY_LOC">
     <Key>
       <PropertyRef Name="BillNum" />
@@ -295,12 +281,12 @@
     <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="BillTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CheckBeginTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CheckEndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="State" Type="Int32" Nullable="false" />
-    <Property Name="Remark" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TB_OTHER_IN">
     <Key>
@@ -774,5 +760,19 @@
     <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TB_INVENTORY_DETAIL">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CheckLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CheckQty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CheckTime" Type="DateTime" Precision="3" />
+    <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

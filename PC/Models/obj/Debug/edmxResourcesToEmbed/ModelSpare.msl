@@ -243,21 +243,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_INVENTORY_DETAIL">
-      <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
-        <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
-          <ScalarProperty Name="OperName" ColumnName="OperName" />
-          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
-          <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
-          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
-          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TB_INVENTORY_LOC">
       <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_LOC">
         <MappingFragment StoreEntitySet="TB_INVENTORY_LOC">
@@ -709,6 +694,21 @@
           <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
           <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INVENTORY_DETAIL">
+      <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
+        <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+          <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
+          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
           <ScalarProperty Name="BillNum" ColumnName="BillNum" />
           <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>

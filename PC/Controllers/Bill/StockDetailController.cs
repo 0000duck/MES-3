@@ -56,6 +56,8 @@ namespace ChangKeTec.Wms.Controllers.Bill
             var stockDetail = Get(db, detailOut.LocCode,detailOut.PartCode,detailOut.Batch);
             if (stockDetail == null) //库存明细不存在，报错
             {
+                if(bill.BillType == (int)BillType.InventoryPlan)
+                { return;}
                 throw new WmsException(ResultCode.DataNotFound,
                     GetDetailInfo(detailOut), "出库库存明细不存在");
 
@@ -103,7 +105,15 @@ namespace ChangKeTec.Wms.Controllers.Bill
                     var detailOut = detail.ToStockDetailOut();
                     Out(db, bill, detailOut);
                 }
-                var detailIn = detail.ToStockDetailIn(db);
+                var detailIn = new TS_STOCK_DETAIL();
+                if (bill.BillType == (int) BillType.InventoryPlan)
+                {
+                    detailIn = detail.ToStockDetailInventory(db);
+                }
+                else
+                {
+                    detailIn = detail.ToStockDetailIn(db);
+                }
                 In(db, bill, detailIn);
 //                //创建ERP接口
 //                ErpInterfaceController.CreateTR(db, detail.PartCode, detail.Qty, detail.FromLocCode, detail.ToLocCode,detail.Batch,detail.Batch, bill.BillNum, (BillType)(bill.BillType), bill.BillTime);

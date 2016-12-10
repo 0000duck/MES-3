@@ -41,12 +41,12 @@
             this.gcPart = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.gcLoc = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcLoc = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -170,7 +170,7 @@
             // 
             // gridColumn13
             // 
-            this.gridColumn13.DataPropertyName = "State";
+            this.gridColumn13.DataPropertyName = "Batch";
             this.gridColumn13.EditorType = null;
             this.gridColumn13.HeaderText = "批次";
             this.gridColumn13.Name = "Column6";
@@ -227,6 +227,13 @@
             this.grid.TabIndex = 63;
             this.grid.Text = "superGridControl1";
             // 
+            // gridColumn4
+            // 
+            this.gridColumn4.DataPropertyName = "BillNum";
+            this.gridColumn4.HeaderText = "单据号";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
+            // 
             // gcLoc
             // 
             this.gcLoc.AllowEdit = false;
@@ -238,13 +245,6 @@
             this.gcLoc.Name = "gcLoc";
             this.gcLoc.ReadOnly = true;
             this.gcLoc.Width = 200;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.DataPropertyName = "BillNum";
-            this.gridColumn4.HeaderText = "单据号";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.ReadOnly = true;
             // 
             // gridColumn6
             // 
@@ -393,6 +393,7 @@
             this.Name = "PopupInventoryDetail";
             this.ShowIcon = false;
             this.Text = "库位盘点明细";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWhseReceive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).EndInit();

@@ -18,7 +18,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 {
     public partial class PopupInventoryLoc: Office2007Form
     {
-        private BillType _billType = BillType.InventoryLoc;
+        private BillType _billType = BillType.InventoryPlan;
         private readonly GridppReport _report;
 
         private TB_BILL _bill = new TB_BILL();
@@ -76,8 +76,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         }
 
         private void SetLocDataSource(string billnum)
-        {
-            
+        {           
             bs.DataSource = _listLoc;
             foreach (var loc in _listLoc)
             {

@@ -236,9 +236,9 @@
     <Property Name="PartCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Batch" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="BookQty" Type="money" Nullable="false" />
-    <Property Name="CheckQty" Type="money" Nullable="false" />
-    <Property Name="CheckTime" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CheckQty" Type="money" />
+    <Property Name="CheckTime" Type="datetime" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TB_INVENTORY_LOC">
     <Key>
@@ -248,12 +248,12 @@
     <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BillNum" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="OperName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperName" Type="nvarchar" MaxLength="50" />
     <Property Name="BillTime" Type="datetime" Nullable="false" />
     <Property Name="CheckBeginTime" Type="nvarchar" MaxLength="50" />
     <Property Name="CheckEndTime" Type="nvarchar" MaxLength="50" />
     <Property Name="State" Type="int" Nullable="false" />
-    <Property Name="Remark" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="TB_OTHER_IN">
     <Key>

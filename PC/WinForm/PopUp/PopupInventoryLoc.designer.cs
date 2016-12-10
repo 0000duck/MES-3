@@ -274,6 +274,7 @@
             this.Name = "PopupInventoryLoc";
             this.ShowIcon = false;
             this.Text = "库位盘点明细";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWhseReceive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).EndInit();

@@ -19,11 +19,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 {
     public partial class PopupInventoryDetail : Office2007Form
     {
-        private BillType _billType = BillType.InventoryLoc;
+        private BillType _billType = BillType.InventoryPlan;
         private readonly GridppReport _report;
 
         private TB_BILL _bill = new TB_BILL();
-        private TB_INVENTORY_LOC _inventoryLoc = new TB_INVENTORY_LOC();
+        private TB_INVENTORY_DETAIL _inventorydetail = new TB_INVENTORY_DETAIL();
 
         private readonly string DetailTableName = "TB_INVENTORY_DETAIL";
         private readonly string IndexColumnName = "BillNum";
@@ -41,23 +41,20 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             InitializeComponent();
             _bill = bill;
             _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => _report_Initialize(_report, _inventoryLoc, DetailTableName, IndexColumnName);
+            _report.Initialize += () => _report_Initialize(_report, _inventorydetail, DetailTableName, IndexColumnName);
         }
 
-        private void _report_Initialize(GridppReport report, TB_INVENTORY_LOC locBill, string detailTableName, string indexColumnName)
+        private void _report_Initialize(GridppReport report, TB_INVENTORY_DETAIL locBill, string detailTableName, string indexColumnName)
         {
             Console.WriteLine(report.Parameters.Count);
             report.ParameterByName("BillNum").AsString = locBill.BillNum;
-            report.ParameterByName("LocCode").AsString = locBill.LocCode;
-            report.ParameterByName("BillTime").AsString = locBill.BillTime.ToString(GlobalVar.LongTimeString);
-            report.ParameterByName("CheckBeginTime").AsString = locBill.CheckBeginTime;
-            report.ParameterByName("CheckEndTime").AsString = locBill.CheckEndTime;
+            report.ParameterByName("LocCode").AsString = locBill.CheckLocCode;
+            report.ParameterByName("BillTime").AsString = ((DateTime)locBill.CheckTime).ToString(GlobalVar.LongTimeString);
             report.ParameterByName("OperName").AsString = locBill.OperName;
-            report.ParameterByName("State").AsString = locBill.State.ToString();
-            report.ParameterByName("Remark").AsString = locBill.Remark;
+            report.ParameterByName("CheckQty").AsString = locBill.CheckQty.ToString();
             report.ConnectionString = EntitiesFactory.WmsConnectionString;
             report.DetailGrid.Recordset.ConnectionString = EntitiesFactory.WmsConnectionString;
-            report.DetailGrid.Recordset.QuerySQL = $"select * from {detailTableName} where {indexColumnName} = '{locBill.BillNum}' and CheckLocCode='{_inventoryLoc.LocCode}'";
+            report.DetailGrid.Recordset.QuerySQL = $"select * from {detailTableName} where {indexColumnName} = '{locBill.BillNum}' and CheckLocCode='{_inventorydetail.CheckLocCode}'";
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -88,7 +85,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
         {
-            if (_inventoryLoc == null || _inventoryLoc.BillNum == null)
+            if (_inventorydetail == null || _inventorydetail.BillNum == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -108,7 +105,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 bs.EndEdit();
                 var detailList = (List<TB_INVENTORY_DETAIL>) bs.DataSource;
                 SpareEntities db = EntitiesFactory.CreateWmsInstance();
-                BillHandler.AddOrUpdateInventoryDetail(db, detailList);
+                BillHandler.AddOrUpdateInventoryDetail(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

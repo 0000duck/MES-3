@@ -21,12 +21,13 @@ namespace ChangKeTec.Wms.WinForm.Bills
 {
     public partial class FormInventoryPlan : Office2007Form
     {
-        private BillType _billType = BillType.StockMove;
+        private BillType _billType = BillType.InventoryPlan;
         private GridppReport _report;
         private TB_BILL _bill = null;
         private readonly string DetailTableName = "TB_INVENTORY_DETAIL";
         private readonly string IndexColumnName = "BillNum";
         private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private Expression<Func<TB_BILL, bool>> _where;
         public FormInventoryPlan()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
+            _where = c => c.BillType == (int)_billType;
             SetMasterDataSource(grid.PageSize);
 
         }
@@ -52,7 +54,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-
+            PopupDateFilter pdate = new PopupDateFilter();
+            pdate.ShowDialog();
         }
         
         private void BtnExport_Click(object sender, EventArgs e)
@@ -80,13 +83,13 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         状态 = ((BillState)c.State).ToString(),
                         备注 = c.Remark,
                     };
-            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType;
+            
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;
             grid.MasterDataSource =EniitiesHelper.GetPagedDataDesc(_db,
                 select,
-                where,
+                _where,
                 order,
                 grid.PageIndex, 
                 grid.PageSize,
@@ -99,18 +102,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<TB_STOCK_MOVE, dynamic>> select = c =>
+            Expression<Func<TB_INVENTORY_DETAIL, dynamic>> select = c =>
                 new
                 {
+                    盘点库位 = c.CheckLocCode,
                     物料号 = c.PartCode,
                     批次 = c.Batch,
-                    来源库位 = c.FromLocCode,
-                    目标库位 = c.ToLocCode,
-                    移动数量 = c.Qty,
-                    备注 = c.Remark
+                    账面数量 = c.BookQty,
+                    盘点数量 = c.CheckQty,
+                    盘点时间 = c.CheckTime,
+                    盘点人 = c.OperName
                 };
-            Expression<Func<TB_STOCK_MOVE, bool>> where = c => c.BillNum == billNum;
-            Expression<Func<TB_STOCK_MOVE, long>> order = c => c.UID;
+            Expression<Func<TB_INVENTORY_DETAIL, bool>> where = c => c.BillNum == billNum;
+            Expression<Func<TB_INVENTORY_DETAIL, long>> order = c => c.UID;
 
             grid.Detail1DataSource = EniitiesHelper.GetData(_db,
                 select,
@@ -118,9 +122,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 order,
                 out count);
             return count;
-
         }
-
 
         private void grid_PageSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -137,12 +139,10 @@ namespace ChangKeTec.Wms.WinForm.Bills
             var count = SetDetailDataSource(billNum);
             grid.IsDetailVisible = count > 0;
         }
-
         
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetMasterDataSource(e.PageSize);
-            
+            SetMasterDataSource(e.PageSize);        
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -214,19 +214,18 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
             }
-            if (_bill.State != (int)BillState.Handling)
+            if (_bill.State != (int)BillState.New && _bill.State != (int)BillState.Handling)
             {
                 MessageHelper.ShowError("非新建或执行中单据，禁止对库存进行调整！");
                 return;
             }
             if (MessageHelper.ShowQuestion("是否确定要对库存进行调整？") == DialogResult.Yes)
             {
-                
-            }
-            BillHandler.AdjustStockByInventoryLoc(_db, _bill);
-            EntitiesFactory.SaveDb(_db);
-            MessageHelper.ShowInfo("调整库存成功！");
-            SetMasterDataSource(grid.PageSize);
+                BillHandler.AdjustStockByInventoryLoc(_db, _bill);
+                EntitiesFactory.SaveDb(_db);
+                MessageHelper.ShowInfo("调整库存成功！");
+                SetMasterDataSource(grid.PageSize);
+            }           
         }
     }
 }

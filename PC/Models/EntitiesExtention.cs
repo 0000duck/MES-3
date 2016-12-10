@@ -48,7 +48,7 @@ namespace ChangKeTec.Wms.Models
                 PartCode = this.PartCode,
                 Batch = this.Batch,
                 ToLocCode = this.CheckLocCode,
-                Qty = this.BookQty-this.CheckQty,
+                Qty = this.BookQty-(decimal)this.CheckQty,
             };
         }
     }
@@ -177,7 +177,7 @@ namespace ChangKeTec.Wms.Models
                 Batch = this.Batch,
                 BookQty = this.Qty,
                 CheckQty = 0,
-                CheckTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:s")
+                CheckTime = DateTime.Now
             };
         }
 
@@ -290,6 +290,24 @@ namespace ChangKeTec.Wms.Models
 //                OverdueDate = (this.ProduceDate).AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
 //            };
 
+        }
+
+        public TS_STOCK_DETAIL ToStockDetailInventory(SpareEntities db)
+        {
+            var stockDetail = db.TS_STOCK_DETAIL.Find(this.FromLocCode, this.PartCode, this.Batch);
+            var detailIn = new TS_STOCK_DETAIL();
+            if (stockDetail == null)
+            {
+                detailIn = db.TS_STOCK_DETAIL.Find(this.ToLocCode, this.PartCode, this.Batch).Clone();
+            }
+            else
+            {
+                detailIn = stockDetail.Clone();          
+            }
+            detailIn.LocCode = this.ToLocCode;
+            detailIn.Qty = this.Qty;
+            detailIn.UpdateQty = this.Qty;
+            return detailIn;
         }
 
     }

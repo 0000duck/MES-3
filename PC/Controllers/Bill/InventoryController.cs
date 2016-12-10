@@ -56,37 +56,28 @@ namespace ChangKeTec.Wms.Controllers.Bill
         public static void AdjustStockByInventory(SpareEntities db, TB_BILL bill,List<TB_INVENTORY_DETAIL> details)
         {
             var stockMoveList = new List<TB_STOCK_MOVE>();
-//            var stockInList = new List<TS_STOCK_DETAIL>();
-//            var stockOutList = new List<TS_STOCK_DETAIL>();
             foreach (TB_INVENTORY_DETAIL detail in details)
             {
                StoreLocationController.UnLock(db, detail.CheckLocCode);//Ω‚À¯ø‚Œª
 
                 var diffqty = detail.BookQty - detail.CheckQty;
                 if (diffqty == 0) continue;
-                //                if (!string.IsNullOrEmpty(detail.BookLocCode))
-                //                {
-                //                    detail.BookLocCode =
-                //                    var stockOut = detail.ToStockOut();
-                //                    stockOutList.Add(stockOut);
-                //                }
-                //                if (!string.IsNullOrEmpty(detail.CheckLocCode))
-                //                {
-                //                    var stockIn = detail.ToStockIn();
-                //                    stockInList.Add(stockIn);
-                //                }
                 var stockMove = detail.ToStockMove();
                 if (diffqty < 0)
                 {
+                    stockMove.FromLocCode = "OTHER";
+                    stockMove.ToLocCode = stockMove.ToLocCode;
+                    stockMove.Qty = (decimal) -diffqty;
+                }
+                else
+                {
                     stockMove.FromLocCode = stockMove.ToLocCode;
                     stockMove.ToLocCode = "OTHER";
-                    stockMove.Qty = -diffqty;
+                    stockMove.Qty = (decimal)diffqty;
                 }
                 stockMoveList.Add(stockMove);
             }
-            StockDetailController.ListMove(db,bill,stockMoveList);//≈Ãµ„≤Ó“Ï÷¥––“∆ø‚
-
-           
+            StockDetailController.ListMove(db,bill,stockMoveList);//≈Ãµ„≤Ó“Ï÷¥––“∆ø‚         
         }
 
         public static void LocCancel(SpareEntities db, TB_INVENTORY_LOC locBill)
