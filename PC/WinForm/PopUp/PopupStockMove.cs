@@ -55,6 +55,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             gcPartCode.EditorType = typeof (PartComboBox);
             gcToLocCode.EditorType = typeof (StoreLocComboBox);
+            if (_bill.UID == 0)
+            {
+                _bill.BillType = (int)BillType.StockMove;
+                _bill.BillTime = DateTime.Now;
+            }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }
@@ -72,6 +77,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
+                if (_bill.BillType != (int)BillType.StockMove)
+                {
+                    MessageHelper.ShowError("请输入有效的单据类型！移库单据类型为：" + (int)BillType.StockMove);
+                    return;
+                }
                 var detailList = (List<TB_STOCK_MOVE>)bs.DataSource;
                 if (detailList.Count == 0)
                 {

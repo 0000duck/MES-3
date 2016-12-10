@@ -58,6 +58,13 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcWorklineCode.EditorType = typeof(WorkLineComboBox);
             gcEqptCode.EditorType = typeof(EqptComboBox);
 
+            if (_bill.UID == 0)
+            {
+                _bill.BillType = (int) BillType.MaterialAsk;
+                //默认领用
+                _bill.SubBillType = (int) SubBillType.SpareOut;
+                _bill.BillTime = DateTime.Now;                
+            }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }
@@ -75,6 +82,16 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
+                if (_bill.BillType != (int) BillType.MaterialAsk)
+                {
+                    MessageHelper.ShowError("请输入有效的单据类型！申请单单据类型为：" + (int)BillType.MaterialAsk);
+                    return;
+                }
+                if (_bill.SubBillType != (int) SubBillType.SpareLoan && _bill.SubBillType != (int) SubBillType.SpareOut)
+                {
+                    MessageHelper.ShowError("维护的子单据类型无效！领用出库类型为：" + (int)SubBillType.SpareOut + "借用出库类型为：" +(int) SubBillType.SpareLoan);
+                    return;
+                }
                 var detailList = (List<TB_ASK>)bs.DataSource;
                 if (detailList.Count == 0)
                 {

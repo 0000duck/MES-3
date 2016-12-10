@@ -20,7 +20,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 {
     public partial class PopupOtherOut : Office2007Form
     {
-        private BillType _billType = BillType.SpareReturn;
+        private BillType _billType = BillType.OtherInOut;
         private TB_BILL _bill = new TB_BILL();
         private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
         public PopupOtherOut()
@@ -55,6 +55,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             gcPartCode.EditorType = typeof (PartComboBox);
             gcFromLocCode.EditorType = typeof (StoreLocComboBox);
+            if (_bill.UID == 0)
+            {
+                _bill.BillType = (int)BillType.OtherInOut;
+                _bill.SubBillType = (int)SubBillType.OtherOut;
+                _bill.BillTime = DateTime.Now;
+            }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }
@@ -72,6 +78,16 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
+                if (_bill.BillType != (int)BillType.OtherInOut)
+                {
+                    MessageHelper.ShowError("请输入有效的单据类型！其他出入库单据类型为：" + (int)BillType.OtherInOut);
+                    return;
+                }
+                if (_bill.SubBillType != (int)SubBillType.OtherOut)
+                {
+                    MessageHelper.ShowError("维护的子单据类型无效！其他出库类型为：" + (int)SubBillType.OtherOut);
+                    return;
+                }
                 var detailList = (List<TB_OTHER_OUT>)bs.DataSource;
                 if (detailList.Count == 0)
                 {

@@ -65,6 +65,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
             _listLoc = _db.TA_STORE_LOCATION.ToList();
+            if (_bill.UID == 0)
+            {
+                _bill.BillType = (int)BillType.InventoryPlan;
+                _bill.BillTime = DateTime.Now;
+            }
             propertyBill.SelectedObject = _bill;
             SetLocDataSource(_bill.BillNum); 
         }
@@ -159,6 +164,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
+                if (_bill.BillType != (int)BillType.InventoryPlan)
+                {
+                    MessageHelper.ShowError("请输入有效的单据类型！盘点单据类型为：" + (int)BillType.InventoryPlan);
+                    return;
+                }
                 var detailList = new List<TB_INVENTORY_LOC>();
                 foreach (var loc in _listLoc)
                 {

@@ -57,7 +57,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorklineCode.EditorType = typeof(WorkLineComboBox);
             gcEqptCode.EditorType = typeof(PartComboBox);
-
+            if (_bill.UID == 0)
+            {
+                _bill.BillType = (int)BillType.SpareReturn;
+                _bill.BillTime = DateTime.Now;
+            }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.BillNum);
         }
@@ -75,6 +79,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
+                if (_bill.BillType != (int)BillType.SpareReturn)
+                {
+                    MessageHelper.ShowError("请输入有效的单据类型！领用归还单据类型为：" + (int)BillType.SpareReturn);
+                    return;
+                }
                 var detailList = (List<TB_RETURN>)bs.DataSource;
                 if (detailList.Count == 0)
                 {
