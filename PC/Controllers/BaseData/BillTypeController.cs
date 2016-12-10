@@ -12,7 +12,7 @@ namespace ChangKeTec.Wms.Controllers.BaseData
 
         public static string GetBillNum(BillType billType)
         {
-            using (var db = EntitiesFactory.CreateWmsInstance())
+            using (var db = EntitiesFactory.CreateSpareInstance())
             {
                 var bt = db.TA_BILLTYPE.SingleOrDefault(p => p.BillType == (int)billType);
                 var rules = bt.BillNumRule.Split('|');

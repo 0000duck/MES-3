@@ -20,9 +20,9 @@ namespace ChangKeTec.Wms.Models
         public string 零件号 { get; set; }
         public string 批次 { get; set; }
         public decimal 账面数 { get; set; }
-        public decimal 盘点数 { get; set; }
+        public Nullable<decimal> 盘点数 { get; set; }
         public Nullable<decimal> 差异数 { get; set; }
-        public string 盘点时间 { get; set; }
+        public Nullable<System.DateTime> 盘点时间 { get; set; }
         public string 操作员 { get; set; }
     }
 }

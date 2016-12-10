@@ -9,7 +9,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
     {
         public UnitComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_UNIT>(db.TA_UNIT.ToList());
             DisplayMember = "Unit";

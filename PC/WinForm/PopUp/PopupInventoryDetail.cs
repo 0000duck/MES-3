@@ -28,7 +28,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private readonly string DetailTableName = "TB_INVENTORY_DETAIL";
         private readonly string IndexColumnName = "BillNum";
 
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
 
         public PopupInventoryDetail()
         {
@@ -104,7 +104,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             {
                 bs.EndEdit();
                 var detailList = (List<TB_INVENTORY_DETAIL>) bs.DataSource;
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddOrUpdateInventoryDetail(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");

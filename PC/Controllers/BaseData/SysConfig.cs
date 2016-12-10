@@ -28,7 +28,7 @@ namespace ChangKeTec.Wms.Controllers.BaseData
 
         private static void Init()
         {
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 var configList = ConfigController.GetList(db);
                 foreach (TA_CONFIG config in configList)

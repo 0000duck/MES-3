@@ -32,7 +32,7 @@ namespace ChangKeTec.Wms.WinForm.Report
 
         private void GetBillList()
         {
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 _billList = ReportViewController.GetStockDetail(db);
                 grid.PrimaryGrid.DataSource = _billList;

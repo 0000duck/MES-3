@@ -11,7 +11,7 @@ namespace ChangKeTec.PowerForm.Manage
 {
     public partial class FormBaseDataLog : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormBaseDataLog()
         {
             InitializeComponent();

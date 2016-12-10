@@ -53,3 +53,4 @@ D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\ChangKeTec.Wms.AutoUpdate.Pro
 D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
 D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.exe
 D:\工作工程\CcFjcSpare\PC\AutoUpdate\obj\Debug\Wms.AutoUpdate.pdb
+C:\Work\Spare.CcFjc\PC\AutoUpdate\obj\Debug\AutoUpdate.csprojResolveAssemblyReference.cache

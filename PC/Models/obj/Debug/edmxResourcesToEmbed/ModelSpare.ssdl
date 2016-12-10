@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="TA_BILLTYPE">
     <Key>
       <PropertyRef Name="BillType" />
@@ -585,9 +585,6 @@
       <PropertyRef Name="零件号" />
       <PropertyRef Name="批次" />
       <PropertyRef Name="账面数" />
-      <PropertyRef Name="盘点数" />
-      <PropertyRef Name="盘点时间" />
-      <PropertyRef Name="操作员" />
     </Key>
     <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -595,10 +592,10 @@
     <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="账面数" Type="money" Nullable="false" />
-    <Property Name="盘点数" Type="money" Nullable="false" />
+    <Property Name="盘点数" Type="money" />
     <Property Name="差异数" Type="money" />
-    <Property Name="盘点时间" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="盘点时间" Type="datetime" />
+    <Property Name="操作员" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->

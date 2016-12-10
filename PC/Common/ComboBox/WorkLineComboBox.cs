@@ -12,7 +12,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
 
         public WorkLineComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_WORKLINE>(db.TA_WORKLINE.ToList());
             DisplayMember = "WorkLineName";

@@ -9,7 +9,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
     {
         public PartComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
             DataSource = new BindingList<TA_PART>(db.TA_PART.ToList());
             DisplayMember = "PartDesc2";
             ValueMember = "PartCode";

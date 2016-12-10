@@ -4,6 +4,8 @@
     <EntitySetMapping Name="TA_MENU">
       <EntityTypeMapping TypeName="PowerModel.TA_MENU">
         <MappingFragment StoreEntitySet="TA_MENU">
+          <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+          <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="BackColor" ColumnName="BackColor" />
           <ScalarProperty Name="Y" ColumnName="Y" />
           <ScalarProperty Name="X" ColumnName="X" />
@@ -13,7 +15,6 @@
           <ScalarProperty Name="ClassName" ColumnName="ClassName" />
           <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
           <ScalarProperty Name="MenuText" ColumnName="MenuText" />
-          <ScalarProperty Name="ControlName" ColumnName="ControlName" />
           <ScalarProperty Name="ControlType" ColumnName="ControlType" />
           <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
           <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
@@ -57,20 +58,6 @@
           <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
           <ScalarProperty Name="DeptName" ColumnName="DeptName" />
           <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TS_MENU">
-      <EntityTypeMapping TypeName="PowerModel.TS_MENU">
-        <MappingFragment StoreEntitySet="TS_MENU">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
-          <ScalarProperty Name="PortalCode" ColumnName="PortalCode" />
-          <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
-          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
-          <ScalarProperty Name="ControlName" ColumnName="ControlName" />
-          <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
           <ScalarProperty Name="UID" ColumnName="UID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -157,6 +144,8 @@
     <EntitySetMapping Name="VS_POWER_MENU">
       <EntityTypeMapping TypeName="PowerModel.VS_POWER_MENU">
         <MappingFragment StoreEntitySet="VS_POWER_MENU">
+          <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+          <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="BackColor" ColumnName="BackColor" />
           <ScalarProperty Name="Y" ColumnName="Y" />
           <ScalarProperty Name="X" ColumnName="X" />
@@ -166,7 +155,6 @@
           <ScalarProperty Name="ClassName" ColumnName="ClassName" />
           <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
           <ScalarProperty Name="MenuText" ColumnName="MenuText" />
-          <ScalarProperty Name="ControlName" ColumnName="ControlName" />
           <ScalarProperty Name="ControlType" ColumnName="ControlType" />
           <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
           <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />

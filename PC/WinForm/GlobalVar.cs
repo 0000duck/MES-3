@@ -17,7 +17,7 @@ namespace ChangKeTec.Wms.WinForm
         public static TS_OPERATOR Oper { get; set; }
         public static List<VS_POWER_MENU> PowerMenuList { get; set; }
         public static List<TS_ROLE_NOTIFYTYPE> NotifytypeList { get; set; }
-        public const string PortalCode = "WMSPC";
+        public const string PortalCode = "SPAREPC";
 
         public static List<TA_CONFIG> ConfigList { get; set; }
         public static SortableBindingList<TL_NOTIFY> NotifyList { get; set; }
@@ -87,7 +87,7 @@ namespace ChangKeTec.Wms.WinForm
             var notify = NotifyList.SingleOrDefault(p => p.UID == id);
             if (notify == null) return;
             if (notify.State == (int) BillState.Finished) return;
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 try
                 {

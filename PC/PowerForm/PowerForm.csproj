@@ -104,7 +104,6 @@
   <ItemGroup>
     <Compile Include="Bll\BaseDataLogController.cs" />
     <Compile Include="Bll\DeptController.cs" />
-    <Compile Include="Bll\MenuAController.cs" />
     <Compile Include="Bll\MenuController.cs" />
     <Compile Include="Bll\OperController.cs" />
     <Compile Include="Bll\OperRoleController.cs" />

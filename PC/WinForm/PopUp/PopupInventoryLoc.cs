@@ -27,7 +27,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private readonly string DetailTableName = "TB_INVENTORY_LOC";
         private readonly string IndexColumnName = "BillNum";
 
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         private List<TA_STORE_LOCATION> _listLoc = new List<TA_STORE_LOCATION>();
         
 
@@ -189,7 +189,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddInventoryLoc(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");

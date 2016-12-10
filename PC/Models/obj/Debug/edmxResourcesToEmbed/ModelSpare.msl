@@ -243,6 +243,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TB_INVENTORY_DETAIL">
+      <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
+        <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
+          <ScalarProperty Name="OperName" ColumnName="OperName" />
+          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+          <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
+          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TB_INVENTORY_LOC">
       <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_LOC">
         <MappingFragment StoreEntitySet="TB_INVENTORY_LOC">
@@ -267,6 +282,21 @@
           <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_OTHER_OUT">
+      <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
+        <MappingFragment StoreEntitySet="TB_OTHER_OUT">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
           <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
           <ScalarProperty Name="BillNum" ColumnName="BillNum" />
@@ -524,78 +554,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
-      <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
-        <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
-          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-          <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
-          <ScalarProperty Name="PartType" ColumnName="PartType" />
-          <ScalarProperty Name="BM" ColumnName="BM" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VS_OVERDUE_STOCK">
-      <EntityTypeMapping TypeName="SpareModel.VS_OVERDUE_STOCK">
-        <MappingFragment StoreEntitySet="VS_OVERDUE_STOCK">
-          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-          <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
-          <ScalarProperty Name="PartType" ColumnName="PartType" />
-          <ScalarProperty Name="BM" ColumnName="BM" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-          <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VS_STOCK">
-      <EntityTypeMapping TypeName="SpareModel.VS_STOCK">
-        <MappingFragment StoreEntitySet="VS_STOCK">
-          <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
-          <ScalarProperty Name="MinQty" ColumnName="MinQty" />
-          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
-          <ScalarProperty Name="PartType" ColumnName="PartType" />
-          <ScalarProperty Name="BM" ColumnName="BM" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VS_STOCK_AGE">
-      <EntityTypeMapping TypeName="SpareModel.VS_STOCK_AGE">
-        <MappingFragment StoreEntitySet="VS_STOCK_AGE">
-          <ScalarProperty Name="PartType" ColumnName="PartType" />
-          <ScalarProperty Name="BM" ColumnName="BM" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-          <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
-          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
-          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="VIEW_CalInaction_DAYS">
       <EntityTypeMapping TypeName="SpareModel.VIEW_CalInaction_DAYS">
         <MappingFragment StoreEntitySet="VIEW_CalInaction_DAYS">
@@ -684,33 +642,75 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_OTHER_OUT">
-      <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
-        <MappingFragment StoreEntitySet="TB_OTHER_OUT">
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
+    <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
+      <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
+        <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
           <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_INVENTORY_DETAIL">
-      <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
-        <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
-          <ScalarProperty Name="OperName" ColumnName="OperName" />
-          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
-          <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
-          <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+    <EntitySetMapping Name="VS_OVERDUE_STOCK">
+      <EntityTypeMapping TypeName="SpareModel.VS_OVERDUE_STOCK">
+        <MappingFragment StoreEntitySet="VS_OVERDUE_STOCK">
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VS_STOCK">
+      <EntityTypeMapping TypeName="SpareModel.VS_STOCK">
+        <MappingFragment StoreEntitySet="VS_STOCK">
+          <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
+          <ScalarProperty Name="MinQty" ColumnName="MinQty" />
+          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VS_STOCK_AGE">
+      <EntityTypeMapping TypeName="SpareModel.VS_STOCK_AGE">
+        <MappingFragment StoreEntitySet="VS_STOCK_AGE">
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="BM" ColumnName="BM" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+          <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+          <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-          <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
-          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="LocCode" ColumnName="LocCode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

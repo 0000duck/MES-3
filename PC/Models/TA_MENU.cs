@@ -19,7 +19,6 @@ namespace ChangKeTec.Wms.Models
         public string MenuCode { get; set; }
         public string ParentCode { get; set; }
         public string ControlType { get; set; }
-        public string ControlName { get; set; }
         public string MenuText { get; set; }
         public string NameSpace { get; set; }
         public string ClassName { get; set; }
@@ -29,5 +28,7 @@ namespace ChangKeTec.Wms.Models
         public int X { get; set; }
         public int Y { get; set; }
         public string BackColor { get; set; }
+        public int State { get; set; }
+        public int MenuOrder { get; set; }
     }
 }

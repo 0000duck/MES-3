@@ -124,11 +124,11 @@
     <Compile Include="BaseData\FormUnit.Designer.cs">
       <DependentUpon>FormUnit.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseData\FormSuperlier.cs">
+    <Compile Include="BaseData\FormSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseData\FormSuperlier.Designer.cs">
-      <DependentUpon>FormSuperlier.cs</DependentUpon>
+    <Compile Include="BaseData\FormSupplier.Designer.cs">
+      <DependentUpon>FormSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseData\FormStoreLocation.cs">
       <SubType>Form</SubType>
@@ -142,11 +142,11 @@
     <Compile Include="BaseData\FormStoreGroup.Designer.cs">
       <DependentUpon>FormStoreGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bills\FormMaterialOut.cs">
+    <Compile Include="Bills\FormOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bills\FormMaterialOut.designer.cs">
-      <DependentUpon>FormMaterialOut.cs</DependentUpon>
+    <Compile Include="Bills\FormOut.designer.cs">
+      <DependentUpon>FormOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Bills\FormOtherOut.cs">
       <SubType>Form</SubType>
@@ -160,11 +160,11 @@
     <Compile Include="Bills\FormOtherIn.designer.cs">
       <DependentUpon>FormOtherIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bills\FormSpareReturn.cs">
+    <Compile Include="Bills\FormReturn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bills\FormSpareReturn.designer.cs">
-      <DependentUpon>FormSpareReturn.cs</DependentUpon>
+    <Compile Include="Bills\FormReturn.designer.cs">
+      <DependentUpon>FormReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="Bills\FormInventoryPlan.cs">
       <SubType>Form</SubType>
@@ -172,11 +172,11 @@
     <Compile Include="Bills\FormInventoryPlan.designer.cs">
       <DependentUpon>FormInventoryPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logs\FormErpInterface.cs">
+    <Compile Include="Logs\FormInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Logs\FormErpInterface.Designer.cs">
-      <DependentUpon>FormErpInterface.cs</DependentUpon>
+    <Compile Include="Logs\FormInterface.Designer.cs">
+      <DependentUpon>FormInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage\FormNotify.cs">
       <SubType>Form</SubType>
@@ -232,17 +232,17 @@
     <Compile Include="Bills\FormStockMove.designer.cs">
       <DependentUpon>FormStockMove.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bills\FormMaterialAsk.cs">
+    <Compile Include="Bills\FormAsk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bills\FormMaterialAsk.designer.cs">
-      <DependentUpon>FormMaterialAsk.cs</DependentUpon>
+    <Compile Include="Bills\FormAsk.designer.cs">
+      <DependentUpon>FormAsk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bills\FormMaterialReceive.cs">
+    <Compile Include="Bills\FormReceive.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bills\FormMaterialReceive.designer.cs">
-      <DependentUpon>FormMaterialReceive.cs</DependentUpon>
+    <Compile Include="Bills\FormReceive.designer.cs">
+      <DependentUpon>FormReceive.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDefault.cs">
       <SubType>Form</SubType>
@@ -423,8 +423,8 @@
       <DependentUpon>FormUnit.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseData\FormSuperlier.resx">
-      <DependentUpon>FormSuperlier.cs</DependentUpon>
+    <EmbeddedResource Include="BaseData\FormSupplier.resx">
+      <DependentUpon>FormSupplier.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseData\FormStoreLocation.resx">
@@ -435,8 +435,8 @@
       <DependentUpon>FormStoreGroup.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bills\FormMaterialOut.resx">
-      <DependentUpon>FormMaterialOut.cs</DependentUpon>
+    <EmbeddedResource Include="Bills\FormOut.resx">
+      <DependentUpon>FormOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bills\FormOtherOut.resx">
       <DependentUpon>FormOtherOut.cs</DependentUpon>
@@ -444,14 +444,14 @@
     <EmbeddedResource Include="Bills\FormOtherIn.resx">
       <DependentUpon>FormOtherIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bills\FormSpareReturn.resx">
-      <DependentUpon>FormSpareReturn.cs</DependentUpon>
+    <EmbeddedResource Include="Bills\FormReturn.resx">
+      <DependentUpon>FormReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bills\FormInventoryPlan.resx">
       <DependentUpon>FormInventoryPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Logs\FormErpInterface.resx">
-      <DependentUpon>FormErpInterface.cs</DependentUpon>
+    <EmbeddedResource Include="Logs\FormInterface.resx">
+      <DependentUpon>FormInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage\FormNotify.resx">
       <DependentUpon>FormNotify.cs</DependentUpon>
@@ -485,11 +485,11 @@
     <EmbeddedResource Include="Bills\FormStockMove.resx">
       <DependentUpon>FormStockMove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bills\FormMaterialAsk.resx">
-      <DependentUpon>FormMaterialAsk.cs</DependentUpon>
+    <EmbeddedResource Include="Bills\FormAsk.resx">
+      <DependentUpon>FormAsk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bills\FormMaterialReceive.resx">
-      <DependentUpon>FormMaterialReceive.cs</DependentUpon>
+    <EmbeddedResource Include="Bills\FormReceive.resx">
+      <DependentUpon>FormReceive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDefault.resx">
       <DependentUpon>FormDefault.cs</DependentUpon>

@@ -24,7 +24,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private TB_BILL _bill = null;
         private readonly string DetailTableName = "TB_OUT";
         private readonly string IndexColumnName = "BillNum";
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormPickFact()
         {
             InitializeComponent();
@@ -119,7 +119,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
-            SpareEntities db = EntitiesFactory.CreateWmsInstance();
+            SpareEntities db = EntitiesFactory.CreateSpareInstance();
             _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
             var billNum = _bill.BillNum;

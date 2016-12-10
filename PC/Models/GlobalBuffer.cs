@@ -18,7 +18,7 @@ namespace ChangKeTec.Wms.Models
 */
 
 
-        private static readonly SpareEntities Db = EntitiesFactory.CreateWmsInstance();
+        private static readonly SpareEntities Db = EntitiesFactory.CreateSpareInstance();
         private static List<TA_PART> _partList=new List<TA_PART>();
         public static List<TA_PART> PartList
         {

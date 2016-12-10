@@ -9,7 +9,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
     {
         public StoreWhseComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_STORE_WHSE>(db.TA_STORE_WHSE.ToList());
             DisplayMember = "WhseName";

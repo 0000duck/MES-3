@@ -18,7 +18,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     {
         private BillType _billType = BillType.PickFact;
         private TB_BILL _bill = new TB_BILL();
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupPickFact()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             try
             {
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
 //            BillHandler.AddMaterialAsk(db,_bill, tList);
                 EntitiesFactory.SaveDb(db);
             }

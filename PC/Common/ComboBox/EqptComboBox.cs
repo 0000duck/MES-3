@@ -12,7 +12,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
 
         public EqptComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_EQUIPMENT>(db.TA_EQUIPMENT.ToList());
             DisplayMember = "EqptName";

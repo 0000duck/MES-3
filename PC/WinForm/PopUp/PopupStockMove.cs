@@ -22,7 +22,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     {
         private BillType _billType = BillType.StockMove;
         private TB_BILL _bill = new TB_BILL();
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupStockMove()
         {
             InitializeComponent();
@@ -88,7 +88,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     MessageHelper.ShowError("请维护移动明细！");
                     return;
                 }
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddStockMove(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");

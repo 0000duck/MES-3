@@ -21,7 +21,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     {
         private BillType _billType = BillType.MaterialAsk;
         private TB_BILL _bill = new TB_BILL();
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupMaterialAsk()
         {
             InitializeComponent();
@@ -99,7 +99,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddMaterialAsk(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
