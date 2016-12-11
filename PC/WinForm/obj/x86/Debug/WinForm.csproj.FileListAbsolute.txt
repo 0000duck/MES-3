@@ -535,7 +535,6 @@ C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\UpdateLog.txt
 C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\Wms.WinForm.exe.config
 C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\Wms.WinForm.exe
 C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\Wms.WinForm.pdb
-C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\AxInterop.gregn6Lib.dll
 C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\DevComponents.DotNetBar.Keyboard.dll
 C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\DevComponents.DotNetBar.Schedule.dll
 C:\Work\Spare.CcFjc\PC\WinForm\bin\x86\Debug\DevComponents.DotNetBar.SuperGrid.dll
