@@ -12,3 +12,17 @@ C:\Work\Spare.CcFjc\PC\Models\bin\Debug\zh-Hans\EntityFramework.SqlServer.resour
 C:\Work\Spare.CcFjc\PC\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
 C:\Work\Spare.CcFjc\PC\Models\obj\Debug\Wms.Models.dll
 C:\Work\Spare.CcFjc\PC\Models\obj\Debug\Wms.Models.pdb
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\Wms.Models.dll.config
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\Wms.Models.dll
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\Wms.Models.pdb
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\EntityFramework.dll
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\Wms.Util.dll
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\Wms.Util.pdb
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\EntityFramework.xml
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\工作工程\CcFjcSpare\PC\Models\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\工作工程\CcFjcSpare\PC\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\工作工程\CcFjcSpare\PC\Models\obj\Debug\Wms.Models.dll
+D:\工作工程\CcFjcSpare\PC\Models\obj\Debug\Wms.Models.pdb

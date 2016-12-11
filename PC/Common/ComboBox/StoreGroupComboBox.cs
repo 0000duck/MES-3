@@ -9,7 +9,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
     {
         public StoreGroupComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_STORE_GROUP>(db.TA_STORE_GROUP.ToList());
             DisplayMember = "GroupName";

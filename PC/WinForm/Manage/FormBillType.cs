@@ -17,7 +17,7 @@ namespace ChangKeTec.Wms.WinForm.Manage
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
     public partial class FormBillType : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormBillType()
         {
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace ChangKeTec.Wms.WinForm.Manage
                 {
                     
                     MessageHelper.ShowInfo(ex.ToString());
-                    _db = EntitiesFactory.CreateWmsInstance();
+                    _db = EntitiesFactory.CreateSpareInstance();
                     bs.DataSource = _db.TA_BILLTYPE.ToList();
                     return;
                 }

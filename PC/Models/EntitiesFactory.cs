@@ -24,9 +24,9 @@ namespace ChangKeTec.Wms.Models
         }
 */
 
-        public static SpareEntities CreateWmsInstance()
+        public static SpareEntities CreateSpareInstance()
         {
-            return new SpareEntities(GetEfConnctionString("Wms"));
+            return new SpareEntities(GetEfConnctionString("Spare"));
         }
 
 

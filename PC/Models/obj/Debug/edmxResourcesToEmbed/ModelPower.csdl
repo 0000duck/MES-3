@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="PowerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TA_MENU" EntityType="PowerModel.TA_MENU" />
     <EntitySet Name="TL_BASEDATA" EntityType="PowerModel.TL_BASEDATA" />
     <EntitySet Name="TS_BUTTON" EntityType="PowerModel.TS_BUTTON" />
     <EntitySet Name="TS_DEPT" EntityType="PowerModel.TS_DEPT" />
-    <EntitySet Name="TS_MENU" EntityType="PowerModel.TS_MENU" />
     <EntitySet Name="TS_OPER_ROLE" EntityType="PowerModel.TS_OPER_ROLE" />
     <EntitySet Name="TS_OPERATOR" EntityType="PowerModel.TS_OPERATOR" />
     <EntitySet Name="TS_PORTAL" EntityType="PowerModel.TS_PORTAL" />
@@ -12,9 +12,30 @@
     <EntitySet Name="TS_ROLE_NOTIFYTYPE" EntityType="PowerModel.TS_ROLE_NOTIFYTYPE" />
     <EntitySet Name="TS_ROLE_POWER" EntityType="PowerModel.TS_ROLE_POWER" />
     <EntitySet Name="VS_OPER_ROLE" EntityType="PowerModel.VS_OPER_ROLE" />
-    <EntitySet Name="TA_MENU" EntityType="PowerModel.TA_MENU" />
     <EntitySet Name="VS_POWER_MENU" EntityType="PowerModel.VS_POWER_MENU" />
   </EntityContainer>
+  <EntityType Name="TA_MENU">
+    <Key>
+      <PropertyRef Name="PortalCode" />
+      <PropertyRef Name="MenuCode" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ControlType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NameSpace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Params" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="X" Type="Int32" Nullable="false" />
+    <Property Name="Y" Type="Int32" Nullable="false" />
+    <Property Name="BackColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="MenuOrder" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="TL_BASEDATA">
     <Key>
       <PropertyRef Name="UID" />
@@ -48,20 +69,7 @@
     <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="IsLeafNode" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TS_MENU">
-    <Key>
-      <PropertyRef Name="MenuCode" />
-    </Key>
-    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ControlName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NameSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TS_OPER_ROLE">
@@ -139,28 +147,6 @@
     <Property Name="IsBeloneTo" Type="Boolean" Nullable="false" />
     <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="TA_MENU">
-    <Key>
-      <PropertyRef Name="PortalCode" />
-      <PropertyRef Name="MenuCode" />
-    </Key>
-    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ControlType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MenuText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NameSpace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Params" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="X" Type="Int32" Nullable="false" />
-    <Property Name="Y" Type="Int32" Nullable="false" />
-    <Property Name="BackColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="State" Type="Int32" Nullable="false" />
-    <Property Name="MenuOrder" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="VS_POWER_MENU">
     <Key>

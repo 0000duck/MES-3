@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="PowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="TA_MENU">
     <Key>
       <PropertyRef Name="PortalCode" />
@@ -56,19 +56,6 @@
     <Property Name="DeptName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ParentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsLeafNode" Type="bit" Nullable="false" />
-    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
-  </EntityType>
-  <EntityType Name="TS_MENU">
-    <Key>
-      <PropertyRef Name="MenuCode" />
-    </Key>
-    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MenuCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ControlName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="MenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ParentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="PortalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NameSpace" Type="nvarchar" MaxLength="50" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="TS_OPER_ROLE">
@@ -192,7 +179,6 @@
     <EntitySet Name="TL_BASEDATA" EntityType="Self.TL_BASEDATA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TS_BUTTON" EntityType="Self.TS_BUTTON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TS_DEPT" EntityType="Self.TS_DEPT" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TS_MENU" EntityType="Self.TS_MENU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TS_OPER_ROLE" EntityType="Self.TS_OPER_ROLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TS_OPERATOR" EntityType="Self.TS_OPERATOR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TS_PORTAL" EntityType="Self.TS_PORTAL" Schema="dbo" store:Type="Tables" />

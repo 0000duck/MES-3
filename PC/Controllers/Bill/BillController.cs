@@ -126,6 +126,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                     operType = OperateType.Update;
                     break;
             }
+            AddOrUpdate(db,bill);
             BillLogController.Add(db, bill, bill.OperName, operType); //创建【单据日志】
         }
 /*

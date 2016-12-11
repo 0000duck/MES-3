@@ -5,30 +5,38 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using ChangKeTec.Wms.Common;
-using ChangKeTec.Wms.Common.UC;
 using ChangKeTec.Wms.Controllers;
+using ChangKeTec.Wms.Controllers.Bill;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
 using ChangKeTec.Wms.WinForm.Util;
 using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.SuperGrid;
 using gregn6Lib;
 
 namespace ChangKeTec.Wms.WinForm.PopUp
 {
     public partial class PopupInventoryLoc: Office2007Form
     {
-        private BillType _billType = BillType.InventoryLoc;
+        private BillType _billType = BillType.InventoryPlan;
         private readonly GridppReport _report;
 
-        private readonly TB_BILL _bill;
+        private TB_BILL _bill = new TB_BILL();
         private TB_INVENTORY_LOC _inventoryLoc = new TB_INVENTORY_LOC();
 
-        private readonly string DetailTableName = "TB_INVENTORY_DETAIL";
+        private readonly string DetailTableName = "TB_INVENTORY_LOC";
         private readonly string IndexColumnName = "BillNum";
 
-        SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
+        private List<TA_STORE_LOCATION> _listLoc = new List<TA_STORE_LOCATION>();
+        
+
+
+        public PopupInventoryLoc()
+        {
+            InitializeComponent();
+            propertyBill.SelectedObject = _bill;
+        }
 
         public PopupInventoryLoc(TB_BILL bill)
         {
@@ -40,8 +48,6 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void _report_Initialize(GridppReport report, TB_INVENTORY_LOC locBill, string detailTableName, string indexColumnName)
         {
-
-
             Console.WriteLine(report.Parameters.Count);
             report.ParameterByName("BillNum").AsString = locBill.BillNum;
             report.ParameterByName("LocCode").AsString = locBill.LocCode;
@@ -58,49 +64,45 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
+            _listLoc = _db.TA_STORE_LOCATION.ToList();
+            if (_bill.UID == 0)
+            {
+                _bill.BillType = (int)BillType.InventoryPlan;
+                _bill.BillTime = DateTime.Now;
+            }
             propertyBill.SelectedObject = _bill;
-            SetLocDataSource(_bill.BillNum);
+            SetLocDataSource(_bill.BillNum); 
         }
-
-
 
         private void BtnExport_Click(object sender, EventArgs e)
         {
-            DataTable dt = DataGridViewHelper.DgvToTable(grid.MasterPrimaryGrid, EnumHelper.GetDescription(_billType));
+            DataTable dt = DataGridViewHelper.DgvToTable(grid.PrimaryGrid, EnumHelper.GetDescription(_billType));
             ExcelWriter.Write(dt);
         }
 
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-         
-        }
-        List<dynamic> _list;
-
-        private int SetLocDataSource(string billnum)
-        {
-            int count;
-            Expression<Func<TB_INVENTORY_LOC, dynamic>> select =c => c;
-            Expression<Func<TB_INVENTORY_LOC, bool>> where = c => c.BillNum==billnum;
-            Expression<Func<TB_INVENTORY_LOC, long>> order = c => c.UID;
-                
-            _list = EniitiesHelper.GetData(_db,
-                @select,
-                @where,
-                order,
-                out count);
-            grid.MasterDataSource = _list;
-            grid.MasterPrimaryGrid.ReadOnly = true;
-            return count;
-        }
-
-        private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
-        {
-            //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
-            _inventoryLoc = _db.TB_INVENTORY_LOC.Single(p => p.UID == grid.MasterUid);
-            if (_inventoryLoc == null) return;
-            var count = SetDetailDataSource(_inventoryLoc.BillNum, _inventoryLoc.LocCode);
-            grid.IsDetailVisible = count > 0;
+        private void SetLocDataSource(string billnum)
+        {           
+            bs.DataSource = _listLoc;
+            foreach (var loc in _listLoc)
+            {
+                if (InventoryController.GetLoc(_db, _bill.BillNum, loc.LocCode) != null)
+                {
+                    loc.IsCheck = true;
+                }
+            }
+            grid.PrimaryGrid.DataSource = bs;
+//            int count;
+//            Expression<Func<TB_INVENTORY_LOC, dynamic>> select =c => c;
+//            Expression<Func<TB_INVENTORY_LOC, bool>> where = c => c.BillNum==billnum;
+//            Expression<Func<TB_INVENTORY_LOC, long>> order = c => c.UID;
+//                
+//            _list = EniitiesHelper.GetData(_db,
+//                @select,
+//                @where,
+//                order,
+//                out count);
+//            grid.PrimaryGrid.DataSource = _list;
+//            return count;
         }
 
         private int SetDetailDataSource(string billNum, string locCode)
@@ -110,7 +112,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             Expression<Func<TB_INVENTORY_DETAIL, bool>> where = c => c.BillNum == billNum && c.CheckLocCode==locCode;
             Expression<Func<TB_INVENTORY_DETAIL, long>> order = c => c.UID;
 
-            grid.Detail1DataSource = EniitiesHelper.GetData(_db,
+            grid.PrimaryGrid.DataSource = EniitiesHelper.GetData(_db,
                 select,
                 where,
                 order,
@@ -118,15 +120,9 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             return count;
         }
 
-        private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
-        {
-            SetLocDataSource(_bill.BillNum);
-            
-        }
-
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)
         {
-            e.Handled = true;
+            
         }
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
@@ -161,8 +157,47 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 MessageHelper.ShowError(ex.ToString());
                 throw;
             }
+        }
 
-
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bs.EndEdit();
+                if (_bill.BillType != (int)BillType.InventoryPlan)
+                {
+                    MessageHelper.ShowError("请输入有效的单据类型！盘点单据类型为：" + (int)BillType.InventoryPlan);
+                    return;
+                }
+                var detailList = new List<TB_INVENTORY_LOC>();
+                foreach (var loc in _listLoc)
+                {
+                    if (loc.IsCheck)
+                    {
+                        var detail = new TB_INVENTORY_LOC()
+                        {
+                            LocCode = loc.LocCode,
+                            BillTime = DateTime.Now,
+                            State = 0
+                        };
+                        detailList.Add(detail);
+                    }
+                }
+                if (detailList.Count == 0)
+                {
+                    MessageHelper.ShowError("请选择要盘点的库位！");
+                    return;
+                }
+                //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
+                BillHandler.AddInventoryLoc(db, _bill, detailList);
+                EntitiesFactory.SaveDb(db);
+                MessageHelper.ShowInfo("保存成功！");
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.ShowInfo(ex.ToString());
+            }
         }
     }
 }

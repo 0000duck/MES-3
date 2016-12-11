@@ -17,7 +17,7 @@ namespace ChangKeTec.Wms.WinForm.Logs
 {
     public partial class FormOperLog : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormOperLog()
         {
             InitializeComponent();

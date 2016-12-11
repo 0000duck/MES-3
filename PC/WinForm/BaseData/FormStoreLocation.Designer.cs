@@ -35,22 +35,11 @@
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn14 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn15 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn17 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn18 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.prop = new DevComponents.DotNetBar.AdvPropertyGrid();
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -114,22 +103,11 @@
             this.grid.PrimaryGrid.ColumnAutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.DisplayedCells;
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn8);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn10);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn14);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn15);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn17);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn18);
             // 
             // 
             // 
@@ -158,18 +136,6 @@
             this.gridColumn2.HeaderText = "库位编号";
             this.gridColumn2.Name = "gridColumn2";
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.DataPropertyName = "ErpSiteCode";
-            this.gridColumn3.HeaderText = "ERP地点";
-            this.gridColumn3.Name = "gridColumn3";
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.DataPropertyName = "ErpLocCode";
-            this.gridColumn4.HeaderText = "ERP库位";
-            this.gridColumn4.Name = "gridColumn4";
-            // 
             // gridColumn5
             // 
             this.gridColumn5.DataPropertyName = "WhseCode";
@@ -177,35 +143,11 @@
             this.gridColumn5.HeaderText = "仓库编号";
             this.gridColumn5.Name = "gridColumn5";
             // 
-            // gridColumn6
-            // 
-            this.gridColumn6.DataPropertyName = "AreaCode";
-            this.gridColumn6.HeaderText = "库区编号";
-            this.gridColumn6.Name = "gridColumn6";
-            // 
             // gridColumn7
             // 
             this.gridColumn7.DataPropertyName = "GroupCode";
             this.gridColumn7.HeaderText = "库位组编号";
             this.gridColumn7.Name = "gridColumn7";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.DataPropertyName = "MaxBoxQty";
-            this.gridColumn8.HeaderText = "最大库容";
-            this.gridColumn8.Name = "Column1";
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.DataPropertyName = "StoredPercent";
-            this.gridColumn9.HeaderText = "已占用库容";
-            this.gridColumn9.Name = "Column2";
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.DataPropertyName = "DefaultPartCode";
-            this.gridColumn10.HeaderText = "默认零件号";
-            this.gridColumn10.Name = "Column3";
             // 
             // gridColumn11
             // 
@@ -225,41 +167,6 @@
             this.gridColumn13.DataPropertyName = "Remark";
             this.gridColumn13.HeaderText = "备注";
             this.gridColumn13.Name = "Column6";
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.DataPropertyName = "IsFunctional";
-            this.gridColumn14.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
-            this.gridColumn14.HeaderText = "是否功能库位";
-            this.gridColumn14.Name = "Column7";
-            // 
-            // gridColumn15
-            // 
-            this.gridColumn15.DataPropertyName = "IsQualifiedProductLoc";
-            this.gridColumn15.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
-            this.gridColumn15.HeaderText = "是合格品库位";
-            this.gridColumn15.Name = "Column8";
-            // 
-            // gridColumn16
-            // 
-            this.gridColumn16.DataPropertyName = "IsEnableNegativeStock";
-            this.gridColumn16.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
-            this.gridColumn16.HeaderText = "允许负库存";
-            this.gridColumn16.Name = "Column9";
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.DataPropertyName = "AutoRemoveZeroStock";
-            this.gridColumn17.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
-            this.gridColumn17.HeaderText = "自动移除零库存";
-            this.gridColumn17.Name = "Column10";
-            // 
-            // gridColumn18
-            // 
-            this.gridColumn18.DataPropertyName = "AutoRemoveZeroStockDetail";
-            this.gridColumn18.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
-            this.gridColumn18.HeaderText = "自动移除零库存明细";
-            this.gridColumn18.Name = "Column11";
             // 
             // prop
             // 
@@ -388,29 +295,29 @@
             // 
             // expandableSplitter2
             // 
-            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.expandableSplitter2.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandableSplitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(200)))), ((int)(((byte)(103)))));
-            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(135)))));
+            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(151)))), ((int)(((byte)(61)))));
+            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(94)))));
             this.expandableSplitter2.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2;
             this.expandableSplitter2.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground;
-            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.expandableSplitter2.Location = new System.Drawing.Point(859, 56);
             this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -467,22 +374,11 @@
         private System.Windows.Forms.BindingSource bs;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn14;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn15;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn16;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn17;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn18;
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter2;
     }
 }

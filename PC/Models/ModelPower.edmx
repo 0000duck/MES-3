@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TA_MENU">
           <Key>
             <PropertyRef Name="PortalCode" />
@@ -61,19 +61,6 @@
           <Property Name="DeptName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ParentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsLeafNode" Type="bit" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="TS_MENU">
-          <Key>
-            <PropertyRef Name="MenuCode" />
-          </Key>
-          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MenuCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ControlName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ParentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PortalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="NameSpace" Type="nvarchar" MaxLength="50" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="TS_OPER_ROLE">
@@ -197,7 +184,6 @@
           <EntitySet Name="TL_BASEDATA" EntityType="Self.TL_BASEDATA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_BUTTON" EntityType="Self.TS_BUTTON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_DEPT" EntityType="Self.TS_DEPT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TS_MENU" EntityType="Self.TS_MENU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_OPER_ROLE" EntityType="Self.TS_OPER_ROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_OPERATOR" EntityType="Self.TS_OPERATOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_PORTAL" EntityType="Self.TS_PORTAL" Schema="dbo" store:Type="Tables" />
@@ -243,10 +229,10 @@
     <edmx:ConceptualModels>
       <Schema Namespace="PowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PowerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TA_MENU" EntityType="PowerModel.TA_MENU" />
           <EntitySet Name="TL_BASEDATA" EntityType="PowerModel.TL_BASEDATA" />
           <EntitySet Name="TS_BUTTON" EntityType="PowerModel.TS_BUTTON" />
           <EntitySet Name="TS_DEPT" EntityType="PowerModel.TS_DEPT" />
-          <EntitySet Name="TS_MENU" EntityType="PowerModel.TS_MENU" />
           <EntitySet Name="TS_OPER_ROLE" EntityType="PowerModel.TS_OPER_ROLE" />
           <EntitySet Name="TS_OPERATOR" EntityType="PowerModel.TS_OPERATOR" />
           <EntitySet Name="TS_PORTAL" EntityType="PowerModel.TS_PORTAL" />
@@ -254,9 +240,30 @@
           <EntitySet Name="TS_ROLE_NOTIFYTYPE" EntityType="PowerModel.TS_ROLE_NOTIFYTYPE" />
           <EntitySet Name="TS_ROLE_POWER" EntityType="PowerModel.TS_ROLE_POWER" />
           <EntitySet Name="VS_OPER_ROLE" EntityType="PowerModel.VS_OPER_ROLE" />
-          <EntitySet Name="TA_MENU" EntityType="PowerModel.TA_MENU" />
           <EntitySet Name="VS_POWER_MENU" EntityType="PowerModel.VS_POWER_MENU" />
         </EntityContainer>
+        <EntityType Name="TA_MENU">
+          <Key>
+            <PropertyRef Name="PortalCode" />
+            <PropertyRef Name="MenuCode" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ControlType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameSpace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Params" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="X" Type="Int32" Nullable="false" />
+          <Property Name="Y" Type="Int32" Nullable="false" />
+          <Property Name="BackColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="MenuOrder" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="TL_BASEDATA">
           <Key>
             <PropertyRef Name="UID" />
@@ -290,20 +297,7 @@
           <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="IsLeafNode" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TS_MENU">
-          <Key>
-            <PropertyRef Name="MenuCode" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ControlName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NameSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TS_OPER_ROLE">
@@ -382,28 +376,6 @@
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TA_MENU">
-          <Key>
-            <PropertyRef Name="PortalCode" />
-            <PropertyRef Name="MenuCode" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PortalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MenuCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ParentCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ControlType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MenuText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NameSpace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Params" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="X" Type="Int32" Nullable="false" />
-          <Property Name="Y" Type="Int32" Nullable="false" />
-          <Property Name="BackColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="MenuOrder" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="VS_POWER_MENU">
           <Key>
             <PropertyRef Name="UID" />
@@ -446,6 +418,28 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PowerModelStoreContainer" CdmEntityContainer="PowerEntities">
+          <EntitySetMapping Name="TA_MENU">
+            <EntityTypeMapping TypeName="PowerModel.TA_MENU">
+              <MappingFragment StoreEntitySet="TA_MENU">
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="BackColor" ColumnName="BackColor" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Params" ColumnName="Params" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
+                <ScalarProperty Name="MenuText" ColumnName="MenuText" />
+                <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
+                <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
+                <ScalarProperty Name="PortalCode" ColumnName="PortalCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TL_BASEDATA">
             <EntityTypeMapping TypeName="PowerModel.TL_BASEDATA">
               <MappingFragment StoreEntitySet="TL_BASEDATA">
@@ -476,25 +470,11 @@
           <EntitySetMapping Name="TS_DEPT">
             <EntityTypeMapping TypeName="PowerModel.TS_DEPT">
               <MappingFragment StoreEntitySet="TS_DEPT">
-                <ScalarProperty Name="IsLeafNode" ColumnName="IsLeafNode" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsLeafNode" ColumnName="IsLeafNode" />
                 <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
                 <ScalarProperty Name="DeptName" ColumnName="DeptName" />
                 <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TS_MENU">
-            <EntityTypeMapping TypeName="PowerModel.TS_MENU">
-              <MappingFragment StoreEntitySet="TS_MENU">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
-                <ScalarProperty Name="PortalCode" ColumnName="PortalCode" />
-                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
-                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
-                <ScalarProperty Name="ControlName" ColumnName="ControlName" />
-                <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -574,28 +554,6 @@
                 <ScalarProperty Name="IsBeloneTo" ColumnName="IsBeloneTo" />
                 <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
                 <ScalarProperty Name="OperCode" ColumnName="OperCode" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TA_MENU">
-            <EntityTypeMapping TypeName="PowerModel.TA_MENU">
-              <MappingFragment StoreEntitySet="TA_MENU">
-                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="BackColor" ColumnName="BackColor" />
-                <ScalarProperty Name="Y" ColumnName="Y" />
-                <ScalarProperty Name="X" ColumnName="X" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-                <ScalarProperty Name="Params" ColumnName="Params" />
-                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
-                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
-                <ScalarProperty Name="MenuText" ColumnName="MenuText" />
-                <ScalarProperty Name="ControlType" ColumnName="ControlType" />
-                <ScalarProperty Name="ParentCode" ColumnName="ParentCode" />
-                <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
-                <ScalarProperty Name="PortalCode" ColumnName="PortalCode" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -16,13 +16,10 @@ namespace ChangKeTec.Wms.Models
     {
         public int UID { get; set; }
         public string BillNum { get; set; }
-        public int LineNum { get; set; }
+        public int Line { get; set; }
         public string PartCode { get; set; }
         public decimal BillQty { get; set; }
-        public decimal OpenQty { get; set; }
-        public decimal ClosedQty { get; set; }
-        public string Unit { get; set; }
-        public decimal Price { get; set; }
+        public decimal ArrialQty { get; set; }
         public int State { get; set; }
         public string Remark { get; set; }
     }

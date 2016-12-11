@@ -18,7 +18,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
     public partial class FormPart : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
 
         public FormPart()
         {
@@ -30,12 +30,10 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[6].EditorType = typeof(ProjectComboBox);
-            grid.PrimaryGrid.Columns[7].EditorType = typeof(UnitComboBox);
-            grid.PrimaryGrid.Columns[8].EditorType = typeof(BmComboBox);
-            grid.PrimaryGrid.Columns[9].EditorType = typeof(PartKindComboBox);
-            grid.PrimaryGrid.Columns[10].EditorType = typeof(ManageTypeComboBox);
-            grid.PrimaryGrid.Columns[23].EditorType = typeof(StoreLocComboBox);
+
+            grid.PrimaryGrid.Columns[5].EditorType = typeof(UnitComboBox);
+            grid.PrimaryGrid.Columns[6].EditorType = typeof(BmComboBox);
+            grid.PrimaryGrid.Columns[7].EditorType = typeof(PartTypeComboBox);
 
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
@@ -69,7 +67,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                 {
                  
                     MessageHelper.ShowInfo(ex.ToString());
-                    _db = EntitiesFactory.CreateWmsInstance();
+                    _db = EntitiesFactory.CreateSpareInstance();
                     bs.DataSource = _db.TA_PART.ToList();
                     return;
                 }

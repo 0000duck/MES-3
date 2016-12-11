@@ -16,7 +16,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
     public partial class FormUnit : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormUnit()
         {
             InitializeComponent();
@@ -58,7 +58,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                 {
                     
                     MessageHelper.ShowInfo(ex.ToString());
-                    _db = EntitiesFactory.CreateWmsInstance();
+                    _db = EntitiesFactory.CreateSpareInstance();
                     bs.DataSource = _db.TA_UNIT.ToList();
                     return;
                 }

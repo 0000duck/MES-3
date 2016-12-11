@@ -20,7 +20,7 @@ namespace ChangKeTec.Wms.WinForm.Manage
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
     public partial class FormNotify : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         private List<TL_NOTIFY> _dataList;
         private TL_NOTIFY _selectedData;
         public FormNotify()

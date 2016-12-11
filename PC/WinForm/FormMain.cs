@@ -64,7 +64,7 @@ namespace ChangKeTec.Wms.WinForm
 
         private void InitMenu()
         {
-            var menuList = GlobalVar.PowerMenuList.Where(p=>p.IsVisible&&p.State==(int)DataState.Enabled).ToList();
+            var menuList = GlobalVar.PowerMenuList.Where(p=>p.IsVisible).ToList();
             RibbonMain.Items.Clear();
             RibbonMain.Items.Add(t1);
             
@@ -249,7 +249,7 @@ namespace ChangKeTec.Wms.WinForm
 
         private void btnRefreshConfig_Click(object sender, EventArgs e)
         {
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 GlobalVar.InitGlobalVar(db, GlobalVar.Oper);
                 MessageHelper.ShowInfo("系统参数已刷新！");
@@ -282,9 +282,10 @@ namespace ChangKeTec.Wms.WinForm
 
         private void ShowNotifyAlertWindow()
         {
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 var list = NotifyController.GetNewList(db, GlobalVar.NotifytypeList);
+                if (list.Count == 0) return;
                 list = list.Where(p => p.State == (int) BillState.New).ToList();
                 if (list.Count == 0) return;
                 lblNotify.Text = $"待处理提示数量:{list.Count}";

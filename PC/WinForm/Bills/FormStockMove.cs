@@ -24,7 +24,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private TB_BILL _bill = null;
         private readonly string DetailTableName = "TB_STOCK_MOVE";
         private readonly string IndexColumnName = "BillNum";
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormStockMove()
         {
             InitializeComponent();
@@ -57,7 +57,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void BtnDeliver_Click(object sender, EventArgs e)
         {
-        
+            PopupStockMove popup = new PopupStockMove();
+            popup.ShowDialog(this);
+            SetMasterDataSource(grid.PageSize);
         }
 
         private void SetMasterDataSource(int pageSize)
@@ -98,7 +100,16 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private int SetDetailDataSource(string billNum)
         {
             int count;
-            Expression<Func<TB_STOCK_MOVE, dynamic>> select = c => c;
+            Expression<Func<TB_STOCK_MOVE, dynamic>> select = c =>
+                new
+                {
+                    物料号 = c.PartCode,
+                    批次 = c.Batch,
+                    来源库位 = c.FromLocCode,
+                    目标库位 = c.ToLocCode,
+                    移动数量 = c.Qty,
+                    备注 = c.Remark
+                };
             Expression<Func<TB_STOCK_MOVE, bool>> where = c => c.BillNum == billNum;
             Expression<Func<TB_STOCK_MOVE, long>> order = c => c.UID;
 
@@ -120,7 +131,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
-            SpareEntities db = EntitiesFactory.CreateWmsInstance();
+            SpareEntities db = EntitiesFactory.CreateSpareInstance();
             _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
             var billNum = _bill.BillNum;

@@ -16,6 +16,8 @@ namespace ChangKeTec.Wms.Models.Enums
         MatertialReturn = 105,
         [Description("生产退库")]
         MaterialBack = 106,
+        [Description("备件领用归还")]
+        SpareReturn = 107,
 
 
         [Description("委外出库")]

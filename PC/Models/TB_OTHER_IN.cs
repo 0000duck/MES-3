@@ -20,8 +20,9 @@ namespace ChangKeTec.Wms.Models
         public string Batch { get; set; }
         public string ToLocCode { get; set; }
         public decimal Qty { get; set; }
-        public Nullable<decimal> UnitPrice { get; set; }
-        public string Remark { get; set; }
         public Nullable<System.DateTime> ProduceDate { get; set; }
+        public Nullable<decimal> UnitPrice { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public string Remark { get; set; }
     }
 }
