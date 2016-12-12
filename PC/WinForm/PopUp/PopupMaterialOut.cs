@@ -36,7 +36,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
-            gcPartCode.EditorType = typeof(PartComboBox);
+            gcPartCode.EditorType = typeof(PartComboTree);
             gcDeptCode.EditorType = typeof(DeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorkLineCode.EditorType = typeof(WorkLineComboBox);

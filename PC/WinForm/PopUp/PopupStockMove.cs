@@ -53,7 +53,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
-            gcPartCode.EditorType = typeof (PartComboBox);
+            gcPartCode.EditorType = typeof (PartComboTree);
             gcToLocCode.EditorType = typeof (StoreLocComboBox);
             if (_bill.UID == 0)
             {

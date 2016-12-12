@@ -15,8 +15,8 @@ namespace ChangKeTec.Wms.Common.ComboBox
             var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_MACHINE>(db.TA_MACHINE.ToList());
-            DisplayMember = "EqptName";
-            ValueMember = "EqptCode";
+            DisplayMember = "MachineName";
+            ValueMember = "MachineCode";
         }
     }
 }
