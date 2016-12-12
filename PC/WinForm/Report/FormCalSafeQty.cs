@@ -34,7 +34,7 @@ namespace ChangKeTec.Wms.WinForm.Report
 
         private void GetBillList()
         {
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 _billList = ReportViewController.GetSafeQtysList(db);
                 grid.PrimaryGrid.DataSource = _billList;

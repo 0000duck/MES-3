@@ -17,7 +17,7 @@ namespace ChangKeTec.Wms.WinForm.Stock
 {
     public partial class FormStock : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormStock()
         {
             InitializeComponent();
@@ -130,7 +130,7 @@ namespace ChangKeTec.Wms.WinForm.Stock
 
         private void gridStockDetail_MasterGridCellActivated(object sender, DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs e)
         {
-            SpareEntities db = EntitiesFactory.CreateWmsInstance();
+            SpareEntities db = EntitiesFactory.CreateSpareInstance();
             var vinCode = db.TS_STOCK_DETAIL.Single(p => p.UID == gridStockDetail.MasterUid).Batch;
 //            var count = SetVinPartMasterDataSource(vinCode);
 //            gridStockDetail.IsDetailVisible = count > 0;

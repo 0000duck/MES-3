@@ -113,7 +113,7 @@
     <Compile Include="ComboBox\PartComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ComboBox\PartKindComboBox.cs">
+    <Compile Include="ComboBox\PartTypeComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\PortalComboBox.cs">
@@ -140,7 +140,7 @@
     <Compile Include="ComboBox\WhseTypeComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ComboBox\EqptComboBox.cs">
+    <Compile Include="ComboBox\MachineComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\WorkLineComboBox.cs">

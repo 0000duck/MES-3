@@ -9,7 +9,7 @@ namespace ChangKeTec.Wms.Common.ComboBox
     {
         public StoreLocComboBox()
         {
-            var db = EntitiesFactory.CreateWmsInstance();
+            var db = EntitiesFactory.CreateSpareInstance();
 
             DataSource = new BindingList<TA_STORE_LOCATION>(db.TA_STORE_LOCATION.ToList());
             DisplayMember = "LocCode";

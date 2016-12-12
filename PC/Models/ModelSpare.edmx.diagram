@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="SpareModel.TA_BILLTYPE" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_CONFIG" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_DEPT" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SpareModel.TA_EQUIPMENT" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_MACHINE" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_PART" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="SpareModel.TA_PROJECT" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_STORE_GROUP" Width="1.5" PointX="0.75" PointY="6.75" />
@@ -16,40 +16,40 @@
         <EntityTypeShape EntityType="SpareModel.TA_STORE_WHSE" Width="1.5" PointX="6.75" PointY="7.75" />
         <EntityTypeShape EntityType="SpareModel.TA_SUB_BILLTYPE" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_SUPERLIER" Width="1.5" PointX="8.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SpareModel.TA_UNIT" Width="1.5" PointX="8.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SpareModel.TA_WORKLINE" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_ASK" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_BILL" Width="1.5" PointX="2.75" PointY="10.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_IN" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_UNIT" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_WORKLINE" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_ASK" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_BILL" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_IN" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_INVENTORY_DETAIL" Width="1.5" PointX="10.75" PointY="10.75" />
         <EntityTypeShape EntityType="SpareModel.TB_INVENTORY_LOC" Width="1.5" PointX="4.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_OTHER_IN" Width="1.5" PointX="6.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="12.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_PO" Width="1.5" PointX="12.75" PointY="6.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_RETURN" Width="1.5" PointX="8.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_STOCK_MOVE" Width="1.5" PointX="12.75" PointY="10.75" />
-        <EntityTypeShape EntityType="SpareModel.TL_BASEDATA" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TL_BILL" Width="1.5" PointX="14.75" PointY="4.75" />
-        <EntityTypeShape EntityType="SpareModel.TL_INTERFACE" Width="1.5" PointX="14.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SpareModel.TL_NOTIFY" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_OTHER_IN" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_OTHER_OUT" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_PO" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_RETURN" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_STOCK_MOVE" Width="1.5" PointX="6.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SpareModel.TL_BASEDATA" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SpareModel.TL_BILL" Width="1.5" PointX="8.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SpareModel.TL_INTERFACE" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SpareModel.TL_NOTIFY" Width="1.5" PointX="14.75" PointY="11.75" />
         <EntityTypeShape EntityType="SpareModel.TL_OPER" Width="1.5" PointX="2.75" PointY="15.75" />
-        <EntityTypeShape EntityType="SpareModel.TL_TRANSACTION" Width="1.5" PointX="4.75" PointY="15.75" />
-        <EntityTypeShape EntityType="SpareModel.TS_STOCK_DETAIL" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_EQPT_TYPE" Width="1.5" PointX="16.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_GROUP_TYPE" Width="1.5" PointX="16.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_LOC_TYPE" Width="1.5" PointX="16.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SpareModel.TT_PART_TYPE" Width="1.5" PointX="12.75" PointY="16.75" />
-        <EntityTypeShape EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" Width="1.5" PointX="18.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.VS_OVERDUE_STOCK" Width="1.5" PointX="18.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SpareModel.VS_STOCK" Width="1.5" PointX="18.75" PointY="9.75" />
-        <EntityTypeShape EntityType="SpareModel.VS_STOCK_AGE" Width="1.5" PointX="18.75" PointY="14.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_CalInaction_DAYS" Width="1.5" PointX="15.75" PointY="18.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_CalOverdue_DAYS" Width="1.5" PointX="0.75" PointY="19.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_CalSafeQty" Width="1.5" PointX="7.75" PointY="19.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_INVENTORY_DETAIL" Width="1.5" PointX="9.75" PointY="19.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="11.75" PointY="19.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" Width="1.5" PointX="18.375" PointY="19.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_OTHER_OUT" Width="1.5" PointX="3.375" PointY="20.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_INVENTORY_DETAIL" Width="1.5" PointX="20.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SpareModel.TL_TRANSACTION" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SpareModel.TS_STOCK_DETAIL" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_GROUP_TYPE" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_LOC_TYPE" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_MACHINE_TYPE" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SpareModel.TT_PART_TYPE" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_CalInaction_DAYS" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_CalOverdue_DAYS" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_CalSafeQty" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_INVENTORY_DETAIL" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="4.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" Width="1.5" PointX="6.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" Width="1.5" PointX="18.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SpareModel.VS_OVERDUE_STOCK" Width="1.5" PointX="18.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SpareModel.VS_STOCK" Width="1.5" PointX="18.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SpareModel.VS_STOCK_AGE" Width="1.5" PointX="0.75" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

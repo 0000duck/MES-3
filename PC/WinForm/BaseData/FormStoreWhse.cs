@@ -16,7 +16,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 {
     public partial class FormStoreWhse : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormStoreWhse()
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                 {
                     
                     MessageHelper.ShowInfo(ex.ToString());
-                    _db = EntitiesFactory.CreateWmsInstance();
+                    _db = EntitiesFactory.CreateSpareInstance();
                     bs.DataSource = _db.TA_STORE_WHSE.ToList();
                     return;
                 }

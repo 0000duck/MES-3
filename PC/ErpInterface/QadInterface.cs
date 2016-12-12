@@ -92,7 +92,7 @@ namespace ChangKeTec.Wms.ErpInterface
             Console.WriteLine(@"汇总接口数据开始");
 
 
-            using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+            using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 var list = ErpInterfaceController.GetNewList(db).ToList();
                 if (list.Count == 0)
@@ -406,7 +406,7 @@ namespace ChangKeTec.Wms.ErpInterface
 
             try
             {
-                using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+                using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
                 {
                     var list = ErpInterfaceController.GetNewList(db, type).ToList();
                     if (list.Count == 0)
@@ -498,7 +498,7 @@ namespace ChangKeTec.Wms.ErpInterface
                     Console.WriteLine("未发现需要接收的文件");
                     return;
                 }
-                using (SpareEntities db = EntitiesFactory.CreateWmsInstance())
+                using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
                 {
                     foreach (string remoteFile in fileList)
                     {

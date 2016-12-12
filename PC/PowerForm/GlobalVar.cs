@@ -36,7 +36,7 @@ namespace ChangKeTec.PowerForm
             DataStateStringList = Enum.GetNames(typeof(DataState)).ToList();
             DeptList = DeptController.GetList(db);
             RoleList = RoleController.GetList(db);
-            MenuList = MenuAController.GetList(db);
+            MenuList = MenuController.GetList(db);
             PortalList = PortalControler.GetList(db);
             OperList = OperController.GetList(db);
             OperRoleList = OperRoleController.GetList(db);

@@ -49,7 +49,7 @@ namespace ChangKeTec.Wms.WinForm
                         oper.OperCode);
                 }
 
-                using (SpareEntities wmsdb = EntitiesFactory.CreateWmsInstance())
+                using (SpareEntities wmsdb = EntitiesFactory.CreateSpareInstance())
                 {
                     OperLogController.AddLog(wmsdb, LogType.Login, oper.OperName, operCode, "登录成功");
                     EntitiesFactory.SaveDb(wmsdb);

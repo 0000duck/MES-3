@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TA_BILLTYPE">
           <Key>
             <PropertyRef Name="BillType" />
@@ -42,18 +42,18 @@
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="TA_EQUIPMENT">
+        <EntityType Name="TA_MACHINE">
           <Key>
-            <PropertyRef Name="EqptCode" />
+            <PropertyRef Name="MachineCode" />
           </Key>
           <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EqptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EqptName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EqptType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EqptModel" Type="nvarchar" MaxLength="50" />
-          <Property Name="EqptLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="MachineCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="MachineLocation" Type="nvarchar" MaxLength="50" />
           <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="EqptManager" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manager" Type="nvarchar" MaxLength="50" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
@@ -495,14 +495,6 @@
           <Property Name="UpdateQty" Type="money" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="TT_EQPT_TYPE">
-          <Key>
-            <PropertyRef Name="EqptType" />
-          </Key>
-          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EqptType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
-        </EntityType>
         <EntityType Name="TT_GROUP_TYPE">
           <Key>
             <PropertyRef Name="GroupType" />
@@ -519,12 +511,22 @@
           <Property Name="LocType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="TT_MACHINE_TYPE">
+          <Key>
+            <PropertyRef Name="MachineType" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MachineType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="TT_PART_TYPE">
           <Key>
             <PropertyRef Name="PartType" />
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PartType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <!--生成过程中发现错误:
@@ -590,9 +592,6 @@
             <PropertyRef Name="零件号" />
             <PropertyRef Name="批次" />
             <PropertyRef Name="账面数" />
-            <PropertyRef Name="盘点数" />
-            <PropertyRef Name="盘点时间" />
-            <PropertyRef Name="操作员" />
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="单据号" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -600,10 +599,10 @@
           <Property Name="零件号" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="批次" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="账面数" Type="money" Nullable="false" />
-          <Property Name="盘点数" Type="money" Nullable="false" />
+          <Property Name="盘点数" Type="money" />
           <Property Name="差异数" Type="money" />
-          <Property Name="盘点时间" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="操作员" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="盘点时间" Type="datetime" />
+          <Property Name="操作员" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“ChangKeSpare.dbo.VIEW_STOCK_DETAIL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -757,7 +756,7 @@
           <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_DEPT" EntityType="Self.TA_DEPT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TA_EQUIPMENT" EntityType="Self.TA_EQUIPMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TA_MACHINE" EntityType="Self.TA_MACHINE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_PART" EntityType="Self.TA_PART" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_PROJECT" EntityType="Self.TA_PROJECT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_STORE_GROUP" EntityType="Self.TA_STORE_GROUP" Schema="dbo" store:Type="Tables" />
@@ -785,9 +784,9 @@
           <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_STOCK_DETAIL" EntityType="Self.TS_STOCK_DETAIL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TT_EQPT_TYPE" EntityType="Self.TT_EQPT_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TT_MACHINE_TYPE" EntityType="Self.TT_MACHINE_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_PART_TYPE" EntityType="Self.TT_PART_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="Self.VIEW_CalInaction_DAYS" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -938,7 +937,7 @@
           <EntitySet Name="TA_BILLTYPE" EntityType="SpareModel.TA_BILLTYPE" />
           <EntitySet Name="TA_CONFIG" EntityType="SpareModel.TA_CONFIG" />
           <EntitySet Name="TA_DEPT" EntityType="SpareModel.TA_DEPT" />
-          <EntitySet Name="TA_EQUIPMENT" EntityType="SpareModel.TA_EQUIPMENT" />
+          <EntitySet Name="TA_MACHINE" EntityType="SpareModel.TA_MACHINE" />
           <EntitySet Name="TA_PART" EntityType="SpareModel.TA_PART" />
           <EntitySet Name="TA_PROJECT" EntityType="SpareModel.TA_PROJECT" />
           <EntitySet Name="TA_STORE_GROUP" EntityType="SpareModel.TA_STORE_GROUP" />
@@ -951,8 +950,10 @@
           <EntitySet Name="TB_ASK" EntityType="SpareModel.TB_ASK" />
           <EntitySet Name="TB_BILL" EntityType="SpareModel.TB_BILL" />
           <EntitySet Name="TB_IN" EntityType="SpareModel.TB_IN" />
+          <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="SpareModel.TB_INVENTORY_DETAIL" />
           <EntitySet Name="TB_INVENTORY_LOC" EntityType="SpareModel.TB_INVENTORY_LOC" />
           <EntitySet Name="TB_OTHER_IN" EntityType="SpareModel.TB_OTHER_IN" />
+          <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
           <EntitySet Name="TB_OUT" EntityType="SpareModel.TB_OUT" />
           <EntitySet Name="TB_PO" EntityType="SpareModel.TB_PO" />
           <EntitySet Name="TB_RETURN" EntityType="SpareModel.TB_RETURN" />
@@ -964,22 +965,20 @@
           <EntitySet Name="TL_OPER" EntityType="SpareModel.TL_OPER" />
           <EntitySet Name="TL_TRANSACTION" EntityType="SpareModel.TL_TRANSACTION" />
           <EntitySet Name="TS_STOCK_DETAIL" EntityType="SpareModel.TS_STOCK_DETAIL" />
-          <EntitySet Name="TT_EQPT_TYPE" EntityType="SpareModel.TT_EQPT_TYPE" />
           <EntitySet Name="TT_GROUP_TYPE" EntityType="SpareModel.TT_GROUP_TYPE" />
           <EntitySet Name="TT_LOC_TYPE" EntityType="SpareModel.TT_LOC_TYPE" />
+          <EntitySet Name="TT_MACHINE_TYPE" EntityType="SpareModel.TT_MACHINE_TYPE" />
           <EntitySet Name="TT_PART_TYPE" EntityType="SpareModel.TT_PART_TYPE" />
-          <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" />
-          <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
-          <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
-          <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
           <EntitySet Name="VIEW_CalInaction_DAYS" EntityType="SpareModel.VIEW_CalInaction_DAYS" />
           <EntitySet Name="VIEW_CalOverdue_DAYS" EntityType="SpareModel.VIEW_CalOverdue_DAYS" />
           <EntitySet Name="VIEW_CalSafeQty" EntityType="SpareModel.VIEW_CalSafeQty" />
           <EntitySet Name="VIEW_INVENTORY_DETAIL" EntityType="SpareModel.VIEW_INVENTORY_DETAIL" />
           <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="SpareModel.VIEW_STOCK_DETAIL" />
           <EntitySet Name="VIEW_STOCK_DETAIL_AGE" EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" />
-          <EntitySet Name="TB_OTHER_OUT" EntityType="SpareModel.TB_OTHER_OUT" />
-          <EntitySet Name="TB_INVENTORY_DETAIL" EntityType="SpareModel.TB_INVENTORY_DETAIL" />
+          <EntitySet Name="VS_IDLE_STOCK_DETAIL" EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" />
+          <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
+          <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
+          <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
         </EntityContainer>
         <EntityType Name="TA_BILLTYPE">
           <Key>
@@ -1018,18 +1017,18 @@
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TA_EQUIPMENT">
+        <EntityType Name="TA_MACHINE">
           <Key>
-            <PropertyRef Name="EqptCode" />
+            <PropertyRef Name="MachineCode" />
           </Key>
           <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EqptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EqptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EqptType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EqptModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EqptLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EqptManager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -1207,6 +1206,20 @@
           <Property Name="State" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="TB_INVENTORY_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CheckQty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CheckTime" Type="DateTime" Precision="3" />
+          <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="TB_INVENTORY_LOC">
           <Key>
             <PropertyRef Name="BillNum" />
@@ -1233,6 +1246,20 @@
           <Property Name="ToLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ProduceDate" Type="DateTime" Precision="3" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TB_OTHER_OUT">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1443,14 +1470,6 @@
           <Property Name="UpdateQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="TT_EQPT_TYPE">
-          <Key>
-            <PropertyRef Name="EqptType" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EqptType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="TT_GROUP_TYPE">
           <Key>
             <PropertyRef Name="GroupType" />
@@ -1467,13 +1486,141 @@
           <Property Name="LocType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="TT_MACHINE_TYPE">
+          <Key>
+            <PropertyRef Name="MachineType" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="TT_PART_TYPE">
           <Key>
             <PropertyRef Name="PartType" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PartType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VIEW_CalInaction_DAYS">
+          <Key>
+            <PropertyRef Name="所在库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="过期日期" />
+          </Key>
+          <Property Name="呆滞天数" Type="Int32" />
+          <Property Name="所在库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="过期日期" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VIEW_CalOverdue_DAYS">
+          <Key>
+            <PropertyRef Name="所在库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="过期日期" />
+          </Key>
+          <Property Name="安全天数" Type="Int32" />
+          <Property Name="所在库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="过期日期" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VIEW_CalSafeQty">
+          <Key>
+            <PropertyRef Name="最低库存" />
+            <PropertyRef Name="最高库存" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="零件描述" />
+          </Key>
+          <Property Name="最低库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="最高库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件描述" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="在库数量" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="VIEW_INVENTORY_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="单据号" />
+            <PropertyRef Name="盘点库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="账面数" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="单据号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="盘点库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="账面数" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="盘点数" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="差异数" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="盘点时间" Type="DateTime" Precision="3" />
+          <Property Name="操作员" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VIEW_STOCK_DETAIL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="状态" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="失效日期" />
+            <PropertyRef Name="更新时间" />
+            <PropertyRef Name="更新数量" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="状态" Type="Int32" Nullable="false" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="金额" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="失效日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新时间" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="VIEW_STOCK_DETAIL_AGE">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="库位" />
+            <PropertyRef Name="零件号" />
+            <PropertyRef Name="批次" />
+            <PropertyRef Name="状态" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="生产日期" />
+            <PropertyRef Name="入库时间" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="状态" Type="Int32" Nullable="false" />
+          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="金额" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="入库时间" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="在库天数" Type="Int32" />
         </EntityType>
         <EntityType Name="VS_IDLE_STOCK_DETAIL">
           <Key>
@@ -1560,155 +1707,6 @@
           <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PartType" Type="Int32" />
         </EntityType>
-        <EntityType Name="VIEW_CalInaction_DAYS">
-          <Key>
-            <PropertyRef Name="所在库位" />
-            <PropertyRef Name="零件号" />
-            <PropertyRef Name="批次" />
-            <PropertyRef Name="数量" />
-            <PropertyRef Name="生产日期" />
-            <PropertyRef Name="过期日期" />
-          </Key>
-          <Property Name="呆滞天数" Type="Int32" />
-          <Property Name="所在库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="过期日期" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="VIEW_CalOverdue_DAYS">
-          <Key>
-            <PropertyRef Name="所在库位" />
-            <PropertyRef Name="零件号" />
-            <PropertyRef Name="批次" />
-            <PropertyRef Name="数量" />
-            <PropertyRef Name="生产日期" />
-            <PropertyRef Name="过期日期" />
-          </Key>
-          <Property Name="安全天数" Type="Int32" />
-          <Property Name="所在库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="过期日期" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="VIEW_CalSafeQty">
-          <Key>
-            <PropertyRef Name="最低库存" />
-            <PropertyRef Name="最高库存" />
-            <PropertyRef Name="零件号" />
-            <PropertyRef Name="零件描述" />
-          </Key>
-          <Property Name="最低库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="最高库存" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="零件描述" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="在库数量" Type="Decimal" Precision="19" Scale="4" />
-        </EntityType>
-        <EntityType Name="VIEW_INVENTORY_DETAIL">
-          <Key>
-            <PropertyRef Name="UID" />
-            <PropertyRef Name="单据号" />
-            <PropertyRef Name="盘点库位" />
-            <PropertyRef Name="零件号" />
-            <PropertyRef Name="批次" />
-            <PropertyRef Name="账面数" />
-            <PropertyRef Name="盘点数" />
-            <PropertyRef Name="盘点时间" />
-            <PropertyRef Name="操作员" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="单据号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="盘点库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="账面数" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="盘点数" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="差异数" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="盘点时间" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="操作员" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VIEW_STOCK_DETAIL">
-          <Key>
-            <PropertyRef Name="UID" />
-            <PropertyRef Name="库位" />
-            <PropertyRef Name="零件号" />
-            <PropertyRef Name="批次" />
-            <PropertyRef Name="状态" />
-            <PropertyRef Name="数量" />
-            <PropertyRef Name="单价" />
-            <PropertyRef Name="生产日期" />
-            <PropertyRef Name="失效日期" />
-            <PropertyRef Name="更新时间" />
-            <PropertyRef Name="更新数量" />
-          </Key>
-          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="状态" Type="Int32" Nullable="false" />
-          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="金额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="失效日期" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="更新时间" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="更新数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-        </EntityType>
-        <EntityType Name="VIEW_STOCK_DETAIL_AGE">
-          <Key>
-            <PropertyRef Name="UID" />
-            <PropertyRef Name="库位" />
-            <PropertyRef Name="零件号" />
-            <PropertyRef Name="批次" />
-            <PropertyRef Name="状态" />
-            <PropertyRef Name="数量" />
-            <PropertyRef Name="单价" />
-            <PropertyRef Name="生产日期" />
-            <PropertyRef Name="入库时间" />
-          </Key>
-          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="库位" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="零件号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="批次" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="状态" Type="Int32" Nullable="false" />
-          <Property Name="数量" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="金额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="生产日期" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="入库时间" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="在库天数" Type="Int32" />
-        </EntityType>
-        <EntityType Name="TB_OTHER_OUT">
-          <Key>
-            <PropertyRef Name="UID" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Batch" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FromLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TB_INVENTORY_DETAIL">
-          <Key>
-            <PropertyRef Name="UID" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CheckLocCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BookQty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="CheckQty" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="CheckTime" Type="DateTime" Precision="3" />
-          <Property Name="OperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1755,18 +1753,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TA_EQUIPMENT">
-            <EntityTypeMapping TypeName="SpareModel.TA_EQUIPMENT">
-              <MappingFragment StoreEntitySet="TA_EQUIPMENT">
+          <EntitySetMapping Name="TA_MACHINE">
+            <EntityTypeMapping TypeName="SpareModel.TA_MACHINE">
+              <MappingFragment StoreEntitySet="TA_MACHINE">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="EqptManager" ColumnName="EqptManager" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
                 <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="EqptLocation" ColumnName="EqptLocation" />
-                <ScalarProperty Name="EqptModel" ColumnName="EqptModel" />
-                <ScalarProperty Name="EqptType" ColumnName="EqptType" />
-                <ScalarProperty Name="EqptName" ColumnName="EqptName" />
-                <ScalarProperty Name="EqptCode" ColumnName="EqptCode" />
+                <ScalarProperty Name="MachineLocation" ColumnName="MachineLocation" />
+                <ScalarProperty Name="MachineModel" ColumnName="MachineModel" />
+                <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="MachineCode" ColumnName="MachineCode" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1957,6 +1955,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TB_INVENTORY_DETAIL">
+            <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
+              <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+                <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
+                <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TB_INVENTORY_LOC">
             <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_LOC">
               <MappingFragment StoreEntitySet="TB_INVENTORY_LOC">
@@ -1981,6 +1994,21 @@
                 <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="ToLocCode" ColumnName="ToLocCode" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_OTHER_OUT">
+            <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
+              <MappingFragment StoreEntitySet="TB_OTHER_OUT">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="BillNum" ColumnName="BillNum" />
@@ -2202,15 +2230,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TT_EQPT_TYPE">
-            <EntityTypeMapping TypeName="SpareModel.TT_EQPT_TYPE">
-              <MappingFragment StoreEntitySet="TT_EQPT_TYPE">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="EqptType" ColumnName="EqptType" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TT_GROUP_TYPE">
             <EntityTypeMapping TypeName="SpareModel.TT_GROUP_TYPE">
               <MappingFragment StoreEntitySet="TT_GROUP_TYPE">
@@ -2229,84 +2248,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TT_PART_TYPE">
-            <EntityTypeMapping TypeName="SpareModel.TT_PART_TYPE">
-              <MappingFragment StoreEntitySet="TT_PART_TYPE">
+          <EntitySetMapping Name="TT_MACHINE_TYPE">
+            <EntityTypeMapping TypeName="SpareModel.TT_MACHINE_TYPE">
+              <MappingFragment StoreEntitySet="TT_MACHINE_TYPE">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="MachineType" ColumnName="MachineType" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
-            <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
-              <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
-                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
+          <EntitySetMapping Name="TT_PART_TYPE">
+            <EntityTypeMapping TypeName="SpareModel.TT_PART_TYPE">
+              <MappingFragment StoreEntitySet="TT_PART_TYPE">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_OVERDUE_STOCK">
-            <EntityTypeMapping TypeName="SpareModel.VS_OVERDUE_STOCK">
-              <MappingFragment StoreEntitySet="VS_OVERDUE_STOCK">
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_STOCK">
-            <EntityTypeMapping TypeName="SpareModel.VS_STOCK">
-              <MappingFragment StoreEntitySet="VS_STOCK">
-                <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
-                <ScalarProperty Name="MinQty" ColumnName="MinQty" />
-                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VS_STOCK_AGE">
-            <EntityTypeMapping TypeName="SpareModel.VS_STOCK_AGE">
-              <MappingFragment StoreEntitySet="VS_STOCK_AGE">
-                <ScalarProperty Name="PartType" ColumnName="PartType" />
-                <ScalarProperty Name="BM" ColumnName="BM" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
-                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
-                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2398,33 +2356,75 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TB_OTHER_OUT">
-            <EntityTypeMapping TypeName="SpareModel.TB_OTHER_OUT">
-              <MappingFragment StoreEntitySet="TB_OTHER_OUT">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <EntitySetMapping Name="VS_IDLE_STOCK_DETAIL">
+            <EntityTypeMapping TypeName="SpareModel.VS_IDLE_STOCK_DETAIL">
+              <MappingFragment StoreEntitySet="VS_IDLE_STOCK_DETAIL">
+                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="IdleDays" ColumnName="IdleDays" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="FromLocCode" ColumnName="FromLocCode" />
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TB_INVENTORY_DETAIL">
-            <EntityTypeMapping TypeName="SpareModel.TB_INVENTORY_DETAIL">
-              <MappingFragment StoreEntitySet="TB_INVENTORY_DETAIL">
-                <ScalarProperty Name="OperName" ColumnName="OperName" />
-                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
-                <ScalarProperty Name="CheckQty" ColumnName="CheckQty" />
-                <ScalarProperty Name="BookQty" ColumnName="BookQty" />
+          <EntitySetMapping Name="VS_OVERDUE_STOCK">
+            <EntityTypeMapping TypeName="SpareModel.VS_OVERDUE_STOCK">
+              <MappingFragment StoreEntitySet="VS_OVERDUE_STOCK">
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ValidityDays" ColumnName="ValidityDays" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VS_STOCK">
+            <EntityTypeMapping TypeName="SpareModel.VS_STOCK">
+              <MappingFragment StoreEntitySet="VS_STOCK">
+                <ScalarProperty Name="SafeQty" ColumnName="SafeQty" />
+                <ScalarProperty Name="MinQty" ColumnName="MinQty" />
+                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="PartCode" ColumnName="PartCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VS_STOCK_AGE">
+            <EntityTypeMapping TypeName="SpareModel.VS_STOCK_AGE">
+              <MappingFragment StoreEntitySet="VS_STOCK_AGE">
+                <ScalarProperty Name="PartType" ColumnName="PartType" />
+                <ScalarProperty Name="BM" ColumnName="BM" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="PartDesc2" ColumnName="PartDesc2" />
+                <ScalarProperty Name="PartDesc1" ColumnName="PartDesc1" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="OverdueDate" ColumnName="OverdueDate" />
+                <ScalarProperty Name="ProduceDate" ColumnName="ProduceDate" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
-                <ScalarProperty Name="CheckLocCode" ColumnName="CheckLocCode" />
-                <ScalarProperty Name="BillNum" ColumnName="BillNum" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

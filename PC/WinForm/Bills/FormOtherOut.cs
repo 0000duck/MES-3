@@ -27,7 +27,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private TB_BILL _bill = null;
         private readonly string DetailTableName = "FormOtherOut";
         private readonly string IndexColumnName = "BillNum";
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         private Expression<Func<TB_BILL, bool>> _where;
 
         public FormOtherOut()
@@ -121,7 +121,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
-            SpareEntities db = EntitiesFactory.CreateWmsInstance();
+            SpareEntities db = EntitiesFactory.CreateSpareInstance();
             _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
             var billNum = _bill.BillNum;
@@ -160,7 +160,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             }
             if (MessageHelper.ShowQuestion("确定要执行选定的领用还回单？") == DialogResult.Yes)
             {
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.ExecuteSpareReturn(db, _bill, (List<TB_RETURN>)(grid.Detail1DataSource));
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");

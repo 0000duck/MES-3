@@ -18,7 +18,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
     public partial class FormStoreLocation : Office2007Form
     {
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public FormStoreLocation()
         {
             InitializeComponent();
@@ -30,10 +30,8 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[4].EditorType = typeof(StoreWhseComboBox);
-            grid.PrimaryGrid.Columns[6].EditorType = typeof(StoreGroupComboBox);
-            grid.PrimaryGrid.Columns[9].EditorType = typeof(PartComboBox);
-            grid.PrimaryGrid.Columns[10].EditorType = typeof(LocTypeComboBox);
+            grid.PrimaryGrid.Columns[2].EditorType = typeof(StoreWhseComboBox);
+            grid.PrimaryGrid.Columns[3].EditorType = typeof(StoreGroupComboBox);
 
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
@@ -66,7 +64,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                 {
                     
                     MessageHelper.ShowInfo(ex.ToString());
-                    _db = EntitiesFactory.CreateWmsInstance();
+                    _db = EntitiesFactory.CreateSpareInstance();
                     bs.DataSource = _db.TA_STORE_LOCATION.ToList();
                     return;
                 }

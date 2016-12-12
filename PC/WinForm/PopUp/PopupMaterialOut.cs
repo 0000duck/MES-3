@@ -21,7 +21,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     {
         private BillType _billType = BillType.MaterialDeliver;
         private TB_BILL _bill = new TB_BILL();
-        private SpareEntities _db = EntitiesFactory.CreateWmsInstance();
+        private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupMaterialOut()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcDeptCode.EditorType = typeof(DeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorkLineCode.EditorType = typeof(WorkLineComboBox);
-            gcEqptCode.EditorType = typeof(EqptComboBox);
+            gcEqptCode.EditorType = typeof(MachineComboBox);
             if (_bill.UID == 0)
             {
                 _bill.BillType = (int)BillType.MaterialDeliver;
@@ -80,7 +80,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 //List<TB_OUT> detailList = (from TB_OUT d in _list select d).ToList();
-                SpareEntities db = EntitiesFactory.CreateWmsInstance();
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddMaterialOut(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");

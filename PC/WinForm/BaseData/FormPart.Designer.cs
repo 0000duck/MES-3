@@ -38,25 +38,15 @@
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn14 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn15 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn17 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn18 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn19 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn20 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn21 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn22 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn23 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn24 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn25 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.prop = new DevComponents.DotNetBar.AdvPropertyGrid();
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
@@ -73,11 +63,16 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.expandableSplitter2 = new DevComponents.DotNetBar.ExpandableSplitter();
+            this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.picPart = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bn)).BeginInit();
             this.bn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
+            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPart)).BeginInit();
             this.SuspendLayout();
             // 
             // bar1
@@ -124,26 +119,17 @@
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn14);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn15);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn17);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn18);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn19);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn20);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn21);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn22);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn23);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn24);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn25);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
             // 
             // 
             // 
@@ -154,7 +140,7 @@
             this.grid.PrimaryGrid.GroupByRow.Visible = true;
             this.grid.PrimaryGrid.NoRowsText = "（无数据）";
             this.grid.PrimaryGrid.ShowRowGridIndex = true;
-            this.grid.Size = new System.Drawing.Size(859, 694);
+            this.grid.Size = new System.Drawing.Size(1144, 694);
             this.grid.TabIndex = 2;
             this.grid.Text = "superGridControl1";
             this.grid.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.grid_MasterGridCellActivated);
@@ -191,18 +177,6 @@
             this.gridColumn5.HeaderText = "零件描述2";
             this.gridColumn5.Name = "gridColumn5";
             // 
-            // gridColumn6
-            // 
-            this.gridColumn6.DataPropertyName = "CarMode";
-            this.gridColumn6.HeaderText = "车型";
-            this.gridColumn6.Name = "gridColumn6";
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.DataPropertyName = "ProjectId";
-            this.gridColumn7.HeaderText = "项目编号";
-            this.gridColumn7.Name = "gridColumn7";
-            // 
             // gridColumn8
             // 
             this.gridColumn8.DataPropertyName = "Unit";
@@ -214,24 +188,6 @@
             this.gridColumn9.DataPropertyName = "BM";
             this.gridColumn9.HeaderText = "采购件/制造件";
             this.gridColumn9.Name = "Column2";
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.DataPropertyName = "PartKind";
-            this.gridColumn10.HeaderText = "零件种类";
-            this.gridColumn10.Name = "Column3";
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.DataPropertyName = "ManageType";
-            this.gridColumn11.HeaderText = "管理方式";
-            this.gridColumn11.Name = "Column4";
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.DataPropertyName = "InspectType";
-            this.gridColumn12.HeaderText = "检验类型";
-            this.gridColumn12.Name = "Column5";
             // 
             // gridColumn13
             // 
@@ -258,29 +214,11 @@
             this.gridColumn16.HeaderText = "安全库存";
             this.gridColumn16.Name = "Column9";
             // 
-            // gridColumn17
-            // 
-            this.gridColumn17.DataPropertyName = "ContainerQty";
-            this.gridColumn17.HeaderText = "器具最大可以容纳包装数";
-            this.gridColumn17.Name = "Column10";
-            // 
-            // gridColumn18
-            // 
-            this.gridColumn18.DataPropertyName = "SplyPackQty";
-            this.gridColumn18.HeaderText = "供应商包装数量";
-            this.gridColumn18.Name = "Column11";
-            // 
             // gridColumn19
             // 
-            this.gridColumn19.DataPropertyName = "LinesidePackQty";
-            this.gridColumn19.HeaderText = "线边包装数量";
+            this.gridColumn19.DataPropertyName = "IdleDays";
+            this.gridColumn19.HeaderText = "呆滞时间";
             this.gridColumn19.Name = "Column12";
-            // 
-            // gridColumn20
-            // 
-            this.gridColumn20.DataPropertyName = "CustPackQty";
-            this.gridColumn20.HeaderText = "客户包装数量";
-            this.gridColumn20.Name = "Column13";
             // 
             // gridColumn21
             // 
@@ -294,18 +232,6 @@
             this.gridColumn22.HeaderText = "零件类型（预留）";
             this.gridColumn22.Name = "Column15";
             // 
-            // gridColumn23
-            // 
-            this.gridColumn23.DataPropertyName = "ReceivePort";
-            this.gridColumn23.HeaderText = "收货口";
-            this.gridColumn23.Name = "Column16";
-            // 
-            // gridColumn24
-            // 
-            this.gridColumn24.DataPropertyName = "DefaultReceiveLocCode";
-            this.gridColumn24.HeaderText = "默认收货库位";
-            this.gridColumn24.Name = "Column17";
-            // 
             // gridColumn25
             // 
             this.gridColumn25.DataPropertyName = "Remark";
@@ -314,12 +240,12 @@
             // 
             // prop
             // 
-            this.prop.Dock = System.Windows.Forms.DockStyle.Right;
+            this.prop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prop.GridLinesColor = System.Drawing.Color.WhiteSmoke;
-            this.prop.Location = new System.Drawing.Point(865, 56);
+            this.prop.Location = new System.Drawing.Point(0, 0);
             this.prop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.prop.Name = "prop";
-            this.prop.Size = new System.Drawing.Size(279, 694);
+            this.prop.Size = new System.Drawing.Size(251, 694);
             this.prop.TabIndex = 3;
             this.prop.Text = "advPropertyGrid1";
             // 
@@ -439,31 +365,31 @@
             // 
             // expandableSplitter2
             // 
-            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.expandableSplitter2.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandableSplitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(200)))), ((int)(((byte)(103)))));
-            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(135)))));
+            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(151)))), ((int)(((byte)(61)))));
+            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(94)))));
             this.expandableSplitter2.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2;
             this.expandableSplitter2.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground;
-            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.expandableSplitter2.Location = new System.Drawing.Point(859, 56);
+            this.expandableSplitter2.Location = new System.Drawing.Point(887, 56);
             this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.expandableSplitter2.Name = "expandableSplitter2";
             this.expandableSplitter2.Size = new System.Drawing.Size(6, 694);
@@ -471,15 +397,54 @@
             this.expandableSplitter2.TabIndex = 58;
             this.expandableSplitter2.TabStop = false;
             // 
+            // gridColumn26
+            // 
+            this.gridColumn26.DataPropertyName = "Picture";
+            this.gridColumn26.HeaderText = "图片";
+            this.gridColumn26.Name = "gridColumn26";
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.picPart);
+            this.panelEx1.Controls.Add(this.prop);
+            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelEx1.Location = new System.Drawing.Point(893, 56);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(251, 694);
+            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx1.Style.GradientAngle = 90;
+            this.panelEx1.TabIndex = 62;
+            this.panelEx1.Text = "panelEx1";
+            // 
+            // picPart
+            // 
+            this.picPart.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.picPart.ErrorImage = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_066;
+            this.picPart.InitialImage = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_075;
+            this.picPart.Location = new System.Drawing.Point(0, 494);
+            this.picPart.Name = "picPart";
+            this.picPart.Size = new System.Drawing.Size(251, 200);
+            this.picPart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picPart.TabIndex = 4;
+            this.picPart.TabStop = false;
+            // 
             // FormPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 750);
             this.ControlBox = false;
-            this.Controls.Add(this.grid);
             this.Controls.Add(this.expandableSplitter2);
-            this.Controls.Add(this.prop);
+            this.Controls.Add(this.panelEx1);
+            this.Controls.Add(this.grid);
             this.Controls.Add(this.bn);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
@@ -493,6 +458,9 @@
             this.bn.ResumeLayout(false);
             this.bn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
+            this.panelEx1.ResumeLayout(false);
+            this.panelEx1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,26 +489,19 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn14;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn15;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn16;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn17;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn18;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn19;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn20;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn21;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn22;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn23;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn24;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn25;
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn26;
+        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.PictureBox picPart;
     }
 }
