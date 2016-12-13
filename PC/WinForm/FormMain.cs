@@ -38,8 +38,8 @@ namespace ChangKeTec.Wms.WinForm
                 {
                     MessageHelper.ShowError(ex);
                 }
-              
-               
+                SpareEntities db = EntitiesFactory.CreateSpareInstance();
+                NotifyController.AddStockNotify(db,GlobalVar.Oper.OperName);
             }
             catch(Exception ex)
             {

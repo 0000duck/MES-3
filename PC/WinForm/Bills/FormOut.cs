@@ -151,6 +151,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             try
             {
                 BillHandler.CancelMaterialAsk(_db, _bill);
+                NotifyController.AddNotify(_db, _bill.OperName, NotifyType.MaterialAskCancel, _bill.BillNum, "");
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }

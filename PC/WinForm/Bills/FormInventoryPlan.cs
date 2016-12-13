@@ -179,6 +179,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("是否要取消盘点计划单？") == DialogResult.Yes)
             {
                 BillController.UpdateState(_db, _bill, BillState.Cancelled);
+                NotifyController.AddNotify(_db,_bill.OperName,NotifyType.InventoryPlanCancel, _bill.BillNum,"");
                 var InventoryLocs = InventoryController.GetLocList(_db, _bill.BillNum);
                 foreach (var inventoryLoc in InventoryLocs)
                 {

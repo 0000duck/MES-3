@@ -186,6 +186,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                     return;
                 }
                 BillController.UpdateState(_db, _bill, BillState.Cancelled);
+                NotifyController.AddNotify(_db, _bill.OperName, NotifyType.MaterialAskCancel, _bill.BillNum, ""); //添加【叫料提醒单】
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }
@@ -239,6 +240,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             }
             BillController.UpdateState(_db,_bill,BillState.Approve);
             EntitiesFactory.SaveDb(_db);
+            NotifyController.AddNotify(_db, _bill.OperName, NotifyType.MaterialAskApprove, _bill.BillNum, ""); 
             MessageHelper.ShowInfo("审核通过！");
             SetMasterDataSource(1, grid.PageSize);
         }

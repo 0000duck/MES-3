@@ -4,12 +4,12 @@ namespace ChangKeTec.Wms.Models.Enums
 {
     public enum NotifyType
     {
-        [Description("新增备料单")]
+        [Description("新增领用申请单")]
         MaterialAsk=0,
-        [Description("未知客户零件号")]
-        UnknowCustPart=1,
-        [Description("新增检验单")]
-        Inspect=2,
+        [Description("新增领用出库单")]
+        MaterialDeliver = 1,
+        [Description("新增借出还回单")]
+        SpareReturn=2,
         [Description("新增生产计划单")]
         ProducePlan=3,
         [Description("新增发货计划单")]
@@ -20,5 +20,43 @@ namespace ChangKeTec.Wms.Models.Enums
         OmPlan=6,
         [Description("VIN处理错误")]
         VinError=7,
+
+        [Description("领用申请单修改")]
+        MaterialAskUpdate = 31,
+        [Description("领用出单修改")]
+        MaterialDeliverUpdate = 32,
+        [Description("还回单修改")]
+        SpareReturnUpdate = 33,
+        [Description("盘点单修改")]
+        InventoryPlanUpdate = 34,
+
+        [Description("领用申请单取消")]
+        MaterialAskCancel = 61,
+        [Description("领用出库单取消")]
+        MaterialDeliverCancel = 62,
+        [Description("还回单取消")]
+        SpareReturnCancel = 63,
+        [Description("盘点单取消")]
+        InventoryPlanCancel = 64,
+
+        [Description("领用申请单批准")]
+        MaterialAskApprove = 91,
+        [Description("领用出库单执行")]
+        MaterialDeliverApprove = 92,
+        [Description("还回库单执行")]
+        SpareReturnApprove = 93,
+        [Description("其他入库执行")]
+        OtherIn = 94,
+        [Description("其他出库执行")]
+        OtherOut = 95,
+        [Description("移库单执行")]
+        StockMove = 96,
+        [Description("盘点单执行")]
+        InventoryPlanApprove = 97,
+
+        [Description("库存呆滞提示")]
+        StockInaction = 201,
+        [Description("备件过期提示")]
+        StockOverdue = 202,
     }
 }

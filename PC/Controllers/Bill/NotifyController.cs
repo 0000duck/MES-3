@@ -83,5 +83,27 @@ namespace ChangKeTec.Wms.Controllers.Bill
             };
             db.TL_NOTIFY.Add(notify);
         }
+
+        public static void AddStockNotify(SpareEntities db, string OperName)
+        {
+            var InactionList = db.VIEW_CalInaction_DAYS.ToList();
+            var OverdueList = db.VIEW_CalOverdue_DAYS.ToList();
+            if (InactionList.Count > 0)
+            {
+                if (
+                    db.TL_NOTIFY.FirstOrDefault(p => p.CreateTime.Date == DateTime.Now.Date && p.NotifyType == (int)NotifyType.StockInaction) == null)
+                {
+                    AddNotify(db,OperName, NotifyType.StockInaction,"","");
+                }
+            }
+            if (InactionList.Count > 0)
+            {
+                if (
+                    db.TL_NOTIFY.FirstOrDefault(p => p.CreateTime.Date == DateTime.Now.Date && p.NotifyType == (int)NotifyType.StockOverdue) == null)
+                {
+                    AddNotify(db, OperName, NotifyType.StockOverdue, "", "");
+                }
+            }
+        }
     }
 }

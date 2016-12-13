@@ -25,6 +25,7 @@ namespace ChangKeTec.Wms.Controllers
             BillController.AddOrUpdate(db, bill); //添加【移库单】单据
             StockMoveController.AddList(db, details); //添加【移库单】明细
             StockDetailController.ListMove(db, bill, details); //更新【库存主表】【库存明细】
+            NotifyController.AddNotify(db, bill.OperName, NotifyType.StockMove, bill.BillNum, "");
         }
 
         /// <summary>
@@ -74,6 +75,7 @@ namespace ChangKeTec.Wms.Controllers
                     default:
                         throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
                 }
+                NotifyController.AddNotify(db,bill.OperName,NotifyType.OtherIn,bill.BillNum,"");
             }
         }
 
@@ -110,6 +112,7 @@ namespace ChangKeTec.Wms.Controllers
                     default:
                         throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
                 }
+                NotifyController.AddNotify(db, bill.OperName, NotifyType.OtherOut, bill.BillNum, "");
             }
         }
 
@@ -128,6 +131,7 @@ namespace ChangKeTec.Wms.Controllers
                 }
                 SpareReturnController.AddOrUpdate(db, detail);//添加或修改【领用归还单】明细
             }
+            NotifyController.AddNotify(db,bill.OperName,NotifyType.SpareReturnUpdate,bill.BillNum,"");
         }
 
 
@@ -210,7 +214,7 @@ namespace ChangKeTec.Wms.Controllers
         /// <param name="billList">领用还回单列表</param>
         /// <param name="detailList">领用还回明细列表</param>
         /// <returns></returns>
-        public static void ExecuteSpareReturn(SpareEntities db, TB_BILL billList,
+        public static void ExecuteSpareReturn(SpareEntities db, TB_BILL bill,
             List<TB_RETURN> detailList)
         {
             {
@@ -227,7 +231,8 @@ namespace ChangKeTec.Wms.Controllers
                     };
                     var stockDetails = new List<TS_STOCK_DETAIL>();
                     stockDetails.Add(stockDetail);
-                    StockDetailController.ListIn(db, billList, stockDetails); //更新【库存主表】【库存明细】 
+                    StockDetailController.ListIn(db, bill, stockDetails); //更新【库存主表】【库存明细】 
+                    NotifyController.AddNotify(db, bill.OperName,NotifyType.SpareReturnApprove, bill.BillNum,"");
                 }   
                 EntitiesFactory.SaveDb(db);
             }
@@ -257,7 +262,7 @@ namespace ChangKeTec.Wms.Controllers
                 {
                     SetBillNum(billPickFact); //设置单据编号
                     details.ForEach(p => p.BillNum = billPickFact.BillNum); //设置明细编号
-
+                    NotifyController.AddNotify(db,billPickFact.OperName,NotifyType.MaterialDeliver, billPickFact.BillNum,"");
                 }
                 else
                 {
@@ -269,25 +274,10 @@ namespace ChangKeTec.Wms.Controllers
                             SpareOutController.RemaveDetail(db,det);
                         }
                     }
+                    NotifyController.AddNotify(db, billPickFact.OperName, NotifyType.MaterialDeliverUpdate, billPickFact.BillNum, "");
                 }               
                 BillController.AddOrUpdate(db, billPickFact); //添加【原料拣料单】单据
                 SpareOutController.AddOrUpdateList(db, details); //更新【实际拣料单】明细
-                //                var billPickPlan = BillController.GetBill(db, billPickFact.SourceBillNum);
-                //                BillController.UpdateState(db, billPickPlan, BillState.Finished); //更新【备料单】状态为：完成
-                //
-                //                var billAsk = BillController.GetBill(db, billPickPlan.SourceBillNum);
-                //                BillController.UpdateState(db, billAsk, BillState.Finished); //更新【叫料单】状态为：完成
-
-                //                if (!string.IsNullOrEmpty(billAsk.SourceBillNum))
-                //                {
-                //                    var billPlan = BillController.GetBill(db, billAsk.SourceBillNum);
-                //                    BillController.UpdateState(db, billPlan, BillState.Handling); //更新【生产计划单】状态为：执行中
-                //                }
-
-                //                if (SysConfig.AutoFinishPartPick)
-                //                {
-                //                    FinishMaterialOut(db, billPickFact, details);
-                //                }
                 EntitiesFactory.SaveDb(db);
             }
         }
@@ -312,6 +302,7 @@ namespace ChangKeTec.Wms.Controllers
                 StockDetailController.Out(db, bill, detailOut);
             }
             BillController.UpdateState(db, bill, BillState.Finished); //更新【拣料单】状态为：完成
+            NotifyController.AddNotify(db,bill.OperName,NotifyType.MaterialDeliverApprove,bill.BillNum,"");
         }
 
         #endregion
@@ -331,13 +322,17 @@ namespace ChangKeTec.Wms.Controllers
             {
                 SetBillNum(bill); //设置单据编号
                 details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
+                NotifyController.AddNotify(db, bill.OperName, NotifyType.MaterialAskUpdate, bill.BillNum, ""); //添加【叫料提醒单】 
+            }
+            else
+            {
+                NotifyController.AddNotify(db, bill.OperName, NotifyType.MaterialAsk, bill.BillNum, ""); //添加【叫料提醒单】
             }
             BillController.AddOrUpdate(db, bill); //添加【生产叫料单】单据
             foreach (var detail in details)
             {
                 SpareAskController.AddOrUpdate(db,detail);//添加或修改【生产叫料单】明细
-            }
-            NotifyController.AddNotify(db, bill.OperName, NotifyType.MaterialAsk, bill.BillNum, ""); //添加【叫料提醒单】         
+            }                    
         }
 
         /// <summary>
@@ -402,6 +397,7 @@ namespace ChangKeTec.Wms.Controllers
                 BillController.AddOrUpdate(db,billPick);
                 SpareOutController.AddList(db,partPickList);
                 BillController.UpdateState(db, billAsk, BillState.Handling); //更新【叫料单】状态为：执行中
+                NotifyController.AddNotify(db,billPick.OperName,NotifyType.MaterialDeliver, billAsk.BillNum,"");
                 return "OK";
             }
             catch (Exception ex)
@@ -455,7 +451,7 @@ namespace ChangKeTec.Wms.Controllers
                 partPickList.ForEach(p => p.BillNum = billPick.BillNum);
                 BillController.AddOrUpdate(db, billPick);
                 SpareReturnController.AddList(db, partPickList);
-                SpareReturnController.AddList(db,partPickList);
+                NotifyController.AddNotify(db,billPick.OperName,NotifyType.SpareReturn, billPick.BillNum,"");
                 return "OK";
             }
             catch (Exception ex)
@@ -492,6 +488,7 @@ namespace ChangKeTec.Wms.Controllers
                         var inventoryDetailList = (stockDetailList.Select(p => p.ToInventoryDetail(locBill))).ToList();
                         InventoryController.AddDetailList(db, inventoryDetailList); //添加盘点明细
                     }
+                    NotifyController.AddNotify(db, bill.OperName, NotifyType.InventoryPlan, bill.BillNum, ""); //添加【叫料提醒单】
                 }
                 else
                 {
@@ -515,9 +512,10 @@ namespace ChangKeTec.Wms.Controllers
                             InventoryController.DeleteInventory(db,loc);
                         }
                     }
+                    NotifyController.AddNotify(db, bill.OperName, NotifyType.InventoryPlanUpdate, bill.BillNum, ""); //添加【叫料提醒单】
                 }
                 InventoryController.AddOrUpdate(db, bill); //添加盘点单据
-                NotifyController.AddNotify(db, bill.OperName, NotifyType.InventoryPlan, bill.BillNum, ""); //添加【叫料提醒单】
+                
             }
         }
 
@@ -714,6 +712,7 @@ namespace ChangKeTec.Wms.Controllers
             var details = db.TB_INVENTORY_DETAIL.Where(p => p.BillNum == bill.BillNum).ToList();
             InventoryController.AdjustStockByInventory(db, bill, details);
             BillController.UpdateState(db,bill,BillState.Finished);
+            NotifyController.AddNotify(db,bill.OperName,NotifyType.InventoryPlanApprove,bill.BillNum,"");
         }
 
         /// <summary>
@@ -730,6 +729,7 @@ namespace ChangKeTec.Wms.Controllers
                 InventoryController.AddOrUpdate(db,detail);
             }
             BillController.UpdateState(db,bill,BillState.Handling);
+            NotifyController.AddNotify(db,bill.OperName,NotifyType.InventoryPlanUpdate,bill.BillNum,"");
         }
 
         #endregion

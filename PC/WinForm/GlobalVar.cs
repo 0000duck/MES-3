@@ -53,6 +53,8 @@ namespace ChangKeTec.Wms.WinForm
             ConfigList = ConfigController.GetList(db);
             //GetConfig();
 
+            GetNotifyList(db);
+
 
         }
         
@@ -74,7 +76,7 @@ namespace ChangKeTec.Wms.WinForm
         public static bool GetNotifyList(SpareEntities db)
         {
             var list = NotifyController.GetNewList(db);
-            if (NotifyList==null||list.Count(p=>p.State==(int)BillState.New) != NotifyList.Count(p => p.State == (int)BillState.New))
+            if (NotifyList!=null||list.Count(p=>p.State==(int)BillState.New) != 0)
             {
                 NotifyList = new SortableBindingList<TL_NOTIFY>(list);
                 return true;
