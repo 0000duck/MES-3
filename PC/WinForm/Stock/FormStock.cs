@@ -56,16 +56,11 @@ namespace ChangKeTec.Wms.WinForm.Stock
             }
         }
 
-
         private void SetStockMasterDataSource(int pageSize)
         {
             Expression<Func<VS_STOCK, dynamic>> select = c => c;
-
-
-            Expression<Func<VS_STOCK, bool>> where;
-          
-                where = c => true;
-          
+            Expression<Func<VS_STOCK, bool>> where;         
+                where = c => true;       
             Expression<Func<VS_STOCK, string>> order = c => c.PartCode;
             var grid = gridStock;
             int total;
@@ -78,7 +73,6 @@ namespace ChangKeTec.Wms.WinForm.Stock
             if (grid.PageSize != pageSize)
                 grid.PageSize = pageSize;
         }
-
 
         private void SetStockDetailMasterDataSource(int pageSize)
         {
@@ -97,7 +91,6 @@ namespace ChangKeTec.Wms.WinForm.Stock
                 grid.PageSize = pageSize;
         }
 
-
         private void ItemBtnExport_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
@@ -108,19 +101,14 @@ namespace ChangKeTec.Wms.WinForm.Stock
             ExcelWriter.Write(ds);
         }
 
-
-
-
         private void gridStock_DataRefreshed(object sender, Common.UC.CktMasterDetailGrid.QtyEventArgs e)
         {
             SetStockMasterDataSource(e.PageSize);
-
         }
 
         private void gridStock_PageSelectedIndexChanged(object sender, EventArgs e)
         {
             SetStockMasterDataSource(gridStock.PageSize);
-
         }
 
         private void gridStockDetail_DataRefreshed(object sender, Common.UC.CktMasterDetailGrid.QtyEventArgs e)
@@ -131,10 +119,7 @@ namespace ChangKeTec.Wms.WinForm.Stock
         private void gridStockDetail_MasterGridCellActivated(object sender, DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs e)
         {
             SpareEntities db = EntitiesFactory.CreateSpareInstance();
-            var vinCode = db.TS_STOCK_DETAIL.Single(p => p.UID == gridStockDetail.MasterUid).Batch;
-//            var count = SetVinPartMasterDataSource(vinCode);
-//            gridStockDetail.IsDetailVisible = count > 0;
-            
+            var vinCode = db.TS_STOCK_DETAIL.Single(p => p.UID == gridStockDetail.MasterUid).Batch;   
         }
 
         private void gridStockDetail_PageSelectedIndexChanged(object sender, EventArgs e)

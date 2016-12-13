@@ -521,6 +521,7 @@
             // gridColumn10
             // 
             this.gridColumn10.DataPropertyName = "AskTime";
+            this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDateTimePickerEditControl);
             this.gridColumn10.HeaderText = "申请时间";
             this.gridColumn10.Name = "Column3";
             // 
@@ -533,6 +534,7 @@
             // gridColumn12
             // 
             this.gridColumn12.DataPropertyName = "ConFirmTime";
+            this.gridColumn12.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDateTimePickerEditControl);
             this.gridColumn12.HeaderText = "批准时间";
             this.gridColumn12.Name = "Column5";
             // 
@@ -554,10 +556,12 @@
             this.gridColumn15.DataPropertyName = "TakeType";
             this.gridColumn15.HeaderText = "领用类型";
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = false;
             // 
             // gcTakeTime
             // 
             this.gcTakeTime.DataPropertyName = "TakeTime";
+            this.gcTakeTime.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDateTimePickerEditControl);
             this.gcTakeTime.HeaderText = "领用时间";
             this.gcTakeTime.Name = "gridColumn17";
             // 

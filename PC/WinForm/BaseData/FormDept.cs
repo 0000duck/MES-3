@@ -96,7 +96,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                 var logType = OperateType.Add;
                 var oldValue = "";
                 var newValue = GetValues(entry.CurrentValues);
-               log= BaseDataLogController.Add(_db, dataType, oldValue, newValue, "", logType);
+               log= BaseDataLogController.Add(_db, dataType, oldValue, newValue, GlobalVar.Oper.OperName, logType);
             }
             try
             {

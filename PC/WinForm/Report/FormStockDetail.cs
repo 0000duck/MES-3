@@ -4,6 +4,7 @@ using System.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ChangKeTec.Wms.Common;
 using ChangKeTec.Wms.Controllers;
@@ -28,6 +29,7 @@ namespace ChangKeTec.Wms.WinForm.Report
             _billList = new List<VIEW_STOCK_DETAIL>();
             _selectedBill = new VIEW_STOCK_DETAIL();
             GetBillList();
+            
         }
 
         private void GetBillList()
@@ -36,6 +38,9 @@ namespace ChangKeTec.Wms.WinForm.Report
             {
                 _billList = ReportViewController.GetStockDetail(db);
                 grid.PrimaryGrid.DataSource = _billList;
+                var totalQty = _billList.Sum(p => p.数量);
+                var totalAmount = _billList.Sum(p => p.金额);
+                grid.PrimaryGrid.Footer.Text = "库存总量："+ totalQty + " 金额：" + totalAmount;
             }
         }
 

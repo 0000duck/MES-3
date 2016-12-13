@@ -167,6 +167,10 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                         }
                     }
                 }
+                if (row[gcProduceDate].Value == null)
+                {
+                    row[gcProduceDate].Value = DateTime.Now;
+                }
             }
             //根据出库数量，自动计算金额
             if (cell.GridColumn == gcUnitPrice || cell.GridColumn == gcQty)

@@ -33,11 +33,10 @@
             this.btnModify = new DevComponents.DotNetBar.ButtonItem();
             this.btnCancel = new DevComponents.DotNetBar.ButtonItem();
             this.BtnDeliver = new DevComponents.DotNetBar.ButtonItem();
-            this.ItemBtnImport = new DevComponents.DotNetBar.ButtonItem();
+            this.ItemBtnReturn = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
             this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
-            this.ItemBtnReturn = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +52,6 @@
             this.btnCancel,
             this.BtnDeliver,
             this.ItemBtnReturn,
-            this.ItemBtnImport,
             this.ItemBtnExport,
             this.ItemBtnPrint});
             this.bar1.Location = new System.Drawing.Point(0, 0);
@@ -102,14 +100,14 @@
             this.BtnDeliver.Text = "领用";
             this.BtnDeliver.Click += new System.EventHandler(this.BtnDeliver_Click);
             // 
-            // ItemBtnImport
+            // ItemBtnReturn
             // 
-            this.ItemBtnImport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.ItemBtnImport.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_055;
-            this.ItemBtnImport.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.ItemBtnImport.Name = "ItemBtnImport";
-            this.ItemBtnImport.Text = "导入";
-            this.ItemBtnImport.Click += new System.EventHandler(this.ItemBtnImport_Click);
+            this.ItemBtnReturn.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.ItemBtnReturn.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_055;
+            this.ItemBtnReturn.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.ItemBtnReturn.Name = "ItemBtnReturn";
+            this.ItemBtnReturn.Text = "领用还回";
+            this.ItemBtnReturn.Click += new System.EventHandler(this.ItemBtnReturn_Click);
             // 
             // ItemBtnExport
             // 
@@ -138,7 +136,7 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;
@@ -150,15 +148,6 @@
             this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
             this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
             this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
-            // 
-            // ItemBtnReturn
-            // 
-            this.ItemBtnReturn.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.ItemBtnReturn.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_055;
-            this.ItemBtnReturn.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.ItemBtnReturn.Name = "ItemBtnReturn";
-            this.ItemBtnReturn.Text = "领用还回";
-            this.ItemBtnReturn.Click += new System.EventHandler(this.ItemBtnReturn_Click);
             // 
             // FormOut
             // 
@@ -188,7 +177,6 @@
         private DevComponents.DotNetBar.ButtonItem btnAdd;
         private DevComponents.DotNetBar.ButtonItem btnCancel;
         private DevComponents.DotNetBar.ButtonItem btnModify;
-        private DevComponents.DotNetBar.ButtonItem ItemBtnImport;
         private DevComponents.DotNetBar.ButtonItem BtnDeliver;
         private DevComponents.DotNetBar.ButtonItem ItemBtnReturn;
     }

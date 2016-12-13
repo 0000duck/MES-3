@@ -24,7 +24,6 @@
         <EntityTypeShape EntityType="SpareModel.TB_INVENTORY_LOC" Width="1.5" PointX="4.75" PointY="11.75" />
         <EntityTypeShape EntityType="SpareModel.TB_OTHER_IN" Width="1.5" PointX="6.75" PointY="11.75" />
         <EntityTypeShape EntityType="SpareModel.TB_OTHER_OUT" Width="1.5" PointX="12.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="12.75" PointY="4.75" />
         <EntityTypeShape EntityType="SpareModel.TB_PO" Width="1.5" PointX="8.75" PointY="12.75" />
         <EntityTypeShape EntityType="SpareModel.TB_RETURN" Width="1.5" PointX="12.75" PointY="10.75" />
         <EntityTypeShape EntityType="SpareModel.TB_STOCK_MOVE" Width="1.5" PointX="14.75" PointY="0.75" />
@@ -43,14 +42,15 @@
         <EntityTypeShape EntityType="SpareModel.VIEW_CalOverdue_DAYS" Width="1.5" PointX="10.75" PointY="17.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_CalSafeQty" Width="1.5" PointX="18.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_INVENTORY_DETAIL" Width="1.5" PointX="18.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="18.75" PointY="7.75" />
-        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" Width="1.5" PointX="18.75" PointY="12.75" />
         <EntityTypeShape EntityType="SpareModel.VS_IDLE_STOCK_DETAIL" Width="1.5" PointX="18.75" PointY="16.75" />
         <EntityTypeShape EntityType="SpareModel.VS_OVERDUE_STOCK" Width="1.5" PointX="0.75" PointY="19.75" />
         <EntityTypeShape EntityType="SpareModel.VS_STOCK" Width="1.5" PointX="2.75" PointY="19.75" />
         <EntityTypeShape EntityType="SpareModel.VS_STOCK_AGE" Width="1.5" PointX="4.75" PointY="19.75" />
         <EntityTypeShape EntityType="SpareModel.TA_WORKLINE" Width="1.5" PointX="7.375" PointY="19.75" />
         <EntityTypeShape EntityType="SpareModel.TA_Attach" Width="1.5" PointX="13.375" PointY="20.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="15.375" PointY="20.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL_AGE" Width="1.5" PointX="19.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="19.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

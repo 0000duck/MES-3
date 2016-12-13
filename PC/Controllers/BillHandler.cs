@@ -327,7 +327,7 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void AddMaterialAsk(SpareEntities db, TB_BILL bill, List<TB_ASK> details)
         {
-            if (bill.BillNum == "")
+            if (bill.BillNum == null)
             {
                 SetBillNum(bill); //设置单据编号
                 details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
@@ -530,20 +530,13 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void HandleInventoryBill(SpareEntities db, TB_BILL bill)
         {
-           
-
+            //校验【盘点计划】状态是否为新建
+            if (bill.State != (int) BillState.New)
             {
-                //校验【盘点计划】状态是否为新建
-                if (bill.State != (int) BillState.New)
-                {
-                     throw new WmsException(ResultCode.DataStateError, bill.BillNum, "状态错误,不应为：" + bill.State);
-
-                }
-                InventoryController.Start(db, bill);
-                
+                throw new WmsException(ResultCode.DataStateError, bill.BillNum, "状态错误,不应为：" + bill.State);
 
             }
-
+            InventoryController.Start(db, bill);
         }
 
         /// <summary>
@@ -555,31 +548,24 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void FinishInventoryBill(SpareEntities db, TB_BILL bill, List<TB_INVENTORY_LOC> details)
         {
-           
-
+            //校验【盘点计划】状态是否为已开始
+            if (bill.State != (int) BillState.Handling)
             {
-                //校验【盘点计划】状态是否为已开始
-                if (bill.State != (int) BillState.Handling)
-                {
-                     throw new WmsException(ResultCode.DataStateError, bill.BillNum, "状态错误,不应为：" + bill.State);
-
-                }
-                //校验【盘点单】状态是否为已结束或已取消
-                foreach (
-                    var detail in
-                        details.Where(
-                            detail =>
-                                detail.State != (int) BillState.Finished && detail.State != (int) BillState.Cancelled))
-                {
-                     throw new WmsException(ResultCode.DataStateError, bill.BillNum,
-                        "明细状态错误,盘点单：" + detail.LocCode + " 尚未盘点结束");
-
-                }
-                InventoryController.Finish(db, bill);
-                
+                throw new WmsException(ResultCode.DataStateError, bill.BillNum, "状态错误,不应为：" + bill.State);
 
             }
+            //校验【盘点单】状态是否为已结束或已取消
+            foreach (
+                var detail in
+                    details.Where(
+                        detail =>
+                            detail.State != (int) BillState.Finished && detail.State != (int) BillState.Cancelled))
+            {
+                throw new WmsException(ResultCode.DataStateError, bill.BillNum,
+                    "明细状态错误,盘点单：" + detail.LocCode + " 尚未盘点结束");
 
+            }
+            InventoryController.Finish(db, bill);
         }
 
         /// <summary>
@@ -590,20 +576,13 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void CancelInventoryBill(SpareEntities db, TB_BILL bill)
         {
-           
-
+            //校验【盘点计划】状态是否为新建或已开始
+            if (bill.State != (int) BillState.New && bill.State != (int) BillState.Handling)
             {
-                //校验【盘点计划】状态是否为新建或已开始
-                if (bill.State != (int) BillState.New && bill.State != (int) BillState.Handling)
-                {
-                     throw new WmsException(ResultCode.DataStateError, bill.BillNum, "状态错误,不应为：" + bill.State);
-
-                }
-                InventoryController.Cancel(db, bill);
-                
+                throw new WmsException(ResultCode.DataStateError, bill.BillNum, "状态错误,不应为：" + bill.State);
 
             }
-
+            InventoryController.Cancel(db, bill);
         }
 
         /// <summary>
@@ -613,34 +592,29 @@ namespace ChangKeTec.Wms.Controllers
         /// <param name="locBill">盘点库位</param>
         /// <param name="details">盘点明细</param>
         /// <returns></returns>
-        public static void AddTempInventory(SpareEntities db, TB_INVENTORY_LOC locBill, List<TB_INVENTORY_DETAIL> details)
+        public static void AddTempInventory(SpareEntities db, TB_INVENTORY_LOC locBill,
+            List<TB_INVENTORY_DETAIL> details)
         {
-           
-
+            var bill = new TB_BILL
             {
-                var bill = new TB_BILL
-                {
-                    BillType = (int) BillType.InventoryPlan,
-                    OperName = locBill.OperName,
-                    StartTime = locBill.CheckBeginTime,
-                    FinishTime = locBill.CheckEndTime,
-                    State = (int) BillState.Finished
-                };
+                BillType = (int) BillType.InventoryPlan,
+                OperName = locBill.OperName,
+                StartTime = locBill.CheckBeginTime,
+                FinishTime = locBill.CheckEndTime,
+                State = (int) BillState.Finished
+            };
 
-                locBill.State = (int) InventoryState.Checked;
-                var locList = new List<TB_INVENTORY_LOC> {locBill};
+            locBill.State = (int) InventoryState.Checked;
+            var locList = new List<TB_INVENTORY_LOC> {locBill};
 
-                SetBillNum(bill); //设置单据编号
-                locList.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
+            SetBillNum(bill); //设置单据编号
+            locList.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
 
-                InventoryController.AddOrUpdate(db, bill); //添加盘点计划
-                InventoryController.AddLocList(db, locList); //添加盘点库位
-                InventoryController.AddDetailList(db, details); //添加盘点明细
+            InventoryController.AddOrUpdate(db, bill); //添加盘点计划
+            InventoryController.AddLocList(db, locList); //添加盘点库位
+            InventoryController.AddDetailList(db, details); //添加盘点明细
 
-                 InventoryController.AdjustStockByInventory(db, bill, details); //根据盘点结果调整库存
-
-            }
-
+            InventoryController.AdjustStockByInventory(db, bill, details); //根据盘点结果调整库存
         }
 
         /// <summary>

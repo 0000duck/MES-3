@@ -20,7 +20,7 @@ namespace ChangKeTec.Wms.Models
         public string Batch { get; set; }
         public string FromLocCode { get; set; }
         public Nullable<decimal> BillQty { get; set; }
-        public decimal OutQty { get; set; }
+        public Nullable<decimal> OutQty { get; set; }
         public decimal UnitPrice { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public string DeptCode { get; set; }
@@ -33,7 +33,7 @@ namespace ChangKeTec.Wms.Models
         public Nullable<System.DateTime> ConfirmTime { get; set; }
         public int TakeType { get; set; }
         public string TakeUser { get; set; }
-        public System.DateTime TakeTime { get; set; }
+        public Nullable<System.DateTime> TakeTime { get; set; }
         public int State { get; set; }
         public string Remark { get; set; }
     }

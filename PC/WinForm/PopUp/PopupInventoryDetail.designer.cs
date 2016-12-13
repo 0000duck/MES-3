@@ -171,7 +171,6 @@
             // gridColumn13
             // 
             this.gridColumn13.DataPropertyName = "Batch";
-            this.gridColumn13.EditorType = null;
             this.gridColumn13.HeaderText = "批次";
             this.gridColumn13.Name = "Column6";
             // 

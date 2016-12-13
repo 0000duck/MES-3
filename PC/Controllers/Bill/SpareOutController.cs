@@ -44,7 +44,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 AskUser = materialAsk.AskUser,
                 AskTime = materialAsk.AskTime,
                 ConfirmUser = materialAsk.ConfirmUser,
-                ConfirmTime = materialAsk.ConfirmTime,
+                ConfirmTime = materialAsk.ConfirmTime
             };
             if (stockDetail.Qty >= materialAsk.Qty)
             {

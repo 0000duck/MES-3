@@ -34,9 +34,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
             _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
-
         }
-
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
@@ -59,7 +57,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 return;
             }
 
-            if (_bill.State != (int)BillState.New)
+            if (_bill.State != (int)BillState.Approve)
             {
                 MessageHelper.ShowInfo("选中单据状态错误，无法执行");
                 return;
@@ -73,9 +71,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
                     MessageHelper.ShowError(strInfo);
                 }
                 else
-                {
-                    MessageHelper.ShowInfo("生成领用单成功");
+                {                  
                     EntitiesFactory.SaveDb(_db);
+                    MessageHelper.ShowInfo("生成领用单成功");
                 }
             }
             catch (Exception ex)

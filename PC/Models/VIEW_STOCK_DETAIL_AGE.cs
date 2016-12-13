@@ -14,7 +14,6 @@ namespace ChangKeTec.Wms.Models
     
     public partial class VIEW_STOCK_DETAIL_AGE
     {
-        public long UID { get; set; }
         public string 库位 { get; set; }
         public string 零件号 { get; set; }
         public string 批次 { get; set; }

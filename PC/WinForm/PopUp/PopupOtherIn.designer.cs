@@ -34,6 +34,10 @@
             this.BtnSave = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.propertyBill = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.cktMasterDetailGrid4 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
+            this.cktMasterDetailGrid3 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
+            this.cktMasterDetailGrid2 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
+            this.cktMasterDetailGrid1 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             this.expandableSplitter2 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -50,19 +54,15 @@
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gcUID = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcBillNum = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcBatch = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcToLocCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcQty = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcUnitPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcAmount = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcProduceDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcRemark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gcToLocCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.cktMasterDetailGrid4 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
-            this.cktMasterDetailGrid3 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
-            this.cktMasterDetailGrid2 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
-            this.cktMasterDetailGrid1 = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).BeginInit();
             this.propertyBill.SuspendLayout();
@@ -123,6 +123,78 @@
             this.propertyBill.TabIndex = 10;
             this.propertyBill.Text = "advPropertyGrid1";
             this.propertyBill.PropertyValueChanging += new DevComponents.DotNetBar.PropertyValueChangingEventHandler(this.propertyBill_PropertyValueChanging);
+            // 
+            // cktMasterDetailGrid4
+            // 
+            this.cktMasterDetailGrid4.Detail1DataSource = null;
+            this.cktMasterDetailGrid4.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.cktMasterDetailGrid4.IsNavigatorVisible = true;
+            this.cktMasterDetailGrid4.IsPropertyExpand = false;
+            this.cktMasterDetailGrid4.IsPropertyVisible = true;
+            this.cktMasterDetailGrid4.Location = new System.Drawing.Point(0, 0);
+            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2);
+            this.cktMasterDetailGrid4.MasterDataSource = null;
+            this.cktMasterDetailGrid4.Name = "cktMasterDetailGrid4";
+            this.cktMasterDetailGrid4.PageIndex = 1;
+            this.cktMasterDetailGrid4.PageSize = 100;
+            this.cktMasterDetailGrid4.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.cktMasterDetailGrid4.Size = new System.Drawing.Size(885, 530);
+            this.cktMasterDetailGrid4.TabIndex = 7;
+            this.cktMasterDetailGrid4.Total = 0;
+            // 
+            // cktMasterDetailGrid3
+            // 
+            this.cktMasterDetailGrid3.Detail1DataSource = null;
+            this.cktMasterDetailGrid3.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.cktMasterDetailGrid3.IsNavigatorVisible = true;
+            this.cktMasterDetailGrid3.IsPropertyExpand = false;
+            this.cktMasterDetailGrid3.IsPropertyVisible = true;
+            this.cktMasterDetailGrid3.Location = new System.Drawing.Point(0, 0);
+            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2);
+            this.cktMasterDetailGrid3.MasterDataSource = null;
+            this.cktMasterDetailGrid3.Name = "cktMasterDetailGrid3";
+            this.cktMasterDetailGrid3.PageIndex = 1;
+            this.cktMasterDetailGrid3.PageSize = 100;
+            this.cktMasterDetailGrid3.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.cktMasterDetailGrid3.Size = new System.Drawing.Size(885, 530);
+            this.cktMasterDetailGrid3.TabIndex = 6;
+            this.cktMasterDetailGrid3.Total = 0;
+            // 
+            // cktMasterDetailGrid2
+            // 
+            this.cktMasterDetailGrid2.Detail1DataSource = null;
+            this.cktMasterDetailGrid2.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.cktMasterDetailGrid2.IsNavigatorVisible = true;
+            this.cktMasterDetailGrid2.IsPropertyExpand = false;
+            this.cktMasterDetailGrid2.IsPropertyVisible = true;
+            this.cktMasterDetailGrid2.Location = new System.Drawing.Point(0, 0);
+            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2);
+            this.cktMasterDetailGrid2.MasterDataSource = null;
+            this.cktMasterDetailGrid2.Name = "cktMasterDetailGrid2";
+            this.cktMasterDetailGrid2.PageIndex = 1;
+            this.cktMasterDetailGrid2.PageSize = 100;
+            this.cktMasterDetailGrid2.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.cktMasterDetailGrid2.Size = new System.Drawing.Size(885, 530);
+            this.cktMasterDetailGrid2.TabIndex = 5;
+            this.cktMasterDetailGrid2.Total = 0;
+            // 
+            // cktMasterDetailGrid1
+            // 
+            this.cktMasterDetailGrid1.Detail1DataSource = null;
+            this.cktMasterDetailGrid1.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.cktMasterDetailGrid1.IsNavigatorVisible = true;
+            this.cktMasterDetailGrid1.IsPropertyExpand = false;
+            this.cktMasterDetailGrid1.IsPropertyVisible = true;
+            this.cktMasterDetailGrid1.Location = new System.Drawing.Point(0, 0);
+            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2);
+            this.cktMasterDetailGrid1.MasterDataSource = null;
+            this.cktMasterDetailGrid1.Name = "cktMasterDetailGrid1";
+            this.cktMasterDetailGrid1.PageIndex = 1;
+            this.cktMasterDetailGrid1.PageSize = 100;
+            this.cktMasterDetailGrid1.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.cktMasterDetailGrid1.Size = new System.Drawing.Size(885, 530);
+            this.cktMasterDetailGrid1.TabIndex = 4;
+            this.cktMasterDetailGrid1.Total = 0;
             // 
             // expandableSplitter2
             // 
@@ -320,11 +392,25 @@
             this.gcBillNum.HeaderText = "单据号";
             this.gcBillNum.Name = "gridColumn2";
             // 
+            // gcPartCode
+            // 
+            this.gcPartCode.DataPropertyName = "PartCode";
+            this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcPartCode.HeaderText = "零件号";
+            this.gcPartCode.Name = "gridColumn3";
+            // 
             // gcBatch
             // 
             this.gcBatch.DataPropertyName = "Batch";
             this.gcBatch.HeaderText = "批次";
             this.gcBatch.Name = "gridColumn3";
+            // 
+            // gcToLocCode
+            // 
+            this.gcToLocCode.DataPropertyName = "ToLocCode";
+            this.gcToLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcToLocCode.HeaderText = "目标库位";
+            this.gcToLocCode.Name = "gridColumn5";
             // 
             // gcQty
             // 
@@ -359,92 +445,6 @@
             this.gcRemark.DataPropertyName = "Remark";
             this.gcRemark.HeaderText = "备注";
             this.gcRemark.Name = "gridColumn17";
-            // 
-            // gcPartCode
-            // 
-            this.gcPartCode.DataPropertyName = "PartCode";
-            this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPartCode.HeaderText = "零件号";
-            this.gcPartCode.Name = "gridColumn3";
-            // 
-            // gcToLocCode
-            // 
-            this.gcToLocCode.DataPropertyName = "ToLocCode";
-            this.gcToLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcToLocCode.HeaderText = "目标库位";
-            this.gcToLocCode.Name = "gridColumn5";
-            // 
-            // cktMasterDetailGrid4
-            // 
-            this.cktMasterDetailGrid4.Detail1DataSource = null;
-            this.cktMasterDetailGrid4.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.cktMasterDetailGrid4.IsNavigatorVisible = true;
-            this.cktMasterDetailGrid4.IsPropertyExpand = false;
-            this.cktMasterDetailGrid4.IsPropertyVisible = true;
-            this.cktMasterDetailGrid4.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid4.Margin = new System.Windows.Forms.Padding(2);
-            this.cktMasterDetailGrid4.MasterDataSource = null;
-            this.cktMasterDetailGrid4.Name = "cktMasterDetailGrid4";
-            this.cktMasterDetailGrid4.PageIndex = 1;
-            this.cktMasterDetailGrid4.PageSize = 100;
-            this.cktMasterDetailGrid4.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.cktMasterDetailGrid4.Size = new System.Drawing.Size(885, 530);
-            this.cktMasterDetailGrid4.TabIndex = 7;
-            this.cktMasterDetailGrid4.Total = 0;
-            // 
-            // cktMasterDetailGrid3
-            // 
-            this.cktMasterDetailGrid3.Detail1DataSource = null;
-            this.cktMasterDetailGrid3.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.cktMasterDetailGrid3.IsNavigatorVisible = true;
-            this.cktMasterDetailGrid3.IsPropertyExpand = false;
-            this.cktMasterDetailGrid3.IsPropertyVisible = true;
-            this.cktMasterDetailGrid3.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid3.Margin = new System.Windows.Forms.Padding(2);
-            this.cktMasterDetailGrid3.MasterDataSource = null;
-            this.cktMasterDetailGrid3.Name = "cktMasterDetailGrid3";
-            this.cktMasterDetailGrid3.PageIndex = 1;
-            this.cktMasterDetailGrid3.PageSize = 100;
-            this.cktMasterDetailGrid3.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.cktMasterDetailGrid3.Size = new System.Drawing.Size(885, 530);
-            this.cktMasterDetailGrid3.TabIndex = 6;
-            this.cktMasterDetailGrid3.Total = 0;
-            // 
-            // cktMasterDetailGrid2
-            // 
-            this.cktMasterDetailGrid2.Detail1DataSource = null;
-            this.cktMasterDetailGrid2.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.cktMasterDetailGrid2.IsNavigatorVisible = true;
-            this.cktMasterDetailGrid2.IsPropertyExpand = false;
-            this.cktMasterDetailGrid2.IsPropertyVisible = true;
-            this.cktMasterDetailGrid2.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid2.Margin = new System.Windows.Forms.Padding(2);
-            this.cktMasterDetailGrid2.MasterDataSource = null;
-            this.cktMasterDetailGrid2.Name = "cktMasterDetailGrid2";
-            this.cktMasterDetailGrid2.PageIndex = 1;
-            this.cktMasterDetailGrid2.PageSize = 100;
-            this.cktMasterDetailGrid2.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.cktMasterDetailGrid2.Size = new System.Drawing.Size(885, 530);
-            this.cktMasterDetailGrid2.TabIndex = 5;
-            this.cktMasterDetailGrid2.Total = 0;
-            // 
-            // cktMasterDetailGrid1
-            // 
-            this.cktMasterDetailGrid1.Detail1DataSource = null;
-            this.cktMasterDetailGrid1.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.cktMasterDetailGrid1.IsNavigatorVisible = true;
-            this.cktMasterDetailGrid1.IsPropertyExpand = false;
-            this.cktMasterDetailGrid1.IsPropertyVisible = true;
-            this.cktMasterDetailGrid1.Location = new System.Drawing.Point(0, 0);
-            this.cktMasterDetailGrid1.Margin = new System.Windows.Forms.Padding(2);
-            this.cktMasterDetailGrid1.MasterDataSource = null;
-            this.cktMasterDetailGrid1.Name = "cktMasterDetailGrid1";
-            this.cktMasterDetailGrid1.PageIndex = 1;
-            this.cktMasterDetailGrid1.PageSize = 100;
-            this.cktMasterDetailGrid1.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.cktMasterDetailGrid1.Size = new System.Drawing.Size(885, 530);
-            this.cktMasterDetailGrid1.TabIndex = 4;
-            this.cktMasterDetailGrid1.Total = 0;
             // 
             // PopupOtherIn
             // 

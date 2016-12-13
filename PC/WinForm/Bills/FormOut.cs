@@ -201,6 +201,14 @@ namespace ChangKeTec.Wms.WinForm.Bills
             {
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 var outlist = SpareOutController.GetList(db, _bill.BillNum);
+                foreach (var spout in outlist)
+                {
+                    if (string.IsNullOrEmpty(spout.TakeUser))
+                    {
+                        MessageHelper.ShowError("领用详细中的领用人信息不能为空！");
+                        return;
+                    }
+                }
                 BillHandler.FinishMaterialOut(db, _bill, outlist);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");

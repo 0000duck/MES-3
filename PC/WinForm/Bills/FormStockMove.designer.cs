@@ -32,7 +32,6 @@
             this.BtnAdd = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
-            this.btnFilter = new DevComponents.DotNetBar.ButtonItem();
             this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
@@ -46,8 +45,7 @@
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.BtnAdd,
             this.ItemBtnExport,
-            this.ItemBtnPrint,
-            this.btnFilter});
+            this.ItemBtnPrint});
             this.bar1.Location = new System.Drawing.Point(0, 0);
             this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
@@ -86,16 +84,6 @@
             this.ItemBtnPrint.Text = "打印";
             this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.btnFilter.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_024;
-            this.btnFilter.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.btnFilter.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Text = "筛选";
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // grid
             // 
@@ -145,6 +133,5 @@
         private DevComponents.DotNetBar.ButtonItem ItemBtnExport;
         private Common.UC.CktMasterDetailGrid grid;
         private DevComponents.DotNetBar.ButtonItem ItemBtnPrint;
-        private DevComponents.DotNetBar.ButtonItem btnFilter;
     }
 }

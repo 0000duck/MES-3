@@ -79,7 +79,7 @@ namespace ChangKeTec.Wms.Models
                 Batch = this.Batch,
                 FromLocCode = this.FromLocCode,
                 ToLocCode = this.FromLocCode,
-                Qty = this.OutQty,
+                Qty = (decimal)this.OutQty,
             };
         }
 
@@ -90,8 +90,8 @@ namespace ChangKeTec.Wms.Models
                 PartCode = this.PartCode,
                 Batch = this.Batch,
                 LocCode = this.FromLocCode,
-                Qty = this.OutQty,
-                UpdateQty = 0-this.OutQty
+                Qty = (decimal)this.OutQty,
+                UpdateQty = 0-(decimal)this.OutQty
             };
         }
     }

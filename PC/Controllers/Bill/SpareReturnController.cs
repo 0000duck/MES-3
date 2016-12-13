@@ -33,7 +33,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 Batch = materialOut.Batch,
                 FromLocCode = "",
                 ToLocCode = materialOut.FromLocCode,
-                OutQty = materialOut.OutQty,
+                OutQty = (decimal)materialOut.OutQty,
                 InQty = materialOut.OutQty,
                 UnitPrice = materialOut.UnitPrice,
                 Amount = materialOut.Amount,
@@ -46,7 +46,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
                 ConfirmUser = materialOut.ConfirmUser,
                 ConfirmTime = materialOut.ConfirmTime,
                 TakeUser = materialOut.TakeUser,
-                TakeTime = materialOut.TakeTime,
+                TakeTime = (DateTime)materialOut.TakeTime,
                 ReturnUser = materialOut.TakeUser,
                 ReturnTime = DateTime.Now,
             };           

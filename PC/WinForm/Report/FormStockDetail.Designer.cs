@@ -32,6 +32,15 @@
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +56,7 @@
             this.bar1.Location = new System.Drawing.Point(0, 0);
             this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(892, 29);
+            this.bar1.Size = new System.Drawing.Size(574, 29);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 0;
@@ -73,7 +82,7 @@
             this.panelEx2.Location = new System.Drawing.Point(0, 29);
             this.panelEx2.Margin = new System.Windows.Forms.Padding(2);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(892, 532);
+            this.panelEx2.Size = new System.Drawing.Size(574, 344);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -90,15 +99,91 @@
             this.grid.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(892, 532);
+            // 
+            // 
+            // 
+            this.grid.PrimaryGrid.AllowEdit = false;
+            this.grid.PrimaryGrid.AutoExpandSetGroup = true;
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn5);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn8);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
+            this.grid.PrimaryGrid.EnableColumnFiltering = true;
+            this.grid.PrimaryGrid.EnableFiltering = true;
+            this.grid.PrimaryGrid.EnableRowFiltering = true;
+            // 
+            // 
+            // 
+            this.grid.PrimaryGrid.Footer.RowHeight = 20;
+            this.grid.PrimaryGrid.Footer.Text = "";
+            this.grid.Size = new System.Drawing.Size(574, 344);
             this.grid.TabIndex = 2;
             this.grid.Text = "superGridControl1";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.DataPropertyName = "库位";
+            this.gridColumn1.HeaderText = "库位";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.DataPropertyName = "零件号";
+            this.gridColumn2.HeaderText = "零件号";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.DataPropertyName = "批次";
+            this.gridColumn3.HeaderText = "批次";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.DataPropertyName = "数量";
+            this.gridColumn4.HeaderText = "数量";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.DataPropertyName = "单价";
+            this.gridColumn5.HeaderText = "单价";
+            this.gridColumn5.Name = "gridColumn5";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.DataPropertyName = "金额";
+            this.gridColumn6.HeaderText = "金额";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.DataPropertyName = "生产日期";
+            this.gridColumn7.HeaderText = "生产日期";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.DataPropertyName = "失效日期";
+            this.gridColumn8.HeaderText = "失效日期";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.DataPropertyName = "更新日期";
+            this.gridColumn9.HeaderText = "更新日期";
+            this.gridColumn9.Name = "gridColumn9";
             // 
             // FormStockDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 561);
+            this.ClientSize = new System.Drawing.Size(574, 373);
             this.ControlBox = false;
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.bar1);
@@ -119,5 +204,14 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.ButtonItem ItemBtnExport;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl grid;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
     }
 }

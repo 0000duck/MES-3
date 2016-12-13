@@ -32,28 +32,16 @@ namespace ChangKeTec.Wms.WinForm.Bills
             _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
 
-
-
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
             SetMasterDataSource(grid.PageSize);
-
         }
 
-
-
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-
-        }
-        
         private void BtnExport_Click(object sender, EventArgs e)
         {
             DataTable dt = DataGridViewHelper.DgvToTable(grid.MasterPrimaryGrid, EnumHelper.GetDescription(_billType));
             ExcelWriter.Write(dt);
         }
-
-
 
         private void BtnDeliver_Click(object sender, EventArgs e)
         {
