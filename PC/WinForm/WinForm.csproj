@@ -329,6 +329,12 @@
     <Compile Include="Logs\FormOperLog.Designer.cs">
       <DependentUpon>FormOperLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopUp\PopupAttach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupAttach.designer.cs">
+      <DependentUpon>PopupAttach.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopUp\PopupStockMove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -568,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Logs\FormOperLog.resx">
       <DependentUpon>FormOperLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupAttach.resx">
+      <DependentUpon>PopupAttach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopUp\PopupStockMove.resx">
       <DependentUpon>PopupStockMove.cs</DependentUpon>

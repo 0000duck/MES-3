@@ -383,6 +383,7 @@
             this.gcUID.HeaderText = "UID";
             this.gcUID.Name = "gridColumn1";
             this.gcUID.ReadOnly = true;
+            this.gcUID.Visible = false;
             // 
             // gcBillNum
             // 

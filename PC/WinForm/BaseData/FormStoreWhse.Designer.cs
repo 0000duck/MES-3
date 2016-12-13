@@ -37,7 +37,7 @@
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcWhseType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.prop = new DevComponents.DotNetBar.AdvPropertyGrid();
@@ -71,9 +71,9 @@
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnSave});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1144, 29);
+            this.bar1.Size = new System.Drawing.Size(858, 29);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 1;
@@ -94,7 +94,7 @@
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.grid.Location = new System.Drawing.Point(0, 56);
-            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grid.Name = "grid";
             // 
             // 
@@ -105,7 +105,7 @@
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
+            this.grid.PrimaryGrid.Columns.Add(this.gcWhseType);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn5);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
             // 
@@ -118,7 +118,7 @@
             this.grid.PrimaryGrid.GroupByRow.Visible = true;
             this.grid.PrimaryGrid.NoRowsText = "（无数据）";
             this.grid.PrimaryGrid.ShowRowGridIndex = true;
-            this.grid.Size = new System.Drawing.Size(859, 694);
+            this.grid.Size = new System.Drawing.Size(645, 544);
             this.grid.TabIndex = 2;
             this.grid.Text = "superGridControl1";
             this.grid.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.grid_MasterGridCellActivated);
@@ -128,6 +128,7 @@
             this.gridColumn1.DataPropertyName = "UID";
             this.gridColumn1.HeaderText = "UID";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = false;
             // 
             // gridColumn2
             // 
@@ -147,11 +148,11 @@
             this.gridColumn4.HeaderText = "地址";
             this.gridColumn4.Name = "gridColumn4";
             // 
-            // gridColumn7
+            // gcWhseType
             // 
-            this.gridColumn7.DataPropertyName = "WhseType";
-            this.gridColumn7.HeaderText = "类型";
-            this.gridColumn7.Name = "gridColumn7";
+            this.gcWhseType.DataPropertyName = "WhseType";
+            this.gcWhseType.HeaderText = "类型";
+            this.gcWhseType.Name = "gridColumn7";
             // 
             // gridColumn5
             // 
@@ -170,10 +171,10 @@
             // 
             this.prop.Dock = System.Windows.Forms.DockStyle.Right;
             this.prop.GridLinesColor = System.Drawing.Color.WhiteSmoke;
-            this.prop.Location = new System.Drawing.Point(865, 56);
-            this.prop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.prop.Location = new System.Drawing.Point(649, 56);
+            this.prop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.prop.Name = "prop";
-            this.prop.Size = new System.Drawing.Size(279, 694);
+            this.prop.Size = new System.Drawing.Size(209, 544);
             this.prop.TabIndex = 3;
             this.prop.Text = "advPropertyGrid1";
             // 
@@ -202,7 +203,7 @@
             this.bn.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bn.Name = "bn";
             this.bn.PositionItem = this.bindingNavigatorPositionItem;
-            this.bn.Size = new System.Drawing.Size(1144, 27);
+            this.bn.Size = new System.Drawing.Size(858, 27);
             this.bn.TabIndex = 4;
             this.bn.Text = "bindingNavigator1";
             // 
@@ -218,7 +219,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(32, 24);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "总项数";
             // 
@@ -259,7 +260,7 @@
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(49, 27);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(38, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "当前位置";
             // 
@@ -293,43 +294,43 @@
             // 
             // expandableSplitter2
             // 
-            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.expandableSplitter2.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandableSplitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(200)))), ((int)(((byte)(103)))));
-            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(135)))));
+            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(151)))), ((int)(((byte)(61)))));
+            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(94)))));
             this.expandableSplitter2.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2;
             this.expandableSplitter2.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground;
-            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.expandableSplitter2.Location = new System.Drawing.Point(859, 56);
-            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.expandableSplitter2.Location = new System.Drawing.Point(645, 56);
+            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.expandableSplitter2.Name = "expandableSplitter2";
-            this.expandableSplitter2.Size = new System.Drawing.Size(6, 694);
+            this.expandableSplitter2.Size = new System.Drawing.Size(4, 544);
             this.expandableSplitter2.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007;
             this.expandableSplitter2.TabIndex = 58;
             this.expandableSplitter2.TabStop = false;
             // 
             // FormStoreWhse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 750);
+            this.ClientSize = new System.Drawing.Size(858, 600);
             this.ControlBox = false;
             this.Controls.Add(this.grid);
             this.Controls.Add(this.expandableSplitter2);
@@ -337,7 +338,7 @@
             this.Controls.Add(this.bn);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormStoreWhse";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -376,7 +377,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcWhseType;
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter2;
     }
 }

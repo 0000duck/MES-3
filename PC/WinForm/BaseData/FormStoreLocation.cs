@@ -30,8 +30,9 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[2].EditorType = typeof(StoreWhseComboBox);
-            grid.PrimaryGrid.Columns[3].EditorType = typeof(StoreGroupComboBox);
+            gcWhseCode.EditorType = typeof(StoreWhseComboBox);
+            gcGroupCode.EditorType = typeof(StoreGroupComboBox);
+            gcLocType.EditorType = typeof (LocTypeComboBox);
 
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {

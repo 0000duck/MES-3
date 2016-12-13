@@ -29,14 +29,11 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            grid.PrimaryGrid.Columns[3].EditorType = typeof(WorkLineTypeComboBox);
-
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 column.MinimumWidth = 100;
             }
-            grid.PrimaryGrid.ColumnAutoSizeMode = ColumnAutoSizeMode.Fill;
+//            grid.PrimaryGrid.ColumnAutoSizeMode = ColumnAutoSizeMode.Fill;
         }
         private  void btnSave_Click(object sender, EventArgs e)
         {
@@ -132,14 +129,9 @@ namespace ChangKeTec.Wms.WinForm.BaseData
             prop.SelectedObject = e.NewActiveCell.GridRow.DataItem;
         }
 
-
-
         private void grid_DataError(object sender, DevComponents.DotNetBar.SuperGrid.GridDataErrorEventArgs e)
         {
             grid.PrimaryGrid.ActiveCell.CancelEdit();
-        }
-
-    
-     
+        }     
     }
 }

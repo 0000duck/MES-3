@@ -412,6 +412,7 @@
             this.gridColumn1.HeaderText = "UID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.ReadOnly = true;
+            this.gridColumn1.Visible = false;
             // 
             // gridColumn2
             // 

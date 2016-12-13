@@ -121,14 +121,12 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[4].EditorType = typeof(WhseTypeComboBox);
+            gcWhseType.EditorType = typeof(WhseTypeComboBox);
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 column.MinimumWidth = 100;
             }
             grid.PrimaryGrid.ColumnAutoSizeMode = ColumnAutoSizeMode.Fill;
         }
-
-      
     }
 }

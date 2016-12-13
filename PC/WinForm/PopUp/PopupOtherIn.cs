@@ -37,6 +37,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private DateTime _Date = DateTime.Today;
         [PropertyDateTimeEditor(), Description("日期编辑")]
+        
         public DateTime BillTime
         {
             get { return _Date; }

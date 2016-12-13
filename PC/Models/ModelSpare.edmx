@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SpareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TA_Attach">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TablePKID" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FileData" Type="image" />
+        </EntityType>
         <EntityType Name="TA_BILLTYPE">
           <Key>
             <PropertyRef Name="BillType" />
@@ -168,7 +180,7 @@
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="WorklineCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="WokrlineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorklineName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
@@ -753,6 +765,7 @@
           <Property Name="PartType" Type="int" />
         </EntityType>
         <EntityContainer Name="SpareModelStoreContainer">
+          <EntitySet Name="TA_Attach" EntityType="Self.TA_Attach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_DEPT" EntityType="Self.TA_DEPT" Schema="dbo" store:Type="Tables" />
@@ -946,7 +959,6 @@
           <EntitySet Name="TA_SUB_BILLTYPE" EntityType="SpareModel.TA_SUB_BILLTYPE" />
           <EntitySet Name="TA_SUPERLIER" EntityType="SpareModel.TA_SUPERLIER" />
           <EntitySet Name="TA_UNIT" EntityType="SpareModel.TA_UNIT" />
-          <EntitySet Name="TA_WORKLINE" EntityType="SpareModel.TA_WORKLINE" />
           <EntitySet Name="TB_ASK" EntityType="SpareModel.TB_ASK" />
           <EntitySet Name="TB_BILL" EntityType="SpareModel.TB_BILL" />
           <EntitySet Name="TB_IN" EntityType="SpareModel.TB_IN" />
@@ -979,6 +991,8 @@
           <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
           <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
           <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
+          <EntitySet Name="TA_WORKLINE" EntityType="SpareModel.TA_WORKLINE" />
+          <EntitySet Name="TA_Attach" EntityType="SpareModel.TA_Attach" />
         </EntityContainer>
         <EntityType Name="TA_BILLTYPE">
           <Key>
@@ -1136,16 +1150,6 @@
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remak" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TA_WORKLINE">
-          <Key>
-            <PropertyRef Name="WorklineCode" />
-          </Key>
-          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WorklineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WokrlineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="Int32" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TB_ASK">
           <Key>
@@ -1707,6 +1711,28 @@
           <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PartType" Type="Int32" />
         </EntityType>
+        <EntityType Name="TA_WORKLINE">
+          <Key>
+            <PropertyRef Name="WorklineCode" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorklineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorklineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TA_Attach">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TablePKID" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FileData" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1878,17 +1904,6 @@
               <MappingFragment StoreEntitySet="TA_UNIT">
                 <ScalarProperty Name="Remak" ColumnName="Remak" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="UID" ColumnName="UID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TA_WORKLINE">
-            <EntityTypeMapping TypeName="SpareModel.TA_WORKLINE">
-              <MappingFragment StoreEntitySet="TA_WORKLINE">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="WokrlineName" ColumnName="WokrlineName" />
-                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2425,6 +2440,30 @@
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TA_WORKLINE">
+            <EntityTypeMapping TypeName="SpareModel.TA_WORKLINE">
+              <MappingFragment StoreEntitySet="TA_WORKLINE">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="WorklineName" ColumnName="WorklineName" />
+                <ScalarProperty Name="WorklineCode" ColumnName="WorklineCode" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TA_Attach">
+            <EntityTypeMapping TypeName="SpareModel.TA_Attach">
+              <MappingFragment StoreEntitySet="TA_Attach">
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="CreatorName" ColumnName="CreatorName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TablePKID" ColumnName="TablePKID" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

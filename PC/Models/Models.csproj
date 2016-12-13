@@ -107,6 +107,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSpare.edmx</DependentUpon>
     </Compile>
+    <Compile Include="TA_Attach.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
     <Compile Include="TA_BILLTYPE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>

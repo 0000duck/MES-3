@@ -398,6 +398,7 @@
             this.gcUID.DataPropertyName = "UID";
             this.gcUID.HeaderText = "UID";
             this.gcUID.Name = "gridColumn1";
+            this.gcUID.Visible = false;
             // 
             // gridColumn2
             // 

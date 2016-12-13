@@ -12,12 +12,14 @@ namespace ChangKeTec.Wms.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TA_WORKLINE
+    public partial class TA_Attach
     {
         public int UID { get; set; }
-        public string WorklineCode { get; set; }
-        public string WorklineName { get; set; }
-        public int State { get; set; }
-        public string Remark { get; set; }
+        public string TableName { get; set; }
+        public Nullable<int> TablePKID { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public string CreatorName { get; set; }
+        public string FileName { get; set; }
+        public byte[] FileData { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using ChangKeTec.Wms.Controllers.Log;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
+using ChangKeTec.Wms.WinForm.PopUp;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.SuperGrid;
 
@@ -19,6 +20,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
     public partial class FormPart : Office2007Form
     {
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
+        private GridRow _selectrow;
 
         public FormPart()
         {
@@ -30,10 +32,9 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            grid.PrimaryGrid.Columns[5].EditorType = typeof(UnitComboBox);
-            grid.PrimaryGrid.Columns[6].EditorType = typeof(BmComboBox);
-            grid.PrimaryGrid.Columns[7].EditorType = typeof(PartTypeComboBox);
+            gcUnit.EditorType = typeof(UnitComboBox);
+            gcBM.EditorType = typeof(BmComboBox);
+            gcPartType.EditorType = typeof(PartTypeComboBox);
 
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
@@ -143,6 +144,23 @@ namespace ChangKeTec.Wms.WinForm.BaseData
             grid.PrimaryGrid.ActiveCell.CancelEdit();
         }
 
-    
+        private void grid_CellActivated(object sender, GridCellActivatedEventArgs e)
+        {
+            prop.SelectedObject = e.NewActiveCell.GridRow.DataItem;
+            _selectrow = e.NewActiveCell.GridRow;
+        }
+
+        private void btnAttach_Click(object sender, EventArgs e)
+        {
+            if (_selectrow == null)
+            {
+                MessageHelper.ShowError("请选择具体的备件信息！");
+                return;
+            }
+            PopupAttach frm = new PopupAttach();
+            frm.TableName = "TA_PART";
+            frm.TablePKID = Convert.ToInt32(_selectrow[gcUID].Value);
+            frm.ShowDialog();
+        }
     }
 }

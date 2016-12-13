@@ -29,8 +29,8 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[3].EditorType = typeof(GroupTypeComboBox);
-            grid.PrimaryGrid.Columns[4].EditorType = typeof(StoreWhseComboBox);
+            gcGroupType.EditorType = typeof(GroupTypeComboBox);
+            gcWhseCode.EditorType = typeof(StoreWhseComboBox);
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 column.MinimumWidth = 100;

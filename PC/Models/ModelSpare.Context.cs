@@ -37,7 +37,6 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<TA_SUB_BILLTYPE> TA_SUB_BILLTYPE { get; set; }
         public virtual DbSet<TA_SUPERLIER> TA_SUPERLIER { get; set; }
         public virtual DbSet<TA_UNIT> TA_UNIT { get; set; }
-        public virtual DbSet<TA_WORKLINE> TA_WORKLINE { get; set; }
         public virtual DbSet<TB_ASK> TB_ASK { get; set; }
         public virtual DbSet<TB_BILL> TB_BILL { get; set; }
         public virtual DbSet<TB_IN> TB_IN { get; set; }
@@ -70,5 +69,7 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<VS_OVERDUE_STOCK> VS_OVERDUE_STOCK { get; set; }
         public virtual DbSet<VS_STOCK> VS_STOCK { get; set; }
         public virtual DbSet<VS_STOCK_AGE> VS_STOCK_AGE { get; set; }
+        public virtual DbSet<TA_WORKLINE> TA_WORKLINE { get; set; }
+        public virtual DbSet<TA_Attach> TA_Attach { get; set; }
     }
 }
