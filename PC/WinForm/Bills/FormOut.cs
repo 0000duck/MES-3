@@ -212,6 +212,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 }
                 BillHandler.FinishMaterialOut(db, _bill, outlist);
                 EntitiesFactory.SaveDb(db);
+                NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
             }
         }

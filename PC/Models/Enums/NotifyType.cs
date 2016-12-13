@@ -58,5 +58,7 @@ namespace ChangKeTec.Wms.Models.Enums
         StockInaction = 201,
         [Description("备件过期提示")]
         StockOverdue = 202,
+        [Description("安全库存提示")]
+        StockSafeQty = 203,
     }
 }

@@ -97,6 +97,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddOtherOut(db, _bill, detailList);
                 EntitiesFactory.SaveDb(db);
+                NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
             }
             catch (Exception ex)

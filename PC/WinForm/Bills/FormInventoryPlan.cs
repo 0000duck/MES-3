@@ -224,6 +224,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             {
                 BillHandler.AdjustStockByInventoryLoc(_db, _bill);
                 EntitiesFactory.SaveDb(_db);
+                NotifyController.AddStockSafeQty(_db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("调整库存成功！");
                 SetMasterDataSource(grid.PageSize);
             }           

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using ChangKeTec.Wms.Common;
 using ChangKeTec.Wms.Common.UC;
 using ChangKeTec.Wms.Controllers;
+using ChangKeTec.Wms.Controllers.Bill;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
@@ -177,6 +178,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 var returnlist = db.TB_RETURN.Where(p => p.BillNum == _bill.BillNum).ToList();
                 BillHandler.ExecuteSpareReturn(db, _bill, returnlist);
                 EntitiesFactory.SaveDb(db);
+                NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
             }
         }
