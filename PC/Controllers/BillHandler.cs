@@ -25,7 +25,7 @@ namespace ChangKeTec.Wms.Controllers
             BillController.AddOrUpdate(db, bill); //添加【移库单】单据
             StockMoveController.AddList(db, details); //添加【移库单】明细
             StockDetailController.ListMove(db, bill, details); //更新【库存主表】【库存明细】
-            NotifyController.AddNotify(db, bill.OperName, NotifyType.StockMove, bill.BillNum, "");
+            NotifyController.AddNotify(db, bill.OperName, NotifyType.StockMoveApprove, bill.BillNum, "");
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace ChangKeTec.Wms.Controllers
                     default:
                         throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
                 }
-                NotifyController.AddNotify(db,bill.OperName,NotifyType.OtherIn,bill.BillNum,"");
+                NotifyController.AddNotify(db,bill.OperName,NotifyType.OtherInApprove,bill.BillNum,"");
             }
         }
 
@@ -112,7 +112,7 @@ namespace ChangKeTec.Wms.Controllers
                     default:
                         throw new WmsException(ResultCode.Exception, bill.BillNum, "单据二级类型错误");
                 }
-                NotifyController.AddNotify(db, bill.OperName, NotifyType.OtherOut, bill.BillNum, "");
+                NotifyController.AddNotify(db, bill.OperName, NotifyType.OtherOutApprove, bill.BillNum, "");
             }
         }
 
@@ -149,6 +149,20 @@ namespace ChangKeTec.Wms.Controllers
 
         #endregion
 
+        #region 采购订单
+        /// <summary>
+        ///     添加【采购订单】
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="bill">采购订单单</param>
+        /// <param name="details">订单明细</param>
+        /// <returns></returns>
+        public static void AddPO(SpareEntities db, List<TB_BILL> billlist, List<TB_PO> details)
+        {
+            PoController.AddPoList(db, billlist, details);
+        }
+        #endregion
+
         #region 收货
 
         /// <summary>
@@ -161,44 +175,37 @@ namespace ChangKeTec.Wms.Controllers
         public static void AddMaterialIn(SpareEntities db, List<TB_BILL> billList,
             List<TB_IN> detailList)
         {
-
             {
                 foreach (var bill in billList)
                 {
-                    //校验订单状态
-                    var po = BillController.GetBill(db, bill.SourceBillNum);
-                    if (po == null) //订单不存在
-                        throw new WmsException(ResultCode.DataNotFound, bill.SourceBillNum, "订单不存在");
-
-                    if (po.State != (int) DataState.Enabled) //订单状态已关闭
-                        throw new WmsException(ResultCode.DataStateError, po.BillNum, "订单已关闭");
-                  
-                    var details = detailList.Where(p => p.PoBillNum == bill.SourceBillNum).ToList();
-                    //校验收货数量是否超出订单未收货数量
-                    foreach (var detail in details)
-                    {
-                        var poDetail =
-                            db.TB_PO.SingleOrDefault(
-                                p => p.BillNum == po.BillNum && p.PartCode == detail.PartCode);
-                        if (poDetail == null)
-                            throw new WmsException(ResultCode.DataNotFound, detail.BillNum,
-                                "订单明细不存在" + "\t" + detail.PartCode);
-//                        if (poDetail.OpenQty < detail.Qty)
-//                            throw new WmsException(ResultCode.DataQtyError, detail.BillNum,
-//                                "收货数量超出订单剩余数量" + "\t" + detail.PartCode + "\t" + detail.Qty + "<->" + poDetail.OpenQty);
-                        //更新订单收货数量
-                        //poDetail.OpenQty -= detail.Qty;
-                        //poDetail.ClosedQty += detail.Qty;
-                        poDetail.ArrialQty += detail.Qty;
-                    }
+//                    //校验订单状态
+//                    var po = BillController.GetBill(db, bill.SourceBillNum);
+//                    if (po == null) //订单不存在
+//                        throw new WmsException(ResultCode.DataNotFound, bill.SourceBillNum, "订单不存在");
+//
+//                    if (po.State != (int) DataState.Enabled) //订单状态已关闭
+//                        throw new WmsException(ResultCode.DataStateError, po.BillNum, "订单已关闭");
+//                  
+//                    var details = detailList.Where(p => p.PoBillNum == bill.SourceBillNum).ToList();
+//                    //校验收货数量是否超出订单未收货数量
+//                    foreach (var detail in details)
+//                    {
+//                        var poDetail =
+//                            db.TB_PO.SingleOrDefault(
+//                                p => p.BillNum == po.BillNum && p.PartCode == detail.PartCode);
+//                        if (poDetail == null)
+//                            throw new WmsException(ResultCode.DataNotFound, detail.BillNum,
+//                                "订单明细不存在" + "\t" + detail.PartCode);
+//                        poDetail.ArrialQty += detail.Qty;
+//                    }
 
                     SetBillNum(bill); //设置单据编号
-                    details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
+//                    details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
 
                     BillController.AddOrUpdate(db, bill); //添加【原料收货单】单据
-                    SpareInController.AddList(db, details); //添加【原料收货单】明细
+                    SpareInController.AddList(db, detailList); //添加【原料收货单】明细
 
-                    var stockDetails = details.Select(detail => detail.ToStockDetailIn(bill)).ToList();
+                    var stockDetails = detailList.Select(detail => detail.ToStockDetailIn(bill)).ToList();
                      StockDetailController.ListIn(db, bill, stockDetails); //更新【库存主表】【库存明细】
                     
                 }
@@ -262,7 +269,7 @@ namespace ChangKeTec.Wms.Controllers
                 {
                     SetBillNum(billPickFact); //设置单据编号
                     details.ForEach(p => p.BillNum = billPickFact.BillNum); //设置明细编号
-                    NotifyController.AddNotify(db,billPickFact.OperName,NotifyType.MaterialDeliver, billPickFact.BillNum,"");
+                    NotifyController.AddNotify(db,billPickFact.OperName,NotifyType.MaterialOut, billPickFact.BillNum,"");
                 }
                 else
                 {
@@ -274,7 +281,7 @@ namespace ChangKeTec.Wms.Controllers
                             SpareOutController.RemaveDetail(db,det);
                         }
                     }
-                    NotifyController.AddNotify(db, billPickFact.OperName, NotifyType.MaterialDeliverUpdate, billPickFact.BillNum, "");
+                    NotifyController.AddNotify(db, billPickFact.OperName, NotifyType.MaterialOutUpdate, billPickFact.BillNum, "");
                 }               
                 BillController.AddOrUpdate(db, billPickFact); //添加【原料拣料单】单据
                 SpareOutController.AddOrUpdateList(db, details); //更新【实际拣料单】明细
@@ -302,7 +309,7 @@ namespace ChangKeTec.Wms.Controllers
                 StockDetailController.Out(db, bill, detailOut);
             }
             BillController.UpdateState(db, bill, BillState.Finished); //更新【拣料单】状态为：完成
-            NotifyController.AddNotify(db,bill.OperName,NotifyType.MaterialDeliverApprove,bill.BillNum,"");
+            NotifyController.AddNotify(db,bill.OperName,NotifyType.MaterialOutApprove,bill.BillNum,"");
         }
 
         #endregion
@@ -397,7 +404,7 @@ namespace ChangKeTec.Wms.Controllers
                 BillController.AddOrUpdate(db,billPick);
                 SpareOutController.AddList(db,partPickList);
                 BillController.UpdateState(db, billAsk, BillState.Handling); //更新【叫料单】状态为：执行中
-                NotifyController.AddNotify(db,billPick.OperName,NotifyType.MaterialDeliver, billAsk.BillNum,"");
+                NotifyController.AddNotify(db,billPick.OperName,NotifyType.MaterialOut, billAsk.BillNum,"");
                 return "OK";
             }
             catch (Exception ex)

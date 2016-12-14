@@ -32,8 +32,8 @@
             this.btnAdd = new DevComponents.DotNetBar.ButtonItem();
             this.btnModify = new DevComponents.DotNetBar.ButtonItem();
             this.btnCancel = new DevComponents.DotNetBar.ButtonItem();
-            this.BtnHandle = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnApprove = new DevComponents.DotNetBar.ButtonItem();
+            this.BtnHandle = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnImport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
@@ -93,15 +93,6 @@
             this.btnCancel.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // BtnHandle
-            // 
-            this.BtnHandle.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.BtnHandle.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_194;
-            this.BtnHandle.ImageFixedSize = new System.Drawing.Size(20, 20);
-            this.BtnHandle.Name = "BtnHandle";
-            this.BtnHandle.Text = "生成领用单";
-            this.BtnHandle.Click += new System.EventHandler(this.BtnHandle_Click);
-            // 
             // ItemBtnApprove
             // 
             this.ItemBtnApprove.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
@@ -110,6 +101,15 @@
             this.ItemBtnApprove.Name = "ItemBtnApprove";
             this.ItemBtnApprove.Text = "批准";
             this.ItemBtnApprove.Click += new System.EventHandler(this.ItemBtnApprove_Click);
+            // 
+            // BtnHandle
+            // 
+            this.BtnHandle.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.BtnHandle.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_194;
+            this.BtnHandle.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.BtnHandle.Name = "BtnHandle";
+            this.BtnHandle.Text = "生成领用单";
+            this.BtnHandle.Click += new System.EventHandler(this.BtnHandle_Click);
             // 
             // ItemBtnImport
             // 
@@ -147,7 +147,7 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;

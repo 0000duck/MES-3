@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ChangKeTec.Wms.Controllers;
 using ChangKeTec.Wms.Controllers.BaseData;
 using ChangKeTec.Wms.Controllers.Bill;
 using ChangKeTec.Wms.Controllers.Interface;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
+using DevComponents.DotNetBar;
 
 namespace ChangKeTec.Wms.ErpInterface
 {
@@ -651,6 +653,110 @@ namespace ChangKeTec.Wms.ErpInterface
             Console.WriteLine(@"接收零件数据完成");
         }
 
+        private static void ReadRCPFile(List<string> dataList, string filename, SpareEntities db)
+        {
+            Console.WriteLine(@"接收采购订单收货数据开始");
+            var partList = new List<TA_PART>();
+            var billList = new List<TB_BILL>();
+            var MIList = new List<TB_IN>();        
+            for (int i = 0; i < dataList.Count; i++)
+            {              
+                string strErr = "采购订单收货文件 " + filename + " 第 " + i + " 行 \t";
+                string data = dataList[i];
+                var cols = data.Split(';');              
+                if (cols.Length != 11)
+                {
+                    Console.WriteLine(strErr + @" 格式错误" + Environment.NewLine + "\t\t\t\t" + data);
+                    continue;
+                }
+                //添加TB_BILL表数据
+                var bill = new TB_BILL();
+                //todo 收货单号
+                var BillNum = cols[0];
+                var SourceBillNum = cols[0];
+                if (billList.FirstOrDefault(p => p.BillNum == BillNum) == null)
+                {
+                    bill.BillNum = BillNum;
+                    bill.BillTime = DateTime.Now;
+                    bill.BillType = (int)BillType.MaterialIn;
+                    bill.OperName = GlobalVar.OperName;
+                    bill.SourceBillNum = SourceBillNum;
+                    billList.Add(bill);
+                }
+                //添加TB_IN表记录
+                var MI = new TB_IN()
+                {
+                    BillNum = BillNum,
+                    PoBillNum = SourceBillNum,
+                    PoLineNum = Convert.ToInt32(cols[1]),
+                    PartCode = cols[3],
+                    Batch = GetBatch(),
+                    //todo 目标库位
+                    ToLocCode = "",
+                    Qty = Convert.ToInt32(cols[4]),
+                    UnitPrice = Convert.ToDecimal(cols[5]),
+                    ProduceDate = DateTime.Now
+                };
+                MIList.Add(MI);                
+            }
+            BillHandler.AddMaterialIn(db, billList, MIList);
+            Console.WriteLine(@"接收采购订单收货数据完成");
+        }
 
+        private static void GetOAData(SpareEntities db)
+        {
+            InterfaceEntities OAdb = EntitiesFactory.CreateInterfaceInstance();
+            var SparePartlist = new List<TA_PART>();
+            var SpareBillList = new List<TB_BILL>();
+            var SparePOList = new List<TB_PO>();
+            //同步零件号
+            var partlist = OAdb.OA_PART.Where(p => p.IsSyn == 0).ToList();
+            if (partlist.Count > 0)
+            {
+                foreach (var part in partlist)
+                {
+                    var SparePart = new TA_PART();
+                    SparePart = PartController.GetPartByPartCode(db, part.code);
+                    SparePart.PartCode = part.code;
+                    SparePart.ErpPartCode = part.code;
+                    SparePart.PartDesc1 = part.engname;
+                    SparePart.PartDesc2 = part.name;
+                    SparePart.Unit = part.unit;
+                    SparePartlist.Add(SparePart);
+
+                }
+                PartController.AddOrUpdate(db,SparePartlist);
+                NotifyController.AddNotify(db,GlobalVar.OperName,NotifyType.OAInterfaceBase,"","");
+            }
+
+            //同步采购订单
+            var OAPOBill = OAdb.OA_PO_MAIN.Where(p => p.IsSyn == 0).ToList();
+            if (OAPOBill.Count > 0)
+            {
+                foreach (var pobill in OAPOBill)
+                {
+                    var SparePOBill = new TB_BILL()
+                    {
+                        BillNum = pobill.orderno,
+                        BillType = (int)BillType.PuchaseOrder,
+                        BillTime = DateTime.Now,
+                        OperName = pobill.@operator,
+                        SplyId = pobill.suppliername,
+                        Remark = pobill.remark
+                    };
+                    SpareBillList.Add(SparePOBill);
+                    //todo 添加PO明细 目前字段中没有子表与主表的关联字段
+//                    var OAPOList = OAdb.OA_PO_SUB.Where(p=> p)
+                }
+                BillHandler.AddPO(db, SpareBillList,SparePOList);
+                NotifyController.AddNotify(db, GlobalVar.OperName, NotifyType.OAInterfacePO, "", "");
+            }
+        }
+
+        private static string GetBatch()
+        {
+            var date = DateTime.Now.Date;
+            return date.Year.ToString().Substring(2, 2) + date.Month.ToString("00") + date.Day.ToString("00");
+        }
     }
 }

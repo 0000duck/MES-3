@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelInterface.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OA_PART">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="engname" Type="nvarchar" MaxLength="100" />
+          <Property Name="model" Type="nvarchar" MaxLength="100" />
+          <Property Name="partType" Type="nvarchar" MaxLength="50" />
+          <Property Name="unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="enabled" Type="int" />
+          <Property Name="groupcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="goodcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="200" />
+          <Property Name="brand" Type="nvarchar" MaxLength="50" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="annex" Type="image" />
+          <Property Name="wladdress" Type="nvarchar" MaxLength="200" />
+          <Property Name="buyer" Type="nvarchar" MaxLength="50" />
+          <Property Name="drawingnum" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsSyn" Type="int" />
+        </EntityType>
+        <EntityType Name="OA_PO_MAIN">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplieradd" Type="nvarchar" MaxLength="200" />
+          <Property Name="currencydescribe" Type="nvarchar" MaxLength="50" />
+          <Property Name="engtitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="subject" Type="nvarchar" MaxLength="100" />
+          <Property Name="entitychname" Type="nvarchar" MaxLength="200" />
+          <Property Name="costcenterdecribe" Type="nvarchar" MaxLength="200" />
+          <Property Name="billtobank" Type="nvarchar" MaxLength="200" />
+          <Property Name="billtotax" Type="nvarchar" MaxLength="200" />
+          <Property Name="nontaxable" Type="money" />
+          <Property Name="orderno" Type="nvarchar" MaxLength="50" />
+          <Property Name="entityenname" Type="nvarchar" MaxLength="200" />
+          <Property Name="billtoaccounts" Type="nvarchar" MaxLength="100" />
+          <Property Name="billtofax" Type="nvarchar" MaxLength="50" />
+          <Property Name="taxable" Type="money" />
+          <Property Name="orderate" Type="date" />
+          <Property Name="entityadd" Type="nvarchar" MaxLength="200" />
+          <Property Name="billtoadd" Type="nvarchar" MaxLength="200" />
+          <Property Name="totalfax" Type="money" />
+          <Property Name="duedate" Type="date" />
+          <Property Name="entityenadd" Type="nvarchar" MaxLength="200" />
+          <Property Name="buyer" Type="nvarchar" MaxLength="50" />
+          <Property Name="entitypostcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="operator" Type="nvarchar" MaxLength="50" />
+          <Property Name="entityfax" Type="nvarchar" MaxLength="50" />
+          <Property Name="entityname" Type="nvarchar" MaxLength="200" />
+          <Property Name="entitytel" Type="nvarchar" MaxLength="50" />
+          <Property Name="billto" Type="nvarchar" MaxLength="50" />
+          <Property Name="suppliercode" Type="nvarchar" MaxLength="50" />
+          <Property Name="fob" Type="nvarchar" MaxLength="200" />
+          <Property Name="suppliername" Type="nvarchar" MaxLength="200" />
+          <Property Name="applicant" Type="nvarchar" MaxLength="200" />
+          <Property Name="buyername" Type="nvarchar" MaxLength="50" />
+          <Property Name="shipto" Type="nvarchar" MaxLength="200" />
+          <Property Name="paymentode" Type="nvarchar" MaxLength="50" />
+          <Property Name="theapplicantphone" Type="nvarchar" MaxLength="50" />
+          <Property Name="paymentdescribe" Type="nvarchar" MaxLength="200" />
+          <Property Name="remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="printorderdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="affix" Type="image" />
+          <Property Name="printduedate" Type="date" />
+          <Property Name="supplier" Type="nvarchar" MaxLength="100" />
+          <Property Name="attn" Type="nvarchar" MaxLength="50" />
+          <Property Name="currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="paymentterm" Type="nvarchar" MaxLength="50" />
+          <Property Name="paytax" Type="bit" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="bank" Type="nvarchar" MaxLength="100" />
+          <Property Name="toal" Type="money" />
+          <Property Name="state" Type="int" />
+          <Property Name="isinvalid" Type="int" />
+          <Property Name="construction" Type="bit" />
+          <Property Name="IsSyn" Type="int" />
+        </EntityType>
+        <EntityType Name="OA_PO_SUB">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prdetailid" Type="nvarchar" MaxLength="50" />
+          <Property Name="taxval" Type="money" />
+          <Property Name="itemenname" Type="nvarchar" MaxLength="200" />
+          <Property Name="tatal1" Type="money" />
+          <Property Name="namespecification" Type="nvarchar" MaxLength="200" />
+          <Property Name="no" Type="nvarchar" MaxLength="50" />
+          <Property Name="itemnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="100" />
+          <Property Name="specification" Type="nvarchar" MaxLength="200" />
+          <Property Name="qty" Type="money" />
+          <Property Name="um" Type="nvarchar" MaxLength="50" />
+          <Property Name="purcose" Type="money" />
+          <Property Name="plno" Type="nvarchar" MaxLength="50" />
+          <Property Name="popurcose" Type="money" />
+          <Property Name="taxate" Type="nvarchar" MaxLength="50" />
+          <Property Name="taxamount" Type="money" />
+          <Property Name="currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="tatal" Type="money" />
+          <Property Name="site" Type="nvarchar" MaxLength="200" />
+          <Property Name="provisonalprice" Type="bit" />
+          <Property Name="remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="acct" Type="nvarchar" MaxLength="100" />
+          <Property Name="subacct" Type="nvarchar" MaxLength="100" />
+          <Property Name="costcenter" Type="nvarchar" MaxLength="100" />
+          <Property Name="programcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="req" Type="nvarchar" MaxLength="50" />
+          <Property Name="prln" Type="nvarchar" MaxLength="50" />
+          <Property Name="reqby" Type="nvarchar" MaxLength="50" />
+          <Property Name="inventoryparts" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ModelInterfaceStoreContainer">
+          <EntitySet Name="OA_PART" EntityType="Self.OA_PART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OA_PO_MAIN" EntityType="Self.OA_PO_MAIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OA_PO_SUB" EntityType="Self.OA_PO_SUB" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelInterface" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="InterfaceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OA_PART" EntityType="ModelInterface.OA_PART" />
+          <EntitySet Name="OA_PO_MAIN" EntityType="ModelInterface.OA_PO_MAIN" />
+          <EntitySet Name="OA_PO_SUB" EntityType="ModelInterface.OA_PO_SUB" />
+        </EntityContainer>
+        <EntityType Name="OA_PART">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="engname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="partType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="enabled" Type="Int32" />
+          <Property Name="groupcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="goodcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="annex" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="wladdress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="buyer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drawingnum" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsSyn" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OA_PO_MAIN">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplieradd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="currencydescribe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="engtitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="entitychname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="costcenterdecribe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="billtobank" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="billtotax" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="nontaxable" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="orderno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="entityenname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="billtoaccounts" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="billtofax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="taxable" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="orderate" Type="DateTime" Precision="0" />
+          <Property Name="entityadd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="billtoadd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="totalfax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="duedate" Type="DateTime" Precision="0" />
+          <Property Name="entityenadd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="buyer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="entitypostcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="operator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="entityfax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="entityname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="entitytel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="billto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="suppliercode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fob" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="suppliername" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="applicant" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="buyername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="shipto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="paymentode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="theapplicantphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paymentdescribe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="printorderdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="affix" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="printduedate" Type="DateTime" Precision="0" />
+          <Property Name="supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="attn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paymentterm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paytax" Type="Boolean" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bank" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="toal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="isinvalid" Type="Int32" />
+          <Property Name="construction" Type="Boolean" />
+          <Property Name="IsSyn" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OA_PO_SUB">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prdetailid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="taxval" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="itemenname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tatal1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="namespecification" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="specification" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="qty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="um" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="purcose" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="plno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="popurcose" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="taxate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="taxamount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tatal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="site" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="provisonalprice" Type="Boolean" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="acct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subacct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="costcenter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="programcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="req" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prln" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reqby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="inventoryparts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="ModelInterface" />
+        <Alias Key="Target" Value="ModelInterface.Store" />
+        <EntityContainerMapping CdmEntityContainer="InterfaceEntities" StorageEntityContainer="ModelInterfaceStoreContainer">
+          <EntitySetMapping Name="OA_PART">
+            <EntityTypeMapping TypeName="ModelInterface.OA_PART">
+              <MappingFragment StoreEntitySet="OA_PART">
+                <ScalarProperty Name="IsSyn" ColumnName="IsSyn" />
+                <ScalarProperty Name="drawingnum" ColumnName="drawingnum" />
+                <ScalarProperty Name="buyer" ColumnName="buyer" />
+                <ScalarProperty Name="wladdress" ColumnName="wladdress" />
+                <ScalarProperty Name="annex" ColumnName="annex" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="goodcode" ColumnName="goodcode" />
+                <ScalarProperty Name="groupcode" ColumnName="groupcode" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="partType" ColumnName="partType" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="engname" ColumnName="engname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_PO_MAIN">
+            <EntityTypeMapping TypeName="ModelInterface.OA_PO_MAIN">
+              <MappingFragment StoreEntitySet="OA_PO_MAIN">
+                <ScalarProperty Name="IsSyn" ColumnName="IsSyn" />
+                <ScalarProperty Name="construction" ColumnName="construction" />
+                <ScalarProperty Name="isinvalid" ColumnName="isinvalid" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="toal" ColumnName="toal" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="paytax" ColumnName="paytax" />
+                <ScalarProperty Name="paymentterm" ColumnName="paymentterm" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="attn" ColumnName="attn" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
+                <ScalarProperty Name="printduedate" ColumnName="printduedate" />
+                <ScalarProperty Name="affix" ColumnName="affix" />
+                <ScalarProperty Name="printorderdate" ColumnName="printorderdate" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="paymentdescribe" ColumnName="paymentdescribe" />
+                <ScalarProperty Name="theapplicantphone" ColumnName="theapplicantphone" />
+                <ScalarProperty Name="paymentode" ColumnName="paymentode" />
+                <ScalarProperty Name="shipto" ColumnName="shipto" />
+                <ScalarProperty Name="buyername" ColumnName="buyername" />
+                <ScalarProperty Name="applicant" ColumnName="applicant" />
+                <ScalarProperty Name="suppliername" ColumnName="suppliername" />
+                <ScalarProperty Name="fob" ColumnName="fob" />
+                <ScalarProperty Name="suppliercode" ColumnName="suppliercode" />
+                <ScalarProperty Name="billto" ColumnName="billto" />
+                <ScalarProperty Name="entitytel" ColumnName="entitytel" />
+                <ScalarProperty Name="entityname" ColumnName="entityname" />
+                <ScalarProperty Name="entityfax" ColumnName="entityfax" />
+                <ScalarProperty Name="operator" ColumnName="operator" />
+                <ScalarProperty Name="entitypostcode" ColumnName="entitypostcode" />
+                <ScalarProperty Name="buyer" ColumnName="buyer" />
+                <ScalarProperty Name="entityenadd" ColumnName="entityenadd" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="totalfax" ColumnName="totalfax" />
+                <ScalarProperty Name="billtoadd" ColumnName="billtoadd" />
+                <ScalarProperty Name="entityadd" ColumnName="entityadd" />
+                <ScalarProperty Name="orderate" ColumnName="orderate" />
+                <ScalarProperty Name="taxable" ColumnName="taxable" />
+                <ScalarProperty Name="billtofax" ColumnName="billtofax" />
+                <ScalarProperty Name="billtoaccounts" ColumnName="billtoaccounts" />
+                <ScalarProperty Name="entityenname" ColumnName="entityenname" />
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="nontaxable" ColumnName="nontaxable" />
+                <ScalarProperty Name="billtotax" ColumnName="billtotax" />
+                <ScalarProperty Name="billtobank" ColumnName="billtobank" />
+                <ScalarProperty Name="costcenterdecribe" ColumnName="costcenterdecribe" />
+                <ScalarProperty Name="entitychname" ColumnName="entitychname" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="engtitle" ColumnName="engtitle" />
+                <ScalarProperty Name="currencydescribe" ColumnName="currencydescribe" />
+                <ScalarProperty Name="supplieradd" ColumnName="supplieradd" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OA_PO_SUB">
+            <EntityTypeMapping TypeName="ModelInterface.OA_PO_SUB">
+              <MappingFragment StoreEntitySet="OA_PO_SUB">
+                <ScalarProperty Name="inventoryparts" ColumnName="inventoryparts" />
+                <ScalarProperty Name="reqby" ColumnName="reqby" />
+                <ScalarProperty Name="prln" ColumnName="prln" />
+                <ScalarProperty Name="req" ColumnName="req" />
+                <ScalarProperty Name="programcode" ColumnName="programcode" />
+                <ScalarProperty Name="costcenter" ColumnName="costcenter" />
+                <ScalarProperty Name="subacct" ColumnName="subacct" />
+                <ScalarProperty Name="acct" ColumnName="acct" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="provisonalprice" ColumnName="provisonalprice" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="tatal" ColumnName="tatal" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="taxamount" ColumnName="taxamount" />
+                <ScalarProperty Name="taxate" ColumnName="taxate" />
+                <ScalarProperty Name="popurcose" ColumnName="popurcose" />
+                <ScalarProperty Name="plno" ColumnName="plno" />
+                <ScalarProperty Name="purcose" ColumnName="purcose" />
+                <ScalarProperty Name="um" ColumnName="um" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="specification" ColumnName="specification" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="itemnumber" ColumnName="itemnumber" />
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="namespecification" ColumnName="namespecification" />
+                <ScalarProperty Name="tatal1" ColumnName="tatal1" />
+                <ScalarProperty Name="itemenname" ColumnName="itemenname" />
+                <ScalarProperty Name="taxval" ColumnName="taxval" />
+                <ScalarProperty Name="prdetailid" ColumnName="prdetailid" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

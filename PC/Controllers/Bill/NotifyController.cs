@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using ChangKeTec.Wms.Models;
@@ -91,7 +92,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
             if (InactionList.Count > 0)
             {
                 if (
-                    db.TL_NOTIFY.FirstOrDefault(p => p.CreateTime.Date == DateTime.Now.Date && p.NotifyType == (int)NotifyType.StockInaction) == null)
+                    db.TL_NOTIFY.FirstOrDefault(p => DbFunctions.DiffDays(p.CreateTime, DateTime.Now) == 0 && p.NotifyType == (int)NotifyType.StockInaction) == null)
                 {
                     AddNotify(db,OperName, NotifyType.StockInaction,"","");
                 }
@@ -99,7 +100,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
             if (OverdueList.Count > 0)
             {
                 if (
-                    db.TL_NOTIFY.FirstOrDefault(p => p.CreateTime.Date == DateTime.Now.Date && p.NotifyType == (int)NotifyType.StockOverdue) == null)
+                    db.TL_NOTIFY.FirstOrDefault(p => DbFunctions.DiffDays(p.CreateTime,DateTime.Now) != 0 && p.NotifyType == (int)NotifyType.StockOverdue) == null)
                 {
                     AddNotify(db, OperName, NotifyType.StockOverdue, "", "");
                 }
@@ -112,7 +113,7 @@ namespace ChangKeTec.Wms.Controllers.Bill
             if (SafeQtyList.Count > 0)
             {
                 if (
-                    db.TL_NOTIFY.FirstOrDefault(p => p.CreateTime.Date == DateTime.Now.Date && p.NotifyType == (int)NotifyType.StockSafeQty) == null)
+                    db.TL_NOTIFY.FirstOrDefault(p => DbFunctions.DiffDays(p.CreateTime, DateTime.Now) != 0 && p.NotifyType == (int)NotifyType.StockSafeQty) == null)
                 {
                     AddNotify(db, OperName, NotifyType.StockSafeQty, "", "");
                 }

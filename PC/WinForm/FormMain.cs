@@ -40,6 +40,7 @@ namespace ChangKeTec.Wms.WinForm
                 }
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 NotifyController.AddStockNotify(db,GlobalVar.Oper.OperName);
+                db.SaveChanges();
             }
             catch(Exception ex)
             {

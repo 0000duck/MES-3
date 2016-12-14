@@ -31,30 +31,30 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.pnlCtrl = new DevComponents.DotNetBar.PanelEx();
-            this.lblJisPart = new DevComponents.DotNetBar.LabelX();
-            this.lblJisSort = new DevComponents.DotNetBar.LabelX();
-            this.lblVin = new DevComponents.DotNetBar.LabelX();
-            this.lblMes = new DevComponents.DotNetBar.LabelX();
-            this.lblErpPut = new DevComponents.DotNetBar.LabelX();
-            this.lblErpGet = new DevComponents.DotNetBar.LabelX();
             this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnErpPut = new DevComponents.DotNetBar.ButtonX();
             this.sbErpPut = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.lblErpPut = new DevComponents.DotNetBar.LabelX();
             this.groupPanel5 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.sbMesGet = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.btnMesGet = new DevComponents.DotNetBar.ButtonX();
+            this.lblMes = new DevComponents.DotNetBar.LabelX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.sbVinExe = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.btnVinExe = new DevComponents.DotNetBar.ButtonX();
+            this.lblVin = new DevComponents.DotNetBar.LabelX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.sbJisSortGet = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.lblJisSort = new DevComponents.DotNetBar.LabelX();
             this.btnJisOrder = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lblJisPart = new DevComponents.DotNetBar.LabelX();
             this.sbJisPartGet = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.btnJisPart = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.sbErpGet = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.btnErpGet = new DevComponents.DotNetBar.ButtonX();
+            this.lblErpGet = new DevComponents.DotNetBar.LabelX();
             this.btnClearLog = new DevComponents.DotNetBar.ButtonX();
             this.btnSetting = new DevComponents.DotNetBar.ButtonX();
             this.btnStop = new DevComponents.DotNetBar.ButtonX();
@@ -93,7 +93,7 @@
             this.pnlCtrl.DisabledBackColor = System.Drawing.Color.Empty;
             this.pnlCtrl.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlCtrl.Location = new System.Drawing.Point(876, 0);
-            this.pnlCtrl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCtrl.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCtrl.Name = "pnlCtrl";
             this.pnlCtrl.Size = new System.Drawing.Size(195, 562);
             this.pnlCtrl.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -105,108 +105,6 @@
             this.pnlCtrl.Style.GradientAngle = 90;
             this.pnlCtrl.TabIndex = 1;
             // 
-            // lblJisPart
-            // 
-            this.lblJisPart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.lblJisPart.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblJisPart.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblJisPart.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.lblJisPart.Location = new System.Drawing.Point(128, 14);
-            this.lblJisPart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblJisPart.Name = "lblJisPart";
-            this.lblJisPart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblJisPart.Size = new System.Drawing.Size(37, 12);
-            this.lblJisPart.TabIndex = 17;
-            this.lblJisPart.Text = "300";
-            // 
-            // lblJisSort
-            // 
-            this.lblJisSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.lblJisSort.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblJisSort.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblJisSort.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.lblJisSort.Location = new System.Drawing.Point(137, 16);
-            this.lblJisSort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblJisSort.Name = "lblJisSort";
-            this.lblJisSort.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblJisSort.Size = new System.Drawing.Size(28, 12);
-            this.lblJisSort.TabIndex = 16;
-            this.lblJisSort.Text = "300";
-            // 
-            // lblVin
-            // 
-            this.lblVin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.lblVin.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblVin.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblVin.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.lblVin.Location = new System.Drawing.Point(137, 14);
-            this.lblVin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblVin.Name = "lblVin";
-            this.lblVin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblVin.Size = new System.Drawing.Size(28, 12);
-            this.lblVin.TabIndex = 15;
-            this.lblVin.Text = "300";
-            // 
-            // lblMes
-            // 
-            this.lblMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.lblMes.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblMes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblMes.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.lblMes.Location = new System.Drawing.Point(137, 14);
-            this.lblMes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblMes.Name = "lblMes";
-            this.lblMes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblMes.Size = new System.Drawing.Size(28, 12);
-            this.lblMes.TabIndex = 14;
-            this.lblMes.Text = "300";
-            // 
-            // lblErpPut
-            // 
-            this.lblErpPut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.lblErpPut.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblErpPut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblErpPut.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.lblErpPut.Location = new System.Drawing.Point(137, 14);
-            this.lblErpPut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblErpPut.Name = "lblErpPut";
-            this.lblErpPut.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblErpPut.Size = new System.Drawing.Size(28, 12);
-            this.lblErpPut.TabIndex = 13;
-            this.lblErpPut.Text = "300";
-            // 
-            // lblErpGet
-            // 
-            this.lblErpGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.lblErpGet.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblErpGet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblErpGet.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.lblErpGet.Location = new System.Drawing.Point(137, 14);
-            this.lblErpGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblErpGet.Name = "lblErpGet";
-            this.lblErpGet.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblErpGet.Size = new System.Drawing.Size(28, 12);
-            this.lblErpGet.TabIndex = 12;
-            this.lblErpGet.Text = "300";
-            // 
             // groupPanel6
             // 
             this.groupPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -217,7 +115,7 @@
             this.groupPanel6.Controls.Add(this.lblErpPut);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel6.Location = new System.Drawing.Point(12, 69);
-            this.groupPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.groupPanel6.Name = "groupPanel6";
             this.groupPanel6.Size = new System.Drawing.Size(173, 54);
             // 
@@ -256,7 +154,7 @@
             this.btnErpPut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnErpPut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnErpPut.Location = new System.Drawing.Point(63, 7);
-            this.btnErpPut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnErpPut.Margin = new System.Windows.Forms.Padding(2);
             this.btnErpPut.Name = "btnErpPut";
             this.btnErpPut.Size = new System.Drawing.Size(56, 20);
             this.btnErpPut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -271,7 +169,7 @@
             // 
             this.sbErpPut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sbErpPut.Location = new System.Drawing.Point(9, 6);
-            this.sbErpPut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sbErpPut.Margin = new System.Windows.Forms.Padding(2);
             this.sbErpPut.Name = "sbErpPut";
             this.sbErpPut.OffBackColor = System.Drawing.Color.DarkRed;
             this.sbErpPut.OffTextColor = System.Drawing.Color.White;
@@ -284,6 +182,23 @@
             this.sbErpPut.Value = true;
             this.sbErpPut.ValueObject = "Y";
             // 
+            // lblErpPut
+            // 
+            this.lblErpPut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblErpPut.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblErpPut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblErpPut.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.lblErpPut.Location = new System.Drawing.Point(137, 14);
+            this.lblErpPut.Margin = new System.Windows.Forms.Padding(2);
+            this.lblErpPut.Name = "lblErpPut";
+            this.lblErpPut.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblErpPut.Size = new System.Drawing.Size(28, 12);
+            this.lblErpPut.TabIndex = 13;
+            this.lblErpPut.Text = "300";
+            // 
             // groupPanel5
             // 
             this.groupPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -294,7 +209,7 @@
             this.groupPanel5.Controls.Add(this.lblMes);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel5.Location = new System.Drawing.Point(12, 128);
-            this.groupPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(173, 54);
             // 
@@ -335,7 +250,7 @@
             // 
             this.sbMesGet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sbMesGet.Location = new System.Drawing.Point(9, 6);
-            this.sbMesGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sbMesGet.Margin = new System.Windows.Forms.Padding(2);
             this.sbMesGet.Name = "sbMesGet";
             this.sbMesGet.OffBackColor = System.Drawing.Color.DarkRed;
             this.sbMesGet.OffTextColor = System.Drawing.Color.White;
@@ -353,12 +268,29 @@
             this.btnMesGet.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnMesGet.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnMesGet.Location = new System.Drawing.Point(63, 6);
-            this.btnMesGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMesGet.Margin = new System.Windows.Forms.Padding(2);
             this.btnMesGet.Name = "btnMesGet";
             this.btnMesGet.Size = new System.Drawing.Size(56, 20);
             this.btnMesGet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnMesGet.TabIndex = 6;
             this.btnMesGet.Text = "手动执行";
+            // 
+            // lblMes
+            // 
+            this.lblMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblMes.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblMes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblMes.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.lblMes.Location = new System.Drawing.Point(137, 14);
+            this.lblMes.Margin = new System.Windows.Forms.Padding(2);
+            this.lblMes.Name = "lblMes";
+            this.lblMes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblMes.Size = new System.Drawing.Size(28, 12);
+            this.lblMes.TabIndex = 14;
+            this.lblMes.Text = "300";
             // 
             // groupPanel4
             // 
@@ -370,7 +302,7 @@
             this.groupPanel4.Controls.Add(this.lblVin);
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(12, 187);
-            this.groupPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.groupPanel4.Name = "groupPanel4";
             this.groupPanel4.Size = new System.Drawing.Size(173, 54);
             // 
@@ -411,7 +343,7 @@
             // 
             this.sbVinExe.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sbVinExe.Location = new System.Drawing.Point(9, 6);
-            this.sbVinExe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sbVinExe.Margin = new System.Windows.Forms.Padding(2);
             this.sbVinExe.Name = "sbVinExe";
             this.sbVinExe.OffBackColor = System.Drawing.Color.DarkRed;
             this.sbVinExe.OffTextColor = System.Drawing.Color.White;
@@ -429,12 +361,29 @@
             this.btnVinExe.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnVinExe.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnVinExe.Location = new System.Drawing.Point(63, 6);
-            this.btnVinExe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVinExe.Margin = new System.Windows.Forms.Padding(2);
             this.btnVinExe.Name = "btnVinExe";
             this.btnVinExe.Size = new System.Drawing.Size(56, 20);
             this.btnVinExe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnVinExe.TabIndex = 7;
             this.btnVinExe.Text = "手动执行";
+            // 
+            // lblVin
+            // 
+            this.lblVin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblVin.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblVin.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblVin.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.lblVin.Location = new System.Drawing.Point(137, 14);
+            this.lblVin.Margin = new System.Windows.Forms.Padding(2);
+            this.lblVin.Name = "lblVin";
+            this.lblVin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblVin.Size = new System.Drawing.Size(28, 12);
+            this.lblVin.TabIndex = 15;
+            this.lblVin.Text = "300";
             // 
             // groupPanel3
             // 
@@ -446,7 +395,7 @@
             this.groupPanel3.Controls.Add(this.btnJisOrder);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Location = new System.Drawing.Point(12, 246);
-            this.groupPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.groupPanel3.Name = "groupPanel3";
             this.groupPanel3.Size = new System.Drawing.Size(173, 54);
             // 
@@ -487,7 +436,7 @@
             // 
             this.sbJisSortGet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sbJisSortGet.Location = new System.Drawing.Point(9, 6);
-            this.sbJisSortGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sbJisSortGet.Margin = new System.Windows.Forms.Padding(2);
             this.sbJisSortGet.Name = "sbJisSortGet";
             this.sbJisSortGet.OffBackColor = System.Drawing.Color.DarkRed;
             this.sbJisSortGet.OffTextColor = System.Drawing.Color.White;
@@ -500,12 +449,29 @@
             this.sbJisSortGet.Value = true;
             this.sbJisSortGet.ValueObject = "Y";
             // 
+            // lblJisSort
+            // 
+            this.lblJisSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblJisSort.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblJisSort.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblJisSort.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.lblJisSort.Location = new System.Drawing.Point(137, 16);
+            this.lblJisSort.Margin = new System.Windows.Forms.Padding(2);
+            this.lblJisSort.Name = "lblJisSort";
+            this.lblJisSort.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblJisSort.Size = new System.Drawing.Size(28, 12);
+            this.lblJisSort.TabIndex = 16;
+            this.lblJisSort.Text = "300";
+            // 
             // btnJisOrder
             // 
             this.btnJisOrder.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnJisOrder.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnJisOrder.Location = new System.Drawing.Point(63, 6);
-            this.btnJisOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnJisOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnJisOrder.Name = "btnJisOrder";
             this.btnJisOrder.Size = new System.Drawing.Size(56, 20);
             this.btnJisOrder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -522,7 +488,7 @@
             this.groupPanel2.Controls.Add(this.btnJisPart);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(12, 306);
-            this.groupPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(173, 54);
             // 
@@ -556,6 +522,23 @@
             this.groupPanel2.TabIndex = 18;
             this.groupPanel2.Text = "获取JIS客户零件号";
             // 
+            // lblJisPart
+            // 
+            this.lblJisPart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblJisPart.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblJisPart.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblJisPart.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.lblJisPart.Location = new System.Drawing.Point(128, 14);
+            this.lblJisPart.Margin = new System.Windows.Forms.Padding(2);
+            this.lblJisPart.Name = "lblJisPart";
+            this.lblJisPart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblJisPart.Size = new System.Drawing.Size(37, 12);
+            this.lblJisPart.TabIndex = 17;
+            this.lblJisPart.Text = "300";
+            // 
             // sbJisPartGet
             // 
             // 
@@ -563,7 +546,7 @@
             // 
             this.sbJisPartGet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sbJisPartGet.Location = new System.Drawing.Point(9, 6);
-            this.sbJisPartGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sbJisPartGet.Margin = new System.Windows.Forms.Padding(2);
             this.sbJisPartGet.Name = "sbJisPartGet";
             this.sbJisPartGet.OffBackColor = System.Drawing.Color.DarkRed;
             this.sbJisPartGet.OffTextColor = System.Drawing.Color.White;
@@ -581,7 +564,7 @@
             this.btnJisPart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnJisPart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnJisPart.Location = new System.Drawing.Point(63, 6);
-            this.btnJisPart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnJisPart.Margin = new System.Windows.Forms.Padding(2);
             this.btnJisPart.Name = "btnJisPart";
             this.btnJisPart.Size = new System.Drawing.Size(56, 20);
             this.btnJisPart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -598,7 +581,7 @@
             this.groupPanel1.Controls.Add(this.lblErpGet);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(12, 10);
-            this.groupPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(173, 54);
             // 
@@ -642,7 +625,7 @@
             this.sbErpGet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sbErpGet.IsReadOnly = true;
             this.sbErpGet.Location = new System.Drawing.Point(9, 6);
-            this.sbErpGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sbErpGet.Margin = new System.Windows.Forms.Padding(2);
             this.sbErpGet.Name = "sbErpGet";
             this.sbErpGet.OffBackColor = System.Drawing.Color.DarkRed;
             this.sbErpGet.OffTextColor = System.Drawing.Color.White;
@@ -660,7 +643,7 @@
             this.btnErpGet.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnErpGet.Enabled = false;
             this.btnErpGet.Location = new System.Drawing.Point(63, 6);
-            this.btnErpGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnErpGet.Margin = new System.Windows.Forms.Padding(2);
             this.btnErpGet.Name = "btnErpGet";
             this.btnErpGet.Size = new System.Drawing.Size(56, 20);
             this.btnErpGet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -668,13 +651,30 @@
             this.btnErpGet.Text = "手动执行";
             this.btnErpGet.Click += new System.EventHandler(this.btnErpGet_Click);
             // 
+            // lblErpGet
+            // 
+            this.lblErpGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblErpGet.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblErpGet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblErpGet.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.lblErpGet.Location = new System.Drawing.Point(137, 14);
+            this.lblErpGet.Margin = new System.Windows.Forms.Padding(2);
+            this.lblErpGet.Name = "lblErpGet";
+            this.lblErpGet.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblErpGet.Size = new System.Drawing.Size(28, 12);
+            this.lblErpGet.TabIndex = 12;
+            this.lblErpGet.Text = "300";
+            // 
             // btnClearLog
             // 
             this.btnClearLog.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearLog.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClearLog.Location = new System.Drawing.Point(12, 506);
-            this.btnClearLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClearLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(58, 20);
             this.btnClearLog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -688,7 +688,7 @@
             this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSetting.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSetting.Location = new System.Drawing.Point(113, 506);
-            this.btnSetting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetting.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(72, 20);
             this.btnSetting.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -703,7 +703,7 @@
             this.btnStop.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
             this.btnStop.Font = new System.Drawing.Font("微软雅黑", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnStop.Location = new System.Drawing.Point(12, 436);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(2);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(173, 45);
             this.btnStop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -717,7 +717,7 @@
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStart.Font = new System.Drawing.Font("微软雅黑", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnStart.Location = new System.Drawing.Point(12, 388);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(173, 45);
             this.btnStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -731,7 +731,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClose.Location = new System.Drawing.Point(113, 530);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(72, 20);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -744,7 +744,7 @@
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtLog.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtLog.Location = new System.Drawing.Point(0, 423);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(2);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
@@ -807,7 +807,7 @@
             this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.expandableSplitter2.Location = new System.Drawing.Point(0, 415);
-            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2);
             this.expandableSplitter2.Name = "expandableSplitter2";
             this.expandableSplitter2.Size = new System.Drawing.Size(876, 8);
             this.expandableSplitter2.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007;
@@ -825,7 +825,7 @@
             this.Controls.Add(this.pnlCtrl);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(378, 326);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

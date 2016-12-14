@@ -29,6 +29,10 @@ namespace ChangKeTec.Wms.Models
             return new SpareEntities(GetEfConnctionString("Spare"));
         }
 
+        public static InterfaceEntities CreateInterfaceInstance()
+        {
+            return new InterfaceEntities(GetEfConnctionString("Interface"));
+        }
 
         public static PowerEntities CreatePowerInstance()
         {
@@ -62,6 +66,7 @@ namespace ChangKeTec.Wms.Models
                 case "Power":
                 case "Scp":
                 case "Spare":
+                case "Interface":
                     sbConn.Append("Data source =" + AppConfigHelper.GetAppValue(dbInfo.DbServer) + "," + AppConfigHelper.GetAppValue(dbInfo.DbPort) + ";");
                     sbConn.Append("Initial catalog = " + AppConfigHelper.GetAppValue(dbInfo.DbName) + ";");
                     sbConn.Append("User id = " + AppConfigHelper.GetAppValue(dbInfo.DbUser) + ";");
@@ -205,7 +210,6 @@ namespace ChangKeTec.Wms.Models
             public string DbUser { get; }
             public string DbPassword { get; }
         }
-
 
       
 

@@ -24,7 +24,13 @@ namespace ChangKeTec.Wms.Models
         }
     }
 
-
+    public partial class InterfaceEntities
+    {
+        public InterfaceEntities(string strConn)
+            : base(strConn)
+        {
+        }
+    }
 
 
 

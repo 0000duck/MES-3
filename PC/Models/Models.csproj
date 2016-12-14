@@ -92,6 +92,21 @@
     <Compile Include="Enums\WhseType.cs" />
     <Compile Include="Enums\WorkLineType.cs" />
     <Compile Include="GlobalBuffer.cs" />
+    <Compile Include="ModelInterface.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelInterface.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInterface.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInterface.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelInterface.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ModelSpare.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +121,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSpare.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OA_PART.cs">
+      <DependentUpon>ModelInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OA_PO_MAIN.cs">
+      <DependentUpon>ModelInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OA_PO_SUB.cs">
+      <DependentUpon>ModelInterface.tt</DependentUpon>
     </Compile>
     <Compile Include="TA_Attach.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
@@ -326,6 +350,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelPower.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="ModelInterface.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelInterface.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelInterface.edmx.diagram">
+      <DependentUpon>ModelInterface.edmx</DependentUpon>
+    </None>
     <None Include="ModelPower.edmx.diagram">
       <DependentUpon>ModelPower.edmx</DependentUpon>
     </None>
@@ -352,6 +383,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModelInterface.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelInterface.Context.cs</LastGenOutput>
+      <DependentUpon>ModelInterface.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelInterface.cs</LastGenOutput>
+      <DependentUpon>ModelInterface.edmx</DependentUpon>
+    </Content>
     <Content Include="ModelPower.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelPower.edmx</DependentUpon>
