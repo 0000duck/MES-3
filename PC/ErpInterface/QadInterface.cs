@@ -65,8 +65,7 @@ namespace ChangKeTec.Wms.ErpInterface
             _bgwFromErp.DoWork += BgwFromErpDoWork;
             _bgwFromErp.RunWorkerCompleted += BgwFromErpRunWorkerCompleted;
             _bgwToErp.DoWork += BgwToErpDoWork;
-            _bgwToErp.RunWorkerCompleted += BgwToErpRunWorkerCompleted; ;
-
+            _bgwToErp.RunWorkerCompleted += BgwToErpRunWorkerCompleted;
         }
         private void BgwToErpRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -471,17 +470,20 @@ namespace ChangKeTec.Wms.ErpInterface
 
         private void BgwFromErpDoWork(object sender, DoWorkEventArgs e)
         {
-            ReadErpFiles();
+            SpareEntities db = EntitiesFactory.CreateSpareInstance();
+            ReadErpFiles(db);
+            GetOAData(db);
+            EntitiesFactory.SaveDb(db);
         }
 
         public void Receive()
         {
-
-            _bgwFromErp.RunWorkerAsync();
+            if (!_bgwFromErp.IsBusy)
+                _bgwFromErp.RunWorkerAsync();
 
         }
-        
-        private  void ReadErpFiles()
+
+        private  void ReadErpFiles(SpareEntities db)
         {
             //TODO GetErpFile
             Console.WriteLine(@"接收开始");
@@ -500,7 +502,7 @@ namespace ChangKeTec.Wms.ErpInterface
                     Console.WriteLine("未发现需要接收的文件");
                     return;
                 }
-                using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
+//                    using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
                 {
                     foreach (string remoteFile in fileList)
                     {
@@ -508,7 +510,7 @@ namespace ChangKeTec.Wms.ErpInterface
                         var filename = Path.GetFileName(remoteFile);
                         if (filename == null)
                             continue;
-                        if (!(filename.StartsWith("part") || filename.StartsWith("stock")))
+                        if (!(filename.StartsWith("part") || filename.StartsWith("stock") || filename.StartsWith("RCP")))
                             continue;
                         var encoding = IoHelper.GetFileEncodeType(remoteFile);
 
@@ -536,6 +538,10 @@ namespace ChangKeTec.Wms.ErpInterface
                         {
                             ReadStockFile(dataList, filename, db);
                         }
+                        else if (filename.StartsWith("RCP", true, null))
+                        {
+                            ReadRCPFile(dataList, filename,db);
+                        }
                         else
                         {
                             Console.WriteLine(filename + " 文件名错误");
@@ -552,8 +558,9 @@ namespace ChangKeTec.Wms.ErpInterface
                             // ignored
                         }
                     }
-                   EntitiesFactory.SaveDb(db);
+                    
                 }
+
             }
             catch (WmsException ex)
             {
@@ -733,21 +740,10 @@ namespace ChangKeTec.Wms.ErpInterface
             var OAPOBill = OAdb.OA_PO_MAIN.Where(p => p.IsSyn == 0).ToList();
             if (OAPOBill.Count > 0)
             {
-                foreach (var pobill in OAPOBill)
+                SpareBillList.AddRange(OAPOBill.Select(pobill => new TB_BILL()
                 {
-                    var SparePOBill = new TB_BILL()
-                    {
-                        BillNum = pobill.orderno,
-                        BillType = (int)BillType.PuchaseOrder,
-                        BillTime = DateTime.Now,
-                        OperName = pobill.@operator,
-                        SplyId = pobill.suppliername,
-                        Remark = pobill.remark
-                    };
-                    SpareBillList.Add(SparePOBill);
-                    //todo 添加PO明细 目前字段中没有子表与主表的关联字段
-//                    var OAPOList = OAdb.OA_PO_SUB.Where(p=> p)
-                }
+                    BillNum = pobill.orderno, BillType = (int) BillType.PuchaseOrder, BillTime = DateTime.Now, OperName = pobill.@operator, SplyId = pobill.suppliername, Remark = pobill.remark
+                }));
                 BillHandler.AddPO(db, SpareBillList,SparePOList);
                 NotifyController.AddNotify(db, GlobalVar.OperName, NotifyType.OAInterfacePO, "", "");
             }

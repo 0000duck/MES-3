@@ -57,7 +57,7 @@ namespace ChangKeTec.Wms.Utils
         public static void SetAppValue(string strKey, string newValue)
         {
             var config =
-                ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ConfigurationManager.OpenExeConfiguration(System.Windows.Forms.Application.ExecutablePath);
             if (!IsAppKeyExists(strKey, config)) return;
             config.AppSettings.Settings[strKey].Value = newValue;
             config.Save(ConfigurationSaveMode.Modified);

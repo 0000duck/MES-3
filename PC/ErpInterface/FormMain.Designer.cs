@@ -148,6 +148,7 @@
             this.groupPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel6.TabIndex = 22;
             this.groupPanel6.Text = "发送ERP接口数据";
+            this.groupPanel6.Visible = false;
             // 
             // btnErpPut
             // 
@@ -179,8 +180,6 @@
             this.sbErpPut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sbErpPut.SwitchWidth = 20;
             this.sbErpPut.TabIndex = 12;
-            this.sbErpPut.Value = true;
-            this.sbErpPut.ValueObject = "Y";
             // 
             // lblErpPut
             // 
@@ -242,6 +241,7 @@
             this.groupPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel5.TabIndex = 21;
             this.groupPanel5.Text = "获取MES接口数据";
+            this.groupPanel5.Visible = false;
             // 
             // sbMesGet
             // 
@@ -260,8 +260,6 @@
             this.sbMesGet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sbMesGet.SwitchWidth = 20;
             this.sbMesGet.TabIndex = 13;
-            this.sbMesGet.Value = true;
-            this.sbMesGet.ValueObject = "Y";
             // 
             // btnMesGet
             // 
@@ -335,6 +333,7 @@
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel4.TabIndex = 20;
             this.groupPanel4.Text = "执行VIN处理程序";
+            this.groupPanel4.Visible = false;
             // 
             // sbVinExe
             // 
@@ -353,8 +352,6 @@
             this.sbVinExe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sbVinExe.SwitchWidth = 20;
             this.sbVinExe.TabIndex = 14;
-            this.sbVinExe.Value = true;
-            this.sbVinExe.ValueObject = "Y";
             // 
             // btnVinExe
             // 
@@ -428,6 +425,7 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 19;
             this.groupPanel3.Text = "获取JIS排序发货单";
+            this.groupPanel3.Visible = false;
             // 
             // sbJisSortGet
             // 
@@ -446,8 +444,6 @@
             this.sbJisSortGet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sbJisSortGet.SwitchWidth = 20;
             this.sbJisSortGet.TabIndex = 15;
-            this.sbJisSortGet.Value = true;
-            this.sbJisSortGet.ValueObject = "Y";
             // 
             // lblJisSort
             // 
@@ -521,6 +517,7 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 18;
             this.groupPanel2.Text = "获取JIS客户零件号";
+            this.groupPanel2.Visible = false;
             // 
             // lblJisPart
             // 
@@ -556,8 +553,6 @@
             this.sbJisPartGet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sbJisPartGet.SwitchWidth = 20;
             this.sbJisPartGet.TabIndex = 16;
-            this.sbJisPartGet.Value = true;
-            this.sbJisPartGet.ValueObject = "Y";
             // 
             // btnJisPart
             // 
@@ -623,7 +618,6 @@
             // 
             this.sbErpGet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sbErpGet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sbErpGet.IsReadOnly = true;
             this.sbErpGet.Location = new System.Drawing.Point(9, 6);
             this.sbErpGet.Margin = new System.Windows.Forms.Padding(2);
             this.sbErpGet.Name = "sbErpGet";
