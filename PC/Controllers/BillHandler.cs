@@ -159,6 +159,14 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static void AddPO(SpareEntities db, List<TB_BILL> billlist, List<TB_PO> details)
         {
+            foreach (var bill in billlist)
+            {
+                if (bill.BillNum == null)
+                {
+                    SetBillNum(bill);
+                    details.ForEach(p => p.BillNum = bill.BillNum);
+                }
+            }
             PoController.AddPoList(db, billlist, details);
         }
         #endregion
@@ -178,29 +186,8 @@ namespace ChangKeTec.Wms.Controllers
             {
                 foreach (var bill in billList)
                 {
-//                    //校验订单状态
-//                    var po = BillController.GetBill(db, bill.SourceBillNum);
-//                    if (po == null) //订单不存在
-//                        throw new WmsException(ResultCode.DataNotFound, bill.SourceBillNum, "订单不存在");
-//
-//                    if (po.State != (int) DataState.Enabled) //订单状态已关闭
-//                        throw new WmsException(ResultCode.DataStateError, po.BillNum, "订单已关闭");
-//                  
-//                    var details = detailList.Where(p => p.PoBillNum == bill.SourceBillNum).ToList();
-//                    //校验收货数量是否超出订单未收货数量
-//                    foreach (var detail in details)
-//                    {
-//                        var poDetail =
-//                            db.TB_PO.SingleOrDefault(
-//                                p => p.BillNum == po.BillNum && p.PartCode == detail.PartCode);
-//                        if (poDetail == null)
-//                            throw new WmsException(ResultCode.DataNotFound, detail.BillNum,
-//                                "订单明细不存在" + "\t" + detail.PartCode);
-//                        poDetail.ArrialQty += detail.Qty;
-//                    }
-
                     SetBillNum(bill); //设置单据编号
-//                    details.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
+                    detailList.ForEach(p => p.BillNum = bill.BillNum); //设置明细编号
 
                     BillController.AddOrUpdate(db, bill); //添加【原料收货单】单据
                     SpareInController.AddList(db, detailList); //添加【原料收货单】明细

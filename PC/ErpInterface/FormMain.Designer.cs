@@ -630,6 +630,8 @@
             this.sbErpGet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sbErpGet.SwitchWidth = 20;
             this.sbErpGet.TabIndex = 11;
+            this.sbErpGet.Value = true;
+            this.sbErpGet.ValueObject = "Y";
             // 
             // btnErpGet
             // 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,8 @@ namespace ChangKeTec.Wms.ErpInterface
 
         private FtpHelper _ftp;
 
+        //默认收货库位
+        public static string _defaultLoc = "";
         public QadInterface()
         {
             InitBgw();
@@ -471,9 +474,11 @@ namespace ChangKeTec.Wms.ErpInterface
         private void BgwFromErpDoWork(object sender, DoWorkEventArgs e)
         {
             SpareEntities db = EntitiesFactory.CreateSpareInstance();
+            InterfaceEntities OAdb = EntitiesFactory.CreateInterfaceInstance();
             ReadErpFiles(db);
-            GetOAData(db);
+            GetOAData(OAdb,db);
             EntitiesFactory.SaveDb(db);
+            EntitiesFactory.SaveDb(OAdb);
         }
 
         public void Receive()
@@ -485,7 +490,6 @@ namespace ChangKeTec.Wms.ErpInterface
 
         private  void ReadErpFiles(SpareEntities db)
         {
-            //TODO GetErpFile
             Console.WriteLine(@"接收开始");
             string remotePath = _localRootPath + _localFromErp;
             try
@@ -541,6 +545,8 @@ namespace ChangKeTec.Wms.ErpInterface
                         else if (filename.StartsWith("RCP", true, null))
                         {
                             ReadRCPFile(dataList, filename,db);
+                            Directory.Delete(remotePath,true);
+                            Directory.CreateDirectory(remotePath);
                         }
                         else
                         {
@@ -678,10 +684,9 @@ namespace ChangKeTec.Wms.ErpInterface
                 }
                 //添加TB_BILL表数据
                 var bill = new TB_BILL();
-                //todo 收货单号
-                var BillNum = cols[0];
+                var BillNum = "";
                 var SourceBillNum = cols[0];
-                if (billList.FirstOrDefault(p => p.BillNum == BillNum) == null)
+                if (billList.FirstOrDefault(p => p.SourceBillNum == SourceBillNum) == null)
                 {
                     bill.BillNum = BillNum;
                     bill.BillTime = DateTime.Now;
@@ -698,8 +703,7 @@ namespace ChangKeTec.Wms.ErpInterface
                     PoLineNum = Convert.ToInt32(cols[1]),
                     PartCode = cols[3],
                     Batch = GetBatch(),
-                    //todo 目标库位
-                    ToLocCode = "",
+                    ToLocCode = _defaultLoc,
                     Qty = Convert.ToInt32(cols[4]),
                     UnitPrice = Convert.ToDecimal(cols[5]),
                     ProduceDate = DateTime.Now
@@ -710,9 +714,8 @@ namespace ChangKeTec.Wms.ErpInterface
             Console.WriteLine(@"接收采购订单收货数据完成");
         }
 
-        private static void GetOAData(SpareEntities db)
-        {
-            InterfaceEntities OAdb = EntitiesFactory.CreateInterfaceInstance();
+        private static void GetOAData(InterfaceEntities OAdb,SpareEntities db)
+        {        
             var SparePartlist = new List<TA_PART>();
             var SpareBillList = new List<TB_BILL>();
             var SparePOList = new List<TB_PO>();
@@ -722,13 +725,15 @@ namespace ChangKeTec.Wms.ErpInterface
             {
                 foreach (var part in partlist)
                 {
-                    var SparePart = new TA_PART();
-                    SparePart = PartController.GetPartByPartCode(db, part.code);
+                    var SparePart = PartController.GetPartByPartCode(db, part.code);
+                    if(SparePart == null)
+                        SparePart = new TA_PART();
                     SparePart.PartCode = part.code;
                     SparePart.ErpPartCode = part.code;
                     SparePart.PartDesc1 = part.engname;
                     SparePart.PartDesc2 = part.name;
                     SparePart.Unit = part.unit;
+                    SparePart.BM = "B";
                     SparePartlist.Add(SparePart);
 
                 }
@@ -737,14 +742,35 @@ namespace ChangKeTec.Wms.ErpInterface
             }
 
             //同步采购订单
-            var OAPOBill = OAdb.OA_PO_MAIN.Where(p => p.IsSyn == 0).ToList();
-            if (OAPOBill.Count > 0)
+            var OAPOBill = OAdb.OA_PO_MAIN.FirstOrDefault(p => p.IsSyn == 0);
+            if (OAPOBill != null)
             {
-                SpareBillList.AddRange(OAPOBill.Select(pobill => new TB_BILL()
+                var _bill = new TB_BILL()
                 {
-                    BillNum = pobill.orderno, BillType = (int) BillType.PuchaseOrder, BillTime = DateTime.Now, OperName = pobill.@operator, SplyId = pobill.suppliername, Remark = pobill.remark
-                }));
-                BillHandler.AddPO(db, SpareBillList,SparePOList);
+                    BillNum = OAPOBill.orderno,
+                    BillType = (int)BillType.PuchaseOrder,
+                    BillTime = DateTime.Now,
+                    OperName = OAPOBill.@operator,
+                    SplyId = OAPOBill.suppliername,
+                    Remark = OAPOBill.remark
+                };
+                SpareBillList.Add(_bill);         
+                OAPOBill.IsSyn = 1;
+                OAdb.OA_PO_MAIN.AddOrUpdate(OAPOBill);
+                var OAPOList = OAdb.OA_PO_SUB.Where(p => p.OAMainID == OAPOBill.OAID);
+                foreach (var oaPoSub in OAPOList)
+                {
+                    var SparePo = new TB_PO()
+                    {
+                        BillNum = _bill.BillNum,
+                        Line = Convert.ToInt32(oaPoSub.prln),
+                        PartCode = oaPoSub.itemnumber,
+                        BillQty = (decimal)oaPoSub.qty
+                    };
+                    SparePOList.Add(SparePo);
+                }
+                
+                BillHandler.AddPO(db, SpareBillList, SparePOList);              
                 NotifyController.AddNotify(db, GlobalVar.OperName, NotifyType.OAInterfacePO, "", "");
             }
         }

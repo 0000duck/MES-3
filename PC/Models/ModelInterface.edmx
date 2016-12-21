@@ -33,6 +33,7 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OAID" Type="int" />
           <Property Name="supplieradd" Type="nvarchar" MaxLength="200" />
           <Property Name="currencydescribe" Type="nvarchar" MaxLength="50" />
           <Property Name="engtitle" Type="nvarchar" MaxLength="100" />
@@ -92,6 +93,7 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OAMainID" Type="int" />
           <Property Name="prdetailid" Type="nvarchar" MaxLength="50" />
           <Property Name="taxval" Type="money" />
           <Property Name="itemenname" Type="nvarchar" MaxLength="200" />
@@ -164,6 +166,7 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OAID" Type="Int32" />
           <Property Name="supplieradd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="currencydescribe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="engtitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -223,6 +226,7 @@
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OAMainID" Type="Int32" />
           <Property Name="prdetailid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="taxval" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="itemenname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -341,6 +345,7 @@
                 <ScalarProperty Name="engtitle" ColumnName="engtitle" />
                 <ScalarProperty Name="currencydescribe" ColumnName="currencydescribe" />
                 <ScalarProperty Name="supplieradd" ColumnName="supplieradd" />
+                <ScalarProperty Name="OAID" ColumnName="OAID" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -377,11 +382,12 @@
                 <ScalarProperty Name="itemenname" ColumnName="itemenname" />
                 <ScalarProperty Name="taxval" ColumnName="taxval" />
                 <ScalarProperty Name="prdetailid" ColumnName="prdetailid" />
+                <ScalarProperty Name="OAMainID" ColumnName="OAMainID" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

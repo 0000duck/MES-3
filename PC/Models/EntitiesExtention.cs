@@ -237,6 +237,22 @@ namespace ChangKeTec.Wms.Models
 
         public TS_STOCK_DETAIL ToStockDetailIn(TB_BILL bill)
         {
+            if (bill.BillType == (int) BillType.MaterialIn)
+            {
+                return new TS_STOCK_DETAIL
+                {
+                    PartCode = this.PartCode,
+                    Batch = this.Batch,
+                    LocCode = this.ToLocCode,
+                    Qty = this.Qty,
+                    ProduceDate = this.ProduceDate,
+                    UnitPrice = this.UnitPrice,
+                    UpdateQty = Qty,
+                    ReceiveDate = DateTime.Now,
+                    UpdateTime = DateTime.Now,
+                    OverdueDate = (this.ProduceDate).AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
+                };
+            }
             return new TS_STOCK_DETAIL
             {
                 PartCode = this.PartCode,

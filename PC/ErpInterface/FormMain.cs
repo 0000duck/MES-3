@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using ChangKeTec.Wms.Common;
 using ChangKeTec.Wms.Controllers;
+using ChangKeTec.Wms.Controllers.BaseData;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
@@ -16,6 +18,7 @@ namespace ChangKeTec.Wms.ErpInterface
         private Timer _timerErpPut;
         private Timer _timer;
         private QadInterface _qadInterface;
+        
         public FormMain()
         {
             InitializeComponent();
@@ -108,6 +111,12 @@ namespace ChangKeTec.Wms.ErpInterface
         private void btnStart_Click(object sender, EventArgs e)
         {
             Console.WriteLine(@"系统启动");
+            //获取默认收货库位
+            SpareEntities db = EntitiesFactory.CreateSpareInstance();
+            //todo 需要维护实际收货地点的编号
+            var firstOrDefault = ConfigController.GetList(db).FirstOrDefault(p => p.ParamName == "收货地点");
+            if (firstOrDefault != null)
+                QadInterface._defaultLoc = firstOrDefault.ParamValue;
             lblErpGet.Visible = sbErpGet.Value;
             if (sbErpGet.Value)
             {

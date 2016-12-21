@@ -15,6 +15,7 @@ namespace ChangKeTec.Wms.Models
     public partial class OA_PO_SUB
     {
         public int UID { get; set; }
+        public Nullable<int> OAMainID { get; set; }
         public string prdetailid { get; set; }
         public Nullable<decimal> taxval { get; set; }
         public string itemenname { get; set; }

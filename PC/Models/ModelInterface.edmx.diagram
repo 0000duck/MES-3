@@ -6,9 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2c8770b6bbe74bc88daa90598206f8f5" Name="Diagram1" >
         <EntityTypeShape EntityType="ModelInterface.OA_PART" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ModelInterface.OA_PO_MAIN" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ModelInterface.OA_PO_SUB" Width="1.5" PointX="4.75" PointY="0.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="ModelInterface.OA_PO_MAIN" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ModelInterface.OA_PO_SUB" Width="1.5" PointX="5.375" PointY="0.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
