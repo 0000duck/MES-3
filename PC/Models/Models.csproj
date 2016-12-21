@@ -235,6 +235,9 @@
     <Compile Include="Enums\ResultCode.cs" />
     <Compile Include="Enums\PartBuyOrMake.cs" />
     <Compile Include="Enums\ServiceType.cs" />
+    <Compile Include="TS_CONFIG.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
     <Compile Include="TS_STOCK_DETAIL.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>

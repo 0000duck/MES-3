@@ -450,6 +450,14 @@
     <Compile Include="Stock\FormStock.Designer.cs">
       <DependentUpon>FormStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Update\ChangKeUpdate.cs" />
+    <Compile Include="Update\frmUpdateSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update\frmUpdateSetting.designer.cs">
+      <DependentUpon>frmUpdateSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Update\UpdateControl.cs" />
     <Compile Include="Util\ReportHelper.cs" />
     <EmbeddedResource Include="BaseData\FormDept.resx">
       <DependentUpon>FormDept.cs</DependentUpon>
@@ -636,6 +644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Stock\FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update\frmUpdateSetting.resx">
+      <DependentUpon>frmUpdateSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

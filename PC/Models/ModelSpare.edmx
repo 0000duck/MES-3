@@ -488,6 +488,15 @@
           <Property Name="LocCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="TS_CONFIG">
+          <Key>
+            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="KEYID" />
+          </Key>
+          <Property Name="GRPID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KEYID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA" Type="image" />
+        </EntityType>
         <EntityType Name="TS_STOCK_DETAIL">
           <Key>
             <PropertyRef Name="LocCode" />
@@ -792,6 +801,7 @@
           <EntitySet Name="TL_NOTIFY" EntityType="Self.TL_NOTIFY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TL_OPER" EntityType="Self.TL_OPER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TL_TRANSACTION" EntityType="Self.TL_TRANSACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TS_CONFIG" EntityType="Self.TS_CONFIG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TS_STOCK_DETAIL" EntityType="Self.TS_STOCK_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_GROUP_TYPE" EntityType="Self.TT_GROUP_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TT_LOC_TYPE" EntityType="Self.TT_LOC_TYPE" Schema="dbo" store:Type="Tables" />
@@ -987,6 +997,7 @@
           <EntitySet Name="VS_OVERDUE_STOCK" EntityType="SpareModel.VS_OVERDUE_STOCK" />
           <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
           <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
+          <EntitySet Name="TS_CONFIG" EntityType="SpareModel.TS_CONFIG" />
         </EntityContainer>
         <EntityType Name="TA_Attach">
           <Key>
@@ -1723,6 +1734,15 @@
           <Property Name="BM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PartType" Type="Int32" />
         </EntityType>
+        <EntityType Name="TS_CONFIG">
+          <Key>
+            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="KEYID" />
+          </Key>
+          <Property Name="GRPID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KEYID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2452,6 +2472,15 @@
                 <ScalarProperty Name="Batch" ColumnName="Batch" />
                 <ScalarProperty Name="PartCode" ColumnName="PartCode" />
                 <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TS_CONFIG">
+            <EntityTypeMapping TypeName="SpareModel.TS_CONFIG">
+              <MappingFragment StoreEntitySet="TS_CONFIG">
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="KEYID" ColumnName="KEYID" />
+                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

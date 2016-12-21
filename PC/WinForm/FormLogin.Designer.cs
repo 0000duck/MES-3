@@ -219,7 +219,6 @@
             this.labelX4.TabIndex = 26;
             this.labelX4.Text = "用户登录";
             this.labelX4.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.labelX4.Click += new System.EventHandler(this.labelX4_Click);
             // 
             // lblVersion
             // 

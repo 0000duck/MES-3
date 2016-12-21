@@ -79,6 +79,7 @@
     <Compile Include="GzipHelper.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="ProgramHelper.cs" />
+    <Compile Include="TimeHelper.cs" />
     <Compile Include="XmlHelper.cs" />
     <Compile Include="FtpHelper.cs" />
     <Compile Include="TraceLogger.cs" />

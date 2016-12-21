@@ -5,6 +5,7 @@ using ChangKeTec.Wms.Controllers.Log;
 using ChangKeTec.Wms.Models;
 using ChangKeTec.Wms.Models.Enums;
 using ChangKeTec.Wms.Utils;
+using ChangKeTec.Wms.WinForm.Update;
 using DevComponents.DotNetBar;
 
 namespace ChangKeTec.Wms.WinForm
@@ -52,6 +53,7 @@ namespace ChangKeTec.Wms.WinForm
                 using (SpareEntities wmsdb = EntitiesFactory.CreateSpareInstance())
                 {
                     OperLogController.AddLog(wmsdb, LogType.Login, oper.OperName, operCode, "登录成功");
+
                     EntitiesFactory.SaveDb(wmsdb);
                     GlobalVar.InitGlobalVar(wmsdb, GlobalVar.Oper);
                 }
@@ -82,13 +84,10 @@ namespace ChangKeTec.Wms.WinForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            if (UpdateControl.DownloadServerFiles())
+                UpdateControl.KillSelfThenRun();
             lblVersion.Text = @"Version " + Application.ProductVersion;
             lblDbName.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbName);
-        }
-
-        private void labelX4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

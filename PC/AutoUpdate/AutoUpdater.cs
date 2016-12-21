@@ -25,7 +25,7 @@ namespace ChangKeTec.Wms.AutoUpdate
             _serverUrl = serverUrl;
             try
             {
-                if (CheckUpdate(serverUrl,updateXmlFileName))
+                if (CheckUpdate(serverUrl, updateXmlFileName))
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.AppendLine("检查到新版本:" + _newVersion);
@@ -74,7 +74,6 @@ namespace ChangKeTec.Wms.AutoUpdate
 
         private bool CheckUpdate(string serverUrl, string updateXmlFileName)
         {
-
             var fullFileName = serverUrl + updateXmlFileName;
             try
             {
@@ -113,11 +112,12 @@ namespace ChangKeTec.Wms.AutoUpdate
 
 
                 Version newVersion = new Version(_newVersion);
-                Version oldVersion = Assembly.LoadFrom(_softwareName).GetName().Version;
-                var tm = oldVersion.CompareTo(newVersion);
-
-                var hasUpdate = tm < 0;
-                return hasUpdate;
+//                                Version oldVersion = Assembly.LoadFrom(_softwareName).GetName().Version;
+//                                var tm = oldVersion.CompareTo(newVersion);
+//
+//                                var hasUpdate = tm < 0;
+//                                return hasUpdate;
+                return false;
             }
             catch (Exception ex)
             {

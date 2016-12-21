@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using ChangKeTec.Wms.WinForm.Update;
 using DevComponents.DotNetBar;
 
 namespace ChangKeTec.Wms.WinForm.PopUp
@@ -38,6 +39,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             this.linkLabelChangKeTec.Links[0].LinkData = "http://www.changketec.com";
             System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
+        }
+
+        private void btnSysRefresh_Click(object sender, EventArgs e)
+        {
+            frmUpdateSetting frm = new frmUpdateSetting();
+            frm.ShowDialog();
         }
     }
 }
