@@ -21,7 +21,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     public partial class PopupOtherOut : Office2007Form
     {
         private BillType _billType = BillType.OtherInOut;
-        private TB_BILL _bill = new TB_BILL();
+        private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupOtherOut()
         {
@@ -29,7 +29,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             propertyBill.SelectedObject = _bill;
         }
 
-        public PopupOtherOut(TB_BILL bill)
+        public PopupOtherOut(VW_BILL bill)
         {
             InitializeComponent();
             _bill = bill;
@@ -57,12 +57,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcFromLocCode.EditorType = typeof (StoreLocComboBox);
             if (_bill.UID == 0)
             {
-                _bill.BillType = (int)BillType.OtherInOut;
-                _bill.SubBillType = (int)SubBillType.OtherOut;
-                _bill.BillTime = DateTime.Now;
+                _bill.单据类型 = (int)BillType.OtherInOut;
+                _bill.子单据类型 = (int)SubBillType.OtherOut;
+                _bill.制单日期 = DateTime.Now;
             }
             propertyBill.SelectedObject = _bill;
-            SetDetailDataSource(_bill.BillNum);
+            SetDetailDataSource(_bill.单据编号);
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -78,12 +78,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
-                if (_bill.BillType != (int)BillType.OtherInOut)
+                if (_bill.单据类型 != (int)BillType.OtherInOut)
                 {
                     MessageHelper.ShowError("请输入有效的单据类型！其他出入库单据类型为：" + (int)BillType.OtherInOut);
                     return;
                 }
-                if (_bill.SubBillType != (int)SubBillType.OtherOut)
+                if (_bill.子单据类型 != (int)SubBillType.OtherOut)
                 {
                     MessageHelper.ShowError("维护的子单据类型无效！其他出库类型为：" + (int)SubBillType.OtherOut);
                     return;
@@ -95,7 +95,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddOtherOut(db, _bill, detailList);
+                BillHandler.AddOtherOut(db, _bill.VWToBill(), detailList);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
@@ -134,7 +134,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetDetailDataSource(_bill.BillNum);    
+            SetDetailDataSource(_bill.单据编号);    
         }
 
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)

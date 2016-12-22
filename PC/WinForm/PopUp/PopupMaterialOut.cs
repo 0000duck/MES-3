@@ -20,7 +20,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     public partial class PopupMaterialOut : Office2007Form
     {
         private BillType _billType = BillType.MaterialDeliver;
-        private TB_BILL _bill = new TB_BILL();
+        private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupMaterialOut()
         {
@@ -28,7 +28,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             propertyBill.SelectedObject = _bill;
         }
 
-        public PopupMaterialOut(TB_BILL bill)
+        public PopupMaterialOut(VW_BILL bill)
         {
             InitializeComponent();
             _bill = bill;
@@ -43,12 +43,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcEqptCode.EditorType = typeof(MachineComboBox);
             if (_bill.UID == 0)
             {
-                _bill.BillType = (int)BillType.MaterialDeliver;
-                _bill.SubBillType = (int)SubBillType.SpareOut;
-                _bill.BillTime = DateTime.Now;
+                _bill.单据类型 = (int)BillType.MaterialDeliver;
+                _bill.子单据类型 = (int)SubBillType.SpareOut;
+                _bill.制单日期 = DateTime.Now;
             }
             propertyBill.SelectedObject = _bill;
-            SetDetailDataSource(_bill.BillNum);
+            SetDetailDataSource(_bill.单据编号);
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -64,12 +64,12 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
-                if (_bill.BillType != (int)BillType.MaterialDeliver)
+                if (_bill.单据类型 != (int)BillType.MaterialDeliver)
                 {
                     MessageHelper.ShowError("请输入有效的出库类型！出库单据类型为：" + (int)BillType.MaterialDeliver);
                     return;
                 }
-                if (_bill.SubBillType != (int)SubBillType.SpareLoan && _bill.SubBillType != (int)SubBillType.SpareOut)
+                if (_bill.子单据类型 != (int)SubBillType.SpareLoan && _bill.子单据类型 != (int)SubBillType.SpareOut)
                 {
                     MessageHelper.ShowError("维护的子单据类型无效！领用出库类型为：" + (int)SubBillType.SpareOut + "借用出库类型为：" + (int)SubBillType.SpareLoan);
                     return;
@@ -82,7 +82,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_OUT> detailList = (from TB_OUT d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddMaterialOut(db, _bill, detailList);
+                BillHandler.AddMaterialOut(db, _bill.VWToBill(), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -120,7 +120,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetDetailDataSource(_bill.BillNum);           
+            SetDetailDataSource(_bill.单据编号);           
         }
 
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)

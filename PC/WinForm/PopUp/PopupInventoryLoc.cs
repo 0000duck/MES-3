@@ -21,7 +21,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.InventoryPlan;
         private readonly GridppReport _report;
 
-        private TB_BILL _bill = new TB_BILL();
+        private VW_BILL _bill = new VW_BILL();
         private TB_INVENTORY_LOC _inventoryLoc = new TB_INVENTORY_LOC();
 
         private readonly string DetailTableName = "TB_INVENTORY_LOC";
@@ -38,7 +38,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             propertyBill.SelectedObject = _bill;
         }
 
-        public PopupInventoryLoc(TB_BILL bill)
+        public PopupInventoryLoc(VW_BILL bill)
         {
             InitializeComponent();
             _bill = bill;
@@ -67,11 +67,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             _listLoc = _db.TA_STORE_LOCATION.ToList();
             if (_bill.UID == 0)
             {
-                _bill.BillType = (int)BillType.InventoryPlan;
-                _bill.BillTime = DateTime.Now;
+                _bill.单据类型 = (int)BillType.InventoryPlan;
+                _bill.制单日期 = DateTime.Now;
             }
             propertyBill.SelectedObject = _bill;
-            SetLocDataSource(_bill.BillNum); 
+            SetLocDataSource(_bill.单据编号); 
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             bs.DataSource = _listLoc;
             foreach (var loc in _listLoc)
             {
-                if (InventoryController.GetLoc(_db, _bill.BillNum, loc.LocCode) != null)
+                if (InventoryController.GetLoc(_db, _bill.单据编号, loc.LocCode) != null)
                 {
                     loc.IsCheck = true;
                 }
@@ -164,7 +164,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
-                if (_bill.BillType != (int)BillType.InventoryPlan)
+                if (_bill.单据类型 != (int)BillType.InventoryPlan)
                 {
                     MessageHelper.ShowError("请输入有效的单据类型！盘点单据类型为：" + (int)BillType.InventoryPlan);
                     return;
@@ -190,7 +190,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddInventoryLoc(db, _bill, detailList);
+                BillHandler.AddInventoryLoc(db, _bill.VWToBill(), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

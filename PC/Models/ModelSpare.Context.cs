@@ -72,5 +72,6 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<VS_STOCK> VS_STOCK { get; set; }
         public virtual DbSet<VS_STOCK_AGE> VS_STOCK_AGE { get; set; }
         public virtual DbSet<TS_CONFIG> TS_CONFIG { get; set; }
+        public virtual DbSet<VW_BILL> VW_BILL { get; set; }
     }
 }

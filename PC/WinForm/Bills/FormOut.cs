@@ -23,7 +23,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
     {
         private BillType _billType = BillType.MaterialDeliver;
         private GridppReport _report;
-        private TB_BILL _bill = null;
+        private VW_BILL _bill = null;
         private readonly string DetailTableName = "TB_OUT";
         private readonly string IndexColumnName = "BillNum";
 
@@ -133,9 +133,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
-            _bill = BillController.GetBill(_db, grid.MasterUid);
+            _bill = BillController.GetVWBill(_db, grid.MasterUid);
             if (_bill == null) return;
-            var count = SetDetailDataSource(_bill.BillNum);
+            var count = SetDetailDataSource(_bill.单据编号);
             grid.IsDetailVisible = count > 0;
         }
 
@@ -150,8 +150,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             try
             {
-                BillHandler.CancelMaterialAsk(_db, _bill);
-                NotifyController.AddNotify(_db, _bill.OperName, NotifyType.MaterialOutCancel, _bill.BillNum, "");
+                BillHandler.CancelMaterialAsk(_db, _bill.VWToBill());
+                NotifyController.AddNotify(_db, _bill.操作者, NotifyType.MaterialOutCancel, _bill.单据编号, "");
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }
@@ -178,7 +178,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -193,7 +193,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void BtnDeliver_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据");
                 return;
@@ -201,7 +201,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("确定要执行选定的领用单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                var outlist = SpareOutController.GetList(db, _bill.BillNum);
+                var outlist = SpareOutController.GetList(db, _bill.单据编号);
                 foreach (var spout in outlist)
                 {
                     if (string.IsNullOrEmpty(spout.TakeUser))
@@ -210,7 +210,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         return;
                     }
                 }
-                BillHandler.FinishMaterialOut(db, _bill, outlist);
+                BillHandler.FinishMaterialOut(db, _bill.VWToBill(), outlist);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
@@ -219,21 +219,21 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnReturn_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据");
                 return;
             }
 
-            if (_bill.State != (int)BillState.Finished)
+            if (_bill.状态 != (int)BillState.Finished)
             {
                 MessageHelper.ShowInfo("选中单据状态错误，无法执行");
                 return;
             }
-            var details = SpareOutController.GetList(_db, _bill.BillNum);
+            var details = SpareOutController.GetList(_db, _bill.单据编号);
             try
             {
-                string strInfo = BillHandler.HandleMaterialReturn(_db, _bill, details);
+                string strInfo = BillHandler.HandleMaterialReturn(_db, _bill.VWToBill(), details);
                 if (strInfo != "OK")
                 {
                     MessageHelper.ShowError(strInfo);

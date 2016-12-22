@@ -283,6 +283,9 @@
     <Compile Include="VS_STOCK_AGE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
+    <Compile Include="VW_BILL.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
     <Compile Include="WmsException.cs" />
     <Compile Include="EntitiesFactory.cs" />
     <Compile Include="ModelPower.Context.cs">

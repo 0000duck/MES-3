@@ -24,7 +24,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private BillType _billType = BillType.SpareReturn;
         private readonly SubBillType _subBillType;
         private GridppReport _report;
-        private TB_BILL _bill = null;
+        private VW_BILL _bill = null;
         private readonly string DetailTableName = "TB_RETURN";
         private readonly string IndexColumnName = "BillNum";
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
@@ -136,9 +136,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
             SpareEntities db = EntitiesFactory.CreateSpareInstance();
-            _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
+            _bill = db.VW_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
-            var billNum = _bill.BillNum;
+            var billNum = _bill.单据编号;
             var count = SetDetailDataSource(billNum);
             grid.IsDetailVisible = count > 0;
         }
@@ -150,7 +150,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -167,7 +167,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnExecute_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -175,8 +175,8 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("确定要执行选定的领用还回单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                var returnlist = db.TB_RETURN.Where(p => p.BillNum == _bill.BillNum).ToList();
-                BillHandler.ExecuteSpareReturn(db, _bill, returnlist);
+                var returnlist = db.TB_RETURN.Where(p => p.BillNum == _bill.单据编号).ToList();
+                BillHandler.ExecuteSpareReturn(db, _bill.VWToBill(), returnlist);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");

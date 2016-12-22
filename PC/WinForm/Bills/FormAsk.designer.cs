@@ -118,6 +118,7 @@
             this.ItemBtnImport.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnImport.Name = "ItemBtnImport";
             this.ItemBtnImport.Text = "导入";
+            this.ItemBtnImport.Visible = false;
             this.ItemBtnImport.Click += new System.EventHandler(this.ItemBtnImport_Click);
             // 
             // ItemBtnExport

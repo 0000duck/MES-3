@@ -23,7 +23,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
     {
         private BillType _billType = BillType.InventoryPlan;
         private GridppReport _report;
-        private TB_BILL _bill = null;
+        private VW_BILL _bill = null;
         private readonly string DetailTableName = "TB_INVENTORY_DETAIL";
         private readonly string IndexColumnName = "BillNum";
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
@@ -32,7 +32,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(), DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -133,9 +133,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
             SpareEntities db = EntitiesFactory.CreateSpareInstance();
-            _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
+            _bill = db.VW_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
-            var billNum = _bill.BillNum;
+            var billNum = _bill.单据编号;
             var count = SetDetailDataSource(billNum);
             grid.IsDetailVisible = count > 0;
         }
@@ -154,7 +154,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnInventoryLoc_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -166,21 +166,21 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
             }
-            if (_bill.State != (int) BillState.New)
+            if (_bill.状态 != (int) BillState.New)
             {
                 MessageHelper.ShowError("非新建单据，禁止取消！");
                 return;
             }
             if (MessageHelper.ShowQuestion("是否要取消盘点计划单？") == DialogResult.Yes)
             {
-                BillController.UpdateState(_db, _bill, BillState.Cancelled);
-                NotifyController.AddNotify(_db,_bill.OperName,NotifyType.InventoryPlanCancel, _bill.BillNum,"");
-                var InventoryLocs = InventoryController.GetLocList(_db, _bill.BillNum);
+                BillController.UpdateState(_db, _bill.VWToBill(), BillState.Cancelled);
+                NotifyController.AddNotify(_db,_bill.操作者,NotifyType.InventoryPlanCancel, _bill.单据编号,"");
+                var InventoryLocs = InventoryController.GetLocList(_db, _bill.单据编号);
                 foreach (var inventoryLoc in InventoryLocs)
                 {
                     InventoryController.LocCancel(_db, inventoryLoc);
@@ -193,12 +193,12 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnInventoryResult_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
             }
-            if (_bill.State != (int)BillState.New && _bill.State != (int)BillState.Handling)
+            if (_bill.状态 != (int)BillState.New && _bill.状态 != (int)BillState.Handling)
             {
                 MessageHelper.ShowError("非新建或执行中单据，禁止维护盘点结果！");
                 return;
@@ -210,19 +210,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
             }
-            if (_bill.State != (int)BillState.New && _bill.State != (int)BillState.Handling)
+            if (_bill.状态 != (int)BillState.New && _bill.状态 != (int)BillState.Handling)
             {
                 MessageHelper.ShowError("非新建或执行中单据，禁止对库存进行调整！");
                 return;
             }
             if (MessageHelper.ShowQuestion("是否确定要对库存进行调整？") == DialogResult.Yes)
             {
-                BillHandler.AdjustStockByInventoryLoc(_db, _bill);
+                BillHandler.AdjustStockByInventoryLoc(_db, _bill.VWToBill());
                 EntitiesFactory.SaveDb(_db);
                 NotifyController.AddStockSafeQty(_db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("调整库存成功！");

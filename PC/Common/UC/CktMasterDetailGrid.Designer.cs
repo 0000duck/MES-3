@@ -79,7 +79,7 @@
             this.GridMaster.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridMaster.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.GridMaster.Location = new System.Drawing.Point(0, 0);
-            this.GridMaster.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridMaster.Margin = new System.Windows.Forms.Padding(2);
             this.GridMaster.Name = "GridMaster";
             // 
             // 
@@ -110,32 +110,32 @@
             // 
             // esp
             // 
-            this.esp.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.esp.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
             this.esp.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.esp.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.esp.Dock = System.Windows.Forms.DockStyle.Right;
-            this.esp.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.esp.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
             this.esp.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.esp.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.esp.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
             this.esp.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.esp.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.esp.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
             this.esp.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.esp.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.esp.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
             this.esp.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.esp.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(151)))), ((int)(((byte)(61)))));
-            this.esp.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(94)))));
+            this.esp.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(200)))), ((int)(((byte)(103)))));
+            this.esp.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(135)))));
             this.esp.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2;
             this.esp.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground;
-            this.esp.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.esp.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
             this.esp.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.esp.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.esp.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
             this.esp.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.esp.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.esp.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
             this.esp.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.esp.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.esp.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
             this.esp.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.esp.Location = new System.Drawing.Point(581, 0);
-            this.esp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.esp.Margin = new System.Windows.Forms.Padding(2);
             this.esp.Name = "esp";
             this.esp.Size = new System.Drawing.Size(4, 503);
             this.esp.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007;
@@ -151,9 +151,9 @@
             this.epProperty.DisabledBackColor = System.Drawing.Color.Empty;
             this.epProperty.Dock = System.Windows.Forms.DockStyle.Left;
             this.epProperty.Expanded = false;
-            this.epProperty.ExpandedBounds = new System.Drawing.Rectangle(589, 0, 269, 503);
+            this.epProperty.ExpandedBounds = new System.Drawing.Rectangle(0, 0, 269, 503);
             this.epProperty.Location = new System.Drawing.Point(0, 0);
-            this.epProperty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.epProperty.Margin = new System.Windows.Forms.Padding(2);
             this.epProperty.Name = "epProperty";
             this.epProperty.Size = new System.Drawing.Size(30, 503);
             this.epProperty.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -178,7 +178,7 @@
             this.pg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg.GridLinesColor = System.Drawing.Color.WhiteSmoke;
             this.pg.Location = new System.Drawing.Point(0, 29);
-            this.pg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pg.Margin = new System.Windows.Forms.Padding(2);
             this.pg.Name = "pg";
             this.pg.Size = new System.Drawing.Size(30, 474);
             this.pg.TabIndex = 4;
@@ -414,7 +414,7 @@
             this.epDetail.DisabledBackColor = System.Drawing.Color.Empty;
             this.epDetail.Dock = System.Windows.Forms.DockStyle.Right;
             this.epDetail.Location = new System.Drawing.Point(585, 0);
-            this.epDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.epDetail.Margin = new System.Windows.Forms.Padding(2);
             this.epDetail.Name = "epDetail";
             this.epDetail.Size = new System.Drawing.Size(300, 503);
             this.epDetail.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -439,7 +439,7 @@
             this.GridDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridDetail.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.GridDetail.Location = new System.Drawing.Point(0, 29);
-            this.GridDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridDetail.Margin = new System.Windows.Forms.Padding(2);
             this.GridDetail.Name = "GridDetail";
             // 
             // 
@@ -467,7 +467,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.panelEx1.Location = new System.Drawing.Point(30, 0);
-            this.panelEx1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(2);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(551, 503);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -488,7 +488,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelX1.Location = new System.Drawing.Point(0, 0);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(2);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(551, 503);
             this.labelX1.TabIndex = 1;
@@ -504,7 +504,7 @@
             this.Controls.Add(this.epProperty);
             this.Controls.Add(this.epDetail);
             this.Controls.Add(this.bnMaster);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CktMasterDetailGrid";
             this.Size = new System.Drawing.Size(885, 530);
             ((System.ComponentModel.ISupportInitialize)(this.bsMaster)).EndInit();

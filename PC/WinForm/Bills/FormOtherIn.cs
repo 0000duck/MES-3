@@ -24,7 +24,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private BillType _billType = BillType.OtherInOut;
         private readonly SubBillType _subBillType = SubBillType.OtherIn;
         private GridppReport _report;
-        private TB_BILL _bill = null;
+        private VW_BILL _bill = null;
         private readonly string DetailTableName = "TB_OTHER_IN";
         private readonly string IndexColumnName = "BillNum";
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
@@ -123,9 +123,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
             SpareEntities db = EntitiesFactory.CreateSpareInstance();
-            _bill = db.TB_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
+            _bill = db.VW_BILL.SingleOrDefault(p => p.UID == grid.MasterUid);
             if (_bill == null) return;
-            var billNum = _bill.BillNum;
+            var billNum = _bill.单据编号;
             var count = SetDetailDataSource(billNum);
             grid.IsDetailVisible = count > 0;
         }
@@ -137,7 +137,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -154,7 +154,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnExecute_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -162,7 +162,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("确定要执行选定的领用还回单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.ExecuteSpareReturn(db, _bill, (List<TB_RETURN>)(grid.Detail1DataSource));
+                BillHandler.ExecuteSpareReturn(db, _bill.VWToBill(), (List<TB_RETURN>)(grid.Detail1DataSource));
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -172,12 +172,12 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             try
             {
-                if (_bill == null || _bill.BillNum == null)
+                if (_bill == null || _bill.单据编号 == null)
                 {
                     MessageHelper.ShowInfo("请选择单据！");
                     return;
                 }
-                BillController.UpdateState(_db, _bill, BillState.Cancelled);
+                BillController.UpdateState(_db, _bill.VWToBill(), BillState.Cancelled);
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }

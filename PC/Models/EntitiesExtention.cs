@@ -439,5 +439,27 @@ namespace ChangKeTec.Wms.Models
         }
 
     }
-    
+
+    public partial class VW_BILL
+    {
+        public TB_BILL VWToBill()
+        {
+            return new TB_BILL
+            {
+                UID = UID,
+                BillNum = 单据编号,
+                SourceBillNum = 源单单号,
+                BillType = 单据类型,
+                SubBillType = 子单据类型,
+                BillTime = 制单日期,
+                StartTime = 开始时间,
+                FinishTime = 结束时间,
+                OperName = 操作者,
+                SplyId = 供应商,
+                State = 状态,
+                Remark = 备注
+            };
+        }
+
+    }
 }

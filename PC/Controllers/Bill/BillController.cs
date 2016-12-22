@@ -66,6 +66,11 @@ namespace ChangKeTec.Wms.Controllers.Bill
             return db.TB_BILL.SingleOrDefault(p => p.UID == uid);
         }
 
+        public static VW_BILL GetVWBill(SpareEntities db, int uid)
+        {
+            return db.VW_BILL.SingleOrDefault(p => p.UID == uid);
+        }
+
         public static List<TB_BILL> GetListByFunc(SpareEntities db,Func<TB_BILL, bool> preFunc)
         {
             var billList = db.TB_BILL.Where(preFunc).ToList();

@@ -78,6 +78,7 @@
             this.btnModify.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnModify.Name = "btnModify";
             this.btnModify.Text = "修改";
+            this.btnModify.Visible = false;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnCancel
@@ -87,6 +88,7 @@
             this.btnCancel.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Text = "取消";
+            this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ItemBtnExport
@@ -105,6 +107,7 @@
             this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnPrint.Name = "ItemBtnPrint";
             this.ItemBtnPrint.Text = "打印";
+            this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
             // btnFilter
@@ -126,7 +129,7 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;

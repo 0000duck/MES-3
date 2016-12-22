@@ -769,6 +769,31 @@
           <Property Name="BM" Type="nvarchar" MaxLength="50" />
           <Property Name="PartType" Type="int" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ChangKeSpare.dbo.VW_BILL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VW_BILL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="单据编号" />
+            <PropertyRef Name="单据类型" />
+            <PropertyRef Name="子单据类型" />
+            <PropertyRef Name="制单日期" />
+            <PropertyRef Name="操作者" />
+            <PropertyRef Name="状态" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="单据编号" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="单据类型" Type="int" Nullable="false" />
+          <Property Name="源单单号" Type="nvarchar" MaxLength="50" />
+          <Property Name="子单据类型" Type="int" Nullable="false" />
+          <Property Name="开始时间" Type="nvarchar" MaxLength="50" />
+          <Property Name="制单日期" Type="datetime" Nullable="false" />
+          <Property Name="结束时间" Type="nvarchar" MaxLength="50" />
+          <Property Name="操作者" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="供应商" Type="nvarchar" MaxLength="50" />
+          <Property Name="状态" Type="int" Nullable="false" />
+          <Property Name="备注" Type="nvarchar(max)" />
+        </EntityType>
         <EntityContainer Name="SpareModelStoreContainer">
           <EntitySet Name="TA_Attach" EntityType="Self.TA_Attach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" Schema="dbo" store:Type="Tables" />
@@ -945,6 +970,22 @@
     [VS_STOCK_AGE].[PartType] AS [PartType]
     FROM [dbo].[VS_STOCK_AGE] AS [VS_STOCK_AGE]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VW_BILL" EntityType="Self.VW_BILL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_BILL].[UID] AS [UID], 
+    [VW_BILL].[单据编号] AS [单据编号], 
+    [VW_BILL].[单据类型] AS [单据类型], 
+    [VW_BILL].[源单单号] AS [源单单号], 
+    [VW_BILL].[子单据类型] AS [子单据类型], 
+    [VW_BILL].[开始时间] AS [开始时间], 
+    [VW_BILL].[制单日期] AS [制单日期], 
+    [VW_BILL].[结束时间] AS [结束时间], 
+    [VW_BILL].[操作者] AS [操作者], 
+    [VW_BILL].[供应商] AS [供应商], 
+    [VW_BILL].[状态] AS [状态], 
+    [VW_BILL].[备注] AS [备注]
+    FROM [dbo].[VW_BILL] AS [VW_BILL]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -998,6 +1039,7 @@
           <EntitySet Name="VS_STOCK" EntityType="SpareModel.VS_STOCK" />
           <EntitySet Name="VS_STOCK_AGE" EntityType="SpareModel.VS_STOCK_AGE" />
           <EntitySet Name="TS_CONFIG" EntityType="SpareModel.TS_CONFIG" />
+          <EntitySet Name="VW_BILL" EntityType="SpareModel.VW_BILL" />
         </EntityContainer>
         <EntityType Name="TA_Attach">
           <Key>
@@ -1743,6 +1785,29 @@
           <Property Name="KEYID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DATA" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="VW_BILL">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="单据编号" />
+            <PropertyRef Name="单据类型" />
+            <PropertyRef Name="子单据类型" />
+            <PropertyRef Name="制单日期" />
+            <PropertyRef Name="操作者" />
+            <PropertyRef Name="状态" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="单据编号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="单据类型" Type="Int32" Nullable="false" />
+          <Property Name="源单单号" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="子单据类型" Type="Int32" Nullable="false" />
+          <Property Name="开始时间" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="制单日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="结束时间" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="操作者" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="供应商" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="状态" Type="Int32" Nullable="false" />
+          <Property Name="备注" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2481,6 +2546,24 @@
                 <ScalarProperty Name="DATA" ColumnName="DATA" />
                 <ScalarProperty Name="KEYID" ColumnName="KEYID" />
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_BILL">
+            <EntityTypeMapping TypeName="SpareModel.VW_BILL">
+              <MappingFragment StoreEntitySet="VW_BILL">
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="状态" ColumnName="状态" />
+                <ScalarProperty Name="供应商" ColumnName="供应商" />
+                <ScalarProperty Name="操作者" ColumnName="操作者" />
+                <ScalarProperty Name="结束时间" ColumnName="结束时间" />
+                <ScalarProperty Name="制单日期" ColumnName="制单日期" />
+                <ScalarProperty Name="开始时间" ColumnName="开始时间" />
+                <ScalarProperty Name="子单据类型" ColumnName="子单据类型" />
+                <ScalarProperty Name="源单单号" ColumnName="源单单号" />
+                <ScalarProperty Name="单据类型" ColumnName="单据类型" />
+                <ScalarProperty Name="单据编号" ColumnName="单据编号" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

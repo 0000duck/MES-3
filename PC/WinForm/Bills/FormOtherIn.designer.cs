@@ -107,6 +107,7 @@
             this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnPrint.Name = "ItemBtnPrint";
             this.ItemBtnPrint.Text = "打印";
+            this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
             // btnFilter

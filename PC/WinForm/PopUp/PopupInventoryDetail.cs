@@ -22,7 +22,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.InventoryPlan;
         private readonly GridppReport _report;
 
-        private TB_BILL _bill = new TB_BILL();
+        private VW_BILL _bill = new VW_BILL();
         private TB_INVENTORY_DETAIL _inventorydetail = new TB_INVENTORY_DETAIL();
 
         private readonly string DetailTableName = "TB_INVENTORY_DETAIL";
@@ -36,7 +36,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             propertyBill.SelectedObject = _bill;
         }
 
-        public PopupInventoryDetail(TB_BILL bill)
+        public PopupInventoryDetail(VW_BILL bill)
         {
             InitializeComponent();
             _bill = bill;
@@ -62,7 +62,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcPart.EditorType = typeof (PartComboBox);
             gcLoc.EditorType = typeof (StoreLocComboBox);
             propertyBill.SelectedObject = _bill;
-            SetDetailDataSource(_bill.BillNum); 
+            SetDetailDataSource(_bill.单据编号); 
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 bs.EndEdit();
                 var detailList = (List<TB_INVENTORY_DETAIL>) bs.DataSource;
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddOrUpdateInventoryDetail(db, _bill, detailList);
+                BillHandler.AddOrUpdateInventoryDetail(db, _bill.VWToBill(), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

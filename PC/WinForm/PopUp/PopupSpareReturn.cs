@@ -20,7 +20,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
     public partial class PopupSpareReturn : Office2007Form
     {
         private BillType _billType = BillType.SpareReturn;
-        private TB_BILL _bill = new TB_BILL();
+        private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         public PopupSpareReturn()
         {
@@ -28,7 +28,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             propertyBill.SelectedObject = _bill;
         }
 
-        public PopupSpareReturn(TB_BILL bill)
+        public PopupSpareReturn(VW_BILL bill)
         {
             InitializeComponent();
             _bill = bill;
@@ -59,11 +59,11 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             gcEqptCode.EditorType = typeof(PartComboBox);
             if (_bill.UID == 0)
             {
-                _bill.BillType = (int)BillType.SpareReturn;
-                _bill.BillTime = DateTime.Now;
+                _bill.单据类型 = (int)BillType.SpareReturn;
+                _bill.制单日期 = DateTime.Now;
             }
             propertyBill.SelectedObject = _bill;
-            SetDetailDataSource(_bill.BillNum);
+            SetDetailDataSource(_bill.单据编号);
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             try
             {
                 bs.EndEdit();
-                if (_bill.BillType != (int)BillType.SpareReturn)
+                if (_bill.单据类型 != (int)BillType.SpareReturn)
                 {
                     MessageHelper.ShowError("请输入有效的单据类型！领用归还单据类型为：" + (int)BillType.SpareReturn);
                     return;
@@ -92,7 +92,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_RETURN> detailList = (from TB_RETURN d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddMaterialReturn(db, _bill, detailList);
+                BillHandler.AddMaterialReturn(db, _bill.VWToBill(), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -130,7 +130,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
 
         private void grid_DataRefreshed(object sender, CktMasterDetailGrid.QtyEventArgs e)
         {
-            SetDetailDataSource(_bill.BillNum);           
+            SetDetailDataSource(_bill.单据编号);           
         }
 
         private void propertyBill_PropertyValueChanging(object sender, PropertyValueChangingEventArgs e)

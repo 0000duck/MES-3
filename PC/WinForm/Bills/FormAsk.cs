@@ -23,7 +23,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
     {
         private BillType _billType = BillType.MaterialAsk;
         private GridppReport _report;
-        private TB_BILL _bill = null;
+        private VW_BILL _bill = null;
         private readonly string DetailTableName = "TB_ASK";
         private readonly string IndexColumnName = "BillNum";
 
@@ -33,7 +33,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(), DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -51,21 +51,21 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void BtnHandle_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据");
                 return;
             }
 
-            if (_bill.State != (int)BillState.Approve)
+            if (_bill.状态 != (int)BillState.Approve)
             {
                 MessageHelper.ShowInfo("选中单据状态错误，无法执行");
                 return;
             }
-            var details = SpareAskController.GetList(_db, _bill.BillNum);
+            var details = SpareAskController.GetList(_db, _bill.单据编号);
             try
             {
-                string strInfo = BillHandler.HandleMaterialAsk(_db, _bill, details);
+                string strInfo = BillHandler.HandleMaterialAsk(_db, _bill.VWToBill(), details);
                 if (strInfo != "OK")
                 {
                     MessageHelper.ShowError(strInfo);
@@ -164,9 +164,9 @@ namespace ChangKeTec.Wms.WinForm.Bills
         private void grid_GridCellActivated(object sender, GridCellActivatedEventArgs e)
         {
             //            MessageBox.Show(e.GridCell.GridRow.DataItem.ToString());
-            _bill = BillController.GetBill(_db, grid.MasterUid);
+            _bill = BillController.GetVWBill(_db, grid.MasterUid);
             if (_bill == null) return;
-            var count = SetDetailDataSource(_bill.BillNum);
+            var count = SetDetailDataSource(_bill.单据编号);
             grid.IsDetailVisible = count > 0;
         }
 
@@ -180,13 +180,13 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             try
             {
-                if (_bill == null || _bill.BillNum == null)
+                if (_bill == null || _bill.单据编号 == null)
                 {
                     MessageHelper.ShowInfo("请选择单据！");
                     return;
                 }
-                BillController.UpdateState(_db, _bill, BillState.Cancelled);
-                NotifyController.AddNotify(_db, _bill.OperName, NotifyType.MaterialAskCancel, _bill.BillNum, ""); //添加【叫料提醒单】
+                BillController.UpdateState(_db, _bill.VWToBill(), BillState.Cancelled);
+                NotifyController.AddNotify(_db, _bill.操作者, NotifyType.MaterialAskCancel, _bill.单据编号, ""); //添加【叫料提醒单】
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }
@@ -206,7 +206,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -218,7 +218,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnPrint_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
@@ -233,14 +233,14 @@ namespace ChangKeTec.Wms.WinForm.Bills
 
         private void ItemBtnApprove_Click(object sender, EventArgs e)
         {
-            if (_bill == null || _bill.BillNum == null)
+            if (_bill == null || _bill.单据编号 == null)
             {
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
             }
-            BillController.UpdateState(_db,_bill,BillState.Approve);
+            BillController.UpdateState(_db,_bill.VWToBill(),BillState.Approve);
             EntitiesFactory.SaveDb(_db);
-            NotifyController.AddNotify(_db, _bill.OperName, NotifyType.MaterialAskApprove, _bill.BillNum, ""); 
+            NotifyController.AddNotify(_db, _bill.操作者, NotifyType.MaterialAskApprove, _bill.单据编号, ""); 
             MessageHelper.ShowInfo("审核通过！");
             SetMasterDataSource(1, grid.PageSize);
         }

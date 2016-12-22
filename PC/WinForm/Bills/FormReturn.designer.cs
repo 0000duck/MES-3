@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             this.btnExecute = new DevComponents.DotNetBar.ButtonItem();
             this.btnModify = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
             this.btnFilter = new DevComponents.DotNetBar.ButtonItem();
+            this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.ItemBtnPrint,
             this.btnFilter});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
             this.bar1.Size = new System.Drawing.Size(892, 29);
             this.bar1.Stretch = true;
@@ -59,28 +59,6 @@
             this.bar1.TabIndex = 0;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
-            // 
-            // grid
-            // 
-            this.grid.Detail1DataSource = null;
-            this.grid.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.IsNavigatorVisible = true;
-            this.grid.IsPropertyExpand = false;
-            this.grid.IsPropertyVisible = true;
-            this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grid.MasterDataSource = null;
-            this.grid.Name = "grid";
-            this.grid.PageIndex = 1;
-            this.grid.PageSize = 100;
-            this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.grid.Size = new System.Drawing.Size(892, 532);
-            this.grid.TabIndex = 9;
-            this.grid.Total = 0;
-            this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
-            this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
-            this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
             // 
             // btnExecute
             // 
@@ -116,6 +94,7 @@
             this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnPrint.Name = "ItemBtnPrint";
             this.ItemBtnPrint.Text = "打印";
+            this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
             // btnFilter
@@ -128,6 +107,28 @@
             this.btnFilter.Text = "筛选";
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // grid
+            // 
+            this.grid.Detail1DataSource = null;
+            this.grid.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.IsNavigatorVisible = true;
+            this.grid.IsPropertyExpand = false;
+            this.grid.IsPropertyVisible = true;
+            this.grid.Location = new System.Drawing.Point(0, 29);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.MasterDataSource = null;
+            this.grid.Name = "grid";
+            this.grid.PageIndex = 1;
+            this.grid.PageSize = 100;
+            this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.grid.Size = new System.Drawing.Size(892, 532);
+            this.grid.TabIndex = 9;
+            this.grid.Total = 0;
+            this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
+            this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
+            this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
+            // 
             // FormReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -137,7 +138,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormReturn";
             this.ShowIcon = false;
             this.Text = "领用归还单";
