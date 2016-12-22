@@ -44,6 +44,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             if (_bill.UID == 0)
             {
                 _bill.BillType = (int)BillType.MaterialDeliver;
+                _bill.SubBillType = (int)SubBillType.SpareOut;
                 _bill.BillTime = DateTime.Now;
             }
             propertyBill.SelectedObject = _bill;

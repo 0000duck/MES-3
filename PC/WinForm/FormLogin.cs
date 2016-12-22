@@ -78,7 +78,7 @@ namespace ChangKeTec.Wms.WinForm
         {
            FormSetting form = new FormSetting();
             form.ShowDialog(this);
-            lblDbName.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbName);
+            lblDbName.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbName);
 
         }
 
@@ -87,7 +87,7 @@ namespace ChangKeTec.Wms.WinForm
             if (UpdateControl.DownloadServerFiles())
                 UpdateControl.KillSelfThenRun();
             lblVersion.Text = @"Version " + Application.ProductVersion;
-            lblDbName.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbName);
+            lblDbName.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbName);
         }
     }
 }

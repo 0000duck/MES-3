@@ -252,7 +252,7 @@ namespace ChangKeTec.Wms.Controllers
                     throw new WmsException(ResultCode.DataStateError,
                         billPickFact.BillNum, "状态错误,不应为：" + billPickFact.State);
                 }
-                if (billPickFact.BillNum == "")
+                if (string.IsNullOrEmpty(billPickFact.BillNum))
                 {
                     SetBillNum(billPickFact); //设置单据编号
                     details.ForEach(p => p.BillNum = billPickFact.BillNum); //设置明细编号

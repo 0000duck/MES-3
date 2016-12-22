@@ -31,11 +31,11 @@ namespace ChangKeTec.Wms.WinForm
             {
 //                string strConn = EncryptHelper.Encrypt(sbConn.ToString());
 //                AppConfigHelper.SetAppValue(SqlConn, strConn);
-                AppConfigHelper.SetAppValue(GlobalVar.WmsDbServer, txtServer.Text);
-                AppConfigHelper.SetAppValue(GlobalVar.WmsDbPort, txtPort.Text);
-                AppConfigHelper.SetAppValue(GlobalVar.WmsDbUser, txtSqlUser.Text);
-                AppConfigHelper.SetAppValue(GlobalVar.WmsDbPassword, EncryptHelper.Encrypt(txtSqlPwd.Text));
-                AppConfigHelper.SetAppValue(GlobalVar.WmsDbName, txtSqlDb.Text);
+                AppConfigHelper.SetAppValue(GlobalVar.SpareDbServer, txtServer.Text);
+                AppConfigHelper.SetAppValue(GlobalVar.SpareDbPort, txtPort.Text);
+                AppConfigHelper.SetAppValue(GlobalVar.SpareDbUser, txtSqlUser.Text);
+                AppConfigHelper.SetAppValue(GlobalVar.SpareDbPassword, EncryptHelper.Encrypt(txtSqlPwd.Text));
+                AppConfigHelper.SetAppValue(GlobalVar.SpareDbName, txtSqlDb.Text);
 
                 AppConfigHelper.SetAppValue(GlobalVar.PowerDbServer, txtServer.Text);
                 AppConfigHelper.SetAppValue(GlobalVar.PowerDbPort, txtPort.Text);
@@ -48,10 +48,10 @@ namespace ChangKeTec.Wms.WinForm
 
                 StringBuilder sb = new StringBuilder();
 
-                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.WmsDbServer));
-                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.WmsDbName));
-                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.WmsDbUser));
-                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.WmsDbPassword));
+                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.SpareDbServer));
+                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.SpareDbName));
+                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.SpareDbUser));
+                sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.SpareDbPassword));
                 sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.UpdateServerUrl));
                 sb.AppendLine(AppConfigHelper.GetAppValue(GlobalVar.UpdateFileName));
 
@@ -73,12 +73,12 @@ namespace ChangKeTec.Wms.WinForm
 //                string strConn = EncryptHelper.Decrypt(AppConfigHelper.GetAppValue(SqlConn));
 //                string[] stArray = strConn.Split(';');
 //                if (stArray.Length == 0) return;
-                txtServer.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbServer);
-                txtPort.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbPort);
-                txtSqlUser.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbUser);
-                txtSqlPwd.Text = EncryptHelper.Decrypt(AppConfigHelper.GetAppValue(GlobalVar.WmsDbPassword));
+                txtServer.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbServer);
+                txtPort.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbPort);
+                txtSqlUser.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbUser);
+                txtSqlPwd.Text = EncryptHelper.Decrypt(AppConfigHelper.GetAppValue(GlobalVar.SpareDbPassword));
 
-                txtSqlDb.Text = AppConfigHelper.GetAppValue(GlobalVar.WmsDbName);
+                txtSqlDb.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbName);
                 txtPowerDb.Text = AppConfigHelper.GetAppValue(GlobalVar.PowerDbName);
 
                 txtWebServer.Text = AppConfigHelper.GetAppValue(GlobalVar.UpdateServerUrl);

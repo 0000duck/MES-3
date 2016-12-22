@@ -51,7 +51,7 @@
             this.ItemBtnPrint,
             this.btnOpenImportTemplete});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
             this.bar1.Size = new System.Drawing.Size(892, 29);
             this.bar1.Stretch = true;
@@ -67,6 +67,7 @@
             this.btnImport.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnImport.Name = "btnImport";
             this.btnImport.Text = "导入";
+            this.btnImport.Visible = false;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnCancel
@@ -76,6 +77,7 @@
             this.btnCancel.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Text = "取消";
+            this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ItemBtnExport
@@ -85,6 +87,7 @@
             this.ItemBtnExport.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnExport.Name = "ItemBtnExport";
             this.ItemBtnExport.Text = "导出";
+            this.ItemBtnExport.Visible = false;
             this.ItemBtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // ItemBtnPrint
@@ -94,6 +97,7 @@
             this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnPrint.Name = "ItemBtnPrint";
             this.ItemBtnPrint.Text = "打印";
+            this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
             // btnOpenImportTemplete
@@ -103,6 +107,7 @@
             this.btnOpenImportTemplete.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.btnOpenImportTemplete.Name = "btnOpenImportTemplete";
             this.btnOpenImportTemplete.Text = "打开导入模板";
+            this.btnOpenImportTemplete.Visible = false;
             this.btnOpenImportTemplete.Click += new System.EventHandler(this.btnOpenImportTemplete_Click);
             // 
             // grid
@@ -114,7 +119,7 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;
@@ -136,7 +141,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormPo";
             this.ShowIcon = false;
             this.Text = "采购订单";

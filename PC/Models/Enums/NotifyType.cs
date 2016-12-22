@@ -62,9 +62,9 @@ namespace ChangKeTec.Wms.Models.Enums
         [Description("安全库存提示")]
         StockSafeQty = 203,
 
-        [Description("QAD接口：基础数据同步")]
+        [Description("OA接口：基础数据同步")]
         OAInterfaceBase = 251,
-        [Description("QAD接口：采购订单同步")]
+        [Description("OA接口：采购订单同步")]
         OAInterfacePO = 252,
         [Description("QAD接口：采购入库同步")]
         QADInterfaceInStock = 253,

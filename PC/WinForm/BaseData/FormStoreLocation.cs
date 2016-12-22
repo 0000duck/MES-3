@@ -50,8 +50,15 @@ namespace ChangKeTec.Wms.WinForm.BaseData
             {
 
                 if (detailList.All(p => p.UID != storeWhse.UID))
+                {
+                    if (storeWhse.LocCode == "OTHER" || storeWhse.LocCode == "DefaultLoc")
+                    {
+                        MessageHelper.ShowError("不能删除系统库位【OTHER】或【DefaultLoc】");
+                        return;
+                    }
                     _db.TA_STORE_LOCATION.Remove(storeWhse);
-                
+                }
+
                 OperateType logType;
                 string oldValue, newValue;
                 DbEntityEntry<TA_STORE_LOCATION> entry;
@@ -83,6 +90,11 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 //                        _db.TA_STORE_LOCATION.Remove(storeWhse);
                         break;
                     case EntityState.Modified:
+                        if (storeWhse.LocCode == "OTHER" || storeWhse.LocCode == "DefaultLoc")
+                        {
+                            MessageHelper.ShowError("不能修改系统库位【OTHER】或【DefaultLoc】");
+                            return;
+                        }
                         logType = OperateType.Update;
                         oldValue = GetValues(entry.OriginalValues);
                         newValue = GetValues(entry.CurrentValues);
@@ -138,8 +150,5 @@ namespace ChangKeTec.Wms.WinForm.BaseData
         {
             grid.PrimaryGrid.ActiveCell.CancelEdit();
         }
-
-
-       
     }
 }

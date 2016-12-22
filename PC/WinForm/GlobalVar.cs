@@ -30,11 +30,11 @@ namespace ChangKeTec.Wms.WinForm
         public static string ImportTemplatePath { get; set; } = @"\ImportTemplate\";
         public static string LongTimeString { get; set; } = "yyyy-MM-dd HH:mm:ss";
 
-        public const string WmsDbServer = "WmsDbServer";
-        public const string WmsDbPort = "WmsDbPort";
-        public const string WmsDbUser = "WmsDbUser";
-        public const string WmsDbPassword = "WmsDbPassword";
-        public const string WmsDbName = "WmsDbName";
+        public const string SpareDbServer = "SpareDbServer";
+        public const string SpareDbPort = "SpareDbPort";
+        public const string SpareDbUser = "SpareDbUser";
+        public const string SpareDbPassword = "SpareDbPassword";
+        public const string SpareDbName = "SpareDbName";
 
         public const string PowerDbServer = "PowerDbServer";
         public const string PowerDbPort = "PowerDbPort";

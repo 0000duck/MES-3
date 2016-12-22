@@ -19,18 +19,18 @@ namespace ChangKeTec.Wms.WinForm.Bills
 {
     public partial class FormReceive: Office2007Form
     {
-        private BillType _billType = BillType.MaterialReceive;
+        private BillType _billType = BillType.MaterialIn;
         private SubBillType _subBillType;
         private GridppReport _report;
         private TB_BILL _bill = null;
         private readonly string DetailTableName = "TB_IN";
         private readonly string IndexColumnName = "BillNum";
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
-        //        public FormReceive()
-        //        {
-        //            InitializeComponent();
-        //            InitReport();
-        //        }
+                public FormReceive()
+                {
+                    InitializeComponent();
+//                    InitReport();
+                }
 
         public FormReceive(string subBillType)
         {

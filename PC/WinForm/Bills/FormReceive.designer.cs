@@ -49,9 +49,9 @@
             this.ItemBtnPrint,
             this.btnFilter});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1189, 29);
+            this.bar1.Size = new System.Drawing.Size(892, 29);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 0;
@@ -75,6 +75,7 @@
             this.ItemBtnExport.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnExport.Name = "ItemBtnExport";
             this.ItemBtnExport.Text = "导出";
+            this.ItemBtnExport.Visible = false;
             this.ItemBtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // ItemBtnPrint
@@ -84,6 +85,7 @@
             this.ItemBtnPrint.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.ItemBtnPrint.Name = "ItemBtnPrint";
             this.ItemBtnPrint.Text = "打印";
+            this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
             // btnFilter
@@ -94,6 +96,7 @@
             this.btnFilter.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Text = "筛选";
+            this.btnFilter.Visible = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // grid
@@ -105,13 +108,13 @@
             this.grid.IsPropertyExpand = false;
             this.grid.IsPropertyVisible = true;
             this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grid.MasterDataSource = null;
             this.grid.Name = "grid";
             this.grid.PageIndex = 1;
             this.grid.PageSize = 100;
             this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.grid.Size = new System.Drawing.Size(1189, 672);
+            this.grid.Size = new System.Drawing.Size(892, 532);
             this.grid.TabIndex = 9;
             this.grid.Total = 0;
             this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
@@ -120,14 +123,14 @@
             // 
             // FormReceive
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 701);
+            this.ClientSize = new System.Drawing.Size(892, 561);
             this.ControlBox = false;
             this.Controls.Add(this.grid);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormReceive";
             this.ShowIcon = false;
             this.Text = "原料收货单";
