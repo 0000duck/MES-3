@@ -38,14 +38,12 @@
             this.expandableSplitter2 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gcPart = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gcLoc = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcOperName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.bn = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -59,6 +57,8 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.gcLoc = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcPart = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
@@ -174,16 +174,6 @@
             this.gridColumn13.HeaderText = "批次";
             this.gridColumn13.Name = "Column6";
             // 
-            // gcPart
-            // 
-            this.gcPart.DataPropertyName = "PartCode";
-            this.gcPart.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPart.HeaderText = "物料号";
-            this.gcPart.MinimumWidth = 200;
-            this.gcPart.Name = "gridColumn2";
-            this.gcPart.ReadOnly = true;
-            this.gcPart.Width = 200;
-            // 
             // gridColumn1
             // 
             this.gridColumn1.DataPropertyName = "UID";
@@ -211,7 +201,7 @@
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn6);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn8);
+            this.grid.PrimaryGrid.Columns.Add(this.gcOperName);
             // 
             // 
             // 
@@ -233,18 +223,6 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.ReadOnly = true;
             // 
-            // gcLoc
-            // 
-            this.gcLoc.AllowEdit = false;
-            this.gcLoc.DataPropertyName = "CheckLocCode";
-            this.gcLoc.DefaultNewRowCellValue = "";
-            this.gcLoc.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcLoc.HeaderText = "盘点库位";
-            this.gcLoc.MinimumWidth = 200;
-            this.gcLoc.Name = "gcLoc";
-            this.gcLoc.ReadOnly = true;
-            this.gcLoc.Width = 200;
-            // 
             // gridColumn6
             // 
             this.gridColumn6.DataPropertyName = "CheckQty";
@@ -257,11 +235,11 @@
             this.gridColumn7.HeaderText = "盘点时间";
             this.gridColumn7.Name = "gridColumn7";
             // 
-            // gridColumn8
+            // gcOperName
             // 
-            this.gridColumn8.DataPropertyName = "OperName";
-            this.gridColumn8.HeaderText = "盘点人";
-            this.gridColumn8.Name = "gridColumn8";
+            this.gcOperName.DataPropertyName = "OperName";
+            this.gcOperName.HeaderText = "盘点人";
+            this.gcOperName.Name = "gridColumn8";
             // 
             // bn
             // 
@@ -377,6 +355,28 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
+            // gcLoc
+            // 
+            this.gcLoc.AllowEdit = false;
+            this.gcLoc.DataPropertyName = "CheckLocCode";
+            this.gcLoc.DefaultNewRowCellValue = "";
+            this.gcLoc.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcLoc.HeaderText = "盘点库位";
+            this.gcLoc.MinimumWidth = 200;
+            this.gcLoc.Name = "gcLoc";
+            this.gcLoc.ReadOnly = true;
+            this.gcLoc.Width = 200;
+            // 
+            // gcPart
+            // 
+            this.gcPart.DataPropertyName = "PartCode";
+            this.gcPart.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcPart.HeaderText = "物料号";
+            this.gcPart.MinimumWidth = 200;
+            this.gcPart.Name = "gridColumn2";
+            this.gcPart.ReadOnly = true;
+            this.gcPart.Width = 200;
+            // 
             // PopupInventoryDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -423,7 +423,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcOperName;
         private System.Windows.Forms.BindingNavigator bn;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;

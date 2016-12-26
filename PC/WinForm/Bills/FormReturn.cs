@@ -33,7 +33,14 @@ namespace ChangKeTec.Wms.WinForm.Bills
         public FormReturn()
         {
             InitializeComponent();
-            _where = c => c.BillType == (int) _billType;
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                _where = c => c.BillType == (int)_billType && c.SubBillType == (int)_subBillType;
+            }
+            else
+            {
+                _where = c => c.BillType == (int)_billType && c.SubBillType == (int)_subBillType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
 //            _report = ReportHelper.InitReport(_billType);
 //            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
@@ -176,7 +183,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             {
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 var returnlist = db.TB_RETURN.Where(p => p.BillNum == _bill.单据编号).ToList();
-                BillHandler.ExecuteSpareReturn(db, _bill.VWToBill(), returnlist);
+                BillHandler.ExecuteSpareReturn(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), returnlist);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");

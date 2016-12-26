@@ -64,6 +64,10 @@ namespace ChangKeTec.Wms.Models
         public bool IsCheck { get; set; }
     }
 
+    public partial class TA_STORE_GROUP
+    {
+        public bool IsCheck { get; set; }
+    }
     public partial class TB_OUT
     {
         public override string ToString()
@@ -353,6 +357,7 @@ namespace ChangKeTec.Wms.Models
 
     public partial class TA_PART
     {
+        public bool IsCheck { get; set; }
         public override string ToString()
         {
             PropertyInfo[] peroperties = typeof(TA_PART).GetProperties(BindingFlags.Public | BindingFlags.Instance);
@@ -442,7 +447,7 @@ namespace ChangKeTec.Wms.Models
 
     public partial class VW_BILL
     {
-        public TB_BILL VWToBill()
+        public TB_BILL VWToBill(string Factory)
         {
             return new TB_BILL
             {
@@ -457,7 +462,8 @@ namespace ChangKeTec.Wms.Models
                 OperName = 操作者,
                 SplyId = 供应商,
                 State = 状态,
-                Remark = 备注
+                Remark = 备注,
+                Factory = Factory
             };
         }
 

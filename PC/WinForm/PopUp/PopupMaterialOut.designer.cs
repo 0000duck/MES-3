@@ -63,14 +63,14 @@
             this.gcOutQty = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcUnitPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcAmount = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcTakeUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcDeptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcProjectCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcWorkLineCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcEqptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcAskUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcConfirmUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -221,28 +221,28 @@
             // 
             // expandableSplitter2
             // 
-            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.expandableSplitter2.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.ExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.ExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.GripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.GripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(200)))), ((int)(((byte)(103)))));
-            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(226)))), ((int)(((byte)(135)))));
+            this.expandableSplitter2.HotBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(151)))), ((int)(((byte)(61)))));
+            this.expandableSplitter2.HotBackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(94)))));
             this.expandableSplitter2.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2;
             this.expandableSplitter2.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground;
-            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotExpandFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(57)))), ((int)(((byte)(120)))));
+            this.expandableSplitter2.HotExpandLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.expandableSplitter2.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(108)))), ((int)(((byte)(122)))));
+            this.expandableSplitter2.HotGripDarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.expandableSplitter2.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
+            this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.expandableSplitter2.Location = new System.Drawing.Point(231, 29);
             this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2);
@@ -386,14 +386,14 @@
             this.grid.PrimaryGrid.Columns.Add(this.gcOutQty);
             this.grid.PrimaryGrid.Columns.Add(this.gcUnitPrice);
             this.grid.PrimaryGrid.Columns.Add(this.gcAmount);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
+            this.grid.PrimaryGrid.Columns.Add(this.gcTakeUser);
             this.grid.PrimaryGrid.Columns.Add(this.gcDeptCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcProjectCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcWorkLineCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcEqptCode);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
+            this.grid.PrimaryGrid.Columns.Add(this.gcAskUser);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
+            this.grid.PrimaryGrid.Columns.Add(this.gcConfirmUser);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
@@ -412,6 +412,8 @@
             this.grid.Size = new System.Drawing.Size(657, 505);
             this.grid.TabIndex = 61;
             this.grid.Text = "superGridControl1";
+            this.grid.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.grid_CellActivated);
+            this.grid.CellClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellClickEventArgs>(this.grid_CellClick);
             this.grid.CellValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs>(this.grid_CellValueChanged);
             this.grid.RowClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridRowClickEventArgs>(this.grid_RowClick);
             // 
@@ -478,11 +480,11 @@
             this.gcAmount.Name = "gridColumn19";
             this.gcAmount.ReadOnly = true;
             // 
-            // gridColumn16
+            // gcTakeUser
             // 
-            this.gridColumn16.DataPropertyName = "TakeUser";
-            this.gridColumn16.HeaderText = "领用人";
-            this.gridColumn16.Name = "gridColumn16";
+            this.gcTakeUser.DataPropertyName = "TakeUser";
+            this.gcTakeUser.HeaderText = "领用人";
+            this.gcTakeUser.Name = "gridColumn16";
             // 
             // gcDeptCode
             // 
@@ -512,11 +514,11 @@
             this.gcEqptCode.HeaderText = "设备编号";
             this.gcEqptCode.Name = "Column1";
             // 
-            // gridColumn9
+            // gcAskUser
             // 
-            this.gridColumn9.DataPropertyName = "AskUser";
-            this.gridColumn9.HeaderText = "申请人";
-            this.gridColumn9.Name = "Column2";
+            this.gcAskUser.DataPropertyName = "AskUser";
+            this.gcAskUser.HeaderText = "申请人";
+            this.gcAskUser.Name = "Column2";
             // 
             // gridColumn10
             // 
@@ -525,11 +527,11 @@
             this.gridColumn10.HeaderText = "申请时间";
             this.gridColumn10.Name = "Column3";
             // 
-            // gridColumn11
+            // gcConfirmUser
             // 
-            this.gridColumn11.DataPropertyName = "ConfirmUser";
-            this.gridColumn11.HeaderText = "批准人";
-            this.gridColumn11.Name = "Column4";
+            this.gcConfirmUser.DataPropertyName = "ConfirmUser";
+            this.gcConfirmUser.HeaderText = "批准人";
+            this.gcConfirmUser.Name = "Column4";
             // 
             // gridColumn12
             // 
@@ -628,15 +630,15 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcProjectCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcWorkLineCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcEqptCode;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcAskUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcConfirmUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn26;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcBatch;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn15;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn16;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcTakeUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcTakeTime;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcUnitPrice;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcAmount;

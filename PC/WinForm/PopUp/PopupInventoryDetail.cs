@@ -61,6 +61,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             gcPart.EditorType = typeof (PartComboBox);
             gcLoc.EditorType = typeof (StoreLocComboBox);
+            gcOperName.EditorType = typeof (EMPComboBox);
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号); 
         }
@@ -105,7 +106,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 bs.EndEdit();
                 var detailList = (List<TB_INVENTORY_DETAIL>) bs.DataSource;
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddOrUpdateInventoryDetail(db, _bill.VWToBill(), detailList);
+                BillHandler.AddOrUpdateInventoryDetail(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

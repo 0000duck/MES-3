@@ -71,5 +71,6 @@ namespace ChangKeTec.Wms.Models
             return days;
         }
 
+        public static string FactoryCode;
     }
 }

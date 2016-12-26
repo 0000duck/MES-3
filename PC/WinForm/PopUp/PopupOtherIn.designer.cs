@@ -377,6 +377,8 @@
             this.grid.Size = new System.Drawing.Size(657, 505);
             this.grid.TabIndex = 61;
             this.grid.Text = "superGridControl1";
+            this.grid.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.grid_CellActivated);
+            this.grid.CellClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellClickEventArgs>(this.grid_CellClick);
             this.grid.CellValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs>(this.grid_CellValueChanged);
             // 
             // gcUID

@@ -33,7 +33,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(), DetailTableName, IndexColumnName);
+            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(GlobalVar.Oper.DeptCode), DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             var details = SpareAskController.GetList(_db, _bill.单据编号);
             try
             {
-                string strInfo = BillHandler.HandleMaterialAsk(_db, _bill.VWToBill(), details);
+                string strInfo = BillHandler.HandleMaterialAsk(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode), details);
                 if (strInfo != "OK")
                 {
                     MessageHelper.ShowError(strInfo);
@@ -105,7 +105,16 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         状态 = ((BillState)c.State).ToString(),
                         备注 = c.Remark,
                     };
-            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType;
+            Expression<Func<TB_BILL, bool>> where;
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                where = c => c.BillType == (int)_billType;
+            }
+            else
+            {
+                where = c => c.BillType == (int)_billType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
+            
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;
@@ -185,7 +194,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                     MessageHelper.ShowInfo("请选择单据！");
                     return;
                 }
-                BillController.UpdateState(_db, _bill.VWToBill(), BillState.Cancelled);
+                BillController.UpdateState(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode), BillState.Cancelled);
                 NotifyController.AddNotify(_db, _bill.操作者, NotifyType.MaterialAskCancel, _bill.单据编号, ""); //添加【叫料提醒单】
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
@@ -238,7 +247,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                 MessageHelper.ShowInfo("请选择单据！");
                 return;
             }
-            BillController.UpdateState(_db,_bill.VWToBill(),BillState.Approve);
+            BillController.UpdateState(_db,_bill.VWToBill(GlobalVar.Oper.DeptCode),BillState.Approve);
             EntitiesFactory.SaveDb(_db);
             NotifyController.AddNotify(_db, _bill.操作者, NotifyType.MaterialAskApprove, _bill.单据编号, ""); 
             MessageHelper.ShowInfo("审核通过！");

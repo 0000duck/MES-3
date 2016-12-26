@@ -23,6 +23,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.OtherInOut;
         private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
+        private GridRow grow;
         public PopupOtherIn()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 _bill.单据类型 = (int)BillType.OtherInOut;
                 _bill.子单据类型 = (int) SubBillType.OtherIn;
                 _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号);
@@ -96,7 +98,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddOtherIn(db, _bill.VWToBill(), detailList);
+                BillHandler.AddOtherIn(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
@@ -181,6 +183,24 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     row.Cells[gcAmount].Value = (decimal)row.Cells[gcUnitPrice].Value * (decimal)row.Cells[gcQty].Value;
                 }
             }
+        }
+
+        private void grid_CellClick(object sender, GridCellClickEventArgs e)
+        {
+            if (e.GridCell.GridColumn == gcPartCode)
+            {
+                PopupMaterialChoice frm = new PopupMaterialChoice();
+                frm.ShowDialog();
+                if (frm.ChoicePartCode != "")
+                {
+                    grow[gcPartCode].Value = frm.ChoicePartCode;
+                }
+            }
+        }
+
+        private void grid_CellActivated(object sender, GridCellActivatedEventArgs e)
+        {
+            grow = e.NewActiveCell.GridRow;
         }
     }
 }

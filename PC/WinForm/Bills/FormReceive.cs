@@ -91,7 +91,15 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         状态 = ((BillState)c.State).ToString(),
                         备注 = c.Remark,
                     };
-            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType && c.SubBillType==(int)_subBillType;
+            Expression<Func<TB_BILL, bool>> where;
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                where = c => c.BillType == (int)_billType && c.SubBillType == (int)_subBillType && c.SubBillType == (int)_subBillType;
+            }
+            else
+            {
+                where = c => c.BillType == (int)_billType && c.SubBillType == (int)_subBillType && c.SubBillType == (int)_subBillType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;

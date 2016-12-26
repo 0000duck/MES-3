@@ -69,6 +69,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             {
                 _bill.单据类型 = (int)BillType.InventoryPlan;
                 _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetLocDataSource(_bill.单据编号); 
@@ -190,7 +191,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddInventoryLoc(db, _bill.VWToBill(), detailList);
+                BillHandler.AddInventoryLoc(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

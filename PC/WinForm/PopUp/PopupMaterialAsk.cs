@@ -22,6 +22,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.MaterialAsk;      
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
         private VW_BILL _bill = new VW_BILL();
+        private GridRow grow;
         public PopupMaterialAsk()
         {
             InitializeComponent();
@@ -53,17 +54,19 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
             gcPartCode.EditorType = typeof (PartComboTree);
-            gcDeptCode.EditorType = typeof(DeptComboBox);
+            gcDeptCode.EditorType = typeof(ADeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorklineCode.EditorType = typeof(WorkLineComboBox);
             gcEqptCode.EditorType = typeof(MachineComboBox);
-
+            gcAskUser.EditorType = typeof (EMPComboBox);
+            gcComFirmUser.EditorType = typeof (EMPComboBox);
             if (_bill.UID == 0)
             {
                 _bill.单据类型 = (int) BillType.MaterialAsk;
                 //默认领用
                 _bill.子单据类型 = (int) SubBillType.SpareOut;
-                _bill.制单日期 = DateTime.Now;                
+                _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号);
@@ -98,7 +101,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     MessageHelper.ShowError("请维护领用申请明细！");
                     return;
                 }
-                var bill = _bill.VWToBill();
+                var bill = _bill.VWToBill(GlobalVar.Oper.DeptCode);
                 //List<TB_ASK> detailList = (from TB_ASK d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
                 BillHandler.AddMaterialAsk(db, bill, detailList);
@@ -165,13 +168,25 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             //e.Handled = true;
         }
 
-        private void grid_RowClick(object sender, GridRowClickEventArgs e)
+        private void grid_CellActivated(object sender, GridCellActivatedEventArgs e)
         {
-            int rowindex = e.GridRow.RowIndex;
-            GridRow row = (GridRow)grid.PrimaryGrid.Rows[rowindex];
-            if (row.Cells[gcUID].Value.ToString() == "0" && Convert.ToString(row.Cells[gcPartCode].Value) == "")
+            grow = e.NewActiveCell.GridRow;
+        }
+
+        private void grid_CellClick(object sender, GridCellClickEventArgs e)
+        {
+            if (e.GridCell.GridColumn == gcPartCode)
             {
-                row.Cells[gcAskTime].Value = DateTime.Now;
+                PopupMaterialChoice frm = new PopupMaterialChoice();
+                frm.ShowDialog();
+                if (frm.ChoicePartCode != "")
+                {
+                    grow[gcPartCode].Value = frm.ChoicePartCode;
+                }
+                if (grow[gcUID].Value.ToString() == "0")
+                {
+                    grow[gcAskTime].Value = DateTime.Now;
+                }
             }
         }
     }

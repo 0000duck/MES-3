@@ -32,12 +32,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(), DetailTableName, IndexColumnName);
+            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(GlobalVar.Oper.DeptCode), DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
-            _where = c => c.BillType == (int)_billType;
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                _where = c => c.BillType == (int)_billType;
+            }
+            else
+            {
+                _where = c => c.BillType == (int)_billType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
             SetMasterDataSource(grid.PageSize);
 
         }
@@ -178,7 +185,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             }
             if (MessageHelper.ShowQuestion("是否要取消盘点计划单？") == DialogResult.Yes)
             {
-                BillController.UpdateState(_db, _bill.VWToBill(), BillState.Cancelled);
+                BillController.UpdateState(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode), BillState.Cancelled);
                 NotifyController.AddNotify(_db,_bill.操作者,NotifyType.InventoryPlanCancel, _bill.单据编号,"");
                 var InventoryLocs = InventoryController.GetLocList(_db, _bill.单据编号);
                 foreach (var inventoryLoc in InventoryLocs)
@@ -222,12 +229,19 @@ namespace ChangKeTec.Wms.WinForm.Bills
             }
             if (MessageHelper.ShowQuestion("是否确定要对库存进行调整？") == DialogResult.Yes)
             {
-                BillHandler.AdjustStockByInventoryLoc(_db, _bill.VWToBill());
+                BillHandler.AdjustStockByInventoryLoc(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode));
                 EntitiesFactory.SaveDb(_db);
                 NotifyController.AddStockSafeQty(_db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("调整库存成功！");
                 SetMasterDataSource(grid.PageSize);
             }           
+        }
+
+        private void btnAddGroup_Click(object sender, EventArgs e)
+        {
+            PopupInventoryLocGroup popup = new PopupInventoryLocGroup();
+            popup.ShowDialog(this);
+            SetMasterDataSource(grid.PageSize);
         }
     }
 }

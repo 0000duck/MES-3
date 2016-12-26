@@ -29,7 +29,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             InitializeComponent();
             _report = ReportHelper.InitReport(_billType);
-            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(), DetailTableName, IndexColumnName);
+            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill.VWToBill(GlobalVar.Oper.DeptCode), DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -69,7 +69,15 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         状态 = ((BillState)c.State).ToString(),
                         备注 = c.Remark,
                     };
-            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType;
+            Expression<Func<TB_BILL, bool>> where;
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                where = c => c.BillType == (int)_billType;
+            }
+            else
+            {
+                where = c => c.BillType == (int)_billType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;

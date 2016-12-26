@@ -14,7 +14,7 @@ namespace ChangKeTec.Wms.Controllers
         /// <returns></returns>
         public static List<VIEW_CalOverdue_DAYS> GetOverdueDaysList(SpareEntities db)
         {
-            return db.VIEW_CalOverdue_DAYS.ToList();
+            return db.VIEW_CalOverdue_DAYS.ToList();           
         }
 
         /// <summary>

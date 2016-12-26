@@ -195,8 +195,8 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.DataPropertyName = "BillNum";
-            this.gridColumn2.HeaderText = "单据号";
+            this.gridColumn2.DataPropertyName = "GroupCode";
+            this.gridColumn2.HeaderText = "库位组";
             this.gridColumn2.MinimumWidth = 200;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.ReadOnly = true;

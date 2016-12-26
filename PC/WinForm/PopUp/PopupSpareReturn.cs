@@ -53,14 +53,19 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
             gcPartCode.EditorType = typeof (PartComboTree);
-            gcDeptCode.EditorType = typeof(DeptComboBox);
+            gcDeptCode.EditorType = typeof(ADeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorklineCode.EditorType = typeof(WorkLineComboBox);
             gcEqptCode.EditorType = typeof(PartComboBox);
+            gcAskUser.EditorType = typeof (EMPComboBox);
+            gcTakeUser.EditorType = typeof(EMPComboBox);
+            gcComfirmUser.EditorType = typeof(EMPComboBox);
+            gcReturnUser.EditorType = typeof(EMPComboBox);
             if (_bill.UID == 0)
             {
                 _bill.单据类型 = (int)BillType.SpareReturn;
                 _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号);
@@ -92,7 +97,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_RETURN> detailList = (from TB_RETURN d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddMaterialReturn(db, _bill.VWToBill(), detailList);
+                BillHandler.AddMaterialReturn(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }

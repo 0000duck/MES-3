@@ -22,6 +22,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.MaterialDeliver;
         private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
+        private GridRow grow;
         public PopupMaterialOut()
         {
             InitializeComponent();
@@ -37,15 +38,19 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private void FormWhseReceive_Load(object sender, EventArgs e)
         {
             gcPartCode.EditorType = typeof(PartComboTree);
-            gcDeptCode.EditorType = typeof(DeptComboBox);
+            gcDeptCode.EditorType = typeof(ADeptComboBox);
             gcProjectCode.EditorType = typeof(ProjectComboBox);
             gcWorkLineCode.EditorType = typeof(WorkLineComboBox);
             gcEqptCode.EditorType = typeof(MachineComboBox);
+            gcAskUser.EditorType = typeof(EMPComboBox);
+            gcTakeUser.EditorType = typeof(EMPComboBox);
+            gcConfirmUser.EditorType = typeof(EMPComboBox);
             if (_bill.UID == 0)
             {
                 _bill.单据类型 = (int)BillType.MaterialDeliver;
                 _bill.子单据类型 = (int)SubBillType.SpareOut;
                 _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号);
@@ -82,7 +87,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 }
                 //List<TB_OUT> detailList = (from TB_OUT d in _list select d).ToList();
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddMaterialOut(db, _bill.VWToBill(), detailList);
+                BillHandler.AddMaterialOut(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -143,13 +148,13 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             GridCell cell = e.GridCell;
             var row = (GridRow) e.GridPanel.Rows[cell.RowIndex];
             //根据选择的零件号，获取库存批次，单价
-            if (cell.GridColumn == gcPartCode)
-            {
-                var stockDetail = StockDetailController.GetListByPartCode(_db, cell.Value.ToString()).OrderBy(p=>p.Batch).FirstOrDefault();
-                row.Cells[gcBatch].Value = stockDetail.Batch;
-                row.Cells[gcUnitPrice].Value = stockDetail.UnitPrice;
-                row.Cells[gcFromLocCode].Value = stockDetail.LocCode;
-            }
+//            if (cell.GridColumn == gcPartCode)
+//            {
+//                var stockDetail = StockDetailController.GetListByPartCode(_db, cell.Value.ToString()).OrderBy(p=>p.Batch).FirstOrDefault();
+//                row.Cells[gcBatch].Value = stockDetail.Batch;
+//                row.Cells[gcUnitPrice].Value = stockDetail.UnitPrice;
+//                row.Cells[gcFromLocCode].Value = stockDetail.LocCode;
+//            }
             //根据出库数量，自动计算金额
             if (cell.GridColumn == gcOutQty)
             {
@@ -158,6 +163,31 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     row.Cells[gcAmount].Value = (decimal)row.Cells[gcUnitPrice].Value*(decimal)row.Cells[gcOutQty].Value;
                 }
             }
+        }
+
+        private void grid_CellClick(object sender, GridCellClickEventArgs e)
+        {
+            if (e.GridCell.GridColumn == gcPartCode)
+            {
+                PopupStockChoice frm = new PopupStockChoice();
+                frm.ShowDialog();
+                if (frm.ChoicePartCode != "")
+                {
+                    grow[gcPartCode].Value = frm.ChoicePartCode;
+                    grow[gcBatch].Value = frm.ChoicePartBatch;
+                    grow[gcFromLocCode].Value = frm.ChoiceSLoc;
+                    grow[gcUnitPrice].Value = frm.ChoiceUnitPrice;
+                }
+                if (grow[gcUID].Value.ToString() == "0")
+                {
+                    grow[gcTakeTime].Value = DateTime.Now;
+                }
+            }
+        }
+
+        private void grid_CellActivated(object sender, GridCellActivatedEventArgs e)
+        {
+            grow = e.NewActiveCell.GridRow;
         }
     }
 }

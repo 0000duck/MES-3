@@ -26,5 +26,6 @@ namespace ChangKeTec.Wms.Models
         public string SplyId { get; set; }
         public int State { get; set; }
         public string Remark { get; set; }
+        public string Factory { get; set; }
     }
 }

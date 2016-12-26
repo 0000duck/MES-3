@@ -25,5 +25,8 @@ namespace ChangKeTec.Wms.Models
         public System.DateTime 失效日期 { get; set; }
         public System.DateTime 更新时间 { get; set; }
         public decimal 更新数量 { get; set; }
+        public string ERP零件号 { get; set; }
+        public string 零件描述1 { get; set; }
+        public string 零件描述2 { get; set; }
     }
 }

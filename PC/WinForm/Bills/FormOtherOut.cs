@@ -33,9 +33,16 @@ namespace ChangKeTec.Wms.WinForm.Bills
         public FormOtherOut()
         {
             InitializeComponent();
-            _where = c => c.BillType == (int) _billType && c.SubBillType == (int)_subBillType;
-//            _report = ReportHelper.InitReport(_billType);
-//            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                _where = c => c.BillType == (int)_billType && c.SubBillType == (int)_subBillType;
+            }
+            else
+            {
+                _where = c => c.BillType == (int)_billType && c.SubBillType == (int)_subBillType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
+            //            _report = ReportHelper.InitReport(_billType);
+            //            _report.Initialize += () => ReportHelper._report_Initialize(_report, _bill, DetailTableName, IndexColumnName);
         }
 
         private void FormWhseReceive_Load(object sender, EventArgs e)
@@ -161,7 +168,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             if (MessageHelper.ShowQuestion("确定要执行选定的领用还回单？") == DialogResult.Yes)
             {
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.ExecuteSpareReturn(db, _bill.VWToBill(), (List<TB_RETURN>)(grid.Detail1DataSource));
+                BillHandler.ExecuteSpareReturn(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), (List<TB_RETURN>)(grid.Detail1DataSource));
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -176,7 +183,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                     MessageHelper.ShowInfo("请选择单据！");
                     return;
                 }
-                BillController.UpdateState(_db, _bill.VWToBill(), BillState.Cancelled);
+                BillController.UpdateState(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode), BillState.Cancelled);
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
             }

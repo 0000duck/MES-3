@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             this.BtnAdd = new DevComponents.DotNetBar.ButtonItem();
+            this.btnAddGroup = new DevComponents.DotNetBar.ButtonItem();
             this.btnInventoryLoc = new DevComponents.DotNetBar.ButtonItem();
             this.btnInventoryResult = new DevComponents.DotNetBar.ButtonItem();
             this.btnCancel = new DevComponents.DotNetBar.ButtonItem();
             this.btnAdjust = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnExport = new DevComponents.DotNetBar.ButtonItem();
             this.ItemBtnPrint = new DevComponents.DotNetBar.ButtonItem();
-            this.grid = new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             this.bar1.IsMaximized = false;
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.BtnAdd,
+            this.btnAddGroup,
             this.btnInventoryLoc,
             this.btnInventoryResult,
             this.btnCancel,
@@ -57,12 +59,34 @@
             this.bar1.Location = new System.Drawing.Point(0, 0);
             this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(725, 29);
+            this.bar1.Size = new System.Drawing.Size(834, 29);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 0;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
+            // 
+            // grid
+            // 
+            this.grid.Detail1DataSource = null;
+            this.grid.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.IsNavigatorVisible = true;
+            this.grid.IsPropertyExpand = false;
+            this.grid.IsPropertyVisible = true;
+            this.grid.Location = new System.Drawing.Point(0, 29);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.MasterDataSource = null;
+            this.grid.Name = "grid";
+            this.grid.PageIndex = 1;
+            this.grid.PageSize = 100;
+            this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
+            this.grid.Size = new System.Drawing.Size(834, 430);
+            this.grid.TabIndex = 9;
+            this.grid.Total = 0;
+            this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
+            this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
+            this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
             // 
             // BtnAdd
             // 
@@ -70,8 +94,17 @@
             this.BtnAdd.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_194;
             this.BtnAdd.ImageFixedSize = new System.Drawing.Size(20, 20);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Text = "新增";
+            this.BtnAdd.Text = "新增（库位）";
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // btnAddGroup
+            // 
+            this.btnAddGroup.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.btnAddGroup.Image = global::ChangKeTec.Wms.WinForm.Properties.Resources.classy_icons_194;
+            this.btnAddGroup.ImageFixedSize = new System.Drawing.Size(20, 20);
+            this.btnAddGroup.Name = "btnAddGroup";
+            this.btnAddGroup.Text = "新增（库位组）";
+            this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
             // 
             // btnInventoryLoc
             // 
@@ -128,33 +161,11 @@
             this.ItemBtnPrint.Visible = false;
             this.ItemBtnPrint.Click += new System.EventHandler(this.ItemBtnPrint_Click);
             // 
-            // grid
-            // 
-            this.grid.Detail1DataSource = null;
-            this.grid.DetailPanelDock = System.Windows.Forms.DockStyle.Right;
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.IsNavigatorVisible = true;
-            this.grid.IsPropertyExpand = false;
-            this.grid.IsPropertyVisible = true;
-            this.grid.Location = new System.Drawing.Point(0, 29);
-            this.grid.Margin = new System.Windows.Forms.Padding(2);
-            this.grid.MasterDataSource = null;
-            this.grid.Name = "grid";
-            this.grid.PageIndex = 1;
-            this.grid.PageSize = 100;
-            this.grid.PropertyPanelDock = System.Windows.Forms.DockStyle.Left;
-            this.grid.Size = new System.Drawing.Size(725, 430);
-            this.grid.TabIndex = 9;
-            this.grid.Total = 0;
-            this.grid.PageSelectedIndexChanged += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.PageSelectedIndexHandler(this.grid_PageSelectedIndexChanged);
-            this.grid.MasterGridCellActivated += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.CellActivatedHandler(this.grid_GridCellActivated);
-            this.grid.DataRefreshed += new ChangKeTec.Wms.Common.UC.CktMasterDetailGrid.DataRefreshHandler(this.grid_DataRefreshed);
-            // 
             // FormInventoryPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 459);
+            this.ClientSize = new System.Drawing.Size(834, 459);
             this.ControlBox = false;
             this.Controls.Add(this.grid);
             this.Controls.Add(this.bar1);
@@ -180,5 +191,6 @@
         private DevComponents.DotNetBar.ButtonItem btnInventoryResult;
         private DevComponents.DotNetBar.ButtonItem btnCancel;
         private DevComponents.DotNetBar.ButtonItem btnAdjust;
+        private DevComponents.DotNetBar.ButtonItem btnAddGroup;
     }
 }

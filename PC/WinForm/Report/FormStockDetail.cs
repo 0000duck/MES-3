@@ -37,6 +37,15 @@ namespace ChangKeTec.Wms.WinForm.Report
             using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 _billList = ReportViewController.GetStockDetail(db);
+                if (!string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+                {
+                    var _SLlist =
+                        db.TA_STORE_LOCATION.Where(l => l.WhseCode == GlobalVar.Oper.DeptCode)
+                            .Select(l => l.LocCode)
+                            .ToList();
+                    _billList = _billList.Where(p => _SLlist.Contains(p.库位)).ToList();
+
+                }
                 grid.PrimaryGrid.DataSource = _billList;
                 var totalQty = _billList.Sum(p => p.数量);
                 var totalAmount = _billList.Sum(p => p.金额);

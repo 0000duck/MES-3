@@ -4,6 +4,7 @@ using System.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ChangKeTec.Wms.Common;
 using ChangKeTec.Wms.Controllers;
@@ -35,6 +36,16 @@ namespace ChangKeTec.Wms.WinForm.Report
             using (SpareEntities db = EntitiesFactory.CreateSpareInstance())
             {
                 _billList = ReportViewController.GetInventoryDetail(db);
+                _billList = _billList.Where(p => p.差异数 != 0).ToList();
+                if (!string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+                {
+                    var _SLlist =
+                        db.TA_STORE_LOCATION.Where(l => l.WhseCode == GlobalVar.Oper.DeptCode)
+                            .Select(l => l.LocCode)
+                            .ToList();
+                    _billList = _billList.Where(p => _SLlist.Contains(p.盘点库位)).ToList();
+
+                }
                 grid.PrimaryGrid.DataSource = _billList;
             }
         }

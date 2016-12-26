@@ -23,6 +23,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.OtherInOut;
         private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
+        private GridRow grow;
         public PopupOtherOut()
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 _bill.单据类型 = (int)BillType.OtherInOut;
                 _bill.子单据类型 = (int)SubBillType.OtherOut;
                 _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号);
@@ -95,7 +97,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddOtherOut(db, _bill.VWToBill(), detailList);
+                BillHandler.AddOtherOut(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
@@ -147,23 +149,23 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             GridCell cell = e.GridCell;
             var row = (GridRow)e.GridPanel.Rows[cell.RowIndex];
             //根据选择的物料，获取库存表中的批次，出库库位
-            if (cell.GridColumn == gcPartCode)
-            {
-                if (row[gcPartCode].Value!= null)
-                {
-                    var partcode = row[gcPartCode].Value.ToString();
-                    var stockDetail =
-                        StockDetailController.GetListByPartCode(_db, partcode)
-                            .OrderBy(p => p.Batch)
-                            .FirstOrDefault();
-                    if (stockDetail != null)
-                    {
-                        row.Cells[gcUnitPrice].Value = stockDetail.UnitPrice;
-                        row.Cells[gcBatch].Value = stockDetail.Batch;
-                        row.Cells[gcFromLocCode].Value = stockDetail.LocCode;
-                    }
-                }
-            }
+//            if (cell.GridColumn == gcPartCode)
+//            {
+//                if (row[gcPartCode].Value!= null)
+//                {
+//                    var partcode = row[gcPartCode].Value.ToString();
+//                    var stockDetail =
+//                        StockDetailController.GetListByPartCode(_db, partcode)
+//                            .OrderBy(p => p.Batch)
+//                            .FirstOrDefault();
+//                    if (stockDetail != null)
+//                    {
+//                        row.Cells[gcUnitPrice].Value = stockDetail.UnitPrice;
+//                        row.Cells[gcBatch].Value = stockDetail.Batch;
+//                        row.Cells[gcFromLocCode].Value = stockDetail.LocCode;
+//                    }
+//                }
+//            }
             //根据如库数量，自动计算金额
             if (cell.GridColumn == gcQty)
             {
@@ -172,6 +174,27 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     row.Cells[gcAmount].Value = (decimal)row.Cells[gcUnitPrice].Value * (decimal)row.Cells[gcQty].Value;
                 }
             }
+        }
+
+        private void grid_CellClick(object sender, GridCellClickEventArgs e)
+        {
+            if (e.GridCell.GridColumn == gcPartCode)
+            {
+                PopupStockChoice frm = new PopupStockChoice();
+                frm.ShowDialog();
+                if (frm.ChoicePartCode != "")
+                {
+                    grow[gcPartCode].Value = frm.ChoicePartCode;
+                    grow[gcBatch].Value = frm.ChoicePartBatch;
+                    grow[gcFromLocCode].Value = frm.ChoiceSLoc;
+                    grow[gcUnitPrice].Value = frm.ChoiceUnitPrice;
+                }
+            }
+        }
+
+        private void grid_CellActivated(object sender, GridCellActivatedEventArgs e)
+        {
+            grow = e.NewActiveCell.GridRow;
         }
     }
 }

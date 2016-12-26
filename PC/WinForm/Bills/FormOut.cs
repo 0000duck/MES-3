@@ -69,7 +69,15 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         状态 = ((BillState)c.State).ToString(),
                         备注 = c.Remark,
                     };
-            Expression<Func<TB_BILL, bool>> where = c => c.BillType == (int)_billType;
+            Expression<Func<TB_BILL, bool>> where ;
+            if (string.IsNullOrEmpty(GlobalVar.Oper.DeptCode))
+            {
+                where = c => c.BillType == (int)_billType;
+            }
+            else
+            {
+                where = c => c.BillType == (int)_billType && c.Factory == GlobalVar.Oper.DeptCode;
+            }
             Expression<Func<TB_BILL, long>> order = c => c.UID;
 
             int total;
@@ -150,7 +158,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
         {
             try
             {
-                BillHandler.CancelMaterialAsk(_db, _bill.VWToBill());
+                BillHandler.CancelMaterialAsk(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode));
                 NotifyController.AddNotify(_db, _bill.操作者, NotifyType.MaterialOutCancel, _bill.单据编号, "");
                 EntitiesFactory.SaveDb(_db);
                 SetMasterDataSource(grid.PageIndex, grid.PageSize);
@@ -210,7 +218,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
                         return;
                     }
                 }
-                BillHandler.FinishMaterialOut(db, _bill.VWToBill(), outlist);
+                BillHandler.FinishMaterialOut(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), outlist);
                 EntitiesFactory.SaveDb(db);
                 NotifyController.AddStockSafeQty(db, GlobalVar.Oper.OperName);
                 MessageHelper.ShowInfo("保存成功！");
@@ -233,7 +241,7 @@ namespace ChangKeTec.Wms.WinForm.Bills
             var details = SpareOutController.GetList(_db, _bill.单据编号);
             try
             {
-                string strInfo = BillHandler.HandleMaterialReturn(_db, _bill.VWToBill(), details);
+                string strInfo = BillHandler.HandleMaterialReturn(_db, _bill.VWToBill(GlobalVar.Oper.DeptCode), details);
                 if (strInfo != "OK")
                 {
                     MessageHelper.ShowError(strInfo);

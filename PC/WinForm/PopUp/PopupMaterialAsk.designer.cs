@@ -56,14 +56,14 @@
             this.gcUID = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcQty = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcDeptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcProjectCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcWorklineCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcEqptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcAskUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcAskTime = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcComFirmUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -362,14 +362,14 @@
             this.grid.PrimaryGrid.Columns.Add(this.gcUID);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.grid.PrimaryGrid.Columns.Add(this.gcPartCode);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn4);
+            this.grid.PrimaryGrid.Columns.Add(this.gcQty);
             this.grid.PrimaryGrid.Columns.Add(this.gcDeptCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcProjectCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcWorklineCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcEqptCode);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
+            this.grid.PrimaryGrid.Columns.Add(this.gcAskUser);
             this.grid.PrimaryGrid.Columns.Add(this.gcAskTime);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
+            this.grid.PrimaryGrid.Columns.Add(this.gcComFirmUser);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
@@ -391,7 +391,8 @@
             this.grid.Size = new System.Drawing.Size(657, 505);
             this.grid.TabIndex = 61;
             this.grid.Text = "superGridControl1";
-            this.grid.RowClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridRowClickEventArgs>(this.grid_RowClick);
+            this.grid.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.grid_CellActivated);
+            this.grid.CellClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellClickEventArgs>(this.grid_CellClick);
             // 
             // gcUID
             // 
@@ -413,12 +414,12 @@
             this.gcPartCode.HeaderText = "零件号";
             this.gcPartCode.Name = "gridColumn3";
             // 
-            // gridColumn4
+            // gcQty
             // 
-            this.gridColumn4.DataPropertyName = "Qty";
-            this.gridColumn4.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gridColumn4.HeaderText = "数量";
-            this.gridColumn4.Name = "gridColumn4";
+            this.gcQty.DataPropertyName = "Qty";
+            this.gcQty.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
+            this.gcQty.HeaderText = "数量";
+            this.gcQty.Name = "gcQty";
             // 
             // gcDeptCode
             // 
@@ -448,11 +449,11 @@
             this.gcEqptCode.HeaderText = "设备编号";
             this.gcEqptCode.Name = "Column1";
             // 
-            // gridColumn9
+            // gcAskUser
             // 
-            this.gridColumn9.DataPropertyName = "AskUser";
-            this.gridColumn9.HeaderText = "申请人";
-            this.gridColumn9.Name = "Column2";
+            this.gcAskUser.DataPropertyName = "AskUser";
+            this.gcAskUser.HeaderText = "申请人";
+            this.gcAskUser.Name = "Column2";
             // 
             // gcAskTime
             // 
@@ -462,11 +463,11 @@
             this.gcAskTime.HeaderText = "申请时间";
             this.gcAskTime.Name = "Column3";
             // 
-            // gridColumn11
+            // gcComFirmUser
             // 
-            this.gridColumn11.DataPropertyName = "ComfirmUser";
-            this.gridColumn11.HeaderText = "批准人";
-            this.gridColumn11.Name = "Column4";
+            this.gcComFirmUser.DataPropertyName = "ComfirmUser";
+            this.gcComFirmUser.HeaderText = "批准人";
+            this.gcComFirmUser.Name = "Column4";
             // 
             // gridColumn12
             // 
@@ -499,6 +500,7 @@
             this.Controls.Add(this.propertyBill);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PopupMaterialAsk";
             this.ShowIcon = false;
@@ -545,14 +547,14 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcUID;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcPartCode;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcQty;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcDeptCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcProjectCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcWorklineCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcEqptCode;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcAskUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcAskTime;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcComFirmUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn26;

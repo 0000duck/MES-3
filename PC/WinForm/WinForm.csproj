@@ -250,6 +250,24 @@
     <Compile Include="PopUp\PopupInventoryDetail.designer.cs">
       <DependentUpon>PopupInventoryDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopUp\PopupStockChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupStockChoice.designer.cs">
+      <DependentUpon>PopupStockChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupMaterialChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupMaterialChoice.designer.cs">
+      <DependentUpon>PopupMaterialChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUp\PopupInventoryLocGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUp\PopupInventoryLocGroup.designer.cs">
+      <DependentUpon>PopupInventoryLocGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopUp\PopupInventoryLoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -543,6 +561,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopUp\PopupInventoryDetail.resx">
       <DependentUpon>PopupInventoryDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupStockChoice.resx">
+      <DependentUpon>PopupStockChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupMaterialChoice.resx">
+      <DependentUpon>PopupMaterialChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUp\PopupInventoryLocGroup.resx">
+      <DependentUpon>PopupInventoryLocGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopUp\PopupInventoryLoc.resx">
       <DependentUpon>PopupInventoryLoc.cs</DependentUpon>

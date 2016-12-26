@@ -55,7 +55,7 @@
             this.grid = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcReturnUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcPartCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcToLocCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -67,11 +67,11 @@
             this.gcProjectCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcWorklineCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gcEqptCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcAskUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcComfirmUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn14 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcTakeUser = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn15 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -370,7 +370,7 @@
             this.grid.PrimaryGrid.ColumnAutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.DisplayedCells;
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn2);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn16);
+            this.grid.PrimaryGrid.Columns.Add(this.gcReturnUser);
             this.grid.PrimaryGrid.Columns.Add(this.gcPartCode);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn3);
             this.grid.PrimaryGrid.Columns.Add(this.gcToLocCode);
@@ -382,11 +382,11 @@
             this.grid.PrimaryGrid.Columns.Add(this.gcProjectCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcWorklineCode);
             this.grid.PrimaryGrid.Columns.Add(this.gcEqptCode);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn9);
+            this.grid.PrimaryGrid.Columns.Add(this.gcAskUser);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
+            this.grid.PrimaryGrid.Columns.Add(this.gcComfirmUser);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
-            this.grid.PrimaryGrid.Columns.Add(this.gridColumn14);
+            this.grid.PrimaryGrid.Columns.Add(this.gcTakeUser);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn15);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn26);
@@ -421,12 +421,12 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.ReadOnly = true;
             // 
-            // gridColumn16
+            // gcReturnUser
             // 
-            this.gridColumn16.DataPropertyName = "ReturnUser";
-            this.gridColumn16.HeaderText = "还回人";
-            this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.ReadOnly = true;
+            this.gcReturnUser.DataPropertyName = "ReturnUser";
+            this.gcReturnUser.HeaderText = "还回人";
+            this.gcReturnUser.Name = "gridColumn16";
+            this.gcReturnUser.ReadOnly = true;
             // 
             // gcPartCode
             // 
@@ -509,12 +509,12 @@
             this.gcEqptCode.Name = "Column1";
             this.gcEqptCode.ReadOnly = true;
             // 
-            // gridColumn9
+            // gcAskUser
             // 
-            this.gridColumn9.DataPropertyName = "AskUser";
-            this.gridColumn9.HeaderText = "申请人";
-            this.gridColumn9.Name = "Column2";
-            this.gridColumn9.ReadOnly = true;
+            this.gcAskUser.DataPropertyName = "AskUser";
+            this.gcAskUser.HeaderText = "申请人";
+            this.gcAskUser.Name = "Column2";
+            this.gcAskUser.ReadOnly = true;
             // 
             // gridColumn10
             // 
@@ -523,12 +523,12 @@
             this.gridColumn10.Name = "Column3";
             this.gridColumn10.ReadOnly = true;
             // 
-            // gridColumn11
+            // gcComfirmUser
             // 
-            this.gridColumn11.DataPropertyName = "ComfirmUser";
-            this.gridColumn11.HeaderText = "批准人";
-            this.gridColumn11.Name = "Column4";
-            this.gridColumn11.ReadOnly = true;
+            this.gcComfirmUser.DataPropertyName = "ComfirmUser";
+            this.gcComfirmUser.HeaderText = "批准人";
+            this.gcComfirmUser.Name = "Column4";
+            this.gcComfirmUser.ReadOnly = true;
             // 
             // gridColumn12
             // 
@@ -537,12 +537,12 @@
             this.gridColumn12.Name = "Column5";
             this.gridColumn12.ReadOnly = true;
             // 
-            // gridColumn14
+            // gcTakeUser
             // 
-            this.gridColumn14.DataPropertyName = "TakeUser";
-            this.gridColumn14.HeaderText = "领取人";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.ReadOnly = true;
+            this.gcTakeUser.DataPropertyName = "TakeUser";
+            this.gcTakeUser.HeaderText = "领取人";
+            this.gcTakeUser.Name = "gridColumn14";
+            this.gcTakeUser.ReadOnly = true;
             // 
             // gridColumn15
             // 
@@ -633,9 +633,9 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcProjectCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcWorklineCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcEqptCode;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcAskUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcComfirmUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn26;
@@ -644,9 +644,9 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcInQty;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcUnitPrice;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcAmount;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn14;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcTakeUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn15;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn16;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gcReturnUser;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gcReturnTime;
     }
 }

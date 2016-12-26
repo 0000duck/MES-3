@@ -48,6 +48,7 @@ namespace ChangKeTec.Wms.WinForm
                         oper.OperCode);
                     GlobalVar.NotifytypeList = PowerController.GetNotiFyTypeList(powerdb, GlobalVar.PortalCode,
                         oper.OperCode);
+                    GlobalBuffer.FactoryCode = GlobalVar.Oper.DeptCode;
                 }
 
                 using (SpareEntities wmsdb = EntitiesFactory.CreateSpareInstance())

@@ -23,6 +23,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         private BillType _billType = BillType.StockMove;
         private VW_BILL _bill = new VW_BILL();
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
+        private GridRow grow;
         public PopupStockMove()
         {
             InitializeComponent();
@@ -59,6 +60,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
             {
                 _bill.单据类型 = (int)BillType.StockMove;
                 _bill.制单日期 = DateTime.Now;
+                _bill.操作者 = GlobalVar.Oper.OperName;
             }
             propertyBill.SelectedObject = _bill;
             SetDetailDataSource(_bill.单据编号);
@@ -89,7 +91,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                     return;
                 }
                 SpareEntities db = EntitiesFactory.CreateSpareInstance();
-                BillHandler.AddStockMove(db, _bill.VWToBill(), detailList);
+                BillHandler.AddStockMove(db, _bill.VWToBill(GlobalVar.Oper.DeptCode), detailList);
                 EntitiesFactory.SaveDb(db);
                 MessageHelper.ShowInfo("保存成功！");
             }
@@ -147,6 +149,26 @@ namespace ChangKeTec.Wms.WinForm.PopUp
                 row.Cells[gcBatch].Value = stockDetail.Batch;
                 row.Cells[gcFromLocCode].Value = stockDetail.LocCode;
             }
+        }
+
+        private void grid_CellClick(object sender, GridCellClickEventArgs e)
+        {
+            if (e.GridCell.GridColumn == gcPartCode)
+            {
+                PopupStockChoice frm = new PopupStockChoice();
+                frm.ShowDialog();
+                if (frm.ChoicePartCode != "")
+                {
+                    grow[gcPartCode].Value = frm.ChoicePartCode;
+                    grow[gcBatch].Value = frm.ChoicePartBatch;
+                    grow[gcFromLocCode].Value = frm.ChoiceSLoc;
+                }
+            }
+        }
+
+        private void grid_CellActivated(object sender, GridCellActivatedEventArgs e)
+        {
+            grow = e.NewActiveCell.GridRow;
         }
     }
 }
