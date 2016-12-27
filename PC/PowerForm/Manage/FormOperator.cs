@@ -167,7 +167,7 @@ namespace ChangKeTec.PowerForm.Manage
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            grid.PrimaryGrid.Columns[3].EditorType = typeof(ParentDeptComboBox);
+            colDeptCode.EditorType = typeof(DeptComboBox);
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 column.MinimumWidth = 100;

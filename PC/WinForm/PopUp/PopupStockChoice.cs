@@ -128,7 +128,7 @@ namespace ChangKeTec.Wms.WinForm.PopUp
         {
             ChoicePartCode = e.NewActiveCell.GridRow[gcPartCode].Value.ToString();
             ChoicePartBatch = e.NewActiveCell.GridRow[gcBatch].Value.ToString();
-            ChoicePartBatch = e.NewActiveCell.GridRow[gcKW].Value.ToString();
+            ChoiceSLoc = e.NewActiveCell.GridRow[gcKW].Value.ToString();
             ChoiceUnitPrice = (decimal)e.NewActiveCell.GridRow[gcUnitPrice].Value;
         }
 

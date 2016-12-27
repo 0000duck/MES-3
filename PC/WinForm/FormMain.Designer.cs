@@ -79,7 +79,7 @@ namespace ChangKeTec.Wms.WinForm
             this.RibbonMain.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.RibbonMain.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.qatCustomizeItem1});
-            this.RibbonMain.Size = new System.Drawing.Size(1310, 170);
+            this.RibbonMain.Size = new System.Drawing.Size(1282, 170);
             this.RibbonMain.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.RibbonMain.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
             this.RibbonMain.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon";
@@ -105,10 +105,10 @@ namespace ChangKeTec.Wms.WinForm
             this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonPanel1.Controls.Add(this.t1g2);
             this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel1.Location = new System.Drawing.Point(0, 56);
+            this.ribbonPanel1.Location = new System.Drawing.Point(0, 53);
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel1.Size = new System.Drawing.Size(1310, 111);
+            this.ribbonPanel1.Size = new System.Drawing.Size(1282, 114);
             // 
             // 
             // 
@@ -144,7 +144,7 @@ namespace ChangKeTec.Wms.WinForm
             this.btnAbout});
             this.t1g2.Location = new System.Drawing.Point(3, 0);
             this.t1g2.Name = "t1g2";
-            this.t1g2.Size = new System.Drawing.Size(310, 108);
+            this.t1g2.Size = new System.Drawing.Size(310, 111);
             this.t1g2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.t1g2.TabIndex = 2;
             this.t1g2.Text = "当前用户";
@@ -227,26 +227,26 @@ namespace ChangKeTec.Wms.WinForm
             this.全部关闭AToolStripMenuItem,
             this.关闭其它OToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 82);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 70);
             // 
             // 关闭CToolStripMenuItem
             // 
             this.关闭CToolStripMenuItem.Name = "关闭CToolStripMenuItem";
-            this.关闭CToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.关闭CToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.关闭CToolStripMenuItem.Text = "关闭(&C)";
             this.关闭CToolStripMenuItem.Click += new System.EventHandler(this.关闭CToolStripMenuItem_Click);
             // 
             // 全部关闭AToolStripMenuItem
             // 
             this.全部关闭AToolStripMenuItem.Name = "全部关闭AToolStripMenuItem";
-            this.全部关闭AToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.全部关闭AToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.全部关闭AToolStripMenuItem.Text = "全部关闭(&A)";
             this.全部关闭AToolStripMenuItem.Click += new System.EventHandler(this.全部关闭AToolStripMenuItem_Click);
             // 
             // 关闭其它OToolStripMenuItem
             // 
             this.关闭其它OToolStripMenuItem.Name = "关闭其它OToolStripMenuItem";
-            this.关闭其它OToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.关闭其它OToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.关闭其它OToolStripMenuItem.Text = "关闭其它(&O)";
             this.关闭其它OToolStripMenuItem.Click += new System.EventHandler(this.关闭其他OToolStripMenuItem_Click);
             // 
@@ -288,7 +288,7 @@ namespace ChangKeTec.Wms.WinForm
             this.superTabControlMain.ReorderTabsEnabled = true;
             this.superTabControlMain.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControlMain.SelectedTabIndex = 0;
-            this.superTabControlMain.Size = new System.Drawing.Size(1310, 444);
+            this.superTabControlMain.Size = new System.Drawing.Size(1282, 444);
             this.superTabControlMain.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControlMain.TabIndex = 1;
             this.superTabControlMain.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -300,7 +300,7 @@ namespace ChangKeTec.Wms.WinForm
             this.superTabControlPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanelMain.Location = new System.Drawing.Point(0, 30);
             this.superTabControlPanelMain.Name = "superTabControlPanelMain";
-            this.superTabControlPanelMain.Size = new System.Drawing.Size(1310, 414);
+            this.superTabControlPanelMain.Size = new System.Drawing.Size(1282, 414);
             this.superTabControlPanelMain.TabIndex = 1;
             this.superTabControlPanelMain.TabItem = this.superTabItem1;
             // 
@@ -328,7 +328,7 @@ namespace ChangKeTec.Wms.WinForm
             this.lblNow});
             this.metroStatusBar1.Location = new System.Drawing.Point(5, 615);
             this.metroStatusBar1.Name = "metroStatusBar1";
-            this.metroStatusBar1.Size = new System.Drawing.Size(1310, 27);
+            this.metroStatusBar1.Size = new System.Drawing.Size(1282, 27);
             this.metroStatusBar1.TabIndex = 2;
             this.metroStatusBar1.Text = "metroStatusBar1";
             // 
@@ -368,14 +368,14 @@ namespace ChangKeTec.Wms.WinForm
             // 
             // FormMain
             // 
-            this.ClientSize = new System.Drawing.Size(1320, 644);
+            this.ClientSize = new System.Drawing.Size(1292, 644);
             this.Controls.Add(this.superTabControlMain);
             this.Controls.Add(this.RibbonMain);
             this.Controls.Add(this.metroStatusBar1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "常熟安通林WMS库房管理系统";
+            this.Text = "长春一汽富维安道拓备件管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.RibbonMain.ResumeLayout(false);
