@@ -432,6 +432,12 @@
     <Compile Include="Report\FormInaction.Designer.cs">
       <DependentUpon>FormInaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\FormIOSUMMARYByStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormIOSUMMARYByStore.Designer.cs">
+      <DependentUpon>FormIOSUMMARYByStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\FormStockAge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -653,6 +659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\FormInaction.resx">
       <DependentUpon>FormInaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormIOSUMMARYByStore.resx">
+      <DependentUpon>FormIOSUMMARYByStore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\FormStockAge.resx">
       <DependentUpon>FormStockAge.cs</DependentUpon>

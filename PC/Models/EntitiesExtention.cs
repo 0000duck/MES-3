@@ -88,7 +88,7 @@ namespace ChangKeTec.Wms.Models
                 PartCode = this.PartCode,
                 Batch = this.Batch,
                 FromLocCode = this.FromLocCode,
-                ToLocCode = this.FromLocCode,
+                ToLocCode = this.FromLocCode, 
                 Qty = (decimal)this.OutQty,
             };
         }
@@ -101,6 +101,7 @@ namespace ChangKeTec.Wms.Models
                 Batch = this.Batch,
                 LocCode = this.FromLocCode,
                 Qty = (decimal)this.OutQty,
+                UnitPrice = (decimal)UnitPrice,
                 UpdateQty = 0-(decimal)this.OutQty
             };
         }
@@ -128,6 +129,7 @@ namespace ChangKeTec.Wms.Models
                 LocCode = this.ToLocCode,
                 Qty = this.Qty,
                 UpdateQty = this.Qty,
+                UnitPrice = (decimal)this.UnitPrice,
                 ProduceDate = this.ProduceDate.Value,
                 ReceiveDate = DateTime.Now,
                 OverdueDate = this.ProduceDate.Value.AddDays(GlobalBuffer.GetValidateDays(this.PartCode)),
@@ -157,6 +159,7 @@ namespace ChangKeTec.Wms.Models
                 PartCode = this.PartCode,
                 Batch = this.Batch,
                 LocCode = this.FromLocCode,
+                UnitPrice = (decimal)UnitPrice,
                 Qty = this.Qty,
                 UpdateQty = 0-this.Qty
             };
@@ -466,6 +469,21 @@ namespace ChangKeTec.Wms.Models
                 Factory = Factory
             };
         }
+    }
 
+    public partial class VIEW_IO_SUMMARY_ByStock
+    {
+        public string 零件号 { get; set; }
+        public string 库房 { get; set; }
+        public decimal 入库数量 { get; set; }
+        public decimal 入库金额 { get; set; }
+        public decimal 出库数量 { get; set; }
+        public decimal 出库金额 { get; set; }
+        public Nullable<decimal> 开始库存 { get; set; }
+        public Nullable<decimal> 开始库存金额 { get; set; }
+        public Nullable<decimal> 结束库存 { get; set; }
+        public Nullable<decimal> 结束库存金额 { get; set; }
+        public Nullable<decimal> 当前库存 { get; set; }
+        public Nullable<decimal> 当前库存金额 { get; set; }
     }
 }

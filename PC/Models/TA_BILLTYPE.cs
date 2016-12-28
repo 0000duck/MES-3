@@ -26,5 +26,6 @@ namespace ChangKeTec.Wms.Models
         public System.DateTime LastBillTime { get; set; }
         public string PrintTemplateFileName { get; set; }
         public string ImportTemplateFileName { get; set; }
+        public Nullable<bool> IsCalc { get; set; }
     }
 }

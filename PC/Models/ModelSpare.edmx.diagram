@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a7e805cb60e74c47947502b5b093cc92" Name="Diagram1">
         <EntityTypeShape EntityType="SpareModel.TA_Attach" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SpareModel.TA_BILLTYPE" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_CONFIG" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_DEPT" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="SpareModel.TA_MACHINE" Width="1.5" PointX="0.75" PointY="5.75" />
@@ -53,6 +52,7 @@
         <EntityTypeShape EntityType="SpareModel.VIEW_CalSafeQty" Width="1.5" PointX="0.75" PointY="21.75" />
         <EntityTypeShape EntityType="SpareModel.TA_STORE_GROUP" Width="1.5" PointX="21.375" PointY="5.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="19" PointY="7.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_BILLTYPE" Width="1.5" PointX="21.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

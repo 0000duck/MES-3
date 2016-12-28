@@ -60,6 +60,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.expandableSplitter2 = new DevComponents.DotNetBar.ExpandableSplitter();
+            this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bn)).BeginInit();
@@ -76,7 +77,7 @@
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnSave});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
             this.bar1.Size = new System.Drawing.Size(858, 29);
             this.bar1.Stretch = true;
@@ -99,7 +100,7 @@
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.grid.Location = new System.Drawing.Point(0, 56);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.Name = "grid";
             // 
             // 
@@ -118,6 +119,7 @@
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.grid.PrimaryGrid.Columns.Add(this.gridColumn12);
+            this.grid.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.grid.PrimaryGrid.NoRowsText = "（无数据）";
             this.grid.PrimaryGrid.ShowRowGridIndex = true;
             this.grid.Size = new System.Drawing.Size(645, 544);
@@ -205,7 +207,7 @@
             this.prop.Dock = System.Windows.Forms.DockStyle.Right;
             this.prop.GridLinesColor = System.Drawing.Color.WhiteSmoke;
             this.prop.Location = new System.Drawing.Point(649, 56);
-            this.prop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.prop.Margin = new System.Windows.Forms.Padding(2);
             this.prop.Name = "prop";
             this.prop.Size = new System.Drawing.Size(209, 544);
             this.prop.TabIndex = 3;
@@ -354,12 +356,19 @@
             this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(232)))), ((int)(((byte)(246)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.expandableSplitter2.Location = new System.Drawing.Point(645, 56);
-            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2);
             this.expandableSplitter2.Name = "expandableSplitter2";
             this.expandableSplitter2.Size = new System.Drawing.Size(4, 544);
             this.expandableSplitter2.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007;
             this.expandableSplitter2.TabIndex = 57;
             this.expandableSplitter2.TabStop = false;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.DataPropertyName = "IsCalc";
+            this.gridColumn13.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
+            this.gridColumn13.HeaderText = "计算出入库数量";
+            this.gridColumn13.Name = "gridColumn13";
             // 
             // FormBillType
             // 
@@ -373,7 +382,7 @@
             this.Controls.Add(this.bn);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormBillType";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -419,5 +428,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
     }
 }

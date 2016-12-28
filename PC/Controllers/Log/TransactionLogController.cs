@@ -25,6 +25,7 @@ namespace ChangKeTec.Wms.Controllers.Log
                 Batch = detail.Batch,
                 Qty = detail.UpdateQty,
                 LocCode = detail.LocCode,
+                UnitPrice = detail.UnitPrice,
                 Remark = detail.UpdateQty>0?"In":"Out",
             };
             db.TL_TRANSACTION.Add(log);

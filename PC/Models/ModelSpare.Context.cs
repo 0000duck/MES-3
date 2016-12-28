@@ -26,7 +26,6 @@ namespace ChangKeTec.Wms.Models
         }
     
         public virtual DbSet<TA_Attach> TA_Attach { get; set; }
-        public virtual DbSet<TA_BILLTYPE> TA_BILLTYPE { get; set; }
         public virtual DbSet<TA_CONFIG> TA_CONFIG { get; set; }
         public virtual DbSet<TA_DEPT> TA_DEPT { get; set; }
         public virtual DbSet<TA_MACHINE> TA_MACHINE { get; set; }
@@ -73,5 +72,6 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<VIEW_CalSafeQty> VIEW_CalSafeQty { get; set; }
         public virtual DbSet<TA_STORE_GROUP> TA_STORE_GROUP { get; set; }
         public virtual DbSet<VIEW_STOCK_DETAIL> VIEW_STOCK_DETAIL { get; set; }
+        public virtual DbSet<TA_BILLTYPE> TA_BILLTYPE { get; set; }
     }
 }
