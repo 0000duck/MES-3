@@ -147,7 +147,7 @@
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(693, 124);
             this.labelX3.TabIndex = 6;
-            this.labelX3.Text = "常熟安通林汽车饰件有限公司\r\nWMS库房管理系统\r\n";
+            this.labelX3.Text = "长春一汽富维安道拓备件管理系统";
             // 
             // btnAdv
             // 

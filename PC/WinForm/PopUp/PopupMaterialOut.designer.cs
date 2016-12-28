@@ -434,20 +434,20 @@
             // 
             this.gcPartCode.DataPropertyName = "PartCode";
             this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPartCode.HeaderText = "零件号";
+            this.gcPartCode.HeaderText = "零件号*";
             this.gcPartCode.Name = "gridColumn3";
             // 
             // gcBatch
             // 
             this.gcBatch.DataPropertyName = "Batch";
-            this.gcBatch.HeaderText = "批次";
+            this.gcBatch.HeaderText = "批次*";
             this.gcBatch.Name = "gridColumn14";
             this.gcBatch.ReadOnly = true;
             // 
             // gcFromLocCode
             // 
             this.gcFromLocCode.DataPropertyName = "FromLocCode";
-            this.gcFromLocCode.HeaderText = "出库库位";
+            this.gcFromLocCode.HeaderText = "出库库位*";
             this.gcFromLocCode.Name = "gridColumn3";
             // 
             // gridColumn4
@@ -461,14 +461,14 @@
             // 
             this.gcOutQty.DataPropertyName = "OutQty";
             this.gcOutQty.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gcOutQty.HeaderText = "领用数量";
+            this.gcOutQty.HeaderText = "领用数量*";
             this.gcOutQty.Name = "gridColumn20";
             // 
             // gcUnitPrice
             // 
             this.gcUnitPrice.DataPropertyName = "UnitPrice";
             this.gcUnitPrice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridNumericUpDownEditControl);
-            this.gcUnitPrice.HeaderText = "单价";
+            this.gcUnitPrice.HeaderText = "单价*";
             this.gcUnitPrice.Name = "gridColumn18";
             this.gcUnitPrice.ReadOnly = true;
             // 
@@ -483,7 +483,7 @@
             // gcTakeUser
             // 
             this.gcTakeUser.DataPropertyName = "TakeUser";
-            this.gcTakeUser.HeaderText = "领用人";
+            this.gcTakeUser.HeaderText = "领用人*";
             this.gcTakeUser.Name = "gridColumn16";
             // 
             // gcDeptCode

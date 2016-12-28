@@ -23,6 +23,18 @@ namespace ChangKeTec.Wms.ErpInterface
         public const string MesUser = "MesDbUser";
         public const string MesPassword = "MesDbPassword";
 
+        public const string SpareServer = "SpareDbServer";
+        public const string SparePort = "SpareDbPort";
+        public const string SpareDb = "SpareDbName";
+        public const string SpareUser = "SpareDbUser";
+        public const string SparePassword = "SpareDbPassword";
+
+        public const string InterfaceServer = "InterfaceDbServer";
+        public const string InterfacePort = "InterfaceDbPort";
+        public const string InterfaceDb = "InterfaceDbName";
+        public const string InterfaceUser = "InterfaceDbUser";
+        public const string InterfacePassword = "InterfaceDbPassword";
+
         public const string LocalRoot = "LocalRoot";
         public const string PathFromErp = "PathFromErp";
         public const string PathToErp = "PathToErp";

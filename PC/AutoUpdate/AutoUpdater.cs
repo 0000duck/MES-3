@@ -65,8 +65,9 @@ namespace ChangKeTec.Wms.AutoUpdate
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 result = false;
+                MessageBox.Show(ex.Message);
+                
             }
             return result;
         }
@@ -121,6 +122,7 @@ namespace ChangKeTec.Wms.AutoUpdate
             }
             catch (Exception ex)
             {
+                return false;
                 throw new Exception("更新出现错误，请确认网络连接无误后重试！\n" + fullFileName + "\n"+ ex.Message);
             }
         }

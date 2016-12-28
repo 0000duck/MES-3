@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPart));
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnSave = new DevComponents.DotNetBar.ButtonItem();
             this.btnAttach = new DevComponents.DotNetBar.ButtonItem();
-            this.bn = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bn = new System.Windows.Forms.BindingNavigator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -54,18 +53,18 @@
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcUnit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcBM = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn14 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn15 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn16 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn19 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn21 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gcPartType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn25 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn26 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.gcUnit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gcBM = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gcPartType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.bs = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bn)).BeginInit();
             this.bn.SuspendLayout();
@@ -344,7 +343,7 @@
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "PartCode";
-            this.gridColumn2.HeaderText = "零件号";
+            this.gridColumn2.HeaderText = "零件号*";
             this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn3
@@ -356,56 +355,77 @@
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "PartDesc1";
-            this.gridColumn4.HeaderText = "零件描述1";
+            this.gridColumn4.HeaderText = "零件描述1*";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // gridColumn5
             // 
             this.gridColumn5.DataPropertyName = "PartDesc2";
-            this.gridColumn5.HeaderText = "零件描述2";
+            this.gridColumn5.HeaderText = "零件描述2*";
             this.gridColumn5.Name = "gridColumn5";
+            // 
+            // gcUnit
+            // 
+            this.gcUnit.DataPropertyName = "Unit";
+            this.gcUnit.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcUnit.HeaderText = "单位*";
+            this.gcUnit.Name = "Column1";
+            // 
+            // gcBM
+            // 
+            this.gcBM.DataPropertyName = "BM";
+            this.gcBM.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcBM.HeaderText = "采购件/制造件*";
+            this.gcBM.Name = "Column2";
             // 
             // gridColumn13
             // 
             this.gridColumn13.DataPropertyName = "State";
             this.gridColumn13.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridSwitchButtonEditControl);
-            this.gridColumn13.HeaderText = "状态";
+            this.gridColumn13.HeaderText = "状态*";
             this.gridColumn13.Name = "Column6";
             // 
             // gridColumn14
             // 
             this.gridColumn14.DataPropertyName = "MaxQty";
             this.gridColumn14.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gridColumn14.HeaderText = "最大库存";
+            this.gridColumn14.HeaderText = "最大库存*";
             this.gridColumn14.Name = "Column7";
             // 
             // gridColumn15
             // 
             this.gridColumn15.DataPropertyName = "MinQty";
             this.gridColumn15.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gridColumn15.HeaderText = "最小库存";
+            this.gridColumn15.HeaderText = "最小库存*";
             this.gridColumn15.Name = "Column8";
             // 
             // gridColumn16
             // 
             this.gridColumn16.DataPropertyName = "SafeQty";
             this.gridColumn16.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gridColumn16.HeaderText = "安全库存";
+            this.gridColumn16.HeaderText = "安全库存*";
             this.gridColumn16.Name = "Column9";
             // 
             // gridColumn19
             // 
             this.gridColumn19.DataPropertyName = "IdleDays";
             this.gridColumn19.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gridColumn19.HeaderText = "呆滞时间";
+            this.gridColumn19.HeaderText = "呆滞时间*";
             this.gridColumn19.Name = "Column12";
             // 
             // gridColumn21
             // 
             this.gridColumn21.DataPropertyName = "ValidityDays";
             this.gridColumn21.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gridColumn21.HeaderText = "保质期（天）";
+            this.gridColumn21.HeaderText = "保质期（天）*";
             this.gridColumn21.Name = "Column14";
+            // 
+            // gcPartType
+            // 
+            this.gcPartType.DataPropertyName = "PartType";
+            this.gcPartType.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
+            this.gcPartType.HeaderText = "零件类型（预留）";
+            this.gcPartType.Name = "Column15";
             // 
             // gridColumn25
             // 
@@ -420,27 +440,6 @@
             this.gridColumn26.HeaderText = "图片";
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = false;
-            // 
-            // gcUnit
-            // 
-            this.gcUnit.DataPropertyName = "Unit";
-            this.gcUnit.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcUnit.HeaderText = "单位";
-            this.gcUnit.Name = "Column1";
-            // 
-            // gcBM
-            // 
-            this.gcBM.DataPropertyName = "BM";
-            this.gcBM.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcBM.HeaderText = "采购件/制造件";
-            this.gcBM.Name = "Column2";
-            // 
-            // gcPartType
-            // 
-            this.gcPartType.DataPropertyName = "PartType";
-            this.gcPartType.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPartType.HeaderText = "零件类型（预留）";
-            this.gcPartType.Name = "Column15";
             // 
             // FormPart
             // 

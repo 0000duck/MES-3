@@ -133,25 +133,25 @@
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "WhseCode";
-            this.gridColumn2.HeaderText = "编号";
+            this.gridColumn2.HeaderText = "编号*";
             this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "WhseName";
-            this.gridColumn3.HeaderText = "名称";
+            this.gridColumn3.HeaderText = "名称*";
             this.gridColumn3.Name = "gridColumn3";
             // 
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "WhseAddress";
-            this.gridColumn4.HeaderText = "地址";
+            this.gridColumn4.HeaderText = "地址*";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // gcWhseType
             // 
             this.gcWhseType.DataPropertyName = "WhseType";
-            this.gcWhseType.HeaderText = "所属工厂";
+            this.gcWhseType.HeaderText = "所属工厂*";
             this.gcWhseType.Name = "gridColumn7";
             // 
             // gridColumn5

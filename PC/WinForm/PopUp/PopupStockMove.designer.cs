@@ -394,34 +394,34 @@
             // 
             this.gcPartCode.DataPropertyName = "PartCode";
             this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPartCode.HeaderText = "零件号";
+            this.gcPartCode.HeaderText = "零件号*";
             this.gcPartCode.Name = "gridColumn3";
             // 
             // gcBatch
             // 
             this.gcBatch.DataPropertyName = "Batch";
-            this.gcBatch.HeaderText = "批次";
+            this.gcBatch.HeaderText = "批次*";
             this.gcBatch.Name = "gridColumn3";
             // 
             // gcFromLocCode
             // 
             this.gcFromLocCode.DataPropertyName = "FromLocCode";
             this.gcFromLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcFromLocCode.HeaderText = "来源库位";
+            this.gcFromLocCode.HeaderText = "来源库位*";
             this.gcFromLocCode.Name = "gridColumn4";
             // 
             // gcToLocCode
             // 
             this.gcToLocCode.DataPropertyName = "ToLocCode";
             this.gcToLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcToLocCode.HeaderText = "目标库位";
+            this.gcToLocCode.HeaderText = "目标库位*";
             this.gcToLocCode.Name = "gridColumn5";
             // 
             // gcQty
             // 
             this.gcQty.DataPropertyName = "Qty";
             this.gcQty.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gcQty.HeaderText = "移动数量";
+            this.gcQty.HeaderText = "移动数量*";
             this.gcQty.Name = "gridColumn6";
             // 
             // gcRemark

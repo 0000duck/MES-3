@@ -157,6 +157,10 @@ namespace ChangKeTec.Wms.WinForm.Update
                     DATA = blobdata
                 };
             }
+            else
+            {
+                config.DATA = blobdata;
+            }
             db.TS_CONFIG.AddOrUpdate(config);
         }
 
@@ -194,7 +198,7 @@ namespace ChangKeTec.Wms.WinForm.Update
                         sPath = Path.GetDirectoryName(sFullname);
                         if (!Directory.Exists(sPath))
                             Directory.CreateDirectory(sPath);
-                        FileStream tmpfs = (FileStream)LoadFileFromDB(db,"BLMUpdate", item.FileName, sFullname);
+                        FileStream tmpfs = (FileStream)LoadFileFromDB(db,"Update", item.FileName, sFullname);
                         tmpfs.Close();
                         bReturn = true;
                     }

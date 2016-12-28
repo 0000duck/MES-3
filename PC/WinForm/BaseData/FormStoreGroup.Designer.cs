@@ -71,7 +71,7 @@
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnSave});
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
             this.bar1.Size = new System.Drawing.Size(858, 29);
             this.bar1.Stretch = true;
@@ -94,7 +94,7 @@
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.grid.Location = new System.Drawing.Point(0, 56);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.Name = "grid";
             // 
             // 
@@ -134,26 +134,26 @@
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "GroupCode";
-            this.gridColumn2.HeaderText = "库位组编号";
+            this.gridColumn2.HeaderText = "库位组编号*";
             this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "GroupName";
-            this.gridColumn3.HeaderText = "库位组名称";
+            this.gridColumn3.HeaderText = "库位组名称*";
             this.gridColumn3.Name = "gridColumn3";
             // 
             // gcGroupType
             // 
             this.gcGroupType.DataPropertyName = "GroupType";
-            this.gcGroupType.HeaderText = "库位组类型";
+            this.gcGroupType.HeaderText = "库位组类型*";
             this.gcGroupType.Name = "gridColumn4";
             // 
             // gcWhseCode
             // 
             this.gcWhseCode.DataPropertyName = "WhseCode";
             this.gcWhseCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcWhseCode.HeaderText = "仓库编号";
+            this.gcWhseCode.HeaderText = "仓库编号*";
             this.gcWhseCode.Name = "gridColumn5";
             // 
             // gridColumn6
@@ -174,7 +174,7 @@
             this.prop.Dock = System.Windows.Forms.DockStyle.Right;
             this.prop.GridLinesColor = System.Drawing.Color.WhiteSmoke;
             this.prop.Location = new System.Drawing.Point(649, 56);
-            this.prop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.prop.Margin = new System.Windows.Forms.Padding(2);
             this.prop.Name = "prop";
             this.prop.Size = new System.Drawing.Size(209, 544);
             this.prop.TabIndex = 3;
@@ -321,7 +321,7 @@
             this.expandableSplitter2.HotGripLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.expandableSplitter2.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.expandableSplitter2.Location = new System.Drawing.Point(645, 56);
-            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.expandableSplitter2.Margin = new System.Windows.Forms.Padding(2);
             this.expandableSplitter2.Name = "expandableSplitter2";
             this.expandableSplitter2.Size = new System.Drawing.Size(4, 544);
             this.expandableSplitter2.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007;
@@ -340,7 +340,7 @@
             this.Controls.Add(this.bn);
             this.Controls.Add(this.bar1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormStoreGroup";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -411,14 +411,14 @@
             // 
             this.gcPartCode.DataPropertyName = "PartCode";
             this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPartCode.HeaderText = "零件号";
+            this.gcPartCode.HeaderText = "零件号*";
             this.gcPartCode.Name = "gridColumn3";
             // 
             // gcQty
             // 
             this.gcQty.DataPropertyName = "Qty";
             this.gcQty.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gcQty.HeaderText = "数量";
+            this.gcQty.HeaderText = "数量*";
             this.gcQty.Name = "gcQty";
             // 
             // gcDeptCode
@@ -451,7 +451,7 @@
             // 
             // gcAskUser
             // 
-            this.gcAskUser.DataPropertyName = "AskUser";
+            this.gcAskUser.DataPropertyName = "AskUser*";
             this.gcAskUser.HeaderText = "申请人";
             this.gcAskUser.Name = "Column2";
             // 

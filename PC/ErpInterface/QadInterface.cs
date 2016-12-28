@@ -545,8 +545,6 @@ namespace ChangKeTec.Wms.ErpInterface
                         else if (filename.StartsWith("RCP", true, null))
                         {
                             ReadRCPFile(dataList, filename,db);
-                            Directory.Delete(remotePath,true);
-                            Directory.CreateDirectory(remotePath);
                         }
                         else
                         {

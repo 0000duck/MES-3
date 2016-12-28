@@ -398,13 +398,13 @@
             // 
             this.gcPartCode.DataPropertyName = "PartCode";
             this.gcPartCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcPartCode.HeaderText = "零件号";
+            this.gcPartCode.HeaderText = "零件号*";
             this.gcPartCode.Name = "gridColumn3";
             // 
             // gcBatch
             // 
             this.gcBatch.DataPropertyName = "Batch";
-            this.gcBatch.HeaderText = "批次";
+            this.gcBatch.HeaderText = "批次*";
             this.gcBatch.Name = "gridColumn3";
             this.gcBatch.ReadOnly = true;
             // 
@@ -412,7 +412,7 @@
             // 
             this.gcFromLocCode.DataPropertyName = "FromLocCode";
             this.gcFromLocCode.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridComboBoxExEditControl);
-            this.gcFromLocCode.HeaderText = "目标库位";
+            this.gcFromLocCode.HeaderText = "目标库位*";
             this.gcFromLocCode.Name = "gridColumn5";
             this.gcFromLocCode.ReadOnly = true;
             // 
@@ -420,13 +420,13 @@
             // 
             this.gcQty.DataPropertyName = "Qty";
             this.gcQty.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
-            this.gcQty.HeaderText = "出库数量";
+            this.gcQty.HeaderText = "出库数量*";
             this.gcQty.Name = "gridColumn6";
             // 
             // gcUnitPrice
             // 
             this.gcUnitPrice.DataPropertyName = "UnitPrice";
-            this.gcUnitPrice.HeaderText = "单价";
+            this.gcUnitPrice.HeaderText = "单价*";
             this.gcUnitPrice.Name = "gridColumn7";
             this.gcUnitPrice.ReadOnly = true;
             // 
