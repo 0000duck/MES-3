@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a7e805cb60e74c47947502b5b093cc92" Name="Diagram1">
+      <Diagram DiagramId="a7e805cb60e74c47947502b5b093cc92" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="SpareModel.TA_Attach" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_CONFIG" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SpareModel.TA_DEPT" Width="1.5" PointX="4.75" PointY="3.75" />
@@ -25,7 +25,7 @@
         <EntityTypeShape EntityType="SpareModel.TB_OTHER_OUT" Width="1.5" PointX="6.75" PointY="12.75" />
         <EntityTypeShape EntityType="SpareModel.TB_OUT" Width="1.5" PointX="12.75" PointY="8.75" />
         <EntityTypeShape EntityType="SpareModel.TB_PO" Width="1.5" PointX="8.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SpareModel.TB_RETURN" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpareModel.TB_RETURN" Width="1.5" PointX="9.375" PointY="22.75" />
         <EntityTypeShape EntityType="SpareModel.TB_STOCK_MOVE" Width="1.5" PointX="14.75" PointY="7.75" />
         <EntityTypeShape EntityType="SpareModel.TL_BASEDATA" Width="1.5" PointX="10.75" PointY="14.75" />
         <EntityTypeShape EntityType="SpareModel.TL_BILL" Width="1.5" PointX="14.75" PointY="11.75" />
@@ -53,6 +53,10 @@
         <EntityTypeShape EntityType="SpareModel.TA_STORE_GROUP" Width="1.5" PointX="21.375" PointY="5.75" />
         <EntityTypeShape EntityType="SpareModel.VIEW_STOCK_DETAIL" Width="1.5" PointX="19" PointY="7.75" />
         <EntityTypeShape EntityType="SpareModel.TA_BILLTYPE" Width="1.5" PointX="21.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_PROCESS" Width="1.5" PointX="21.375" PointY="17.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_WORKSHOP" Width="1.5" PointX="21.375" PointY="20.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_LINESTATION" Width="1.5" PointX="7.375" PointY="22.75" />
+        <EntityTypeShape EntityType="SpareModel.TA_LINE" Width="1.5" PointX="21.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

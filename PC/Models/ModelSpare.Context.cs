@@ -73,5 +73,9 @@ namespace ChangKeTec.Wms.Models
         public virtual DbSet<TA_STORE_GROUP> TA_STORE_GROUP { get; set; }
         public virtual DbSet<VIEW_STOCK_DETAIL> VIEW_STOCK_DETAIL { get; set; }
         public virtual DbSet<TA_BILLTYPE> TA_BILLTYPE { get; set; }
+        public virtual DbSet<TA_PROCESS> TA_PROCESS { get; set; }
+        public virtual DbSet<TA_WORKSHOP> TA_WORKSHOP { get; set; }
+        public virtual DbSet<TA_LINESTATION> TA_LINESTATION { get; set; }
+        public virtual DbSet<TA_LINE> TA_LINE { get; set; }
     }
 }

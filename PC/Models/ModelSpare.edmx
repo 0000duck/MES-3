@@ -55,6 +55,34 @@
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="TA_LINE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="LineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LineCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnedWorkshopCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwendProcessCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TA_LINESTATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="LineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LineCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StationName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StationCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsOrNotCollection" Type="bit" />
+          <Property Name="IsOrNotInspectionOrder" Type="bit" />
+          <Property Name="IsOrNotFirstOrder" Type="bit" />
+          <Property Name="IsOrNotCompleted" Type="bit" />
+          <Property Name="IsOrNotResetFlag" Type="bit" />
+          <Property Name="IsOrNotScan" Type="bit" />
+          <Property Name="IsOrNotCom" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="TA_MACHINE">
           <Key>
             <PropertyRef Name="MachineCode" />
@@ -91,6 +119,14 @@
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
           <Property Name="Picture" Type="image" />
+        </EntityType>
+        <EntityType Name="TA_PROCESS">
+          <Key>
+            <PropertyRef Name="OwendProcessCode" />
+          </Key>
+          <Property Name="OwnedWorkshopCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwendProcessCode" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TA_PROJECT">
           <Key>
@@ -184,6 +220,13 @@
           <Property Name="WorklineName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TA_WORKSHOP">
+          <Key>
+            <PropertyRef Name="OwnedWorkshopCode" />
+          </Key>
+          <Property Name="OwnedWorkshopCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkshopName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TB_ASK">
           <Key>
@@ -808,8 +851,11 @@
           <EntitySet Name="TA_BILLTYPE" EntityType="Self.TA_BILLTYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_CONFIG" EntityType="Self.TA_CONFIG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_DEPT" EntityType="Self.TA_DEPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TA_LINE" EntityType="Self.TA_LINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TA_LINESTATION" EntityType="Self.TA_LINESTATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_MACHINE" EntityType="Self.TA_MACHINE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_PART" EntityType="Self.TA_PART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TA_PROCESS" EntityType="Self.TA_PROCESS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_PROJECT" EntityType="Self.TA_PROJECT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_STORE_GROUP" EntityType="Self.TA_STORE_GROUP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_STORE_LOCATION" EntityType="Self.TA_STORE_LOCATION" Schema="dbo" store:Type="Tables" />
@@ -818,6 +864,7 @@
           <EntitySet Name="TA_SUPERLIER" EntityType="Self.TA_SUPERLIER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_UNIT" EntityType="Self.TA_UNIT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TA_WORKLINE" EntityType="Self.TA_WORKLINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TA_WORKSHOP" EntityType="Self.TA_WORKSHOP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_ASK" EntityType="Self.TB_ASK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_BILL" EntityType="Self.TB_BILL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_IN" EntityType="Self.TB_IN" Schema="dbo" store:Type="Tables" />
@@ -1053,6 +1100,10 @@
           <EntitySet Name="TA_STORE_GROUP" EntityType="SpareModel.TA_STORE_GROUP" />
           <EntitySet Name="VIEW_STOCK_DETAIL" EntityType="SpareModel.VIEW_STOCK_DETAIL" />
           <EntitySet Name="TA_BILLTYPE" EntityType="SpareModel.TA_BILLTYPE" />
+          <EntitySet Name="TA_PROCESS" EntityType="SpareModel.TA_PROCESS" />
+          <EntitySet Name="TA_WORKSHOP" EntityType="SpareModel.TA_WORKSHOP" />
+          <EntitySet Name="TA_LINESTATION" EntityType="SpareModel.TA_LINESTATION" />
+          <EntitySet Name="TA_LINE" EntityType="SpareModel.TA_LINE" />
         </EntityContainer>
         <EntityType Name="TA_Attach">
           <Key>
@@ -1830,6 +1881,49 @@
           <Property Name="ImportTemplateFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsCalc" Type="Boolean" />
         </EntityType>
+        <EntityType Name="TA_PROCESS">
+          <Key>
+            <PropertyRef Name="OwendProcessCode" />
+          </Key>
+          <Property Name="OwnedWorkshopCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OwendProcessCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TA_WORKSHOP">
+          <Key>
+            <PropertyRef Name="OwnedWorkshopCode" />
+          </Key>
+          <Property Name="OwnedWorkshopCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkshopName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TA_LINESTATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="LineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StationCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsOrNotCollection" Type="Boolean" />
+          <Property Name="IsOrNotInspectionOrder" Type="Boolean" />
+          <Property Name="IsOrNotFirstOrder" Type="Boolean" />
+          <Property Name="IsOrNotCompleted" Type="Boolean" />
+          <Property Name="IsOrNotResetFlag" Type="Boolean" />
+          <Property Name="IsOrNotScan" Type="Boolean" />
+          <Property Name="IsOrNotCom" Type="Boolean" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TA_LINE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="LineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LineCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedWorkshopCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OwendProcessCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2592,6 +2686,53 @@
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="BillType" ColumnName="BillType" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TA_PROCESS">
+            <EntityTypeMapping TypeName="SpareModel.TA_PROCESS">
+              <MappingFragment StoreEntitySet="TA_PROCESS">
+                <ScalarProperty Name="OwendProcessCode" ColumnName="OwendProcessCode" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="OwnedWorkshopCode" ColumnName="OwnedWorkshopCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TA_WORKSHOP">
+            <EntityTypeMapping TypeName="SpareModel.TA_WORKSHOP">
+              <MappingFragment StoreEntitySet="TA_WORKSHOP">
+                <ScalarProperty Name="WorkshopName" ColumnName="WorkshopName" />
+                <ScalarProperty Name="OwnedWorkshopCode" ColumnName="OwnedWorkshopCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TA_LINESTATION">
+            <EntityTypeMapping TypeName="SpareModel.TA_LINESTATION">
+              <MappingFragment StoreEntitySet="TA_LINESTATION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IsOrNotCom" ColumnName="IsOrNotCom" />
+                <ScalarProperty Name="IsOrNotScan" ColumnName="IsOrNotScan" />
+                <ScalarProperty Name="IsOrNotResetFlag" ColumnName="IsOrNotResetFlag" />
+                <ScalarProperty Name="IsOrNotCompleted" ColumnName="IsOrNotCompleted" />
+                <ScalarProperty Name="IsOrNotFirstOrder" ColumnName="IsOrNotFirstOrder" />
+                <ScalarProperty Name="IsOrNotInspectionOrder" ColumnName="IsOrNotInspectionOrder" />
+                <ScalarProperty Name="IsOrNotCollection" ColumnName="IsOrNotCollection" />
+                <ScalarProperty Name="StationCode" ColumnName="StationCode" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="LineCode" ColumnName="LineCode" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TA_LINE">
+            <EntityTypeMapping TypeName="SpareModel.TA_LINE">
+              <MappingFragment StoreEntitySet="TA_LINE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="OwendProcessCode" ColumnName="OwendProcessCode" />
+                <ScalarProperty Name="OwnedWorkshopCode" ColumnName="OwnedWorkshopCode" />
+                <ScalarProperty Name="LineCode" ColumnName="LineCode" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

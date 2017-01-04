@@ -85,8 +85,8 @@ namespace ChangKeTec.Wms.WinForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            if (UpdateControl.DownloadServerFiles())
-                UpdateControl.KillSelfThenRun();
+//            if (UpdateControl.DownloadServerFiles())
+//                UpdateControl.KillSelfThenRun();
             lblVersion.Text = @"Version " + Application.ProductVersion;
             lblDbName.Text = AppConfigHelper.GetAppValue(GlobalVar.SpareDbName);
         }

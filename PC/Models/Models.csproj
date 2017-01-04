@@ -143,6 +143,12 @@
     <Compile Include="TA_DEPT.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
+    <Compile Include="TA_LINE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_LINESTATION.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
     <Compile Include="TA_MACHINE.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
@@ -150,6 +156,9 @@
       <DependentUpon>ModelPower.tt</DependentUpon>
     </Compile>
     <Compile Include="TA_PART.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_PROCESS.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TA_PROJECT.cs">
@@ -174,6 +183,9 @@
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TA_WORKLINE.cs">
+      <DependentUpon>ModelSpare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TA_WORKSHOP.cs">
       <DependentUpon>ModelSpare.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_ASK.cs">
