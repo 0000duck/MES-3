@@ -17,21 +17,21 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 {
     // 状态  枚举值 的下拉列表 跟   取值 出处
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
-    public partial class FormLine: Office2007Form
+    public partial class FormProcess : Office2007Form
     {
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
-        public FormLine()
+        public FormProcess()
         {
             InitializeComponent();
-            bs.DataSource = _db.TA_LINE.ToList();
+            bs.DataSource = _db.TA_PROCESS.ToList();
             grid.PrimaryGrid.DataSource = bs;
             bn.BindingSource = bs;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            gcWorkshop.EditorType = typeof (WorkshopComboBox);
-            gcProcess.EditorType = typeof (ProcessComboBox);
+            gcWorkshop.EditorType = typeof (WorkshopComboBoxList);
+            gcProcess.EditorType = typeof (ProcessComboBoxList);
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 column.MinimumWidth = 100;
@@ -41,18 +41,18 @@ namespace ChangKeTec.Wms.WinForm.BaseData
         private  void btnSave_Click(object sender, EventArgs e)
         {
             bs.EndEdit();
-            var detailList = (List<TA_LINE>) bs.DataSource;
+            var detailList = (List<TA_PROCESS>) bs.DataSource;
             TL_BASEDATA log=null;
             
-            foreach (TA_LINE storeWhse in _db.TA_LINE)
+            foreach (TA_PROCESS storeWhse in _db.TA_PROCESS)
             {
 
-                if (detailList.All(p => p.ID != storeWhse.ID))
-                    _db.TA_LINE.Remove(storeWhse);
+                if (detailList.All(p => p.OwendProcessCode != storeWhse.OwendProcessCode))
+                    _db.TA_PROCESS.Remove(storeWhse);
                 
                 OperateType logType;
                 string oldValue, newValue;
-                DbEntityEntry<TA_LINE> entry;
+                DbEntityEntry<TA_PROCESS> entry;
 
                 try
                 {
@@ -64,7 +64,7 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                     
                     MessageHelper.ShowInfo(ex.ToString());
                     _db = EntitiesFactory.CreateSpareInstance();
-                    bs.DataSource = _db.TA_LINE.ToList();
+                    bs.DataSource = _db.TA_PROCESS.ToList();
                     return;
                 }
                 var dataType = entry.Entity.GetType().Name;
@@ -91,9 +91,9 @@ namespace ChangKeTec.Wms.WinForm.BaseData
                 }
                log= BaseDataLogController.Add(_db,dataType,oldValue,newValue,"",logType);
             }
-            foreach (var detail in detailList.Where(detail => !_db.TA_LINE.Any(p => p.ID == detail.ID)))
+            foreach (var detail in detailList.Where(detail => !_db.TA_PROCESS.Any(p => p.OwendProcessCode == detail.OwendProcessCode)))
             {
-                _db.TA_LINE.Add(detail);
+                _db.TA_PROCESS.Add(detail);
                 var entry = _db.Entry(detail);
                 var dataType = entry.Entity.GetType().Name;
                 var logType = OperateType.Add;
@@ -168,21 +168,22 @@ namespace ChangKeTec.Wms.WinForm.BaseData
             }
         }
     }
-    public class WorkshopComboBox: GridComboBoxExEditControl
+
+    public class WorkshopComboBoxList : GridComboBoxExEditControl
     {
-        public WorkshopComboBox()
+        public WorkshopComboBoxList()
         {
             var db = EntitiesFactory.CreateSpareInstance();
 
-            DataSource=new BindingList<TA_WORKSHOP>(db.TA_WORKSHOP.ToList());
+            DataSource = new BindingList<TA_WORKSHOP>(db.TA_WORKSHOP.ToList());
             DisplayMember = "WorkshopName";
-            ValueMember = "OwnedWorkshopCode"; 
+            ValueMember = "OwnedWorkshopCode";
         }
     }
 
-    public class ProcessComboBox : GridComboBoxExEditControl
+    public class ProcessComboBoxList : GridComboBoxExEditControl
     {
-        public ProcessComboBox()
+        public ProcessComboBoxList()
         {
             var db = EntitiesFactory.CreateSpareInstance();
             // db.TA_PROCESS.ToList()
@@ -191,16 +192,16 @@ namespace ChangKeTec.Wms.WinForm.BaseData
             ValueMember = "OwendProcessCode"; 
         }
     }
-
-    public class ProcessComboBoxSelect : GridComboBoxExEditControl
-    {
-        //        private int num; BindingList
-        public ProcessComboBoxSelect(List<TA_PROCESS> list)
-        {
-            
-            DataSource = list;
-            DisplayMember = "ProcessName";
-            ValueMember = "OwendProcessCode";
-        }
-    }
+//
+//    public class ProcessComboBoxSelect : GridComboBoxExEditControl
+//    {
+//        //        private int num; BindingList
+//        public ProcessComboBoxSelect(List<TA_PROCESS> list)
+//        {
+//            
+//            DataSource = list;
+//            DisplayMember = "ProcessName";
+//            ValueMember = "OwendProcessCode";
+//        }
+//    }
 }

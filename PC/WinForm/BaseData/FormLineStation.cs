@@ -17,10 +17,10 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 {
     // 状态  枚举值 的下拉列表 跟   取值 出处
     //  单据的 编码规则不能为空  最后时间值 必须在某个范围。时间为空值 处理
-    public partial class LineStation : Office2007Form
+    public partial class FormLineStation : Office2007Form
     {
         private SpareEntities _db = EntitiesFactory.CreateSpareInstance();
-        public LineStation()
+        public FormLineStation()
         {
             InitializeComponent();
             bs.DataSource = _db.TA_LINESTATION.ToList();
@@ -30,7 +30,9 @@ namespace ChangKeTec.Wms.WinForm.BaseData
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            gcLineName.EditorType = typeof (GcLineNameComBoBox);
+//            gcLineCode.EditorType = typeof(GcLineNameComBoBoxSelect);
+
             foreach (GridColumn column in grid.PrimaryGrid.Columns)
             {
                 column.MinimumWidth = 100;
@@ -138,8 +140,21 @@ namespace ChangKeTec.Wms.WinForm.BaseData
             grid.PrimaryGrid.ActiveCell.CancelEdit();
         }
 
-        
+        public class GcLineNameComBoBox:GridComboBoxExEditControl
+        {
+             public  GcLineNameComBoBox()
+             {
+                 var db = EntitiesFactory.CreateSpareInstance();
+                 DataSource = db.TA_LINE.ToList();
+                 DisplayMember = "LineName";
+                 ValueMember = "LineCode";
+             }
+        }
 
+        private void grid_CellValueChanged(object sender, GridCellValueChangedEventArgs e)
+        {
+           
+        }
     }
    
 }
